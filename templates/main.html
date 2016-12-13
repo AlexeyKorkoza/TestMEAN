@@ -1,0 +1,10 @@
+<div ng-controller="mainCtrl">
+  <div class="form-group" id="select">
+    <div class="row">
+      <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4">
+        <selectize config='myConfig' ng-disabled='disable' ng-change="getByType(type)" options='select' ng-model="type"></selectize>
+      </div>
+    </div>
+  </div>
+  <div id="init_map"></div>
+</div>

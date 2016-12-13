@@ -1,0 +1,41 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+
+#select{
+  width: 100%;
+  background: white;
+  box-shadow: 0 5px 5px rgba(176, 176, 176, 0.4);
+  padding: 20px;
+  position: absolute;
+  z-index: 2;
+}
+
+#map {
+  width: 100%;
+  z-index: 1;
+}
+
+.leaflet-top{
+  top: 90px !important;
+}
+
+.leaflet-routing-container{
+  display: none !important;
+}
+
+.getDirectionBtn{
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 5px;
+  background: green;
+  color: white;
+  border: none;
+}
+
+.leaflet-default-icon-path{
+  background-image:url(https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.2/images/marker-icon.png) !important;
+}
