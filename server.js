@@ -4,6 +4,7 @@ var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var serveStatic = require('serve-static');
+var mysql = require('./db');
 var app = express();
 
 app.use(morgan('dev'));
