@@ -5,15 +5,13 @@
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Test Project</title>
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="node_modules/normalize.css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="node_modules/leaflet/dist/leaflet.css">
-    <link rel="stylesheet" type="text/css" href="node_modules/selectize/dist/css/selectize.default.css">
+    <link rel="stylesheet" type="text/css" href="build/build.css">
 </head>
 <body>
 
 <ng-view></ng-view>
+
+<!--<script src="build/build.js"></script>-->
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
@@ -22,9 +20,12 @@
 <script src="node_modules/leaflet/dist/leaflet.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="node_modules/angular-selectize2/dist/selectize.js"></script>
+<script src="node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
 
-<script src="https://js.maxmind.com/js/country.js" type="text/javascript"></script>
-<script src="https://js.maxmind.com/js/geoip.js" type="text/javascript" ></script>
+
+<script src="js/app.js"></script>
+<script src="js/route.js"></script>
+<script src="js/Main/mainCtrl.js"></script>
 
 </body>
 </html>
