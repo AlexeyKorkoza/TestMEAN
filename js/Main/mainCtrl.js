@@ -1,7 +1,7 @@
 'use strict';
 
 var myApp = angular.module('myApp');
-myApp.controller('mainCtrl', function ($scope,$http) {
+myApp.controller('mainCtrl', function ($scope, $http) {
 
   document.getElementById('init_map').innerHTML = "<div id='map'></div>";
   document.getElementById("map").style.height = window.innerHeight + "px";
@@ -31,58 +31,71 @@ myApp.controller('mainCtrl', function ($scope,$http) {
     maxItems: 1
   };
 
-  getAllTypes();
-  getAllPlaces();
-
-  function getAllTypes() {
-    $.ajax({
+  $scope.getAllTypes = function () {
+    $http({
       url: 'http://localhost:8080/',
-      type: 'POST',
-      data: 'allTypes',
-      async: false,
-      success: function (response, status) {
-        console.log(response);
-        console.log(status);
-        $scope.getData = response.types;
+      method: 'post',
+      data: {
+        'allTypes': 'allTypes'
+      },
+      headers: {'Content-Type': 'application/json'}
+    }).then(
+      function Success(response) {
+        $scope.getData = response.data;
         $scope.select = [];
         $scope.select.push({
           value: 0,
           text: "Все объекты"
         });
-        for (var i = 0; i < response.types.length; i++) {
+        for (var i = 0; i < response.data.length; i++) {
           $scope.select.push({
-            value: response.types[i].id_type,
-            text: response.types[i].name_type
+            value: response.data[i].id_type,
+            text: response.data[i].name_type
           })
         }
       },
-      error: function (response, status) {
-        console.log(response);
-        console.log(status);
-      }
-    });
-  }
-
-  function getAllPlaces() {
-    var insertData= {
-      'allPlaces': 'allPlaces'
-    };
-    var query = $http({
-      url: '',
-      method: 'post',
-      data: 'mydata='+JSON.stringify(insertData),
-      async: false
-    });
-      query.success(function (response, status) {
-        console.log(response);
-        console.log(status);
-        addPlaceInMap(response);
+      function myError(response) {
+        swal({
+          title: "Данные с сервера не загрузились!",
+          text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
+          confirmButtonText: "Обновить страницу",
+          html: true
+        }, function (isConfirm) {
+          if (isConfirm) {
+            location.reload();
+          }
         });
-      query.error(function (response, status) {
-        console.log(response);
-        console.log(status);
-    });
-  }
+      });
+  };
+
+  $scope.getAllPlaces = function () {
+    $http({
+      url: 'http://localhost:8080/',
+      method: 'post',
+      data: {
+        'allPlaces': 'allPlaces'
+      },
+      headers: {'Content-Type': 'application/json'}
+    }).then(
+      function Success(response) {
+        addPlaceInMap(response);
+      },
+      function Error(response) {
+        swal({
+          title: "Данные с сервера не загрузились!",
+          text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
+          confirmButtonText: "Обновить страницу",
+          html: true
+        }, function (isConfirm) {
+          if (isConfirm) {
+            location.reload();
+          }
+        });
+      });
+  };
+
+  $scope.getAllTypes();
+  $scope.getAllPlaces();
 
   function addPlaceInMap(response) {
     for (var i = 0; i < response.places.length; i++) {
@@ -100,22 +113,23 @@ myApp.controller('mainCtrl', function ($scope,$http) {
 
   $scope.getByType = function (type) {
     if (type === "0") {
-      getAllPlaces();
+      $scope.getAllPlaces();
     } else {
       markers.clearLayers();
-      $.ajax({
-        url: '',
-        type: 'POST',
+      $http({
+        url: 'http://localhost:8080/',
+        method: 'post',
         data: {
           'type': type
         },
-        success: function (response) {
+        headers: {'Content-Type': 'application/json'}
+      }).then(
+        function Success(response) {
           addPlaceInMap(response);
         },
-        error: function (response) {
+        function Error(response) {
           console.log(response);
-        }
-      });
+        });
     }
   };
 });
