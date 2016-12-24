@@ -38,6 +38,8 @@
     "leaflet": "^1.0.2",
     "leaflet-routing-machine": "^3.2.4",
     "method-override": "^2.3.7",
+    "mongodb": "^2.2.16",
+    "mongoose": "^4.7.4",
     "morgan": "^1.7.0",
     "normalize.css": "^5.0.0",
     "path": "^0.12.7",
