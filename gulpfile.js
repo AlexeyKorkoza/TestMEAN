@@ -32,7 +32,9 @@ gulp.task('scripts', function () {
     'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js',
     'node_modules/sweetalert/dist/sweetalert.min.js',
     './js/*.js',
-    './js/Main/*.js'
+    './js/Main/*.js',
+    './js/SignIn/*.js',
+    './js/SignUp/*.js'
   ])
     .on('error', console.log)
     .pipe(concat('build.js'))
