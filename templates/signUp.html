@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div ng-controller="signUpCtrl">
+    <div class="formSignUp">
+        <form class="modal-content animate">
+            <div class="containerSignUp">
+                <div class="imgcontainer">
+                    <span class="close" title="Вернуться назад" ng-click="back()">&times;</span>
+                </div>
+                <label><b>Имя пользователя:</b></label>
+                <input type="text" placeholder="Введите имя" ng-model="formData.login">
+
+                <label><b>Почтовый ящик:</b></label>
+                <input type="text" placeholder="example@mail.com" ng-model="formData.email">
+
+                <label><b>Пароль:</b></label>
+                <input type="password" placeholder="Введите пароль" ng-model="formData.password">
+
+                <label><b>Подтвердите пароль:</b></label>
+                <input type="password" placeholder="Введите пароль">
+
+                <a class="btn btn-success" id="LoginSignIn" href="/" ng-click="submit()">Зарегистрироваться</a>
+                <a class="btn btn-danger" id="CloseSignIn" href="/" ng-click="back()">Назад</a>
+            </div>
+        </form>
+    </div>
+</div>

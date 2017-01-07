@@ -14,7 +14,7 @@ myApp.controller('mainCtrl', function ($scope, $http) {
 
   var LeafIcon = L.Icon.extend({
     options: {
-      iconSize: [25, 41],
+      iconSize: [54, 54],
       iconAnchor: [16, 37],
       popupAnchor: [0, -30]
     }
