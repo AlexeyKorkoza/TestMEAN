@@ -7,14 +7,19 @@ myApp.controller('signUpCtrl', function ($scope, $http, $location) {
     $location.path('/');
   };
 
-  $scope.submit = function () {
+  $scope.submit = function (isValid) {
+
     $scope.formData = {};
 
-    $http({
-      url: '/signin',
-      data: $scope.formData,
-      method: 'POST'
-    });
+    if (isValid) {
+
+      $http({
+        url: '/signin',
+        data: $scope.formData,
+        method: 'POST'
+      });
+
+    }
   };
 
 });

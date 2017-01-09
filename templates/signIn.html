@@ -1,17 +1,35 @@
 <div ng-controller="signInCtrl">
     <div class="formSignIn">
-        <form class="modal-content animate">
+        <form class="modal-content animate" ng-submit="submit(form.$valid)" name="form" novalidate>
             <div class="containerSignIn">
-                <div class="imgcontainer">
+                <div>
                     <span class="close" title="Вернуться назад" ng-click="back()">&times;</span>
                 </div>
-                <label><b>Имя пользователя:</b></label>
-                <input type="text" placeholder="Введите имя" ng-model="formData.login">
 
-                <label><b>Пароль:</b></label>
-                <input type="password" placeholder="Введите пароль" ng-model="formData.password">
+                <div>
+                    <label><b>Имя пользователя:*</b></label>
+                    <input type="text"
+                           name="username"
+                           placeholder="Введите имя"
+                           ng-model="formData.username"
+                           required/>
+                    <p ng-show="form.username.$invalid && !form.username.$pristine" class="help-block">Введите имя пользователя</p>
+                </div>
 
-                <a class="btn btn-success" id="LoginSignIn" href="/" ng-click="submit()">Войти</a>
+                <div>
+                    <label><b>Пароль:*</b></label>
+                    <input type="password"
+                           name="password"
+                           placeholder="Введите пароль"
+                           ng-model="formData.password"
+                           id="signUpPassword"
+                           required/>
+                    <p ng-show="form.password.$invalid && !form.password.$pristine" class="help-block">Введите пароль</p>
+                </div>
+
+                <button class="btn btn-success" id="LoginSignIn" type="submit"
+                        ng-disabled="form.$invalid">Войти
+                </button>
                 <a class="btn btn-danger" id="CloseSignIn" href="/" ng-click="back()">Назад</a>
             </div>
         </form>

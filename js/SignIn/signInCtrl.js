@@ -10,11 +10,15 @@ myApp.controller('signInCtrl', function ($scope, $location, $http) {
   $scope.submit = function () {
     $scope.formData = {};
 
-    $http({
-      url: '/signin',
-      data: $scope.formData,
-      method: 'POST'
-    });
+    if (isValid) {
+
+      $http({
+        url: '/signup',
+        data: $scope.formData,
+        method: 'POST'
+      });
+
+    }
   };
 
 });
