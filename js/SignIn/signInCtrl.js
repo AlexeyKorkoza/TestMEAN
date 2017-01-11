@@ -13,7 +13,7 @@ myApp.controller('signInCtrl', function ($scope, $location, $http) {
     if (isValid) {
 
       $http({
-        url: '/signup',
+        url: '/signin',
         data: $scope.formData,
         method: 'POST'
       });
