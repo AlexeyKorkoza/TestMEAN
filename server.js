@@ -8,11 +8,13 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var typeModel = require('./models/type');
 var placeModel = require('./models/place');
+var userModel = require('./models/user');
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/interactive_map');
 
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(serveStatic(__dirname + ''));
 app.use(methodOverride());
@@ -43,6 +45,27 @@ app.post('', function (req, res) {
     });
   }
 
+});
+
+app.get('/signup', function (req, res) {
+  userModel.find({}, function (err, users) {
+    if (err)
+      res.send(err);
+    res.send(users);
+  });
+});
+
+app.post('/signup', function (req, res) {
+  userModel.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    }, function (err) {
+      if (err)
+        res.send(err);
+      else res.send("User created!");
+    }
+  );
 });
 
 app.listen(config.port, function () {
