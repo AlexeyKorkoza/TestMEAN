@@ -12,6 +12,7 @@
                            name="username"
                            placeholder="Введите имя"
                            ng-model="formData.username"
+                           class="username"
                            required/>
                     <p ng-show="form.username.$invalid && !form.username.$pristine" class="help-block">Введите имя пользователя</p>
                 </div>
@@ -23,6 +24,7 @@
                            placeholder="Введите пароль"
                            ng-model="formData.password"
                            id="signUpPassword"
+                           class="password"
                            required/>
                     <p ng-show="form.password.$invalid && !form.password.$pristine" class="help-block">Введите пароль</p>
                 </div>

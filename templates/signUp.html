@@ -1,6 +1,6 @@
 <div ng-controller="signUpCtrl">
     <div class="formSignUp">
-        <form class="modal-content animate" ng-submit="submit(form.$valid)" name="form" novalidate>
+        <form class="modal-content animate" name="form" novalidate>
             <div class="containerSignUp">
                 <div>
                     <span class="close" title="Вернуться назад" ng-click="back()">&times;</span>
@@ -12,6 +12,7 @@
                            name="username"
                            placeholder="Введите имя"
                            ng-model="formData.username"
+                           class="username"
                            required/>
                     <p ng-show="form.username.$invalid && !form.username.$pristine" class="help-block">Введите имя пользователя</p>
                 </div>
@@ -22,6 +23,7 @@
                            name="email"
                            placeholder="example@mail.com"
                            ng-model="formData.email"
+                           class="email"
                            required/>
                     <p ng-show="form.email.$invalid && !form.email.$pristine" class="help-block">Электронный адрес
                         некорректный</p>
@@ -35,6 +37,7 @@
                            ng-model="formData.password"
                            ng-minlength="6"
                            id="signUpPassword"
+                           class="password"
                            required/>
                     <p ng-show="form.password.$error.minlength" class="help-block">Пароль должен состоять из 6 символов
                         минимум</p>
@@ -47,12 +50,13 @@
                            placeholder="Повторите пароль"
                            ng-model="formData.confirmpassword"
                            pw-check="signUpPassword"
+                           class="password"
                            required/>
                     <p class="help-block" ng-show="form.confirmpassword.$error.pwmatch">Пароли не совпадают</p>
                 </div>
 
                 <button class="btn btn-success" id="LoginSignIn" type="submit"
-                        ng-disabled="form.$invalid">Зарегистрироваться
+                        ng-disabled="form.$invalid" ng-click="submit(form.$valid)">Зарегистрироваться
                 </button>
                 <a class="btn btn-danger" id="CloseSignIn" href="/" ng-click="back()">Назад</a>
             </div>
