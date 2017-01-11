@@ -1,6 +1,6 @@
 <div ng-controller="signInCtrl">
     <div class="formSignIn">
-        <form class="modal-content animate" ng-submit="submit(form.$valid)" name="form" novalidate>
+        <form class="modal-content animate" name="form" novalidate>
             <div class="containerSignIn">
                 <div>
                     <span class="close" title="Вернуться назад" ng-click="back()">&times;</span>
@@ -30,7 +30,7 @@
                 </div>
 
                 <button class="btn btn-success" id="LoginSignIn" type="submit"
-                        ng-disabled="form.$invalid">Войти
+                        ng-disabled="form.$invalid" ng-click="submit(form.$valid)">Войти
                 </button>
                 <a class="btn btn-danger" id="CloseSignIn" href="/" ng-click="back()">Назад</a>
             </div>

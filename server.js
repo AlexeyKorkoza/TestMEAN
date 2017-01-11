@@ -68,6 +68,14 @@ app.post('/signup', function (req, res) {
   );
 });
 
+app.get('/signin', function (req, res) {
+  userModel.find({}, function (err, users) {
+    if (err)
+      res.send(err);
+    res.send(users);
+  });
+});
+
 app.listen(config.port, function () {
   console.log("Express server listening on port " + config.port);
 });
