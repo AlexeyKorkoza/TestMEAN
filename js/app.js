@@ -1,3 +1,6 @@
 'use strict';
 
-var myApp = angular.module('myApp', ['ngRoute','selectize']);
+angular.module('myApp', [
+  'ngRoute',
+  'selectize'
+]);
