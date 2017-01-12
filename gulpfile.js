@@ -34,7 +34,9 @@ gulp.task('scripts', function () {
     './js/*.js',
     './js/Main/*.js',
     './js/SignIn/*.js',
-    './js/SignUp/*.js'
+    './js/SignUp/*.js',
+    './js/factories/*.js',
+    './js/directivies/*.js'
   ])
     .on('error', console.log)
     .pipe(concat('build.js'))
