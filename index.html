@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Test Project</title>
     <link rel="stylesheet" type="text/css" href="build/build.css">
+    <link rel="stylesheet" type="text/css" href="app/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <base href="/">
 </head>
@@ -13,7 +14,26 @@
 
 <div ng-view></div>
 
-<script src="build/build.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/selectize/dist/js/standalone/selectize.min.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="node_modules/angular-route/angular-route.min.js"></script>
+<script src="node_modules/leaflet/dist/leaflet.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/angular-selectize2/dist/selectize.js"></script>
+<script src="node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+<script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="app/app.js"></script>
+<script src="app/route.js"></script>
+<script src="app/Main/mainCtrl.js"></script>
+<script src="app/SignIn/signInCtrl.js"></script>
+<script src="app/SignUp/signUpCtrl.js"></script>
+<script src="app/SignUp/signUpDirective.js"></script>
+
+<script src="app/Main/mainFactory.js"></script>
+<script src="app/SignIn/signInFactory.js"></script>
+<script src="app/SignUp/signUpFactory.js"></script>
 
 </body>
 </html>

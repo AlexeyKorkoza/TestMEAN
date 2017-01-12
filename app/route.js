@@ -4,15 +4,15 @@ angular.module('myApp')
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: '../../templates/main.html',
+        templateUrl: 'app/Main/main.html',
         controller: 'mainCtrl'
       })
       .when('/signin', {
-        templateUrl: '../../templates/signIn.html',
+        templateUrl: 'app/SignIn/signIn.html',
         controller: 'signInCtrl'
       })
       .when('/signup', {
-        templateUrl: '../../templates/signUp.html',
+        templateUrl: 'app/SignUp/signUp.html',
         controller: 'signUpCtrl'
       })
       .otherwise({redirectTo: '/'});

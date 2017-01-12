@@ -3,7 +3,7 @@ angular
   .factory('SignInService', function ($http) {
     return {
       getAllUsers: function () {
-        return $http.post('/signin');
+        return $http.get('/signin');
       }
     }
   });

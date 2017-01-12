@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('mainCtrl', function ($scope, $http, TypeService, PlaceService) {
+  .controller('mainCtrl', function ($scope, $http, MainService) {
 
     document.getElementById('init_map').innerHTML = "<div id='map'></div>";
     document.getElementById("map").style.height = window.innerHeight + "px";
@@ -35,7 +35,7 @@ angular.module('myApp')
     getAllPlaces();
 
     function getAllTypes() {
-      TypeService.getAllTypes()
+      MainService.getAllTypes()
         .then(
           function Success(response) {
             $scope.getData = response.data;
@@ -66,7 +66,7 @@ angular.module('myApp')
     };
 
     function getAllPlaces() {
-      PlaceService.getAllPlaces()
+      MainService.getAllPlaces()
         .then(
           function Success(response) {
             addPlaceInMap(response);
@@ -91,7 +91,7 @@ angular.module('myApp')
           var nameOfImage = $scope.getData[response.data[i].id_type - 1].marker_img;
           var typeOfPlace = $scope.getData[response.data[i].id_type - 1].name_type;
           var id_place = response.data[i].id_place;
-          var iconPlace = new LeafIcon({iconUrl: "img/" + nameOfImage + ".png"});
+          var iconPlace = new LeafIcon({iconUrl: "app/img/" + nameOfImage + ".png"});
           var marker = L.marker([response.data[i].coordinateX, response.data[i].coordinateY],
             {icon: iconPlace}).bindPopup("<b>\"" + response.data[i].name_place + "\",</b> " + typeOfPlace + "<br>" +
             response.data[i].address + "<br/>").openPopup().addTo(map);
@@ -117,7 +117,7 @@ angular.module('myApp')
         getAllPlaces();
       } else {
         markers.clearLayers();
-        TypeService.getByType(type)
+        MainService.getByType(type)
           .then(
             function Success(response) {
               addPlaceInMap(response);
