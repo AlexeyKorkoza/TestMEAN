@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('signInCtrl', function ($scope, $location, $http) {
+  .controller('signInCtrl', function ($scope, $location, $http, SignInService) {
 
     var getAllUsers = '';
-    $http.get('/signin')
+    SignInService.getAllUsers()
       .then(function (response) {
         getAllUsers = response.data;
       });
@@ -21,7 +21,7 @@ angular.module('myApp')
         getAllUsers.forEach(function (item) {
           if (item.username !== $scope.formData.username && flag) {
             swal({
-              title: '<span style="color:#F8BB86">Запрашиваемый пользователь' + $scope.formData.username + 'не найден.<span>',
+              title: '<span style="color:#F8BB86">Запрашиваемый пользователь ' + $scope.formData.username + ' не найден.<span>',
               confirmButtonText: "ОК",
               html: true
             });

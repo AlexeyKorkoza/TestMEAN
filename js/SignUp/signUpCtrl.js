@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('signUpCtrl', function ($scope, $http, $location) {
+  .controller('signUpCtrl', function ($scope, $http, $location, SignUpService) {
 
     var getAllUsers = '';
-    $http.get('/signup')
+    SignUpService.getAllUsers()
       .then(function (response) {
         getAllUsers = response.data;
       });
@@ -47,14 +47,6 @@ angular.module('myApp')
             });
           }
         });
-
-        if (flag) {
-          $http.post('/signup', $scope.formData, {'Content-Type': 'application/json'})
-            .then(function (data) {
-              console.log(data);
-            });
-        }
       }
     };
-
   });

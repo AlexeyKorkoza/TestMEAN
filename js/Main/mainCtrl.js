@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('mainCtrl', function ($scope, $http) {
+  .controller('mainCtrl', function ($scope, $http, TypeService, PlaceService) {
 
     document.getElementById('init_map').innerHTML = "<div id='map'></div>";
     document.getElementById("map").style.height = window.innerHeight + "px";
@@ -35,64 +35,54 @@ angular.module('myApp')
     getAllPlaces();
 
     function getAllTypes() {
-      $http({
-        url: '',
-        method: 'post',
-        data: {
-          'allTypes': 'allTypes'
-        }
-      }).then(
-        function Success(response) {
-          $scope.getData = response.data;
-          $scope.select = [];
-          $scope.select.push({
-            value: 0,
-            text: "Все объекты"
-          });
-          for (var i = 0; i < response.data.length; i++) {
+      TypeService.getAllTypes()
+        .then(
+          function Success(response) {
+            $scope.getData = response.data;
+            $scope.select = [];
             $scope.select.push({
-              value: response.data[i].id_type,
-              text: response.data[i].name_type
-            })
-          }
-        },
-        function myError(response) {
-          swal({
-            title: "Данные с сервера не загрузились!",
-            text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
-            confirmButtonText: "Обновить страницу",
-            html: true
-          }, function (isConfirm) {
-            if (isConfirm) {
-              location.reload();
+              value: 0,
+              text: "Все объекты"
+            });
+            for (var i = 0; i < response.data.length; i++) {
+              $scope.select.push({
+                value: response.data[i].id_type,
+                text: response.data[i].name_type
+              })
             }
+          },
+          function myError(response) {
+            swal({
+              title: "Данные с сервера не загрузились!",
+              text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
+              confirmButtonText: "Обновить страницу",
+              html: true
+            }, function (isConfirm) {
+              if (isConfirm) {
+                location.reload();
+              }
+            });
           });
-        });
     };
 
     function getAllPlaces() {
-      $http({
-        url: '',
-        method: 'post',
-        data: {
-          'allPlaces': 'allPlaces'
-        }
-      }).then(
-        function Success(response) {
-          addPlaceInMap(response);
-        },
-        function Error(response) {
-          swal({
-            title: "Данные с сервера не загрузились!",
-            text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
-            confirmButtonText: "Обновить страницу",
-            html: true
-          }, function (isConfirm) {
-            if (isConfirm) {
-              location.reload();
-            }
+      PlaceService.getAllPlaces()
+        .then(
+          function Success(response) {
+            addPlaceInMap(response);
+          },
+          function Error(response) {
+            swal({
+              title: "Данные с сервера не загрузились!",
+              text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
+              confirmButtonText: "Обновить страницу",
+              html: true
+            }, function (isConfirm) {
+              if (isConfirm) {
+                location.reload();
+              }
+            });
           });
-        });
     };
 
     function addPlaceInMap(response) {
@@ -127,19 +117,14 @@ angular.module('myApp')
         getAllPlaces();
       } else {
         markers.clearLayers();
-        $http({
-          url: '',
-          method: 'post',
-          data: {
-            'type': parseInt(type)
-          }
-        }).then(
-          function Success(response) {
-            addPlaceInMap(response);
-          },
-          function Error(response) {
-            console.log(response);
-          });
+        TypeService.getByType(type)
+          .then(
+            function Success(response) {
+              addPlaceInMap(response);
+            },
+            function Error(response) {
+              console.log(response);
+            });
       }
     };
   });
