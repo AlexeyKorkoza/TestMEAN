@@ -31,12 +31,10 @@ gulp.task('scripts', function () {
     'node_modules/angular-selectize2/dist/selectize.js',
     'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js',
     'node_modules/sweetalert/dist/sweetalert.min.js',
-    './js/*.js',
-    './js/Main/*.js',
-    './js/SignIn/*.js',
-    './js/SignUp/*.js',
-    './js/factories/*.js',
-    './js/directivies/*.js'
+    './app/js/*.js',
+    './app/Main/*.js',
+    './app/SignIn/*.js',
+    './app/SignUp/*.js'
   ])
     .on('error', console.log)
     .pipe(concat('build.js'))
@@ -48,7 +46,7 @@ gulp.task('styles', function () {
   return gulp.src([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/normalize.css/normalize.css',
-    'css/*.css',
+    'app/css/*.css',
     'node_modules/leaflet/dist/leaflet.css',
     'node_modules/selectize/dist/css/selectize.default.css',
     'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css',
