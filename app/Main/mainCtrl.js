@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('mainCtrl', function ($scope, $http, MainService) {
+  .controller('mainCtrl', function ($scope, $http, placeService, typeService) {
 
     document.getElementById('init_map').innerHTML = "<div id='map'></div>";
     document.getElementById("map").style.height = window.innerHeight + "px";
@@ -35,7 +35,7 @@ angular.module('myApp')
     getAllPlaces();
 
     function getAllTypes() {
-      MainService.getAllTypes()
+      typeService.getAllTypes()
         .then(
           function Success(response) {
             $scope.getData = response.data;
@@ -66,7 +66,7 @@ angular.module('myApp')
     };
 
     function getAllPlaces() {
-      MainService.getAllPlaces()
+      placeService.getAllPlaces()
         .then(
           function Success(response) {
             addPlaceInMap(response);
@@ -117,7 +117,7 @@ angular.module('myApp')
         getAllPlaces();
       } else {
         markers.clearLayers();
-        MainService.getByType(type)
+        typeService.getByType(type)
           .then(
             function Success(response) {
               addPlaceInMap(response);
