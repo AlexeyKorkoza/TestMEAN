@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('signInCtrl', function ($auth, $rootScope, $localStorage, $scope, $http, $location, SignUpService) {
+  .controller('signInCtrl', function ($auth, $scope, $http, $location, SignUpService) {
 
     var getAllUsers = '';
     SignUpService.getAllUsers()

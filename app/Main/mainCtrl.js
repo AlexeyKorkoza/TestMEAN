@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('mainCtrl', function ($auth, $rootScope, $localStorage, $location, $scope, $http, placeService, typeService) {
+  .controller('mainCtrl', function ($auth, $location, $scope, $http, placeService, typeService) {
 
     if ($auth.user.signedIn === true) {
       $scope.sign = true;
