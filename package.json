@@ -18,6 +18,7 @@
   "homepage": "https://github.com/AlexeyKorkoza/TestProject#readme",
   "dependencies": {
     "angular": "^1.4.8",
+    "angular-cookies": "^1.6.1",
     "angular-route": "^1.4.8",
     "angular-selectize2": "^1.2.3",
     "angular-ui-router": "^0.3.2",
@@ -42,6 +43,8 @@
     "mongodb": "^2.2.16",
     "mongoose": "^4.7.4",
     "morgan": "^1.7.0",
+    "ng-token-auth": "0.0.29",
+    "ngstorage": "^0.3.11",
     "normalize.css": "^5.0.0",
     "path": "^0.12.7",
     "selectize": "^0.12.4",

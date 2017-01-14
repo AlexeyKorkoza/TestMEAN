@@ -47,12 +47,24 @@ app.post('', function (req, res) {
 
 });
 
+app.delete('', function (req, res) {
+  res.send("OK");
+});
+
 app.get('/signup', function (req, res) {
   userModel.find({}, function (err, users) {
     if (err)
       res.send(err);
     res.send(users);
   });
+});
+
+app.get('/signin', function (req, res) {
+  res.send("It's ok");
+});
+
+app.post('/signin', function (req, res) {
+  res.send("It's ok");
 });
 
 app.post('/signup', function (req, res) {
@@ -66,14 +78,6 @@ app.post('/signup', function (req, res) {
       else res.send("User created!");
     }
   );
-});
-
-app.get('/signin', function (req, res) {
-  userModel.find({}, function (err, users) {
-    if (err)
-      res.send(err);
-    res.send(users);
-  });
 });
 
 app.listen(config.port, function () {

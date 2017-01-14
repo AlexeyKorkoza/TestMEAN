@@ -1,7 +1,13 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('mainCtrl', function ($scope, $http, placeService, typeService) {
+  .controller('mainCtrl', function ($auth, $rootScope, $localStorage, $location, $scope, $http, placeService, typeService) {
+
+    if ($auth.user.signedIn === true) {
+      $scope.sign = true;
+    } else {
+      $scope.sign = false;
+    }
 
     document.getElementById('init_map').innerHTML = "<div id='map'></div>";
     document.getElementById("map").style.height = window.innerHeight + "px";
@@ -63,7 +69,7 @@ angular.module('myApp')
               }
             });
           });
-    };
+    }
 
     function getAllPlaces() {
       placeService.getAllPlaces()
@@ -83,7 +89,7 @@ angular.module('myApp')
               }
             });
           });
-    };
+    }
 
     function addPlaceInMap(response) {
       if ($scope.getData !== '') {
@@ -127,4 +133,11 @@ angular.module('myApp')
             });
       }
     };
+
+    $scope.logout = function () {
+      $auth.signOut()
+        .then(function (resp) {
+          $location.path('/signin');
+        })
+    }
   });
