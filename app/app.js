@@ -8,7 +8,7 @@ angular.module('myApp', [
 
   .config(function ($authProvider) {
     $authProvider.configure({
-      apiUrl: '',
+      apiUrl: 'http://localhost:8080',
       emailRegistrationPath: '/signup',
       emailSignInPath: '/signin',
       signOutUrl: ' '
