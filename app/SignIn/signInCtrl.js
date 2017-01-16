@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('signInCtrl', function ($auth, $scope, $http, $location, $timeout, SignInService) {
+  .controller('signInCtrl', function ($auth, $scope, $http, $location, $timeout, SignInService, cfpLoadingBar) {
 
     var getAllUsers = '';
     SignInService.getAllUsers()
@@ -44,6 +44,7 @@ angular.module('myApp')
       if (flagPassword && flagUser) {
         $auth.submitLogin($scope.formData)
           .then(function () {
+            cfpLoadingBar.start();
             $timeout(function () {
               $location.path('/');
             }, 2000);
@@ -51,6 +52,9 @@ angular.module('myApp')
           .catch(function (response) {
             console.log(response);
           })
+          .finally(function () {
+            cfpLoadingBar.complete();
+          });
       }
     }
   });

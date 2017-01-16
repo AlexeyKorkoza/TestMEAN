@@ -162,3 +162,8 @@ span.psw {
   color: red;
   font: 1.3em "Open Sans";
 }
+
+#loading-bar .bar {
+  background: #33ba3a;
+  height: 5px;
+}

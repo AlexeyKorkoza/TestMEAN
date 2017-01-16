@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('signUpCtrl', function ($auth, $scope, $http, $location,$timeout, SignUpService) {
+  .controller('signUpCtrl', function ($auth, $scope, $http, $location, $timeout, SignUpService, cfpLoadingBar) {
 
     var getAllUsers = '';
     SignUpService.getAllUsers()
@@ -13,7 +13,7 @@ angular.module('myApp')
       $location.path('/');
     };
 
-    $scope.RegBtnClick = function() {
+    $scope.RegBtnClick = function () {
       var flag = true;
       getAllUsers.forEach(function (item) {
         if (item.username === $scope.formData.username && item.email === $scope.formData.email && flag) {
@@ -47,12 +47,16 @@ angular.module('myApp')
       if (flag) {
         $auth.submitRegistration($scope.formData)
           .then(function () {
+            cfpLoadingBar.start();
             $timeout(function () {
               $location.path('/');
             }, 2000);
           })
           .catch(function (response) {
             console.log(response);
+          })
+          .finally(function () {
+            cfpLoadingBar.complete();
           });
       }
     }

@@ -3,7 +3,9 @@
 angular.module('myApp', [
   'ngRoute',
   'selectize',
-  'ng-token-auth'
+  'ng-token-auth',
+  'angular-loading-bar',
+  'ngAnimate'
 ])
 
   .config(function ($authProvider) {
@@ -13,4 +15,7 @@ angular.module('myApp', [
       emailSignInPath: '/signin',
       signOutUrl: ' '
     });
-  });
+  })
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.latencyThreshold = 1000;
+  }]);

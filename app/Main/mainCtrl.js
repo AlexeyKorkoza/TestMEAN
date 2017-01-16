@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('mainCtrl', function ($auth, $location, $scope, $http, $timeout, placeService, typeService) {
+  .controller('mainCtrl', function ($auth, $location, $scope, $http, $timeout, placeService, typeService, cfpLoadingBar) {
 
     if ($auth.user.signedIn === true) {
       $scope.sign = true;
@@ -37,8 +37,10 @@ angular.module('myApp')
       maxItems: 1
     };
 
+    cfpLoadingBar.start();
     getAllTypes();
     getAllPlaces();
+    cfpLoadingBar.complete();
 
     function getAllTypes() {
       typeService.getAllTypes()
@@ -104,6 +106,7 @@ angular.module('myApp')
           markers.addLayer(marker);
         }
         map.addLayer(markers);
+        cfpLoadingBar.complete();
       } else {
         swal({
           title: "Данные с сервера не загрузились!",
@@ -119,6 +122,7 @@ angular.module('myApp')
     }
 
     $scope.getByType = function (type) {
+      cfpLoadingBar.start();
       if (type === "0") {
         getAllPlaces();
       } else {
@@ -130,16 +134,19 @@ angular.module('myApp')
             },
             function Error(response) {
               console.log(response);
-            });
+            })
       }
     };
 
     $scope.logout = function () {
       $auth.signOut()
         .then(function () {
+          cfpLoadingBar.start();
           $timeout(function () {
             $location.path('/signin');
           }, 2000);
-        })
+        }).finally(function () {
+        cfpLoadingBar.complete();
+      });
     }
   });
