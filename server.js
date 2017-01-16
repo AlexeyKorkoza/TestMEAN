@@ -60,7 +60,11 @@ app.get('/signup', function (req, res) {
 });
 
 app.get('/signin', function (req, res) {
-  res.send("It's ok");
+  userModel.find({}, function (err, users) {
+    if (err)
+      res.send(err);
+    res.send(users);
+  });
 });
 
 app.post('/signin', function (req, res) {
