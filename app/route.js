@@ -4,16 +4,13 @@ angular.module('myApp')
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'app/Main/main.html',
-        controller: 'mainCtrl'
+        templateUrl: 'app/Main/main.html'
       })
       .when('/signin', {
-        templateUrl: 'app/SignIn/signIn.html',
-        controller: 'signInCtrl'
+        templateUrl: 'app/SignIn/signIn.html'
       })
       .when('/signup', {
-        templateUrl: 'app/SignUp/signUp.html',
-        controller: 'signUpCtrl'
+        templateUrl: 'app/SignUp/signUp.html'
       })
       .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
