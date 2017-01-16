@@ -48,7 +48,9 @@ app.post('', function (req, res) {
 });
 
 app.delete('', function (req, res) {
-  res.send("OK");
+  res
+    .statusCode(200)
+    .send("Log out is success");
 });
 
 app.get('/signup', function (req, res) {
@@ -68,7 +70,9 @@ app.get('/signin', function (req, res) {
 });
 
 app.post('/signin', function (req, res) {
-  res.send("It's ok");
+  res
+    .statusCode(200)
+    .send("Sign in is success");
 });
 
 app.post('/signup', function (req, res) {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('mainCtrl', function ($auth, $location, $scope, $http, placeService, typeService) {
+  .controller('mainCtrl', function ($auth, $location, $scope, $http, $timeout, placeService, typeService) {
 
     if ($auth.user.signedIn === true) {
       $scope.sign = true;
@@ -136,8 +136,10 @@ angular.module('myApp')
 
     $scope.logout = function () {
       $auth.signOut()
-        .then(function (resp) {
-          $location.path('/signin');
+        .then(function () {
+          $timeout(function () {
+            $location.path('/signin');
+          }, 2000);
         })
     }
   });

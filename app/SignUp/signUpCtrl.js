@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('signUpCtrl', function ($auth, $scope, $http, $location, SignUpService) {
+  .controller('signUpCtrl', function ($auth, $scope, $http, $location,$timeout, SignUpService) {
 
     var getAllUsers = '';
     SignUpService.getAllUsers()
@@ -47,7 +47,9 @@ angular.module('myApp')
       if (flag) {
         $auth.submitRegistration($scope.formData)
           .then(function () {
-            $location.path('/');
+            $timeout(function () {
+              $location.path('/');
+            }, 2000);
           })
           .catch(function (response) {
             console.log(response);
