@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('signInCtrl', function ($auth, $scope, $http, $location, SignUpService) {
+  .controller('signInCtrl', function ($auth, $scope, $http, $location, SignInService) {
 
     var getAllUsers = '';
-    SignUpService.getAllUsers()
+    SignInService.getAllUsers()
       .then(function (response) {
         getAllUsers = response.data;
       });
@@ -43,7 +43,8 @@ angular.module('myApp')
 
       if (flagPassword && flagUser) {
         $auth.submitLogin($scope.formData)
-          .then(function () {
+          .then(function (resp) {
+            console.log(resp);
             if ($auth.user.signedIn === true) {
               $location.path('/');
             }
