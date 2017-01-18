@@ -49,7 +49,7 @@ app.post('', function (req, res) {
 
 app.delete('', function (req, res) {
   res
-    .statusCode(200)
+    .status(200)
     .send("Log out is success");
 });
 
@@ -71,7 +71,7 @@ app.get('/signin', function (req, res) {
 
 app.post('/signin', function (req, res) {
   res
-    .statusCode(200)
+    .status(200)
     .send("Sign in is success");
 });
 
