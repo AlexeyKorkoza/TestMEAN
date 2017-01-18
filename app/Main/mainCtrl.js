@@ -148,5 +148,17 @@ angular.module('myApp')
         }).finally(function () {
         cfpLoadingBar.complete();
       });
-    }
+    };
+
+    $scope.OpenOrCloseUserMenu = function () {
+      var usermenu = document.getElementById('menu-of-user');
+      var triangle = document.getElementById('triangle');
+      if (triangle.className === "triangle-down") {
+        triangle.className = "triangle-up";
+        usermenu.style.display = "block";
+      } else {
+        triangle.className = "triangle-down";
+        usermenu.style.display = "none";
+      }
+    };
   });
