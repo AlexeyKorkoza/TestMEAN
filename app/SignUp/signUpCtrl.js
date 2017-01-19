@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('myApp')
+angular
+  .module('myApp')
   .controller('signUpCtrl', function ($auth, $scope, $http, $location, $timeout, SignUpService, cfpLoadingBar) {
 
     var getAllUsers = '';
@@ -45,6 +46,18 @@ angular.module('myApp')
         }
       });
       if (flag) {
+        $scope.formData.date = "";
+        var date = new Date();
+        if (date.getDay() < 10) {
+          $scope.formData.date = "0" + date.getDay() + ".";
+        } else {
+          $scope.formData.date = date.getDay() + ".";
+        }
+        if (date.getMonth() + 1 < 10) {
+          $scope.formData.date += "0" + date.getMonth() + 1 + "." + date.getFullYear();
+        } else {
+          $scope.formData.date += date.getMonth() + 1 + "." + date.getFullYear();
+        }
         $auth.submitRegistration($scope.formData)
           .then(function () {
             cfpLoadingBar.start();

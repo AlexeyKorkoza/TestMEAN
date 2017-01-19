@@ -79,7 +79,8 @@ app.post('/signup', function (req, res) {
   userModel.create({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      date: req.body.date
     }, function (err) {
       if (err)
         res.send(err);
