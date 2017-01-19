@@ -4,10 +4,6 @@
   margin: 0;
 }
 
-html, body {
-  overflow-y: hidden;
-}
-
 #select {
   width: 100%;
   background: white;
@@ -216,4 +212,54 @@ span.psw {
 #menu-of-user {
   display: none;
   margin-top: 5px;
+}
+
+/* userprofile */
+.user-row {
+  margin-bottom: 14px;
+}
+
+.user-row:last-child {
+  margin-bottom: 0;
+}
+
+.dropdown-user {
+  margin: 13px 0;
+  padding: 5px;
+  height: 100%;
+}
+
+.dropdown-user:hover {
+  cursor: pointer;
+}
+
+.stats {
+  text-align: center;
+  text-shadow: 1px 1px 0 #fff;
+  margin-top: 25px;
+}
+
+.stats li {
+  width: 125px;
+}
+
+.stats span {
+  font: bold 4em/1 Helvetica;
+  text-shadow: 1px 1px 0 #fff;
+  display: block;
+  line-height: 1em;
+}
+
+@media (max-width: 767px) {
+  .profile img {
+    width: 75px;
+  }
+
+  .profile h2 {
+    font-size: 1.7em;
+  }
+
+  .stats span {
+    font-size: 2em;
+  }
 }

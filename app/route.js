@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('myApp')
+angular
+  .module('myApp')
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
@@ -11,6 +12,9 @@ angular.module('myApp')
       })
       .when('/signup', {
         templateUrl: 'app/SignUp/signUp.html'
+      })
+      .when('/users/:username', {
+        templateUrl: 'app/UserProfile/userProfile.html'
       })
       .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);

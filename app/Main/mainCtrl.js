@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('myApp')
-  .controller('mainCtrl', function ($auth, $location, $scope, $http, $timeout, placeService, typeService, cfpLoadingBar) {
+angular
+  .module('myApp')
+  .controller('mainCtrl', function ($auth, $location, $scope, $http, $timeout, placeService, typeService, userService, cfpLoadingBar) {
 
     if ($auth.user.signedIn === true) {
       $scope.sign = true;
+      $scope.username = userService.getUserName();
     } else {
       $scope.sign = false;
     }

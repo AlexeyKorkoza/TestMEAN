@@ -80,6 +80,7 @@ app.post('/signup', function (req, res) {
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
+      confirmpassword: req.body.confirmpassword,
       date: req.body.date
     }, function (err) {
       if (err)
@@ -87,6 +88,25 @@ app.post('/signup', function (req, res) {
       else res.send("User created!");
     }
   );
+});
+
+app.get('/users/:username', function (req, res) {
+  userModel.find({'username': req.params.username}, function (err, user) {
+    if (err)
+      res.send(err);
+    res.json(user);
+  });
+});
+
+app.put('/users/:username', function (req, res) {
+  userModel.findOneAndUpdate({"_id": req.body._id}, {
+    "username": req.body.username, "email": req.body.email, "password": req.body.password,
+    "confirmpassword": req.body.confirmpassword, "date": req.body.date
+  }, function (err, user) {
+    if (err)
+      res.send(err);
+    res.status(200).send(user);
+  })
 });
 
 app.listen(config.port, function () {
