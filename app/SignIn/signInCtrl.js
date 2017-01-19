@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('myApp')
-  .controller('signInCtrl', function ($auth, $scope, $http, $location, $timeout, SignInService, cfpLoadingBar) {
+angular
+  .module('myApp')
+  .controller('signInCtrl', function ($auth, $scope, $http, $location, $timeout, SignInService, userService, cfpLoadingBar) {
 
     var getAllUsers = '';
     SignInService.getAllUsers()
@@ -18,7 +19,7 @@ angular.module('myApp')
       var flagUser = false;
       var flagPassword = false;
       getAllUsers.forEach(function (item) {
-        if (item.email === $scope.formData.email) {
+        if (item.username === $scope.formData.username) {
           flagUser = true;
         }
         if (item.password !== $scope.formData.password) {
@@ -42,8 +43,9 @@ angular.module('myApp')
       }
 
       if (flagPassword && flagUser) {
+        userService.setUserName($scope.formData.username);
         $auth.submitLogin($scope.formData)
-          .then(function () {
+          .then(function (response) {
             cfpLoadingBar.start();
             $timeout(function () {
               $location.path('/');
