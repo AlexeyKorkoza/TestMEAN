@@ -5,6 +5,7 @@ var User = mongoose.model('User', {
   username: String,
   email: String,
   password: String,
+  confirmpassword: String,
   date: String
 });
 
