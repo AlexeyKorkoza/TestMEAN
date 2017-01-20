@@ -2,7 +2,7 @@
 
 angular
   .module('myApp')
-  .controller('mainCtrl', function ($auth, $location, $scope, $http, $timeout, placeService, typeService, userService, cfpLoadingBar) {
+  .controller('mainCtrl', function ($auth, $location, $scope, $http, $timeout, userService, cfpLoadingBar) {
 
     if ($auth.user.signedIn === true) {
       $scope.sign = true;
@@ -45,7 +45,7 @@ angular
     cfpLoadingBar.complete();
 
     function getAllTypes() {
-      typeService.getAllTypes()
+      $http.post('', {'allTypes': 'allTypes'})
         .then(
           function Success(response) {
             $scope.getData = response.data;
@@ -76,7 +76,7 @@ angular
     }
 
     function getAllPlaces() {
-      placeService.getAllPlaces()
+      $http.post('', {'allPlaces': 'allPlaces'})
         .then(
           function Success(response) {
             addPlaceInMap(response);
@@ -129,7 +129,7 @@ angular
         getAllPlaces();
       } else {
         markers.clearLayers();
-        typeService.getByType(type)
+        $http.post('', {'type': parseInt(type)})
           .then(
             function Success(response) {
               addPlaceInMap(response);
