@@ -13,7 +13,7 @@ angular
       .when('/signup', {
         templateUrl: 'app/SignUp/signUp.html'
       })
-      .when('/users/:username', {
+      .when('/users/:id', {
         templateUrl: 'app/UserProfile/userProfile.html'
       })
       .otherwise({redirectTo: '/'});

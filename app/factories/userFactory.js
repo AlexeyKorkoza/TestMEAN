@@ -1,30 +1,30 @@
 angular
   .module('myApp')
   .factory('userService', function ($http) {
-    var UserName = "";
+    var UserId = "";
 
-    function setUserName(username) {
-      UserName = username;
+    function setUserId(id) {
+      UserId = id;
     }
 
-    function getUserName() {
-      return UserName;
+    function getUserId() {
+      return UserId;
     }
 
     return {
-      getUserName: getUserName,
-      setUserName: setUserName,
+      getUserId: getUserId,
+      setUserId: setUserId,
 
-      getUserInfo: function (username) {
+      getUserInfo: function (id) {
         return $http({
-          url: '/users/' + username,
+          url: '/users/' + id,
           method: 'get',
-          params: {"username": username}
+          params: {"id": id}
         })
       },
 
-      updateUserInfo: function (username, data) {
-        return $http.put('/users/' + username, data);
+      updateUserInfo: function (id, data) {
+        return $http.put('/users/' + id, data);
       }
     }
   });

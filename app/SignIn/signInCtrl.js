@@ -43,7 +43,10 @@ angular
       }
 
       if (flagPassword && flagUser) {
-        userService.setUserName($scope.formData.username);
+        var SignInData = getAllUsers.filter(function (item) {
+          return item.username === $scope.formData.username;
+        });
+        userService.setUserId(SignInData[0]._id);
         $auth.submitLogin($scope.formData)
           .then(function (response) {
             cfpLoadingBar.start();

@@ -6,7 +6,7 @@ angular
 
     if ($auth.user.signedIn === true) {
       $scope.sign = true;
-      $scope.username = userService.getUserName();
+      $scope.id = userService.getUserId();
     } else {
       $scope.sign = false;
     }

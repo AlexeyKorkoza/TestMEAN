@@ -70,9 +70,11 @@ app.get('/signin', function (req, res) {
 });
 
 app.post('/signin', function (req, res) {
-  res
-    .status(200)
-    .send("Sign in is success");
+  userModel.find({"username": req.body.username}, function (err, user) {
+    if (err)
+      res.send(err);
+    res.send(user);
+  });
 });
 
 app.post('/signup', function (req, res) {
@@ -90,15 +92,15 @@ app.post('/signup', function (req, res) {
   );
 });
 
-app.get('/users/:username', function (req, res) {
-  userModel.find({'username': req.params.username}, function (err, user) {
+app.get('/users/:id', function (req, res) {
+  userModel.find({'_id': req.params.id}, function (err, user) {
     if (err)
       res.send(err);
     res.json(user);
   });
 });
 
-app.put('/users/:username', function (req, res) {
+app.put('/users/:id', function (req, res) {
   userModel.findOneAndUpdate({"_id": req.body._id}, {
     "username": req.body.username, "email": req.body.email, "password": req.body.password,
     "confirmpassword": req.body.confirmpassword, "date": req.body.date

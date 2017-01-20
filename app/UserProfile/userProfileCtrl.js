@@ -4,7 +4,7 @@ angular
   .module('myApp')
   .controller('userProfileCtrl', function ($scope, $location, userService) {
 
-    userService.getUserInfo(userService.getUserName())
+    userService.getUserInfo(userService.getUserId())
       .then(function (response) {
         $scope.userData = response.data[0];
         $scope.username = response.data[0].username;
