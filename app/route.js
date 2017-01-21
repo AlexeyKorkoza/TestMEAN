@@ -16,6 +16,9 @@ angular
       .when('/users/:id', {
         templateUrl: 'app/UserProfile/userProfile.html'
       })
+      .when('/types', {
+        templateUrl: 'app/TypeOfPlace/Type.html'
+      })
       .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
   });

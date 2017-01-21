@@ -6,7 +6,8 @@ angular
     'selectize',
     'ng-token-auth',
     'angular-loading-bar',
-    'ngAnimate'
+    'ngAnimate',
+    'ngFileUpload'
   ])
   .config(function ($authProvider, cfpLoadingBarProvider) {
     $authProvider.configure({
@@ -16,4 +17,4 @@ angular
       signOutUrl: ' '
     });
     cfpLoadingBarProvider.latencyThreshold = 1000;
-  })
+  });
