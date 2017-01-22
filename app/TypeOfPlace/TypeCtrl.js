@@ -5,9 +5,25 @@ angular
   .controller('TypeCtrl', function ($scope, $location, $timeout, Upload, typeService) {
 
     var getAllTypes = "";
+    $scope.myConfig = {
+      create: true,
+      valueField: 'value',
+      labelField: 'text',
+      delimiter: '|',
+      placeholder: 'Выберите тип объекта',
+      maxItems: 1
+    };
+
     typeService.getAllTypes()
       .then(function (response) {
         getAllTypes = response.data;
+        $scope.select = [];
+        for (var i = 0; i < response.data.length; i++) {
+          $scope.select.push({
+            value: response.data[i].id_type,
+            text: response.data[i].name_type
+          })
+        }
       });
 
     $scope.back = function () {
@@ -31,33 +47,34 @@ angular
       });
 
       if (flag) {
-        file.upload = Upload.upload({
-          url: '/types',
-          data: {
-            typename: $scope.addTypeData.typename, id_type: max + 1, file: file
-          }
-        });
-
-        file.upload.then(function (response) {
-          $timeout(function () {
-            file.result = response.data;
-          });
+        typeService.create($scope.addTypeData, max + 1, file).then(function (response) {
           swal({
             title: "Новый тип успешно добавлен",
             text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
             confirmButtonText: "Обновить страницу",
             html: true
-          }, function (isConfirm) {
+          }), function (isConfirm) {
             if (isConfirm) {
-              location.reload();
+              $location.path('/');
             }
-          });
+          }
         });
       }
     };
 
-    $scope.update = function () {
-
+    $scope.update = function (file) {
+      typeService.update($scope.editData, $scope.editData.choosetypename, file).then(function (response) {
+        swal({
+          title: "Новый тип успешно добавлен",
+          text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
+          confirmButtonText: "Обновить страницу",
+          html: true
+        }), function (isConfirm) {
+          if (isConfirm) {
+            $location.path('/');
+          }
+        }
+      });
     };
 
   });

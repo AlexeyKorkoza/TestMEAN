@@ -20,6 +20,13 @@ app.use(bodyParser.json());
 app.use(serveStatic(__dirname + ''));
 app.use(methodOverride());
 
+app.use(function (req, res, next) { //allow cross origin requests
+  res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
+  res.header("Access-Control-Allow-Origin", "http://localhost");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './uploads/');
@@ -140,6 +147,27 @@ app.post('/types', function (req, res) {
       id_type: req.body.id_type,
       name_type: req.body.typename,
       marker_img: req.body.typename
+    }, function (err) {
+      if (err) {
+        console.log(err);
+      }
+    });
+    if (err) {
+      return res.end("Error uploading file.");
+    }
+    res.end("File is uploaded");
+  });
+});
+
+app.put('/types', function (req, res) {
+  upload(req, res, function (err) {
+    typeModel.findOneAndUpdate({"id_type": req.body.id_type}, {
+      "name_type": req.body.typename,
+      "marker_img": req.body.typename
+    }, function (err) {
+      if (err) {
+        console.log(err);
+      }
     });
     if (err) {
       return res.end("Error uploading file.");
