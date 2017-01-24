@@ -17,7 +17,16 @@ angular
         templateUrl: 'app/UserProfile/userProfile.html'
       })
       .when('/types', {
-        templateUrl: 'app/TypeOfPlace/Type.html'
+        templateUrl: 'app/TypeOfPlace/ViewTypes.html'
+      })
+      .when('/types/add',{
+        templateUrl: 'app/TypeOfPlace/AddType.html'
+      })
+      .when('/types/edit/:id',{
+        templateUrl: 'app/TypeOfPlace/EditType.html'
+      })
+      .when('/places/add', {
+        templateUrl: 'app/Place/addPlace.html'
       })
       .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);

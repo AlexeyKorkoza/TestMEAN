@@ -263,3 +263,7 @@ span.psw {
     font-size: 2em;
   }
 }
+
+#view_types_container{
+  width: auto;
+}

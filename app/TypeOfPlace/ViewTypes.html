@@ -1,0 +1,33 @@
+<div ng-controller="ViewTypesCtrl">
+    <div class="container profile">
+        <div class="row">
+            <div class="span12">
+                <div class="well clearfix">
+                    <div class="container" id="view_types_container">
+                        <h2>Condensed Table</h2>
+                        <p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>
+                        <a class="btn btn-success" href="/types/add" ng-click="add()">Добавить</a>
+                        <a class="btn btn-success" href="/">Назад</a>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="type in types">
+                                <td>{{type.name_type}}</td>
+                                <td>
+                                    <a class="btn btn-success" href="/types/edit/{{type._id}}" ng-click="edit(type.id_type)">Редактировать</a>
+                                    <a class="btn btn-danger" href="#" ng-click="delete(type._id)">Удалить</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -159,7 +159,7 @@ app.post('/types', function (req, res) {
   });
 });
 
-app.put('/types', function (req, res) {
+app.put('/types/edit/:id', function (req, res) {
   upload(req, res, function (err) {
     typeModel.findOneAndUpdate({"id_type": req.body.id_type}, {
       "name_type": req.body.typename,
@@ -174,6 +174,16 @@ app.put('/types', function (req, res) {
     }
     res.end("File is uploaded");
   });
+});
+
+app.delete('/types/:id', function (req, res) {
+  typeModel.findByIdAndRemove({"_id": req.params.id}, function (err, type) {
+    if (err) {
+      res.send(err)
+    } else {
+      res.json(type)
+    }
+  })
 });
 
 app.listen(config.port, function () {

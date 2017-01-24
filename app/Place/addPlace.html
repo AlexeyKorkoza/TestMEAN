@@ -1,0 +1,91 @@
+<div ng-controller="addPlaceCtrl">
+    <div class="container profile">
+        <div class="row">
+            <div class="span12">
+                <div class="well clearfix">
+                    <h1 class="page-header">Добавление нового места</h1>
+                    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+                        <form class="form-horizontal" name="addForm" novalidate>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Выберите тип объекта:</label>
+                                <selectize config='myConfig' ng-disabled='disable' options='select'
+                                           ng-model="addData.choosetypename"></selectize>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Введите название места:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="typename"
+                                           ng-model="addData.typename"
+                                           required/>
+                                    <p ng-show="addForm.typename.$invalid && !addForm.typename.$pristine"
+                                       class="help-block">Введите имя название места</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Введите описание места:</label>
+                                <div class="col-lg-8">
+                                    <textarea class="form-control"
+                                              type="text"
+                                              name="description"
+                                              ng-model="addData.typename"
+                                              required></textarea>
+                                    <p ng-show="addForm.description.$invalid && !addForm.description.$pristine"
+                                       class="help-block">Введите описание места</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Введите широту:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="latitude"
+                                           ng-model="addData.latitude"
+                                           required/>
+                                    <p ng-show="addForm.latitude.$invalid && !addForm.latitude.$pristine"
+                                       class="help-block">Введите широту</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Введите долготу:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="longitude"
+                                           ng-model="addData.longitude"
+                                           required/>
+                                    <p ng-show="addForm.longitude.$invalid && !addForm.longitude.$pristine"
+                                       class="help-block">Введите долготу</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Введите адрес места:</label>
+                                <div class="col-lg-8">
+                                    <textarea class="form-control"
+                                              type="text"
+                                              name="address"
+                                              ng-model="addData.address"
+                                              required></textarea>
+                                    <p ng-show="addForm.address.$invalid && !addForm.address.$pristine"
+                                       class="help-block">Введите адрес места</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"></label>
+                                <div class="col-md-8">
+                                    <button class="btn btn-primary"
+                                            ng-disabled="addForm.$invalid"
+                                            type="submit"
+                                            ng-click="add()">Сохранить изменения
+                                    </button>
+                                    <a href="/" class="btn btn-default" ng-click="back()">Назад</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

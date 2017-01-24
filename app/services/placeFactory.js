@@ -3,7 +3,7 @@ angular
   .factory('placeService', function ($http) {
     return {
       getAllPlaces: function () {
-        return $http.post('', {'allPlaces': 'allPlaces'});
+        return $http.get('', {'allPlaces': 'allPlaces'});
       }
     }
   });
