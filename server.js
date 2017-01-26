@@ -186,6 +186,61 @@ app.delete('/types/:id', function (req, res) {
   })
 });
 
+app.get('/places', function (req, res) {
+  placeModel.find({}, function (err, places) {
+    if (err) {
+      res.send(err)
+    } else {
+      res.json(places);
+    }
+  })
+});
+
+app.post('/places/add', function (req, res) {
+  placeModel.create({
+      name_place: req.body.name_place,
+      description: req.body.description,
+      coordinateX: req.body.coordinateX,
+      coordinateY: req.body.coordinateY,
+      address: req.body.address,
+      id_type: req.body.id_type
+    }, function (err, place) {
+      if (err)
+        res.send(err);
+      res.json(place);
+    }
+  );
+});
+
+app.put('/places/edit/:id', function (req, res) {
+  console.log(req.body);
+  console.log(req.body._id);
+  placeModel.findOneAndUpdate({"_id": req.body._id}, {
+    "name_place": req.body.name_place,
+    "description": req.body.description,
+    "coordinateX": req.body.coordinateX,
+    "coordinateY": req.body.coordinateY,
+    "address": req.body.address,
+    "id_type": req.body.id_type
+  }, function (err, places) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(places);
+    }
+  });
+});
+
+app.delete('/places/:id', function (req, res) {
+  placeModel.findByIdAndRemove({"_id": req.params.id}, function (err, type) {
+    if (err) {
+      res.send(err)
+    } else {
+      res.json(type)
+    }
+  })
+});
+
 app.listen(config.port, function () {
   console.log("Express server listening on port " + config.port);
 });

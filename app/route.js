@@ -25,6 +25,12 @@ angular
       .when('/types/edit/:id',{
         templateUrl: 'app/TypeOfPlace/EditType.html'
       })
+      .when('/places', {
+        templateUrl: 'app/Place/ViewPlaces.html'
+      })
+      .when('/places/edit/:id',{
+        templateUrl: 'app/Place/EditPlace.html'
+      })
       .when('/places/add', {
         templateUrl: 'app/Place/addPlace.html'
       })

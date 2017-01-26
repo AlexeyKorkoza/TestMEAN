@@ -1,15 +1,15 @@
-<div ng-controller="addPlaceCtrl">
+<div ng-controller="EditPlaceCtrl">
     <div class="container profile">
         <div class="row">
             <div class="span12">
                 <div class="well clearfix">
                     <h1 class="page-header">Добавление нового места</h1>
                     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-                        <form class="form-horizontal" name="addForm" novalidate>
+                        <form class="form-horizontal" name="editForm" novalidate>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Выберите тип объекта:</label>
                                 <selectize config='myConfig' ng-disabled='disable' options='select'
-                                           ng-model="addData.id_type"></selectize>
+                                           ng-model="editData.id_type"></selectize>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Введите название места:</label>
@@ -17,9 +17,9 @@
                                     <input class="form-control"
                                            type="text"
                                            name="typename"
-                                           ng-model="addData.name_place"
+                                           ng-model="editData.name_place"
                                            required/>
-                                    <p ng-show="addForm.typename.$invalid && !addForm.typename.$pristine"
+                                    <p ng-show="editForm.typename.$invalid && !editForm.typename.$pristine"
                                        class="help-block">Введите имя название места</p>
                                 </div>
                             </div>
@@ -29,9 +29,9 @@
                                     <textarea class="form-control"
                                               type="text"
                                               name="description"
-                                              ng-model="addData.description"
+                                              ng-model="editData.description"
                                               required></textarea>
-                                    <p ng-show="addForm.description.$invalid && !addForm.description.$pristine"
+                                    <p ng-show="editForm.description.$invalid && !editForm.description.$pristine"
                                        class="help-block">Введите описание места</p>
                                 </div>
                             </div>
@@ -41,9 +41,9 @@
                                     <input class="form-control"
                                            type="text"
                                            name="latitude"
-                                           ng-model="addData.coordinateX"
+                                           ng-model="editData.coordinateX"
                                            required/>
-                                    <p ng-show="addForm.latitude.$invalid && !addForm.latitude.$pristine"
+                                    <p ng-show="editForm.latitude.$invalid && !editForm.latitude.$pristine"
                                        class="help-block">Введите широту</p>
                                 </div>
                             </div>
@@ -53,9 +53,9 @@
                                     <input class="form-control"
                                            type="text"
                                            name="longitude"
-                                           ng-model="addData.coordinateY"
+                                           ng-model="editData.coordinateY"
                                            required/>
-                                    <p ng-show="addForm.longitude.$invalid && !addForm.longitude.$pristine"
+                                    <p ng-show="editForm.longitude.$invalid && !editForm.longitude.$pristine"
                                        class="help-block">Введите долготу</p>
                                 </div>
                             </div>
@@ -65,9 +65,9 @@
                                     <textarea class="form-control"
                                               type="text"
                                               name="address"
-                                              ng-model="addData.address"
+                                              ng-model="editData.address"
                                               required></textarea>
-                                    <p ng-show="addForm.address.$invalid && !addForm.address.$pristine"
+                                    <p ng-show="editForm.address.$invalid && !editForm.address.$pristine"
                                        class="help-block">Введите адрес места</p>
                                 </div>
                             </div>
@@ -75,9 +75,9 @@
                                 <label class="col-md-3 control-label"></label>
                                 <div class="col-md-8">
                                     <button class="btn btn-primary"
-                                            ng-disabled="addForm.$invalid"
+                                            ng-disabled="editForm.$invalid"
                                             type="submit"
-                                            ng-click="add()">Добавить
+                                            ng-click="update()">Редактировать
                                     </button>
                                     <a href="/places" class="btn btn-default">Назад</a>
                                 </div>

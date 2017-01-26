@@ -1,0 +1,40 @@
+<div ng-controller="ViewPlacesCtrl">
+    <div class="container profile">
+        <div class="row">
+            <div class="span12">
+                <div class="well clearfix">
+                    <div class="container" id="view_types_container">
+                        <h2>Condensed Table</h2>
+                        <p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>
+                        <a class="btn btn-success" href="/places/add" ng-click="add()">Добавить</a>
+                        <a class="btn btn-success" href="/">Назад</a>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Firstname</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="place in places">
+                                <td>{{place.name_place}}</td>
+                                <td>{{place.description}}</td>
+                                <td>{{place.coordinateX}}</td>
+                                <td>{{place.coordinateY}}</td>
+                                <td>{{place.address}}</td>
+                                <td>
+                                    <a class="btn btn-success" href="/places/edit/{{place._id}}" ng-click="edit(place._id)">Редактировать</a>
+                                    <a class="btn btn-danger" href="#" ng-click="delete(place._id)">Удалить</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
