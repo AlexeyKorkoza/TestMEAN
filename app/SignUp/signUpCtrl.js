@@ -54,7 +54,7 @@ angular
           $scope.formData.date = date.getDay() + ".";
         }
         if (date.getMonth() + 1 < 10) {
-          $scope.formData.date += "0" + date.getMonth() + 1 + "." + date.getFullYear();
+          $scope.formData.date += "0" + (date.getMonth() + 1) + "." + date.getFullYear();
         } else {
           $scope.formData.date += date.getMonth() + 1 + "." + date.getFullYear();
         }
