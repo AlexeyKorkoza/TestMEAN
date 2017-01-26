@@ -267,3 +267,7 @@ span.psw {
 #view_types_container{
   width: auto;
 }
+
+.add-back-buttons{
+  margin: 30px 0;
+}

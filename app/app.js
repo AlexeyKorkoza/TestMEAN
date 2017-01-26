@@ -7,7 +7,8 @@ angular
     'ng-token-auth',
     'angular-loading-bar',
     'ngAnimate',
-    'ngFileUpload'
+    'ngFileUpload',
+    'wt.responsive'
   ])
   .config(function ($authProvider, cfpLoadingBarProvider) {
     $authProvider.configure({

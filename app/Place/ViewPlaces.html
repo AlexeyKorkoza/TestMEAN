@@ -4,18 +4,20 @@
             <div class="span12">
                 <div class="well clearfix">
                     <div class="container" id="view_types_container">
-                        <h2>Condensed Table</h2>
-                        <p>The .table-condensed class makes a table more compact by cutting cell padding in half:</p>
-                        <a class="btn btn-success" href="/places/add" ng-click="add()">Добавить</a>
-                        <a class="btn btn-success" href="/">Назад</a>
-                        <table class="table table-striped">
+                        <h2>Список мест</h2>
+                        <div class="add-back-buttons">
+                            <a class="btn btn-success" href="/places/add" ng-click="add()">Добавить место</a>
+                            <a class="btn btn-success" href="/">Вернуться на Главную</a>
+                        </div>
+                        <table class="table table-striped" wt-responsive-table>
                             <thead>
                             <tr>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>Firstname</th>
+                                <th>Имя</th>
+                                <th>Описание</th>
+                                <th>Широта</th>
+                                <th>Долгота</th>
+                                <th>Адрес</th>
+                                <th>Действия</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -26,7 +28,8 @@
                                 <td>{{place.coordinateY}}</td>
                                 <td>{{place.address}}</td>
                                 <td>
-                                    <a class="btn btn-success" href="/places/edit/{{place._id}}" ng-click="edit(place._id)">Редактировать</a>
+                                    <a class="btn btn-success" href="/places/edit/{{place._id}}"
+                                       ng-click="edit(place._id)">Редактировать</a>
                                     <a class="btn btn-danger" href="#" ng-click="delete(place._id)">Удалить</a>
                                 </td>
                             </tr>
