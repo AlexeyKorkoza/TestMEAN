@@ -79,7 +79,7 @@ angular
       $http.post('', {'allPlaces': 'allPlaces'})
         .then(
           function Success(response) {
-            addPlaceInMap(response);
+            addPlaceInMap(response.data);
           },
           function Error(response) {
             swal({
@@ -97,14 +97,16 @@ angular
 
     function addPlaceInMap(response) {
       if ($scope.getData !== '') {
-        for (var i = 0; i < response.data.length; i++) {
-          var nameOfImage = $scope.getData[response.data[i].id_type - 1].marker_img;
-          var typeOfPlace = $scope.getData[response.data[i].id_type - 1].name_type;
-          var id_place = response.data[i].id_place;
+        for (var i = 0; i < response.length; i++) {
+          var nameOfImage = $scope.getData[response[i].id_type - 1].marker_img;
+          var typeOfPlace = $scope.getData[response[i].id_type - 1].name_type;
+          var id_place = response[i].id_place;
           var iconPlace = new LeafIcon({iconUrl: "./uploads/" + nameOfImage + ".png"});
-          var marker = L.marker([response.data[i].coordinateX, response.data[i].coordinateY],
-            {icon: iconPlace}).bindPopup("<b>\"" + response.data[i].name_place + "\",</b> " + typeOfPlace + "<br>" +
-            response.data[i].address + "<br/>").openPopup().addTo(map);
+          var marker = L.marker([response[i].coordinateX, response[i].coordinateY],
+            {icon: iconPlace})
+            .bindPopup("<b>\"" + response[i].name_place + "\",</b> " + typeOfPlace + "<br>" +
+              response[i].address + "<br/>")
+            .openPopup().addTo(map);
           markers.addLayer(marker);
         }
         map.addLayer(markers);
