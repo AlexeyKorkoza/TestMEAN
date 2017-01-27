@@ -213,8 +213,6 @@ app.post('/places/add', function (req, res) {
 });
 
 app.put('/places/edit/:id', function (req, res) {
-  console.log(req.body);
-  console.log(req.body._id);
   placeModel.findOneAndUpdate({"_id": req.body._id}, {
     "name_place": req.body.name_place,
     "description": req.body.description,
