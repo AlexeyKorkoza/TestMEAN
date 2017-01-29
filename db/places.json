@@ -1,0 +1,24 @@
+{"_id":{"$oid":"586105744525ae181000e842"},"id_place":1,"name_place":"Евроопт","description":"Классный магазин","coordinateX":53.6605,"coordinateY":23.7815,"address":"ул. Ольги Соломовой, 131","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e843"},"id_place":2,"name_place":"Аптека номер 3","description":"Полезная аптека","coordinateX":53.662,"coordinateY":23.782,"address":"ул. Фолюш, 15/204a","id_type":1}
+{"_id":{"$oid":"586105744525ae181000e844"},"id_place":3,"name_place":"Евроопт","description":"Магазин","coordinateX":53.7082,"coordinateY":23.8479,"address":"ул. Лиможа, 11","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e845"},"id_place":4,"name_place":"Евроопт","description":"Магазин","coordinateX":53.6667,"coordinateY":23.7889,"address":"ул. Соломовой, 70","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e846"},"id_place":5,"name_place":"Алми","description":"Магазин","coordinateX":53.6722,"coordinateY":23.8632,"address":"пр. Космонавтов, 81","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e847"},"id_place":6,"name_place":"Алми","description":"Магазин","coordinateX":53.6719,"coordinateY":23.7987,"address":"ул. Советских Пограничников, 110A","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e848"},"id_place":7,"name_place":"Алми","description":"Магазин","coordinateX":53.6565,"coordinateY":23.781,"address":"ул. Соломовой, 112","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e849"},"id_place":8,"name_place":"Алми","description":"Магазин","coordinateX":53.7115,"coordinateY":23.8489,"address":"ул. Лиможа, 32Б","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e84a"},"id_place":9,"name_place":"Евроопт","description":"Магазин","coordinateX":53.6561,"coordinateY":23.8024,"address":"ул. Суворова, 216","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e84b"},"id_place":10,"name_place":"Рублевский","description":"Магазин","coordinateX":53.6445,"coordinateY":23.8588,"address":"ул. Кабяка, 23","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e84c"},"id_place":11,"name_place":"Евроопт","description":"Магазин","coordinateX":53.647,"coordinateY":23.8454,"address":"пр. Клецкова, 11","id_type":3}
+{"_id":{"$oid":"586105744525ae181000e84d"},"id_place":12,"name_place":"Аптека","description":"Аптека в Гродно","coordinateX":53.6854,"coordinateY":23.8435,"address":"ул. Элизы Ожешко, 41","id_type":1}
+{"_id":{"$oid":"586105744525ae181000e84e"},"id_place":13,"name_place":"Аптека","description":"Аптека в Гродно","coordinateX":53.6604,"coordinateY":23.8125,"address":"ул. Суворова, 21","id_type":1}
+{"_id":{"$oid":"586105744525ae181000e84f"},"id_place":14,"name_place":"Аптека","description":"Аптека в Гродно","coordinateX":53.6477,"coordinateY":23.8312,"address":"ул. Славинского, 5","id_type":1}
+{"_id":{"$oid":"586105744525ae181000e850"},"id_place":15,"name_place":"Аптека","description":"Аптека в Гродно","coordinateX":53.7127,"coordinateY":23.8502,"address":"ул. Лиможа, 41","id_type":1}
+{"_id":{"$oid":"586105744525ae181000e851"},"id_place":16,"name_place":"Аптека","description":"Аптека в Гродно","coordinateX":53.6656,"coordinateY":23.7891,"address":"ул. Лизы Чайкиной, 45","id_type":1}
+{"_id":{"$oid":"586105744525ae181000e852"},"id_place":17,"name_place":"Аптека","description":"Аптека в гродно","coordinateX":53.7054,"coordinateY":23.7977,"address":"ул. Домбровского, 47","id_type":1}
+{"_id":{"$oid":"586105744525ae181000e853"},"id_place":18,"name_place":"Галактика","description":"Клубы","coordinateX":53.6745,"coordinateY":23.8519,"address":"пр. Космонавтов, 41","id_type":2}
+{"_id":{"$oid":"586105744525ae181000e854"},"id_place":19,"name_place":"Колизей 2000","description":"Клуб","coordinateX":53.6763,"coordinateY":23.8386,"address":"ул. Карла Макса, 31","id_type":2}
+{"_id":{"$oid":"586105744525ae181000e855"},"id_place":20,"name_place":"Stop Line","description":"Клуб","coordinateX":53.699,"coordinateY":23.811,"address":"ул. Врублевского, 1А","id_type":2}
+{"_id":{"$oid":"586105744525ae181000e856"},"id_place":21,"name_place":"Африка","description":"Клуб","coordinateX":53.699,"coordinateY":23.8104,"address":"ул. Врублевского, 1","id_type":2}
+{"_id":{"$oid":"586105744525ae181000e857"},"id_place":22,"name_place":"Парламент","description":"Клуб","coordinateX":53.6707,"coordinateY":23.8015,"address":"ул. Поповича, 3","id_type":2}
+{"_id":{"$oid":"586105744525ae181000e858"},"id_place":23,"name_place":"Эполет","description":"Клуб","coordinateX":53.685,"coordinateY":23.8413,"address":"ул. Победы, 31","id_type":2}
+{"_id":{"$oid":"5889b26251645e36305810ef"},"name_place":"Clubik","description":"grrggrgrg","coordinateX":"53.688","coordinateY":"23.8416","address":"rrggrrgrrgrg","id_type":2,"__v":0}
