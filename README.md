@@ -1,7 +1,7 @@
 # TestProjectAndNodeJS
 
-Using technologies:
-1. MongoDB
-2. AngularJS
-3. NodeJS
-4. ExpressJS
+### Using technologies:<br/>
+- [x] 1. MongoDB
+- [x] 2. AngularJS
+- [x] 3. NodeJS
+- [x] 4. ExpressJS
