@@ -28,7 +28,6 @@ angular
       }
     });
     var markers = new L.FeatureGroup();
-    var routing = L.Routing.control({});
 
     $scope.myConfig = {
       create: true,
@@ -126,15 +125,16 @@ angular
     }
 
     $scope.getByType = function (type) {
+      var typeIsNumber = parseInt(type);
       cfpLoadingBar.start();
-      if (type === "0") {
+      if (typeIsNumber === 0) {
         getAllPlaces();
       } else {
         markers.clearLayers();
-        $http.post('', {'type': parseInt(type)})
+        $http.post('', {'type': typeIsNumber})
           .then(
             function Success(response) {
-              addPlaceInMap(response);
+              addPlaceInMap(response.data);
             },
             function Error(response) {
               console.log(response);
