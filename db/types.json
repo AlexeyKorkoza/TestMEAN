@@ -1,4 +1,0 @@
-{"_id":{"$oid":"5860d1727062313c9c230433"},"id_type":1,"name_type":"Аптека","marker_img":"antivirus"}
-{"_id":{"$oid":"5860d1727062313c9c230434"},"id_type":2,"name_type":"Клуб","marker_img":"club"}
-{"_id":{"$oid":"5860d1727062313c9c230435"},"id_type":3,"name_type":"Магазин","marker_img":"shop"}
-{"_id":{"$oid":"5883c76fb4b31b0fc8a0be2e"},"id_type":4,"name_type":"аптечка","marker_img":"аптечка","__v":0}
