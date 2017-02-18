@@ -28,9 +28,9 @@ gulp.task('jshint', function () {
 
 gulp.task('scripts', function () {
   return gulp.src([
+    'node_modules/jquery/dist/jquery.min.js',
     'node_modules/angular/angular.min.js',
     'node_modules/angular-route/angular-route.min.js',
-    'node_modules/jquery/dist/jquery.min.js',
     'node_modules/selectize/dist/js/standalone/selectize.min.js',
     'lib/*.js',
     'node_modules/ng-token-auth/dist/ng-token-auth.min.js',
@@ -42,19 +42,19 @@ gulp.task('scripts', function () {
     'node_modules/angular-selectize2/dist/selectize.js',
     'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js',
     'node_modules/sweetalert/dist/sweetalert.min.js',
-    './app/js/*.js',
-    './app/Main/*.js',
+    './app/app.js',
+    './app/route.js',
+    './app/services/*.js',
+    './app/directivies/*.js',
     './app/SignIn/*.js',
+    './app/Main/*.js',
     './app/SignUp/*.js',
     './app/Place/*.js',
-    './TypeOfPlace/*.js',
-    './UserProfile/*.js',
-    './services/*.js',
-    './directivies/*.js'
+    './app/TypeOfPlace/*.js',
+    './app/UserProfile/*.js'
   ])
     .on('error', console.log)
     .pipe(concat('build.js'))
-    .pipe(jscpd())
     .pipe(gulp.dest('./build/'));
 });
 
@@ -65,13 +65,12 @@ gulp.task('styles', function () {
     'app/css/*.css',
     'node_modules/leaflet/dist/leaflet.css',
     'node_modules/selectize/dist/css/selectize.default.css',
-    'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css',
     'node_modules/sweetalert/dist/sweetalert.css',
     'node_modules/angular-loading-bar/build/loading-bar.min.css',
     'node_modules/font-awesome/css/font-awesome.min.css',
     'lib/angular-responsive-tables.min.css'
   ])
-    .on('error', console.log)
+
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
@@ -82,10 +81,4 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('./build/'));
 });
 
-gulp.task('watch', function () {
-  gulp.watch(['css/*'], ['styles']);
-  gulp.watch(['js/*'], ['scripts']);
-  gulp.watch(['js/*.js', 'js/Main/*.js'], ['jshint']);
-});
-
-gulp.task('default', ['scripts', 'styles', 'watch', 'jshint']);
+gulp.task('default', ['scripts', 'styles']);
