@@ -27,6 +27,8 @@ var scripts = [
   'node_modules/angular-selectize2/dist/selectize.js',
   'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js',
   'node_modules/sweetalert/dist/sweetalert.min.js',
+  'node_modules/angular-simple-logger/dist/angular-simple-logger.js',
+  'node_modules/ui-leaflet/dist/ui-leaflet.min.js',
   './app/app.js',
   './app/route.js',
   './app/services/*.js',
@@ -96,10 +98,4 @@ gulp.task('server', function () {
   })
 });
 
-gulp.task('watch', function() {
-  livereload.listen();
-  gulp.watch('app/css/', ['styles']);
-  gulp.watch('app/*', ['scripts']);
-});
-
-gulp.task('start', ['server','watch']);
+gulp.task('start', ['server']);
