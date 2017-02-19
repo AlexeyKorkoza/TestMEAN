@@ -5,10 +5,11 @@ var gulp = require('gulp'),
   autoprefixer = require('gulp-autoprefixer'),
   uglify = require('gulp-uglify'),
   cssmin = require('gulp-minify-css'),
-  refresh = require('gulp-livereload'),
+  livereload = require('gulp-livereload'),
   concat = require('gulp-concat'),
   csslint = require('gulp-csslint'),
   jscpd = require('gulp-jscpd'),
+  nodemon = require('gulp-nodemon'),
   jshint = require('gulp-jshint');
 
 gulp.task('jshint', function () {
@@ -55,7 +56,8 @@ gulp.task('scripts', function () {
   ])
     .on('error', console.log)
     .pipe(concat('build.js'))
-    .pipe(gulp.dest('./build/'));
+    .pipe(gulp.dest('./build/'))
+    .pipe(livereload());
 });
 
 gulp.task('styles', function () {
@@ -78,7 +80,23 @@ gulp.task('styles', function () {
     .pipe(cssmin())
     .pipe(csslint())
     .pipe(concat('build.css'))
-    .pipe(gulp.dest('./build/'));
+    .pipe(gulp.dest('./build/'))
+    .pipe(livereload());
 });
 
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('server', function () {
+  gulp.start('styles');
+  gulp.start('scripts');
+  nodemon({
+    script: 'server.js',
+    env: {'NODE_ENV': 'development'}
+  })
+});
+
+gulp.task('watch', function() {
+  livereload.listen();
+  gulp.watch('app/css/', ['styles']);
+  gulp.watch('app/*', ['scripts']);
+});
+
+gulp.task('start', ['server','watch']);
