@@ -42,13 +42,13 @@ var scripts = [
 var styles = [
   'node_modules/bootstrap/dist/css/bootstrap.min.css',
   'node_modules/normalize.css/normalize.css',
-  'app/css/*.css',
   'node_modules/leaflet/dist/leaflet.css',
   'node_modules/selectize/dist/css/selectize.default.css',
   'node_modules/sweetalert/dist/sweetalert.css',
   'node_modules/angular-loading-bar/build/loading-bar.min.css',
   'node_modules/font-awesome/css/font-awesome.min.css',
-  'lib/angular-responsive-tables.min.css'
+  'lib/angular-responsive-tables.min.css',
+  'app/css/*.css'
 ];
 
 gulp.task('jshint', function () {

@@ -8,7 +8,8 @@ angular
     'angular-loading-bar',
     'ngAnimate',
     'ngFileUpload',
-    'wt.responsive'
+    'wt.responsive',
+    'ui-leaflet'
   ])
   .config(function ($authProvider, cfpLoadingBarProvider) {
     $authProvider.configure({

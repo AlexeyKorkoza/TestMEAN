@@ -11,23 +11,29 @@ angular
       $scope.sign = false;
     }
 
-    document.getElementById('init_map').innerHTML = "<div id='map'></div>";
-    document.getElementById("map").style.height = window.innerHeight + "px";
-    var map = L.map('map').setView([53.6834599, 23.8342648], 13);
-
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '',
-      maxZoom: 18
-    }).addTo(map);
-
-    var LeafIcon = L.Icon.extend({
-      options: {
-        iconSize: [54, 54],
-        iconAnchor: [16, 37],
-        popupAnchor: [0, -30]
+    angular.extend($scope, {
+      grodno: {
+        lat: 53.6834599,
+        lng: 23.8342648,
+        zoom: 13
+      },
+      markers: {},
+      tiles: {
+        url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        options: {
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }
       }
     });
-    var markers = new L.FeatureGroup();
+
+    /*var LeafIcon = L.Icon.extend({
+     options: {
+     iconSize: [54, 54],
+     iconAnchor: [16, 37],
+     popupAnchor: [0, -30]
+     }
+     });
+     var markers = new L.FeatureGroup();*/
 
     $scope.myConfig = {
       create: true,
@@ -96,19 +102,26 @@ angular
 
     function addPlaceInMap(response) {
       if ($scope.getData !== '') {
-        for (var i = 0; i < response.length; i++) {
-          var nameOfImage = $scope.getData[response[i].id_type - 1].marker_img;
-          var typeOfPlace = $scope.getData[response[i].id_type - 1].name_type;
-          var id_place = response[i].id_place;
-          var iconPlace = new LeafIcon({iconUrl: "./uploads/" + nameOfImage + ".png"});
-          var marker = L.marker([response[i].coordinateX, response[i].coordinateY],
-            {icon: iconPlace})
-            .bindPopup("<b>\"" + response[i].name_place + "\",</b> " + typeOfPlace + "<br>" +
-              response[i].address + "<br/>")
-            .openPopup().addTo(map);
-          markers.addLayer(marker);
-        }
-        map.addLayer(markers);
+        response.forEach(function (item, i) {
+          var typeOfPlace = $scope.getData[item.id_type - 1].name_type;
+          var nameOfImage = $scope.getData[item.id_type - 1].marker_img;
+          var lat = parseFloat(item.coordinateX);
+          var lng = parseFloat(item.coordinateY);
+          $scope.markers["marker" + (i + 1)] = {
+            lat: lat,
+            lng: lng,
+            focus: false,
+            draggable: false,
+            message: "<b>\"" + item.name_place + "\",</b> " + typeOfPlace + "<br>" +
+            item.address + "<br/>",
+            icon: {
+              iconSize: [54, 54],
+              iconAnchor: [16, 37],
+              popupAnchor: [0, -30],
+              iconUrl: './uploads/' + nameOfImage + '.png',
+            }
+          }
+        });
         cfpLoadingBar.complete();
       } else {
         swal({

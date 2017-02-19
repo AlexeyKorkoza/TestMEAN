@@ -4,18 +4,27 @@
   margin: 0;
 }
 
+html, body{
+  height: 100%;
+  width: 100%;
+}
+
 #select {
   width: 100%;
   background: white;
   box-shadow: 0 5px 5px rgba(176, 176, 176, 0.4);
   padding: 20px;
   position: absolute;
+  z-index: 10;
+}
+
+.angular-leaflet-map {
+  position: absolute;
   z-index: 2;
 }
 
-#map {
-  width: 100%;
-  z-index: 1;
+.leaflet-bottom{
+  display: none;
 }
 
 .leaflet-top {
