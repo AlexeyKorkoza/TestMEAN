@@ -10,5 +10,5 @@
 =====================
 ***1. git clone: https://github.com/AlexeyKorkoza/TestMEAN.git <br/>
 2.  npm install<br/>
-3. mongorestore --port number_of_port path\to\db\ <br/>
+3. In cmd need to write: mongorestore --port number_of_port path\to\db\ <br/>
 4. gulp start***
