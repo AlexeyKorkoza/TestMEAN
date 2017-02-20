@@ -50,7 +50,7 @@ var styles = [
   'node_modules/angular-loading-bar/build/loading-bar.min.css',
   'node_modules/font-awesome/css/font-awesome.min.css',
   'lib/angular-responsive-tables.min.css',
-  'app/css/*.css'
+  'assets/css/*.css'
 ];
 
 gulp.task('jshint', function () {
