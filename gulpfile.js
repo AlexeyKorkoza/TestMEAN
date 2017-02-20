@@ -17,7 +17,6 @@ var scripts = [
   'node_modules/angular/angular.min.js',
   'node_modules/angular-route/angular-route.min.js',
   'node_modules/selectize/dist/js/standalone/selectize.min.js',
-  'lib/*.js',
   'node_modules/ng-token-auth/dist/ng-token-auth.min.js',
   'node_modules/angular-loading-bar/build/loading-bar.min.js',
   'node_modules/ng-file-upload/dist/ng-file-upload.min.js',
@@ -29,6 +28,7 @@ var scripts = [
   'node_modules/sweetalert/dist/sweetalert.min.js',
   'node_modules/angular-simple-logger/dist/angular-simple-logger.js',
   'node_modules/ui-leaflet/dist/ui-leaflet.min.js',
+  'assets/js/*.js',
   './app/app.js',
   './app/route.js',
   './app/services/*.js',
@@ -49,7 +49,6 @@ var styles = [
   'node_modules/sweetalert/dist/sweetalert.css',
   'node_modules/angular-loading-bar/build/loading-bar.min.css',
   'node_modules/font-awesome/css/font-awesome.min.css',
-  'lib/angular-responsive-tables.min.css',
   'assets/css/*.css'
 ];
 
