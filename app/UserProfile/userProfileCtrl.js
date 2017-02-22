@@ -10,10 +10,6 @@ angular
         $scope.username = response.data[0].username;
       });
 
-    $scope.back = function () {
-      $location.path('/');
-    };
-
     $scope.update = function () {
       userService.updateUserInfo($scope.userData.username, $scope.userData)
         .then(function () {

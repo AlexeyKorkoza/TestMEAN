@@ -4,19 +4,15 @@ angular
   .module('myApp')
   .controller('signUpCtrl', function ($auth, $scope, $http, $location, $timeout, SignUpService, cfpLoadingBar) {
 
-    var getAllUsers = '';
+    $scope.getAllUsers = '';
     SignUpService.getAllUsers()
       .then(function (response) {
-        getAllUsers = response.data;
+        $scope.getAllUsers = response.data;
       });
-
-    $scope.back = function () {
-      $location.path('/');
-    };
 
     $scope.RegBtnClick = function () {
       var flag = true;
-      getAllUsers.forEach(function (item) {
+      $scope.getAllUsers.forEach(function (item) {
         if (item.username === $scope.formData.username && item.email === $scope.formData.email && flag) {
           swal({
             title: "Укажите другие данные",

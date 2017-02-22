@@ -4,11 +4,9 @@ angular
   .module('myApp')
   .controller('EditTypeCtrl', function ($scope, $location, $timeout, Upload, typeService) {
 
-    var getAllTypes = "";
-    getAllTypes = typeService.getTypes();
+    $scope.getAllTypes = [].slice.call(typeService.getTypes());
 
-    $scope.typename = "";
-    getAllTypes.forEach(function (item) {
+    $scope.getAllTypes.forEach(function (item) {
       if (item.id_type === typeService.getId()) {
         $scope.typename = item.name_type;
       }

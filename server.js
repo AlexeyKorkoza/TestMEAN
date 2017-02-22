@@ -1,5 +1,5 @@
 var express = require('express');
-var config = require('./config');
+var config = require('./config/config');
 var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');

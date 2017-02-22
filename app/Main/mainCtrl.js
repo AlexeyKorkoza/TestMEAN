@@ -26,15 +26,6 @@ angular
       }
     });
 
-    /*var LeafIcon = L.Icon.extend({
-     options: {
-     iconSize: [54, 54],
-     iconAnchor: [16, 37],
-     popupAnchor: [0, -30]
-     }
-     });
-     var markers = new L.FeatureGroup();*/
-
     $scope.myConfig = {
       create: true,
       valueField: 'value',
@@ -44,17 +35,12 @@ angular
       maxItems: 1
     };
 
-    cfpLoadingBar.start();
-    getAllTypes();
-    getAllPlaces();
-    cfpLoadingBar.complete();
-
-    function getAllTypes() {
+    $scope.select = [];
+    $scope.getAllTypes = function() {
       $http.post('', {'allTypes': 'allTypes'})
         .then(
           function Success(response) {
             $scope.getData = response.data;
-            $scope.select = [];
             $scope.select.push({
               value: 0,
               text: "Все объекты"
@@ -78,13 +64,13 @@ angular
               }
             });
           });
-    }
+    };
 
-    function getAllPlaces() {
+    $scope.getAllPlaces = function() {
       $http.post('', {'allPlaces': 'allPlaces'})
         .then(
           function Success(response) {
-            addPlaceInMap(response.data);
+            $scope.addPlaceInMap(response.data);
           },
           function Error(response) {
             swal({
@@ -98,9 +84,9 @@ angular
               }
             });
           });
-    }
+    };
 
-    function addPlaceInMap(response) {
+    $scope.addPlaceInMap = function(response) {
       if ($scope.getData !== '') {
         response.forEach(function (item, i) {
           var typeOfPlace = $scope.getData[item.id_type - 1].name_type;
@@ -118,7 +104,7 @@ angular
               iconSize: [54, 54],
               iconAnchor: [16, 37],
               popupAnchor: [0, -30],
-              iconUrl: './uploads/' + nameOfImage + '.png',
+              iconUrl: './uploads/' + nameOfImage + '.png'
             }
           }
         });
@@ -135,19 +121,20 @@ angular
           }
         });
       }
-    }
+    };
 
     $scope.getByType = function (type) {
-      var typeIsNumber = parseInt(type);
+      $scope.typeIsNumber = parseInt(type);
       cfpLoadingBar.start();
-      if (typeIsNumber === 0) {
-        getAllPlaces();
+      if ($scope.typeIsNumber === 0) {
+        $scope.getAllPlaces();
       } else {
-        markers.clearLayers();
-        $http.post('', {'type': typeIsNumber})
+        $scope.markers = {};
+        $http.post('', {'type': $scope.typeIsNumber})
           .then(
             function Success(response) {
-              addPlaceInMap(response.data);
+              $scope.places = response.data;
+              $scope.addPlaceInMap($scope.places);
             },
             function Error(response) {
               console.log(response);
@@ -178,4 +165,9 @@ angular
         usermenu.style.display = "none";
       }
     };
+
+    cfpLoadingBar.start();
+    $scope.getAllTypes();
+    $scope.getAllPlaces();
+    cfpLoadingBar.complete();
   });

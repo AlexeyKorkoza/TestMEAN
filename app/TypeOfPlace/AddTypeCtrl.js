@@ -4,7 +4,7 @@ angular
   .module('myApp')
   .controller('AddTypeCtrl', function ($scope, $location, $timeout, Upload, typeService) {
 
-    var getAllTypes = "";
+    $scope.getAllTypes = "";
     $scope.myConfig = {
       create: true,
       valueField: 'value',
@@ -14,12 +14,12 @@ angular
       maxItems: 1
     };
 
-    getAllTypes = typeService.getTypes();
+    $scope.getAllTypes = typeService.getTypes();
     $scope.select = [];
-    for (var i = 0; i < getAllTypes.length; i++) {
+    for (var i = 0; i < $scope.getAllTypes.length; i++) {
       $scope.select.push({
-        value: getAllTypes[i].id_type,
-        text: getAllTypes[i].name_type
+        value: $scope.getAllTypes[i].id_type,
+        text: $scope.getAllTypes[i].name_type
       })
     }
 
@@ -27,7 +27,7 @@ angular
 
       var max = 0;
       var flag = true;
-      getAllTypes.forEach(function (item) {
+      $scope.getAllTypes.forEach(function (item) {
 
         if (item.id_type > max) {
           max = item.id_type;
