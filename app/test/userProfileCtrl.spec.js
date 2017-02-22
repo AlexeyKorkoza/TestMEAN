@@ -1,6 +1,6 @@
 'use strict';
 
-describe("signInCtrl", function () {
+describe("userProfileCtrl", function () {
 
   var ctrl;
   var scope;
@@ -10,16 +10,12 @@ describe("signInCtrl", function () {
   beforeEach(inject(function ($rootScope, $controller) {
 
     scope = $rootScope.$new();
-    ctrl = $controller('signInCtrl', {$scope: scope});
+    ctrl = $controller('userProfileCtrl', {$scope: scope});
 
   }));
 
   it('Check initialize of controller', function () {
     expect(ctrl).not.toBeUndefined();
-  });
-
-  it('Initialize variable', function () {
-    expect(scope.getAllUsers).toBeDefined();
   });
 
 });

@@ -14,25 +14,21 @@ describe('mainCtrl', function () {
 
   }));
 
-  describe('Initialize controller', function () {
+  it('Check initialize of controller', function () {
+    expect(ctrl).not.toBeUndefined();
+  });
 
-    it('Check initialize of controller', function () {
-      expect(ctrl).not.toBeUndefined();
+  it('should init an empty array of select', function () {
+    expect(scope.select).toBeDefined();
+    expect(scope.select.length).toEqual(0);
+  });
+
+  it('add default value in select', function () {
+    scope.select.push({
+      value: 0,
+      text: "Все объекты"
     });
-
-    it('should init an empty array of select', function () {
-      expect(scope.select).toBeDefined();
-      expect(scope.select.length).toEqual(0);
-    });
-
-    it('add default value in select', function () {
-      scope.select.push({
-        value: 0,
-        text: "Все объекты"
-      });
-      expect(scope.select.length).toEqual(1);
-    });
-
+    expect(scope.select.length).toEqual(1);
   });
 
 });

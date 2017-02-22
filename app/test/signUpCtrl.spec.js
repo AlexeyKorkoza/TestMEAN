@@ -1,6 +1,6 @@
 'use strict';
 
-describe("signInCtrl", function () {
+describe("signUpCtrl", function () {
 
   var ctrl;
   var scope;
@@ -10,7 +10,7 @@ describe("signInCtrl", function () {
   beforeEach(inject(function ($rootScope, $controller) {
 
     scope = $rootScope.$new();
-    ctrl = $controller('signInCtrl', {$scope: scope});
+    ctrl = $controller('signUpCtrl', {$scope: scope});
 
   }));
 
