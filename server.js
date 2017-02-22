@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var multer = require('multer');
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/interactive_map');
+mongoose.connect(config.connect_to_db);
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
