@@ -23,8 +23,8 @@ angular
           })
         }
       });
-    var allPlaces = placeService.getPlaces();
-    allPlaces.forEach(function (item) {
+    $scope.allPlaces = [].slice.call(placeService.getPlaces());
+    $scope.allPlaces.forEach(function (item) {
       if (item._id === placeService.getId()) {
         $scope.editData = {
           _id: placeService.getId(),
@@ -40,7 +40,7 @@ angular
 
     $scope.update = function () {
       var flag = true;
-      allPlaces.forEach(function (item) {
+      $scope.allPlaces.forEach(function (item) {
         if (item.coordinateX === $scope.editData.coordinateX &&
           item.coordinateY === $scope.editData.coordinateY &&
           item.id_type === $scope.editData.id_type) {
