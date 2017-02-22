@@ -4,10 +4,10 @@ angular
   .module('myApp')
   .controller('signInCtrl', function ($auth, $scope, $http, $location, $timeout, SignInService, userService, cfpLoadingBar) {
 
-    var getAllUsers = '';
+    $scope.getAllUsers = '';
     SignInService.getAllUsers()
       .then(function (response) {
-        getAllUsers = response.data;
+        $scope.getAllUsers = response.data;
       });
 
     $scope.back = function () {
@@ -18,7 +18,7 @@ angular
 
       var flagUser = false;
       var flagPassword = false;
-      getAllUsers.forEach(function (item) {
+      $scope.getAllUsers.forEach(function (item) {
         if (item.username === $scope.formData.username) {
           flagUser = true;
         }
@@ -43,7 +43,7 @@ angular
       }
 
       if (flagPassword && flagUser) {
-        var SignInData = getAllUsers.filter(function (item) {
+        var SignInData = $scope.getAllUsers.filter(function (item) {
           return item.username === $scope.formData.username;
         });
         userService.setUserId(SignInData[0]._id);
