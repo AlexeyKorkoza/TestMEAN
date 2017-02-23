@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var router = express.Router();
 var typeModel = require('../models/type');
 var placeModel = require('../models/place');
@@ -41,6 +42,10 @@ router.delete('', function (req, res) {
   res
     .status(200)
     .send("Log out is success");
+});
+
+router.get('*', function (req, res) {
+  res.sendFile(path.resolve('index.html'));
 });
 
 module.exports = router;
