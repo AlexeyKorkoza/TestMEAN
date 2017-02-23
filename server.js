@@ -1,5 +1,5 @@
 var express = require('express');
-var config = require('./config/config');
+var config = require('./config');
 var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var multer = require('multer');
 var app = express();
 
-mongoose.connect(config.connect_to_db);
+mongoose.connect(config.get('db'));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -40,11 +40,11 @@ var upload = multer({
 
 app.use(require('./routers'));
 
-app.listen(config.port, function (error) {
+app.listen(config.get('port'), function (error) {
   if (error) {
     console.error(error);
   }
   else {
-    console.log("Express server listening on port " + config.port);
+    console.log("Express server listening on port " + config.get('port'));
   }
 });
