@@ -30,10 +30,10 @@ angular
       var flag = true;
       /*var getAllPlaces = placeService.getPlaces();
       getAllPlaces.forEach(function (item) {
-        if (item.coordinateX === $scope.addData.coordinateX) {
+        if (item.lat === $scope.addData.lat) {
           flag = false;
         }
-        if (item.coordinateY === $scope.addData.coordinateY) {
+        if (item.lng === $scope.addData.lng) {
           flag = false;
         }
         if (item.id_type === $scope.addData.id_type) {

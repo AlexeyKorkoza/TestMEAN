@@ -5,11 +5,11 @@ var Place = mongoose.model('Place', {
   id_place: Number,
   name_place: String,
   description: String,
-  coordinateX: {
+  lat: {
     type: String,
     unique: true
   },
-  coordinateY: {
+  lng: {
     type: String,
     unique: true
   },

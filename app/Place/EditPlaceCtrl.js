@@ -30,8 +30,8 @@ angular
           _id: placeService.getId(),
           name_place: item.name_place,
           description: item.description,
-          coordinateX: item.coordinateX,
-          coordinateY: item.coordinateY,
+          lat: item.lat,
+          lng: item.lng,
           address: item.address,
           id_type: item.id_type
         }
@@ -41,8 +41,8 @@ angular
     $scope.update = function () {
       var flag = true;
       $scope.allPlaces.forEach(function (item) {
-        if (item.coordinateX === $scope.editData.coordinateX &&
-          item.coordinateY === $scope.editData.coordinateY &&
+        if (item.lat === $scope.editData.lat &&
+          item.lng === $scope.editData.lng &&
           item.id_type === $scope.editData.id_type) {
           flag = false;
         }

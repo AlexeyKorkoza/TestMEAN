@@ -24,8 +24,8 @@
                             <tr ng-repeat="place in places">
                                 <td>{{place.name_place}}</td>
                                 <td>{{place.description}}</td>
-                                <td>{{place.coordinateX}}</td>
-                                <td>{{place.coordinateY}}</td>
+                                <td>{{place.lat}}</td>
+                                <td>{{place.lng}}</td>
                                 <td>{{place.address}}</td>
                                 <td>
                                     <a class="btn btn-success" href="/places/edit/{{place._id}}"

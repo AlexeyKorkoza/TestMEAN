@@ -91,8 +91,8 @@ angular
         response.forEach(function (item, i) {
           var typeOfPlace = $scope.getData[item.id_type - 1].name_type;
           var nameOfImage = $scope.getData[item.id_type - 1].marker_img;
-          var lat = parseFloat(item.coordinateX);
-          var lng = parseFloat(item.coordinateY);
+          var lat = parseFloat(item.lat);
+          var lng = parseFloat(item.lng);
           $scope.markers["marker" + (i + 1)] = {
             lat: lat,
             lng: lng,
