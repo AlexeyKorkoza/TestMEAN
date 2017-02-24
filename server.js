@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var multer = require('multer');
 var app = express();
 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.get('db'));
 
 app.use(morgan('dev'));
