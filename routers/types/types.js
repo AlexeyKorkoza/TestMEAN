@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var typeModel = require('../models/type');
-var multer = require('multer');
+var typeModel = require('../../models/type');
 var mongoose = require('mongoose');
+
+
+/*var upload = multer({
+  storage: storage
+}).single('file');*/
 
 router.get('/', function (req, res) {
   typeModel.find({}, function (err, types) {
@@ -12,23 +16,20 @@ router.get('/', function (req, res) {
   })
 });
 
-router.post('/', function (req, res) {
-  upload(req, res, function (err) {
-    typeModel.create({
-      id_type: req.body.id_type,
+function add(req, res) {
+    var type = new typeModel({
+      id_type: req.body.id,
       name_type: req.body.typename,
       marker_img: req.body.typename
-    }, function (err) {
-      if (err) {
-        console.log(err);
+    });
+    type.save(function (err) {
+      if(err){
+        res.send(err);
+      } else {
+        res.send("Good");
       }
     });
-    if (err) {
-      return res.end("Error uploading file.");
-    }
-    res.end("File is uploaded");
-  });
-});
+}
 
 router.put('/edit/:id', function (req, res) {
   upload(req, res, function (err) {
@@ -58,3 +59,6 @@ router.delete('/:id', function (req, res) {
 });
 
 module.exports = router;
+module.exports = {
+  add: add
+};

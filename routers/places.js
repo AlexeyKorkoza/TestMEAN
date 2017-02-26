@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var placeModel = require('../models/place');
+var placeModel = require('../../models/place');
 var mongoose = require('mongoose');
 
 router.get('/', function (req, res) {
@@ -14,30 +14,26 @@ router.get('/', function (req, res) {
 });
 
 router.post('/add', function (req, res) {
-  placeModel.create({
-      name_place: req.body.name_place,
-      description: req.body.description,
-      coordinateX: req.body.coordinateX,
-      coordinateY: req.body.coordinateY,
-      address: req.body.address,
-      id_type: req.body.id_type
-    }, function (err, place) {
-      if (err)
-        res.send(err);
-      res.json(place);
+  var place = new placeModel({
+    name_place: req.body.name_place,
+    description: req.body.description,
+    lat: req.body.lat,
+    lng: req.body.lng,
+    address: req.body.address,
+    id_type: req.body.id_type
+  });
+  place.save(function (err, places) {
+    if (err) {
+      res.send(err);
     }
-  );
+    else {
+      res.send(places);
+    }
+  });
 });
 
 router.put('/edit/:id', function (req, res) {
-  placeModel.findOneAndUpdate({"_id": req.body._id}, {
-    "name_place": req.body.name_place,
-    "description": req.body.description,
-    "coordinateX": req.body.coordinateX,
-    "coordinateY": req.body.coordinateY,
-    "address": req.body.address,
-    "id_type": req.body.id_type
-  }, function (err, places) {
+  placeModel.findOneAndUpdate({"_id": req.body._id}, req.body, {runValidators: true}, function (err, places) {
     if (err) {
       res.send(err);
     } else {
