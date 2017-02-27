@@ -32,7 +32,7 @@ function add(req, res) {
 }
 
 router.put('/edit/:id', function (req, res) {
-  upload(req, res, function (err) {
+  /*upload(req, res, function (err) {
     typeModel.findOneAndUpdate({"id_type": req.body.id_type}, {
       "name_type": req.body.typename,
       "marker_img": req.body.typename
@@ -45,7 +45,7 @@ router.put('/edit/:id', function (req, res) {
       return res.end("Error uploading file.");
     }
     res.end("File is uploaded");
-  });
+  });*/
 });
 
 router.delete('/:id', function (req, res) {
