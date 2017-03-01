@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 var serveStatic = require('serve-static');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
-var multer = require('multer');
 var app = express();
 
 mongoose.Promise = global.Promise;
@@ -18,26 +17,12 @@ app.use(bodyParser.json());
 app.use(serveStatic(__dirname + ''));
 app.use(methodOverride());
 
-app.use(function (req, res, next) { //allow cross origin requests
+app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
   res.header("Access-Control-Allow-Origin", "http://localhost");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads/');
-  },
-  filename: function (req, file, cb) {
-    var datetimestamp = Date.now();
-    cb(null, req.body.typename + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
-  }
-});
-
-var upload = multer({
-  storage: storage
-}).single('file');
 
 app.use(require('./routers'));
 

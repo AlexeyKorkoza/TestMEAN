@@ -23,9 +23,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Выберите картинку:</label>
+                                <label class="col-lg-3 control-label">Если хотите обновить иконку, то загрузите ее:</label>
                                 <input type="file" ngf-select ng-model="editData.file" name="file"
-                                       accept="image/*" ngf-max-size="2MB" required
+                                       accept="image/*" ngf-max-size="2MB"
                                        ngf-model-invalid="errorFile">
                                 <i ng-show="editForm.file.$error.maxSize">File too large
                                     {{errorFile.size / 1000000|number:1}}MB: max 2M</i>

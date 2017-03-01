@@ -32,22 +32,21 @@ angular
         return $http.get('/types');
       },
 
-      create: function (data, id, file) {
+      create: function (data, file) {
         return Upload.upload({
-          url: '/types',
-          method: 'POST',
+          url: '/types/add',
           data: {
-            typename: data.typename, id_type: id, file: file
+            file: file, data: data
           }
         });
       },
 
-      update: function (data, id, file) {
+      update: function (data, file) {
         return Upload.upload({
-          url: '/types/edit/' + id,
+          url: '/types/edit/' + data.id,
           method: 'PUT',
           data: {
-            typename: data.typename, id_type: id, file: file
+            file: file, data: data
           }
         });
       },

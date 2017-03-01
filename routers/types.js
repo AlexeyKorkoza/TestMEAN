@@ -1,12 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var typeModel = require('../../models/type');
+var typeModel = require('../models/type');
 var mongoose = require('mongoose');
+var multer = require('multer');
+var fs = require('fs');
 
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname + '.' + file.mimetype.split('/')[1]);
+  }
+});
 
-/*var upload = multer({
-  storage: storage
-}).single('file');*/
+var upload = multer({storage: storage});
 
 router.get('/', function (req, res) {
   typeModel.find({}, function (err, types) {
@@ -16,36 +24,55 @@ router.get('/', function (req, res) {
   })
 });
 
-function add(req, res) {
+router.post('/add', upload.any(), function (req, res) {
+
+  if (req.files) {
     var type = new typeModel({
-      id_type: req.body.id,
-      name_type: req.body.typename,
-      marker_img: req.body.typename
+      id_type: req.body.data.id,
+      name_type: req.body.data.typename,
+      marker_img: req.body.data.typename,
+      image: req.files[0].filename
     });
-    type.save(function (err) {
-      if(err){
+
+    type.save(function (err, result) {
+      if (err) {
         res.send(err);
       } else {
-        res.send("Good");
+        res.json(result);
       }
     });
-}
+  }
+});
+
+router.put('/edit/:id', upload.any(), function (req, res, next) {
+  if (req.files.length === 1) {
+    typeModel.findOneAndUpdate({"id_type": req.body.data.id}, {
+      "name_type": req.body.data.typename,
+      "marker_img": req.body.data.typename,
+      "image": req.files[0].filename
+    }, function (err, result) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    });
+  } else {
+    next();
+  }
+});
 
 router.put('/edit/:id', function (req, res) {
-  /*upload(req, res, function (err) {
-    typeModel.findOneAndUpdate({"id_type": req.body.id_type}, {
-      "name_type": req.body.typename,
-      "marker_img": req.body.typename
-    }, function (err) {
-      if (err) {
-        console.log(err);
-      }
-    });
+  typeModel.findOneAndUpdate({"id_type": req.body.data.id}, {
+    "name_type": req.body.data.typename,
+    "marker_img": req.body.data.typename
+  }, function (err, result) {
     if (err) {
-      return res.end("Error uploading file.");
+      res.send(err);
+    } else {
+      res.send(result);
     }
-    res.end("File is uploaded");
-  });*/
+  });
 });
 
 router.delete('/:id', function (req, res) {
@@ -53,12 +80,10 @@ router.delete('/:id', function (req, res) {
     if (err) {
       res.send(err)
     } else {
-      res.json(type)
+      fs.unlink("uploads/" + type.image);
+      res.json(type);
     }
   })
 });
 
 module.exports = router;
-module.exports = {
-  add: add
-};

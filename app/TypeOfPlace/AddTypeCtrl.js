@@ -24,23 +24,30 @@ angular
     }
 
     $scope.add = function (file) {
-
+      Upload.rename(file, $scope.addTypeData.typename);
       var max = 0;
-      var flag = true;
       $scope.getAllTypes.forEach(function (item) {
 
         if (item.id_type > max) {
-          max = item.id_type;
-        }
-
-        if (item.name_type === $scope.addTypeData.typename) {
-          flag = false;
+          max = item.id_type + 1;
         }
 
       });
-
-      if (flag) {
-        typeService.create($scope.addTypeData, max + 1, file).then(function (response) {
+      $scope.addTypeData.id = ++max;
+      typeService.create($scope.addTypeData, file).then(function (response) {
+        if (response.data.code) {
+          swal({
+            title: "Новый тип не добавлен",
+            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
+            confirmButtonText: "ОК",
+            html: true
+          }), function (isConfirm) {
+            if (isConfirm) {
+              $location.path('/types');
+            }
+          }
+        } else {
+          $scope.addTypeData = response.data;
           swal({
             title: "Новый тип успешно добавлен",
             text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
@@ -51,8 +58,7 @@ angular
               $location.path('/types');
             }
           }
-        });
-      }
+        }
+      });
     };
-
   });
