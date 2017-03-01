@@ -25,26 +25,17 @@ angular
       });
 
     $scope.add = function () {
-
-      console.log($scope.addData);
-      var flag = true;
-      /*var getAllPlaces = placeService.getPlaces();
-      getAllPlaces.forEach(function (item) {
-        if (item.lat === $scope.addData.lat) {
-          flag = false;
-        }
-        if (item.lng === $scope.addData.lng) {
-          flag = false;
-        }
-        if (item.id_type === $scope.addData.id_type) {
-          flag = false;
-        }
-      });*/
-
-      if (flag) {
-        placeService.create($scope.addData).then(function (response) {
+      placeService.create($scope.addData).then(function (response) {
+        if (response.data.code) {
           swal({
-            title: "Новое место успешно добавлено",
+            title: "Место не добавлено",
+            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
+            confirmButtonText: "ОК",
+            html: true
+          })
+        } else {
+          swal({
+            title: "Место добавлено",
             text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
             confirmButtonText: "ОК",
             html: true
@@ -53,18 +44,7 @@ angular
               $location.path('/places');
             }
           }
-        });
-      } else {
-        swal({
-          title: "Данное место уже добавлено",
-          text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-          confirmButtonText: "ОК",
-          html: true
-        }), function (isConfirm) {
-          if (isConfirm) {
-            $location.path('/places/add');
-          }
         }
-      }
+      });
     };
   });

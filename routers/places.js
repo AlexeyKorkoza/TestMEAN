@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var placeModel = require('../../models/place');
+var placeModel = require('../models/place');
 var mongoose = require('mongoose');
 
 router.get('/', function (req, res) {

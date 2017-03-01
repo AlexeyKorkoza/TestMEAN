@@ -39,17 +39,15 @@ angular
     });
 
     $scope.update = function () {
-      var flag = true;
-      $scope.allPlaces.forEach(function (item) {
-        if (item.lat === $scope.editData.lat &&
-          item.lng === $scope.editData.lng &&
-          item.id_type === $scope.editData.id_type) {
-          flag = false;
-        }
-      });
-
-      if (flag) {
-        placeService.update($scope.editData, placeService.getId()).then(function (response) {
+      placeService.update($scope.editData, placeService.getId()).then(function (response) {
+        if (response.data.code) {
+          swal({
+            title: "Данные о месте не обновлены",
+            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
+            confirmButtonText: "ОК",
+            html: true
+          })
+        } else {
           swal({
             title: "Данные о месте успешно обновлены",
             text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
@@ -60,18 +58,7 @@ angular
               $location.path('/places');
             }
           }
-        });
-      } else {
-        swal({
-          title: "Введенные данные были ранее добавлены для данного места",
-          text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-          confirmButtonText: "ОК",
-          html: true
-        }), function (isConfirm) {
-          if (isConfirm) {
-            $location.path('/places/add');
-          }
         }
-      }
+      });
     };
   });
