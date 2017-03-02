@@ -41,7 +41,7 @@ angular
       },
 
       update: function (data, id) {
-        return $http.put('/places/edit/' + id, data);
+        return $http.put('/places/' + id, data);
       }
     }
   });

@@ -22,13 +22,13 @@ angular
       .when('/types/add',{
         templateUrl: 'app/TypeOfPlace/AddType.html'
       })
-      .when('/types/edit/:id',{
+      .when('/types/:id',{
         templateUrl: 'app/TypeOfPlace/EditType.html'
       })
       .when('/places', {
         templateUrl: 'app/Place/ViewPlaces.html'
       })
-      .when('/places/edit/:id',{
+      .when('/places/:id',{
         templateUrl: 'app/Place/EditPlace.html'
       })
       .when('/places/add', {

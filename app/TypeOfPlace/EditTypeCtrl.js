@@ -17,6 +17,7 @@ angular
         Upload.rename(file, $scope.editData.typename);
       }
       $scope.editData.id = typeService.getId();
+      console.log($scope.editData);
       typeService.update($scope.editData).then(function (response) {
         console.log(response);
         if (response.data.code) {

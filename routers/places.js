@@ -32,7 +32,7 @@ router.post('/add', function (req, res) {
   });
 });
 
-router.put('/edit/:id', function (req, res) {
+router.put('/:id', function (req, res) {
   placeModel.findOneAndUpdate({"_id": req.body._id}, req.body, {runValidators: true}, function (err, places) {
     if (err) {
       res.send(err);

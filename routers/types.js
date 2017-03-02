@@ -44,7 +44,7 @@ router.post('/add', upload.any(), function (req, res) {
   }
 });
 
-router.put('/edit/:id', upload.any(), function (req, res, next) {
+router.put('/:id', upload.any(), function (req, res, next) {
   if (req.files.length === 1) {
     typeModel.findOneAndUpdate({"id_type": req.body.data.id}, {
       "name_type": req.body.data.typename,
@@ -62,7 +62,10 @@ router.put('/edit/:id', upload.any(), function (req, res, next) {
   }
 });
 
-router.put('/edit/:id', function (req, res) {
+router.put('/:id', function (req, res) {
+  console.log(req.body);
+  console.log(req.body.data);
+  console.log(req.data);
   typeModel.findOneAndUpdate({"id_type": req.body.data.id}, {
     "name_type": req.body.data.typename,
     "marker_img": req.body.data.typename

@@ -43,7 +43,7 @@ angular
 
       update: function (data, file) {
         return Upload.upload({
-          url: '/types/edit/' + data.id,
+          url: '/types/' + data.id,
           method: 'PUT',
           data: {
             file: file, data: data
