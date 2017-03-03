@@ -2,7 +2,7 @@
 
 angular
   .module('myApp')
-  .controller('mainCtrl', function ($location, $scope, $http, $timeout, userService,$localStorage, cfpLoadingBar) {
+  .controller('mainCtrl', function ($location, $scope, $http, $timeout, authenticationService, userService,$localStorage, cfpLoadingBar) {
 
     if ($localStorage.currentUser){
       $scope.isAuthenticated = true;
@@ -142,9 +142,7 @@ angular
     };
 
     $scope.logout = function () {
-      delete $localStorage.currentUser;
-      $http.defaults.headers.common.Authorization = '';
-      $location.path('/signin');
+      authenticationService.logout();
     };
 
     $scope.OpenOrCloseUserMenu = function () {
