@@ -4,19 +4,18 @@ angular
   .module('myApp', [
     'ngRoute',
     'selectize',
-    'ng-token-auth',
     'angular-loading-bar',
     'ngAnimate',
     'ngFileUpload',
     'wt.responsive',
-    'ui-leaflet'
+    'ui-leaflet',
+    'ngStorage'
   ])
-  .config(function ($authProvider, cfpLoadingBarProvider) {
-    $authProvider.configure({
-      apiUrl: 'http://localhost:8080',
-      emailRegistrationPath: '/signup',
-      emailSignInPath: '/signin',
-      signOutUrl: ' '
-    });
+  .config(function (cfpLoadingBarProvider) {
     cfpLoadingBarProvider.latencyThreshold = 1000;
+  })
+  .run(function ($rootScope, $http, $location, $localStorage) {
+    if ($localStorage.currentUser) {
+      $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
+    }
   });

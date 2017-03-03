@@ -6,11 +6,11 @@
                            ng-model="type"></selectize>
             </div>
             <div class="sign">
-                <div ng-if="!sign">
+                <div ng-if="!isAuthenticated">
                     <a href="/signin" class="btn btn-default">Войти</a>
                     <a href="/signup" class="btn btn-success">Регистрация</a>
                 </div>
-                <div ng-if="sign">
+                <div ng-if="isAuthenticated">
                     <i class="fa fa-user-circle-o fa-3x user-icon" aria-hidden="true" ng-click="OpenOrCloseUserMenu()"></i>
                     <div id="triangle" class="triangle-down" ng-click="OpenOrCloseUserMenu()"></div>
                     <div class="list-group" id="menu-of-user">

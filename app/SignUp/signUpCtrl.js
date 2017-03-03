@@ -2,7 +2,7 @@
 
 angular
   .module('myApp')
-  .controller('signUpCtrl', function ($auth, $scope, $http, $location, $timeout, SignUpService, cfpLoadingBar) {
+  .controller('signUpCtrl', function ($scope, $http, $location, $timeout, SignUpService, cfpLoadingBar) {
 
     $scope.getAllUsers = '';
     SignUpService.getAllUsers()
@@ -54,7 +54,7 @@ angular
         } else {
           $scope.formData.date += date.getMonth() + 1 + "." + date.getFullYear();
         }
-        $auth.submitRegistration($scope.formData)
+        $http.post('/signup', $scope.formData)
           .then(function () {
             cfpLoadingBar.start();
             $timeout(function () {

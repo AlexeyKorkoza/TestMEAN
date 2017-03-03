@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var userModel = require('../models/user');
+var jwt = require('jsonwebtoken');
+var token = jwt.sign({foo: 'bar'}, 'shhhhh');
 
 router.get('/', function (req, res) {
   userModel.find({}, function (err, users) {
@@ -11,10 +13,10 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-  userModel.find({"username": req.body.username}, function (err, user) {
+  userModel.findOne({"username": req.body.username}, function (err, user) {
     if (err)
       res.send(err);
-    res.send(user);
+    res.send({"token": token});
   });
 });
 

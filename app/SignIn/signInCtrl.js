@@ -2,7 +2,7 @@
 
 angular
   .module('myApp')
-  .controller('signInCtrl', function ($auth, $scope, $http, $location, $timeout, SignInService, userService, cfpLoadingBar) {
+  .controller('signInCtrl', function ($scope, $http, $location, $timeout, $localStorage, SignInService, userService, cfpLoadingBar) {
 
     $scope.getAllUsers = '';
     SignInService.getAllUsers()
@@ -47,12 +47,14 @@ angular
           return item.username === $scope.formData.username;
         });
         userService.setUserId(SignInData[0]._id);
-        $auth.submitLogin($scope.formData)
+        $http.post('/signin', $scope.formData)
           .then(function (response) {
             cfpLoadingBar.start();
-            $timeout(function () {
+            if (response.data.token) {
+              $localStorage.currentUser = {username: $scope.formData.username, token: response.token};
+              $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
               $location.path('/');
-            }, 2000);
+            }
           })
           .catch(function (response) {
             console.log(response);

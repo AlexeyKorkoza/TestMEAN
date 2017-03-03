@@ -2,13 +2,12 @@
 
 angular
   .module('myApp')
-  .controller('mainCtrl', function ($auth, $location, $scope, $http, $timeout, userService, cfpLoadingBar) {
+  .controller('mainCtrl', function ($location, $scope, $http, $timeout, userService,$localStorage, cfpLoadingBar) {
 
-    if ($auth.user.signedIn === true) {
-      $scope.sign = true;
-      $scope.id = userService.getUserId();
+    if ($localStorage.currentUser){
+      $scope.isAuthenticated = true;
     } else {
-      $scope.sign = false;
+      $scope.isAuthenticated = false;
     }
 
     angular.extend($scope, {
@@ -143,15 +142,9 @@ angular
     };
 
     $scope.logout = function () {
-      $auth.signOut()
-        .then(function () {
-          cfpLoadingBar.start();
-          $timeout(function () {
-            $location.path('/signin');
-          }, 2000);
-        }).finally(function () {
-        cfpLoadingBar.complete();
-      });
+      delete $localStorage.currentUser;
+      $http.defaults.headers.common.Authorization = '';
+      $location.path('/signin');
     };
 
     $scope.OpenOrCloseUserMenu = function () {
