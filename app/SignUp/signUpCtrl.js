@@ -2,71 +2,34 @@
 
 angular
   .module('myApp')
-  .controller('signUpCtrl', function ($scope, $http, $location, $timeout, SignUpService, cfpLoadingBar) {
-
-    $scope.getAllUsers = '';
-    SignUpService.getAllUsers()
-      .then(function (response) {
-        $scope.getAllUsers = response.data;
-      });
+  .controller('signUpCtrl', function ($scope, $http, $location, $timeout, cfpLoadingBar, authenticationService) {
 
     $scope.RegBtnClick = function () {
-      var flag = true;
-      $scope.getAllUsers.forEach(function (item) {
-        if (item.username === $scope.formData.username && item.email === $scope.formData.email && flag) {
-          swal({
-            title: "Укажите другие данные",
-            text: '<span style="color:#F8BB86">Указанный пользователь с указанным электронным адресом уже существует<span>',
-            confirmButtonText: "ОК",
-            html: true
-          });
-          flag = false;
-        }
-        else if (item.username === $scope.formData.username && flag) {
-          flag = false;
-          swal({
-            title: "Укажите другие данные",
-            text: '<span style="color:#F8BB86">Указанный пользователь уже существует<span>',
-            confirmButtonText: "ОK",
-            html: true
-          });
-        }
-        else if (item.email === $scope.formData.email && flag) {
-          flag = false;
-          swal({
-            title: "Укажите другие данные",
-            text: '<span style="color:#F8BB86">Указанный электронный адрес уже используется.<span>',
-            confirmButtonText: "ОK",
-            html: true
-          });
-        }
-      });
-      if (flag) {
-        $scope.formData.date = "";
-        var date = new Date();
-        if (date.getDay() < 10) {
-          $scope.formData.date = "0" + date.getDay() + ".";
-        } else {
-          $scope.formData.date = date.getDay() + ".";
-        }
-        if (date.getMonth() + 1 < 10) {
-          $scope.formData.date += "0" + (date.getMonth() + 1) + "." + date.getFullYear();
-        } else {
-          $scope.formData.date += date.getMonth() + 1 + "." + date.getFullYear();
-        }
-        $http.post('/signup', $scope.formData)
-          .then(function () {
-            cfpLoadingBar.start();
-            $timeout(function () {
-              $location.path('/');
-            }, 2000);
-          })
-          .catch(function (response) {
-            console.log(response);
-          })
-          .finally(function () {
-            cfpLoadingBar.complete();
-          });
+
+      $scope.formData.date = "";
+      var date = new Date();
+      if (date.getDay() < 10) {
+        $scope.formData.date = "0" + date.getDay() + ".";
+      } else {
+        $scope.formData.date = date.getDay() + ".";
       }
+      if (date.getMonth() + 1 < 10) {
+        $scope.formData.date += "0" + (date.getMonth() + 1) + "." + date.getFullYear();
+      } else {
+        $scope.formData.date += date.getMonth() + 1 + "." + date.getFullYear();
+      }
+      authenticationService.signup($scope.formData)
+        .then(function () {
+          cfpLoadingBar.start();
+          $timeout(function () {
+            $location.path('/');
+          }, 2000);
+        })
+        .catch(function (response) {
+          console.log(response);
+        })
+        .finally(function () {
+          cfpLoadingBar.complete();
+        });
     }
   });

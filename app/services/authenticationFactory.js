@@ -5,7 +5,12 @@ angular
     return {
 
       login: function (data) {
-        return $http.post('/signin/', data);
+        console.log(data);
+        return $http.post('/auth/login', data);
+      },
+
+      signup: function (data) {
+        return $http.post('/auth/signup', data);
       },
 
       logout: function () {

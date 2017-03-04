@@ -2,7 +2,7 @@
 
 angular
   .module('myApp')
-  .controller('mainCtrl', function ($location, $scope, $http, $timeout, authenticationService, userService,$localStorage, cfpLoadingBar) {
+  .controller('mainCtrl', function ($location, $scope, $http, $timeout, authenticationService, $localStorage, cfpLoadingBar) {
 
     if ($localStorage.currentUser){
       $scope.isAuthenticated = true;

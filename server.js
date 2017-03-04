@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 var serveStatic = require('serve-static');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var app = express();
 
 mongoose.Promise = global.Promise;
@@ -23,6 +25,12 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+var initPassport = require('./Passport/passport-init');
+initPassport(passport);
 
 app.use(require('./routers'));
 

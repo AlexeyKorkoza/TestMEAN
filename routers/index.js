@@ -3,11 +3,11 @@ var path = require('path');
 var router = express.Router();
 var typeModel = require('../models/type');
 var placeModel = require('../models/place');
+var passport = require('passport');
 
 router.use('/places', require('./places'));
 router.use('/types', require('./types'));
-router.use('/signin', require('./sigin'));
-router.use('/signup', require('./signup'));
+router.use('/auth', require('./authentication')(passport));
 router.use('/users', require('./users'));
 
 router.post('', function (req, res) {
