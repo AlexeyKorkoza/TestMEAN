@@ -11,7 +11,6 @@ angular
     $scope.LoginBtnClick = function () {
         authenticationService.login($scope.formData)
           .then(function (response) {
-            console.log(response);
             cfpLoadingBar.start();
             if (response.data.state == 'success') {
               $localStorage.currentUser = {username: $scope.formData.username, token: response.token};

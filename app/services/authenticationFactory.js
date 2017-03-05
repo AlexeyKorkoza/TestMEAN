@@ -5,7 +5,6 @@ angular
     return {
 
       login: function (data) {
-        console.log(data);
         return $http.post('/auth/login', data);
       },
 
