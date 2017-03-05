@@ -10,11 +10,6 @@ angular
         $scope.places = response.data;
       });
 
-    $scope.edit = function (id) {
-      placeService.setId(id);
-      placeService.setPlaces($scope.places);
-    };
-
     $scope.add = function () {
       placeService.setPlaces($scope.places);
     };

@@ -2,7 +2,7 @@
 
 angular
   .module('myApp')
-  .controller('EditPlaceCtrl', function ($scope, $location, $timeout, typeService, placeService) {
+  .controller('EditPlaceCtrl', function ($scope, $location, $timeout, $routeParams, typeService, placeService) {
 
     $scope.myConfig = {
       create: true,
@@ -23,23 +23,21 @@ angular
           })
         }
       });
-    $scope.allPlaces = [].slice.call(placeService.getPlaces());
-    $scope.allPlaces.forEach(function (item) {
-      if (item._id === placeService.getId()) {
+
+    placeService.getPlaceById($routeParams.id)
+      .then(function (response) {
         $scope.editData = {
-          _id: placeService.getId(),
-          name_place: item.name_place,
-          description: item.description,
-          lat: item.lat,
-          lng: item.lng,
-          address: item.address,
-          id_type: item.id_type
+          name_place: response.data.name_place,
+          description: response.data.description,
+          lat: response.data.lat,
+          lng: response.data.lng,
+          address: response.data.address,
+          id_type: response.data.id_type
         }
-      }
-    });
+      });
 
     $scope.update = function () {
-      placeService.update($scope.editData, placeService.getId()).then(function (response) {
+      placeService.update($scope.editData, $routeParams.id).then(function (response) {
         if (response.data.code) {
           swal({
             title: "Данные о месте не обновлены",

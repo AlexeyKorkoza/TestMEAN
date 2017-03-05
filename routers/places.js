@@ -13,6 +13,16 @@ router.get('/', function (req, res) {
   })
 });
 
+router.get('/:id', function (req, res) {
+  placeModel.findOne({"_id": req.params.id}, function (err, place) {
+    if (err) {
+      res.send(err)
+    } else {
+      res.json(place);
+    }
+  })
+});
+
 router.post('/add', function (req, res) {
   var place = new placeModel({
     name_place: req.body.name_place,
@@ -33,7 +43,7 @@ router.post('/add', function (req, res) {
 });
 
 router.put('/:id', function (req, res) {
-  placeModel.findOneAndUpdate({"_id": req.body._id}, req.body, {runValidators: true}, function (err, places) {
+  placeModel.findOneAndUpdate({"_id": req.params.id}, req.body, {runValidators: true}, function (err, places) {
     if (err) {
       res.send(err);
     } else {

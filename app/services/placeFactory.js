@@ -3,7 +3,6 @@ angular
   .factory('placeService', function ($http) {
 
     var Places = "";
-    var Id = "";
 
     function setPlaces(places) {
       Places = places;
@@ -13,20 +12,10 @@ angular
       return Places;
     }
 
-    function setId(id) {
-      Id = id;
-    }
-
-    function getId() {
-      return Id
-    }
-
     return {
 
       setPlaces: setPlaces,
       getPlaces: getPlaces,
-      setId: setId,
-      getId: getId,
 
       getAllPlaces: function () {
         return $http.get('/places');
@@ -42,6 +31,10 @@ angular
 
       update: function (data, id) {
         return $http.put('/places/' + id, data);
+      },
+
+      getPlaceById: function (id) {
+        return $http.get('/places/' + id);
       }
     }
   });
