@@ -13,9 +13,7 @@ angular
       if (file) {
         Upload.rename(file, $scope.editData.typename);
       }
-      $scope.editData.id = typeService.getId();
-      typeService.update($scope.editData).then(function (response) {
-        console.log(response);
+      typeService.update($routeParams.id, $scope.editData, file).then(function (response) {
         if (response.data.code) {
           swal({
             title: "Тип не отредактирован",

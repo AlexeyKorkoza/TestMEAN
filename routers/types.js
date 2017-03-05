@@ -53,9 +53,10 @@ router.post('/add', upload.any(), function (req, res) {
 });
 
 router.put('/:id', upload.any(), function (req, res, next) {
+
   if (req.files.length === 1) {
     removeImage(req.body.data.id);
-    typeModel.findOneAndUpdate({"id_type": req.body.data.id}, {
+    typeModel.findOneAndUpdate({"_id": req.params.id}, {
       "name_type": req.body.data.typename,
       "marker_img": req.body.data.typename,
       "image": req.files[0].filename
@@ -72,7 +73,7 @@ router.put('/:id', upload.any(), function (req, res, next) {
 });
 
 router.put('/:id', function (req, res) {
-  typeModel.findOneAndUpdate({"id_type": req.body.data.id}, {
+  typeModel.findOneAndUpdate({"_id": req.params.id}, {
     "name_type": req.body.data.typename,
     "marker_img": req.body.data.typename
   }, function (err, result) {

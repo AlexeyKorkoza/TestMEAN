@@ -30,9 +30,9 @@ angular
         });
       },
 
-      update: function (data, file) {
+      update: function (id, data, file) {
         return Upload.upload({
-          url: '/types/' + data.id,
+          url: '/types/' + id,
           method: 'PUT',
           data: {
             file: file, data: data
