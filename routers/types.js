@@ -73,14 +73,30 @@ router.put('/:id', upload.any(), function (req, res, next) {
 });
 
 router.put('/:id', function (req, res) {
-  typeModel.findOneAndUpdate({"_id": req.params.id}, {
-    "name_type": req.body.data.typename,
-    "marker_img": req.body.data.typename
-  }, function (err, result) {
+
+  typeModel.findById(req.params.id, function (err, result) {
     if (err) {
       res.send(err);
     } else {
-      res.send(result);
+      var arr = result.image.split('.');
+      var index = arr.length - 1;
+      var newName = req.body.data.typename + "." + arr[index];
+      fs.rename('uploads/' + result.image, 'uploads/' + newName, function (err) {
+        if (err)
+          console.log(err);
+      });
+
+      result.marker_img = req.body.data.typename;
+      result.name_type = req.body.data.typename;
+      result.image = newName;
+      result.save(function (err) {
+        if (err) {
+          res.send(err);
+        }
+        else {
+          res.send(result);
+        }
+      });
     }
   });
 });
