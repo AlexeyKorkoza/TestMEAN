@@ -3,7 +3,6 @@ angular
   .factory('typeService', function ($http, Upload) {
 
     var Types = "";
-    var Id = "";
 
     function setTypes(types) {
       Types = types;
@@ -13,20 +12,10 @@ angular
       return Types;
     }
 
-    function setId(id) {
-      Id = id;
-    }
-
-    function getId() {
-      return Id
-    }
-
     return {
 
       setTypes: setTypes,
       getTypes: getTypes,
-      setId: setId,
-      getId: getId,
 
       getAllTypes: function () {
         return $http.get('/types');
@@ -53,6 +42,10 @@ angular
 
       delete: function (id) {
         return $http.delete('/types/' + id, {params: {'id': id}});
+      },
+
+      getTypeById: function (id) {
+        return $http.get('/types/' + id);
       }
 
     }

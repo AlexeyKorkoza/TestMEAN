@@ -24,6 +24,14 @@ router.get('/', function (req, res) {
   })
 });
 
+router.get('/:id', function (req, res) {
+  typeModel.findOne({"_id": req.params.id}, function (err, type) {
+    if (err)
+      res.send(err);
+    res.send(type);
+  })
+});
+
 router.post('/add', upload.any(), function (req, res) {
 
   if (req.files) {

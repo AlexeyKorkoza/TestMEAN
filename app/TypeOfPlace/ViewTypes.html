@@ -20,8 +20,7 @@
                             <tr ng-repeat="type in types">
                                 <td>{{type.name_type}}</td>
                                 <td>
-                                    <a class="btn btn-success" href="/types/{{type._id}}"
-                                       ng-click="edit(type.id_type)">Редактировать</a>
+                                    <a class="btn btn-success" href="/types/{{type._id}}">Редактировать</a>
                                     <a class="btn btn-danger" href="#" ng-click="delete(type._id)">Удалить</a>
                                 </td>
                             </tr>

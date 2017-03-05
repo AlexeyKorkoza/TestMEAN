@@ -10,11 +10,6 @@ angular
         $scope.types = response.data;
       });
 
-    $scope.edit = function (id) {
-      typeService.setId(id);
-      typeService.setTypes($scope.types);
-    };
-
     $scope.add = function () {
       typeService.setTypes($scope.types);
     };

@@ -2,22 +2,18 @@
 
 angular
   .module('myApp')
-  .controller('EditTypeCtrl', function ($scope, $location, $timeout, Upload, typeService) {
+  .controller('EditTypeCtrl', function ($scope, $location, $timeout, $routeParams, Upload, typeService) {
 
-    $scope.getAllTypes = [].slice.call(typeService.getTypes());
-
-    $scope.getAllTypes.forEach(function (item) {
-      if (item.id_type === typeService.getId()) {
-        $scope.typename = item.name_type;
-      }
-    });
+    typeService.getTypeById($routeParams.id)
+      .then(function (response) {
+        $scope.typename = response.data.name_type;
+      });
 
     $scope.update = function (file) {
-      if(file) {
+      if (file) {
         Upload.rename(file, $scope.editData.typename);
       }
       $scope.editData.id = typeService.getId();
-      console.log($scope.editData);
       typeService.update($scope.editData).then(function (response) {
         console.log(response);
         if (response.data.code) {
