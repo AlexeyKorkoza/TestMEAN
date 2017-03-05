@@ -8,6 +8,7 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var fs = require('fs');
 var app = express();
 
 mongoose.Promise = global.Promise;
@@ -31,6 +32,10 @@ app.use(passport.session());
 
 var initPassport = require('./Passport/passport-init');
 initPassport(passport);
+
+if (!fs.existsSync('./uploads')){
+  fs.mkdirSync('./uploads');
+}
 
 app.use(require('./routers'));
 
