@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var User = require('../models/user');
 var LocalStrategy = require('passport-local').Strategy;
-var bCrypt = require('bcrypt-nodejs');
+var crypto = require('crypto');
+var config = require('../config');
 
 module.exports = function (passport) {
 // Passport needs to be able to serialize and deserialize users to support persistent login sessions
@@ -65,7 +66,7 @@ module.exports = function (passport) {
           // if there is no user, create the user
           var newUser = new User({
             'username': username,
-            'password': createHash(password),
+            'password': encrypt(password),
             'email': req.body.email,
             'date': req.body.date
           });
@@ -84,10 +85,24 @@ module.exports = function (passport) {
   );
 
   var isValidPassword = function (user, password) {
-    return bCrypt.compareSync(password, user.password);
+    var flag = true;
+    if (decrypt(user.password) !== password) {
+      flag = false;
+    }
+    return flag;
   };
-// Генерируем хеш при помощи bCrypt
-  var createHash = function (password) {
-    return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-  };
+
+  function encrypt(text) {
+    var cipher = crypto.createCipher(config.get('algorithm'), config.get('passwordAlgorithm'));
+    var crypted = cipher.update(text, 'utf8', 'hex');
+    crypted += cipher.final('hex');
+    return crypted;
+  }
+
+  function decrypt(text) {
+    var decipher = crypto.createDecipher(config.get('algorithm'), config.get('passwordAlgorithm'));
+    var dec = decipher.update(text, 'hex', 'utf8');
+    dec += decipher.final('utf8');
+    return dec;
+  }
 };
