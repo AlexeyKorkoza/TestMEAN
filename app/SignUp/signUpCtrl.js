@@ -4,6 +4,10 @@ angular
   .module('myApp')
   .controller('signUpCtrl', function ($scope, $http, $location, $timeout, cfpLoadingBar, authenticationService) {
 
+    $scope.back = function () {
+      $location.path('/');
+    };
+
     $scope.RegBtnClick = function () {
       $scope.error = "";
       $scope.formData.date = "";

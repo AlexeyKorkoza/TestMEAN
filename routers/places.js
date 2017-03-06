@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
     if (err) {
       res.send(err)
     } else {
-      res.json(places);
+      res.send(places);
     }
   })
 });
@@ -18,7 +18,7 @@ router.get('/:id', function (req, res) {
     if (err) {
       res.send(err)
     } else {
-      res.json(place);
+      res.send(place);
     }
   })
 });
@@ -47,17 +47,17 @@ router.put('/:id', function (req, res) {
     if (err) {
       res.send(err);
     } else {
-      res.json(places);
+      res.send(places);
     }
   });
 });
 
 router.delete('/:id', function (req, res) {
-  placeModel.findByIdAndRemove({"_id": req.params.id}, function (err, type) {
+  placeModel.findByIdAndRemove({"_id": req.params.id}, function (err, place) {
     if (err) {
       res.send(err)
     } else {
-      res.json(type)
+      res.send(place)
     }
   })
 });

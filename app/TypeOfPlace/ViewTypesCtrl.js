@@ -8,6 +8,14 @@ angular
     typeService.getAllTypes()
       .then(function (response) {
         $scope.types = response.data;
+        if($scope.types.length <= 1) {
+          swal({
+            title: "Список типов объектов пуст",
+            text: '<span style="color:#F8BB86">Пожалуйста, добавьте новый тип объекта<span>',
+            confirmButtonText: "ОК",
+            html: true
+          })
+        }
       });
 
     $scope.add = function () {
