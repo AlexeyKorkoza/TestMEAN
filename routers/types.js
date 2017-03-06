@@ -38,7 +38,6 @@ router.post('/add', upload.any(), function (req, res) {
     var type = new typeModel({
       id_type: req.body.data.id,
       name_type: req.body.data.typename,
-      marker_img: req.body.data.typename,
       image: req.files[0].filename
     });
 
@@ -58,7 +57,6 @@ router.put('/:id', upload.any(), function (req, res, next) {
     removeImage(req.body.data.id);
     typeModel.findOneAndUpdate({"_id": req.params.id}, {
       "name_type": req.body.data.typename,
-      "marker_img": req.body.data.typename,
       "image": req.files[0].filename
     }, function (err, result) {
       if (err) {
@@ -86,7 +84,6 @@ router.put('/:id', function (req, res) {
           console.log(err);
       });
 
-      result.marker_img = req.body.data.typename;
       result.name_type = req.body.data.typename;
       result.image = newName;
       result.save(function (err) {

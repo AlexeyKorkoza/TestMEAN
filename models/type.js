@@ -7,10 +7,6 @@ var Type = mongoose.model('Type', {
     type: String,
     unique: true
   },
-  marker_img: {
-    type: String,
-    unique: true
-  },
   image: String
 });
 
