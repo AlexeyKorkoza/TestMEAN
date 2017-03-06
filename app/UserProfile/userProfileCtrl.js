@@ -2,16 +2,15 @@
 
 angular
   .module('myApp')
-  .controller('userProfileCtrl', function ($scope, $location, userService) {
+  .controller('userProfileCtrl', function ($scope, $location, $routeParams, userService) {
 
-    userService.getUserInfo(userService.getUserId())
+    userService.getUserInfo($routeParams.currentUser)
       .then(function (response) {
-        $scope.userData = response.data[0];
-        $scope.username = response.data[0].username;
+        $scope.userData = response.data;
       });
 
     $scope.update = function () {
-      userService.updateUserInfo($scope.userData.username, $scope.userData)
+      userService.updateUserInfo($routeParams.currentUser, $scope.userData)
         .then(function () {
           swal({
             title: "Информация успешно обновлена",
