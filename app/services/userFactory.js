@@ -4,9 +4,9 @@ angular
 
     return {
 
-      getUserInfo: function (username) {
+      getUserInfo: function (id) {
         return $http({
-          url: '/users/' + username,
+          url: '/users/' + id,
           method: 'get'
         })
       },

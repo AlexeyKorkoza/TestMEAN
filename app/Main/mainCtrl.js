@@ -6,7 +6,7 @@ angular
 
     if ($localStorage.currentUser){
       $scope.isAuthenticated = true;
-      $scope.currentUser = $localStorage.currentUser.username;
+      $scope.id = $localStorage.currentUser.id;
     } else {
       $scope.isAuthenticated = false;
     }

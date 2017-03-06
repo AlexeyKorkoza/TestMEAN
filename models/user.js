@@ -2,8 +2,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var User = mongoose.model('User', {
-  username: String,
-  email: String,
+  username: {
+    type:String,
+    unique: true
+  },
+  email: {
+    type:String,
+    unique: true
+  },
   password: String,
   confirmpassword: String,
   date: String

@@ -2,18 +2,6 @@
     <div class="container profile">
         <div class="row">
             <div class="span12">
-                <div class="well well-small clearfix">
-                    <div class="row-fluid">
-                        <div class="span4">
-                            <h2>Информация о пользователе: {{username}}</h2>
-                            <ul class="userData">
-                                <li><i class="fa fa-user fa-2x"></i> {{userData.username}}</li>
-                                <li><i class="fa fa-calendar fa-2x"></i> {{userData.date}}</li>
-                                <li><i class="fa fa-envelope fa-2x"></i> {{userData.email}}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
                 <div class="well clearfix">
                     <div class="container">
                         <h1 class="page-header">Редактирование профиля</h1>
@@ -48,36 +36,6 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-lg-3 control-label">Пароль:</label>
-                                        <div class="col-lg-8">
-                                            <input class="form-control"
-                                                   name="password"
-                                                   ng-model="userData.password"
-                                                   ng-minlength="6"
-                                                   id="UserProfilePassword"
-                                                   value={{userData.password}}
-                                                   type="password"
-                                                   required/>
-                                            <p ng-show="form.password.$error.minlength" class="help-block">Пароль должен
-                                                состоять из 6 символов
-                                                минимум</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Подтвердите пароль:</label>
-                                        <div class="col-lg-8">
-                                            <input class="form-control"
-                                                   name="confirmpassword"
-                                                   ng-model="userData.confirmpassword"
-                                                   pw-check="UserProfilePassword"
-                                                   value={{userData.confirmpassword}}
-                                                   type="password"
-                                                   required/>
-                                            <p class="help-block" ng-show="form.confirmpassword.$error.pwmatch">Пароли
-                                                не совпадают</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label class="col-md-3 control-label"></label>
                                         <div class="row">
                                             <div class="col-md-12 col-lg-6">
@@ -87,8 +45,51 @@
                                                         ng-click="update()">Сохранить изменения
                                                 </button>
                                             </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="form-horizontal" name="formPassword" novalidate>
+                                    <h1>Обновление пароля</h1>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Пароль:</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control"
+                                                   name="password"
+                                                   ng-model="settingPassword.password"
+                                                   ng-minlength="6"
+                                                   id="UserProfilePassword"
+                                                   type="password"
+                                                   required/>
+                                            <p ng-show="formPassword.password.$error.minlength" class="help-block">Пароль должен
+                                                состоять из 6 символов
+                                                минимум</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Подтвердите пароль:</label>
+                                        <div class="col-lg-8">
+                                            <input class="form-control"
+                                                   name="confirmpassword"
+                                                   ng-model="settingPassword.confirmpassword"
+                                                   pw-check="UserProfilePassword"
+                                                   type="password"
+                                                   required/>
+                                            <p class="help-block" ng-show="formPassword.confirmpassword.$error.pwmatch">Пароли
+                                                не совпадают</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label"></label>
+                                        <div class="row">
                                             <div class="col-md-12 col-lg-6">
-                                                <a href="/" class="button-date btn btn-info col-md-12 col-lg-6"  id="userBack">Назад</a>
+                                                <button class="col-md-12 col-lg-6 btn btn-primary"
+                                                        ng-disabled="formPassword.$invalid"
+                                                        type="submit"
+                                                        ng-click="updatePassword()">Обновить пароль
+                                                </button>
+                                            </div>
+                                            <div class="col-md-12 col-lg-6">
+                                                <a href="/" class="button-date btn btn-info col-md-12 col-lg-6" id="userBack">Назад</a>
                                             </div>
                                         </div>
                                     </div>

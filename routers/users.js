@@ -2,9 +2,11 @@ var express = require('express');
 var router = express.Router();
 var userModel = require('../models/user');
 var mongoose = require('mongoose');
+var crypto = require('crypto');
+var config = require('../config');
 
-router.get('/:currentUser', function (req, res) {
-  userModel.findOne({'username': req.params.currentUser}, function (err, user) {
+router.get('/:id', function (req, res) {
+  userModel.findOne({'_id': req.params.id}, function (err, user) {
     if (err) {
       res.send(err);
     } else {
@@ -13,18 +15,49 @@ router.get('/:currentUser', function (req, res) {
   });
 });
 
-router.put('/:currentUser', function (req, res) {
-  userModel.findOneAndUpdate({'username': req.params.currentUser}, {
-    "username": req.body.username,
-    "email": req.body.email,
-    "password": req.body.password,
-    "confirmpassword": req.body.confirmpassword,
-    "date": req.body.date
-  }, function (err, user) {
-    if (err)
+router.put('/:id', function (req, res, next) {
+  userModel.findOne({'_id': req.params.id, 'password': req.body.password}, function (err, user) {
+    if (err) {
       res.send(err);
-    res.status(200).send(user);
+    }
+    if (user) {
+      user.username = req.body.username;
+      user.email = req.body.email;
+      user.password = req.body.password;
+      user.confirmpassword = req.body.confirmpassword;
+      user.date = req.body.date;
+      user.save(function (err) {
+        if (err) {
+          res.send(err);
+        }
+        else {
+          res.send(user);
+        }
+      });
+    }
+    if (!user) {
+      next();
+    }
   })
 });
+
+router.put('/:id', function (req, res) {
+  userModel.findOneAndUpdate({'_id': req.params.id}, {
+    "password": encrypt(req.body.password)
+  }, function (err, user) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.status(200).send(user);
+    }
+  })
+});
+
+function encrypt(text) {
+  var cipher = crypto.createCipher(config.get('algorithm'), config.get('passwordAlgorithm'));
+  var crypted = cipher.update(text, 'utf8', 'hex');
+  crypted += cipher.final('hex');
+  return crypted;
+}
 
 module.exports = router;

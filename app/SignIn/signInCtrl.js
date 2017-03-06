@@ -12,11 +12,9 @@ angular
       $scope.error = "";
         authenticationService.login($scope.formData)
           .then(function (response) {
-            console.log(response);
             cfpLoadingBar.start();
             if (response.data.state == 'success') {
-              $localStorage.currentUser = {username: $scope.formData.username, token: response.token};
-              $localStorage.id = response.data.id;
+              $localStorage.currentUser = {id: response.data.id, username: $scope.formData.username, token: response.token};
               $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
               $location.path('/');
             }
