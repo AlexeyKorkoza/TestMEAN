@@ -11,7 +11,6 @@ var User = mongoose.model('User', {
     unique: true
   },
   password: String,
-  confirmpassword: String,
   date: String
 });
 
