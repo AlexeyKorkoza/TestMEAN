@@ -280,3 +280,8 @@ span.psw {
 .add-back-buttons{
   margin: 30px 0;
 }
+
+.signError{
+  color: red;
+  font: 1.3em 'Open Sans', sans-serif;
+}

@@ -55,6 +55,7 @@
                     <p class="help-block" ng-show="form.confirmpassword.$error.pwmatch">Пароли не совпадают</p>
                 </div>
 
+                <p class="signError">{{error}}</p>
                 <button class="btn btn-success" id="LoginSignIn" type="submit"
                         ng-disabled="form.$invalid" ng-click="RegBtnClick()">Зарегистрироваться
                 </button>

@@ -30,7 +30,7 @@
                     <p ng-show="form.password.$invalid && !form.password.$pristine" class="help-block">Введите
                         пароль</p>
                 </div>
-
+                <p class="signError">{{error}}</p>
                 <button class="btn btn-success" id="LoginSignIn" type="submit"
                         ng-disabled="form.$invalid" ng-click="LoginBtnClick()">Войти
                 </button>

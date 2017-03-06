@@ -5,7 +5,7 @@ angular
   .controller('signUpCtrl', function ($scope, $http, $location, $timeout, cfpLoadingBar, authenticationService) {
 
     $scope.RegBtnClick = function () {
-
+      $scope.error = "";
       $scope.formData.date = "";
       var date = new Date();
       if (date.getDay() < 10) {
@@ -21,9 +21,12 @@ angular
       authenticationService.signup($scope.formData)
         .then(function () {
           cfpLoadingBar.start();
-          $timeout(function () {
+          if (response.data.state == 'success') {
             $location.path('/');
-          }, 2000);
+          }
+          if(response.data.state == 'failure'){
+            $scope.error = response.data.message;
+          }
         })
         .catch(function (response) {
           console.log(response);
