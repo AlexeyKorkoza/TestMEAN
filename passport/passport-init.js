@@ -30,67 +30,73 @@ module.exports = function (passport) {
             return done(err);
           // Username does not exist, log the error and redirect back
           if (!user) {
-            console.log('User Not Found with username ' + username);
-            return done(null, false);
+            return done(null, false, req.flash('loginMessage', 'Пользователь не найден'));
           }
           // User exists but wrong password, log the error
           if (!isValidPassword(user, password)) {
-            console.log('Invalid Password');
-            return done(null, false); // redirect back to login page
+            return done(null, false, req.flash('loginMessage', 'Неверный пароль')); // redirect back to login page
           }
           // User and password both match, return user from done method
           // which will be treated like success
-          return done(null, user);
+          return done(null, user, req.flash('loginMessage', user._id));
         }
       );
     }
   ));
 
   passport.use('signup', new LocalStrategy({
+      usernameField: 'username',
+      passwordField: 'email',
       passReqToCallback: true // allows us to pass back the entire request to the callback
     },
-    function (req, username, password, done) {
-
+    function (req, username, email, done) {
       // find a user in mongo with provided username
       User.findOne({'username': username}, function (err, user) {
         // In case of any error, return using the done method
         if (err) {
-          console.log('Error in SignUp: ' + err);
           return done(err);
         }
         // already exists
         if (user) {
-          console.log('User already exists with username: ' + username);
-          return done(null, false);
-        } else {
-          // if there is no user, create the user
-          var newUser = new User({
-            'username': username,
-            'password': encrypt(password),
-            'email': req.body.email,
-            'date': req.body.date
-          });
-          // save the user
-          newUser.save(function (err) {
+          return done(null, false, req.flash('signUpMessage', 'Данный пользователь уже существует'));
+        }
+        else {
+          User.findOne({'email': email}, function (err, user1) {
             if (err) {
-              console.log('Error in Saving user: ' + err);
-              throw err;
+              return done(err);
             }
-            console.log(newUser.username + ' Registration succesful');
-            return done(null, newUser);
+            // already exists
+            if (user1) {
+              return done(null, false, req.flash('signUpMessage', 'Данный электронный адрес уже существует'));
+            }
+            if (!user1) {
+              var newUser = new User({
+                'username': username,
+                'password': encrypt(req.body.password),
+                'email': req.body.email,
+                'date': req.body.date
+              });
+              // save the user
+              newUser.save(function (err) {
+                if (err) {
+                  throw err;
+                }
+                return done(null, newUser);
+              });
+            }
           });
         }
       });
     })
   );
 
-  var isValidPassword = function (user, password) {
+  function isValidPassword(user, password) {
     var flag = true;
     if (decrypt(user.password) !== password) {
       flag = false;
     }
     return flag;
-  };
+  }
 
   function encrypt(text) {
     var cipher = crypto.createCipher(config.get('algorithm'), config.get('passwordAlgorithm'));

@@ -19,7 +19,7 @@ angular
         $scope.formData.date += date.getMonth() + 1 + "." + date.getFullYear();
       }
       authenticationService.signup($scope.formData)
-        .then(function () {
+        .then(function (response) {
           cfpLoadingBar.start();
           if (response.data.state == 'success') {
             $location.path('/');

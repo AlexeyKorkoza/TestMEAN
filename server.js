@@ -9,6 +9,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var fs = require('fs');
+var flash = require('connect-flash');
+var session = require('express-session');
 var app = express();
 
 mongoose.Promise = global.Promise;
@@ -19,6 +21,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(serveStatic(__dirname + ''));
 app.use(methodOverride());
+app.use(session({
+  secret: 'passport',
+  resave: false,
+  saveUnitialized: false
+}));
+app.use(passport.initialize());
+app.use(flash());
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
@@ -27,17 +36,14 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(require('./routers'));
 
-var initPassport = require('./Passport/passport-init');
-initPassport(passport);
-
-if (!fs.existsSync('./uploads')){
+if (!fs.existsSync('./uploads')) {
   fs.mkdirSync('./uploads');
 }
 
-app.use(require('./routers'));
+var initPassport = require('./Passport/passport-init');
+initPassport(passport);
 
 app.listen(config.get('port'), function (error) {
   if (error) {
