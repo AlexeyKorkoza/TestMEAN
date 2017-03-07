@@ -18,8 +18,4 @@ describe("signInCtrl", function () {
     expect(ctrl).not.toBeUndefined();
   });
 
-  it('Initialize variable', function () {
-    expect(scope.getAllUsers).toBeDefined();
-  });
-
 });
