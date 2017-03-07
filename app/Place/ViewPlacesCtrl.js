@@ -8,7 +8,7 @@ angular
     placeService.getAllPlaces()
       .then(function (response) {
         $scope.places = response.data;
-        if($scope.places.length <= 1) {
+        if ($scope.places.length < 1) {
           swal({
             title: "Список мест пуст",
             text: '<span style="color:#F8BB86">Пожалуйста, добавьте новое место<span>',
@@ -17,10 +17,6 @@ angular
           });
         }
       });
-
-    $scope.add = function () {
-      placeService.setPlaces($scope.places);
-    };
 
     $scope.delete = function (id) {
       placeService.delete(id).then(function (response) {

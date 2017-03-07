@@ -26,6 +26,7 @@ angular
 
     $scope.add = function () {
       placeService.create($scope.addData).then(function (response) {
+        console.log(response);
         if (response.data.code) {
           swal({
             title: "Место не добавлено",

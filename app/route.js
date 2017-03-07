@@ -28,11 +28,11 @@ angular
       .when('/places', {
         templateUrl: 'app/Place/ViewPlaces.html'
       })
-      .when('/places/:id',{
-        templateUrl: 'app/Place/EditPlace.html'
-      })
       .when('/places/add', {
         templateUrl: 'app/Place/addPlace.html'
+      })
+      .when('/places/:id',{
+        templateUrl: 'app/Place/EditPlace.html'
       })
       .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);

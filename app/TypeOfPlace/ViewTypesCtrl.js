@@ -8,7 +8,7 @@ angular
     typeService.getAllTypes()
       .then(function (response) {
         $scope.types = response.data;
-        if($scope.types.length <= 1) {
+        if($scope.types.length < 1) {
           swal({
             title: "Список типов объектов пуст",
             text: '<span style="color:#F8BB86">Пожалуйста, добавьте новый тип объекта<span>',
@@ -17,10 +17,6 @@ angular
           })
         }
       });
-
-    $scope.add = function () {
-      typeService.setTypes($scope.types);
-    };
 
     $scope.delete = function (id) {
       typeService.delete(id).then(function (response) {

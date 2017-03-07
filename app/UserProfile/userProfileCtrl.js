@@ -4,13 +4,13 @@ angular
   .module('myApp')
   .controller('userProfileCtrl', function ($scope, $location, $routeParams, userService) {
 
-    userService.getUserInfo($routeParams.currentUser)
+    userService.getUserInfo($routeParams.id)
       .then(function (response) {
         $scope.userData = response.data;
       });
 
     $scope.update = function () {
-      userService.updateUserInfo($routeParams.currentUser, $scope.userData)
+      userService.updateUserInfo($routeParams.id, $scope.userData)
         .then(function (response) {
           if(response.data.code) {
             swal({
@@ -39,7 +39,7 @@ angular
         "password": $scope.settingPassword.password,
         "date": $scope.userData.date
       };
-      userService.updateUserInfo($routeParams.currentUser, data)
+      userService.updateUserInfo($routeParams.id, data)
         .then(function () {
           swal({
             title: "Информация успешно обновлена",
