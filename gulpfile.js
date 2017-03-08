@@ -47,7 +47,6 @@ var styles = [
   'node_modules/selectize/dist/css/selectize.default.css',
   'node_modules/sweetalert/dist/sweetalert.css',
   'node_modules/angular-loading-bar/build/loading-bar.min.css',
-  'node_modules/font-awesome/css/font-awesome.min.css',
   './app/assets/css/*.css'
 ];
 
