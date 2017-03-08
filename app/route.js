@@ -5,34 +5,34 @@ angular
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'app/Main/main.html'
+        templateUrl: 'Main/main.html'
       })
       .when('/signin', {
-        templateUrl: 'app/SignIn/signIn.html'
+        templateUrl: 'SignIn/signIn.html'
       })
       .when('/signup', {
-        templateUrl: 'app/SignUp/signUp.html'
+        templateUrl: 'SignUp/signUp.html'
       })
       .when('/users/:id', {
-        templateUrl: 'app/UserProfile/userProfile.html'
+        templateUrl: 'UserProfile/userProfile.html'
       })
       .when('/types', {
-        templateUrl: 'app/TypeOfPlace/ViewTypes.html'
+        templateUrl: 'TypeOfPlace/ViewTypes.html'
       })
       .when('/types/add',{
-        templateUrl: 'app/TypeOfPlace/AddType.html'
+        templateUrl: 'TypeOfPlace/AddType.html'
       })
       .when('/types/:id',{
-        templateUrl: 'app/TypeOfPlace/EditType.html'
+        templateUrl: 'TypeOfPlace/EditType.html'
       })
       .when('/places', {
-        templateUrl: 'app/Place/ViewPlaces.html'
+        templateUrl: 'Place/ViewPlaces.html'
       })
       .when('/places/add', {
-        templateUrl: 'app/Place/addPlace.html'
+        templateUrl: 'Place/addPlace.html'
       })
       .when('/places/:id',{
-        templateUrl: 'app/Place/EditPlace.html'
+        templateUrl: 'Place/EditPlace.html'
       })
       .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);

@@ -104,7 +104,7 @@ angular
               iconSize: [54, 54],
               iconAnchor: [16, 37],
               popupAnchor: [0, -30],
-              iconUrl: './uploads/' + nameOfImage + '.png'
+              iconUrl: '../../uploads/' + nameOfImage + '.png'
             }
           }
         });

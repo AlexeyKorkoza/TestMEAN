@@ -16,10 +16,10 @@ var app = express();
 mongoose.Promise = global.Promise;
 mongoose.connect(config.get('db'));
 
+app.use(express.static(__dirname + "/app"));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(serveStatic(__dirname + ''));
 app.use(methodOverride());
 app.use(session({
   secret: 'passport',

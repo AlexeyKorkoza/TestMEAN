@@ -23,12 +23,11 @@ var scripts = [
   'node_modules/leaflet/dist/leaflet.js',
   'node_modules/bootstrap/dist/js/bootstrap.min.js',
   'node_modules/angular-selectize2/dist/selectize.js',
-  'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js',
   'node_modules/sweetalert/dist/sweetalert.min.js',
   'node_modules/angular-simple-logger/dist/angular-simple-logger.js',
   'node_modules/ui-leaflet/dist/ui-leaflet.min.js',
   'node_modules/ngstorage/ngStorage.min.js',
-  'assets/js/*.js',
+  './app/assets/js/*.js',
   './app/app.js',
   './app/route.js',
   './app/services/*.js',
@@ -49,7 +48,7 @@ var styles = [
   'node_modules/sweetalert/dist/sweetalert.css',
   'node_modules/angular-loading-bar/build/loading-bar.min.css',
   'node_modules/font-awesome/css/font-awesome.min.css',
-  'assets/css/*.css'
+  './app/assets/css/*.css'
 ];
 
 gulp.task('jshint', function () {
@@ -71,7 +70,7 @@ gulp.task('scripts', function () {
   return gulp.src(scripts)
     .on('error', console.log)
     .pipe(concat('build.js'))
-    .pipe(gulp.dest('./build/'))
+    .pipe(gulp.dest('./app/build/'))
     .pipe(livereload());
 });
 
@@ -84,7 +83,7 @@ gulp.task('styles', function () {
     .pipe(cssmin())
     .pipe(csslint())
     .pipe(concat('build.css'))
-    .pipe(gulp.dest('./build/'))
+    .pipe(gulp.dest('./app/build/'))
     .pipe(livereload());
 });
 
