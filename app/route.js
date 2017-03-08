@@ -35,5 +35,4 @@ angular
         templateUrl: 'Place/EditPlace.html'
       })
       .otherwise({redirectTo: '/'});
-    $locationProvider.html5Mode(true);
   });

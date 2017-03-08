@@ -6,8 +6,8 @@
                     <div class="container" id="view_types_container">
                         <h2>Список типов</h2>
                         <div class="add-back-buttons">
-                            <a class="btn btn-success" href="/types/add">Добавить тип</a>
-                            <a class="btn btn-success" href="/">Вернуться на Главную</a>
+                            <a class="btn btn-success" href="#/types/add">Добавить тип</a>
+                            <a class="btn btn-success" href="#/">Вернуться на Главную</a>
                         </div>
                         <table class="table table-striped" wt-responsive-table>
                             <thead>
@@ -20,8 +20,8 @@
                             <tr ng-repeat="type in types">
                                 <td>{{type.name_type}}</td>
                                 <td>
-                                    <a class="btn btn-success" href="/types/{{type._id}}">Редактировать</a>
-                                    <a class="btn btn-danger" href="#" ng-click="delete(type._id)">Удалить</a>
+                                    <a class="btn btn-success" href="#/types/{{type._id}}">Редактировать</a>
+                                    <a class="btn btn-danger" href="#/" ng-click="delete(type._id)">Удалить</a>
                                 </td>
                             </tr>
                             </tbody>

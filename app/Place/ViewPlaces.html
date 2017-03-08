@@ -6,8 +6,8 @@
                     <div class="container" id="view_types_container">
                         <h2>Список мест</h2>
                         <div class="add-back-buttons">
-                            <a class="btn btn-success" href="/places/add">Добавить место</a>
-                            <a class="btn btn-success" href="/">Вернуться на Главную</a>
+                            <a class="btn btn-success" href="#/places/add">Добавить место</a>
+                            <a class="btn btn-success" href="#/">Вернуться на Главную</a>
                         </div>
                         <table class="table table-striped" wt-responsive-table>
                             <thead>
@@ -28,8 +28,8 @@
                                 <td>{{place.lng}}</td>
                                 <td>{{place.address}}</td>
                                 <td>
-                                    <a class="btn btn-success" href="/places/{{place._id}}">Редактировать</a>
-                                    <a class="btn btn-danger" href="#" ng-click="delete(place._id)">Удалить</a>
+                                    <a class="btn btn-success" href="#/places/{{place._id}}">Редактировать</a>
+                                    <a class="btn btn-danger" href="#/" ng-click="delete(place._id)">Удалить</a>
                                 </td>
                             </tr>
                             </tbody>
