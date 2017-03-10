@@ -18,7 +18,7 @@ module.exports = function (config) {
       'node_modules/angular-simple-logger/dist/angular-simple-logger.js',
       'node_modules/ui-leaflet/dist/ui-leaflet.min.js',
       'node_modules/ngstorage/ngStorage.min.js',
-      'assets/js/*.js',
+      'app/assets/js/*.js',
 
       'app/*.js',
       'app/Main/mainCtrl.js',
