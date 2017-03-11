@@ -1,28 +1,46 @@
 <div ng-controller="mainCtrl">
     <div class="form-group" id="select">
         <div class="row">
-            <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4">
+            <div class="col-xs-6 col-lg-4 col-md-4 col-sm-4 selectize">
                 <selectize config='myConfig' ng-disabled='disable' ng-change="getByType(type)" options='select'
                            ng-model="type"></selectize>
             </div>
-            <div class="sign">
+            <div class="col-xs-6 col-lg-3 col-md-4 col-sm-5 auth">
                 <div ng-if="!isAuthenticated">
-                    <a href="#/signin" class="btn btn-default">Войти</a>
-                    <a href="#/signup" class="btn btn-success">Регистрация</a>
+                    <div class="no_auth">
+                        <a href="#/signin" class="btn btn-default">Войти</a>
+                        <a href="#/signup" class="btn btn-success">Регистрация</a>
+                    </div>
                 </div>
                 <div ng-if="isAuthenticated">
-                    <i class="fa fa-user-circle-o fa-3x user-icon" aria-hidden="true" ng-click="OpenOrCloseUserMenu()"></i>
-                    <div id="triangle" class="triangle-down" ng-click="OpenOrCloseUserMenu()"></div>
-                    <div class="list-group" id="menu-of-user">
-                        <a class="list-group-item" href="#/types"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;
-                            Управление типами объекта</a>
-                        <a class="list-group-item" href="#/places"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;
-                            Управление местами</a>
-                        <a class="list-group-item" href="#/users/{{id}}"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;
-                            Настройки профиля</a>
-                        <a class="list-group-item" ng-click="logout()"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp;
-                            Выйти</a>
-                    </div>
+                    <nav>
+                        <ul class="menu">
+                            <li class="menu__item">
+                                <a><i class="fa fa-user-circle-o fa-3x user-icon" aria-hidden="true"></i></a>
+                                <div class="dropdownContain">
+                                    <div class="dropOut">
+                                        <div class="triangle"></div>
+                                        <div class="icon_username">
+                                            <p>Вы вошли под <span>{{username}}</span></p>
+                                        </div>
+                                        <nav class="sub_menu">
+                                            <a href="#/types" class="sub_menu__item"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;
+                                                Управление типами объекта</a>
+                                            <a href="#/places" class="sub_menu__item"><i class="fa fa-book fa-fw"
+                                                                      aria-hidden="true"></i>&nbsp;
+                                                Управление местами</a>
+                                            <a href="#/users/{{id}}" class="sub_menu__item"><i class="fa fa-cog fa-fw"
+                                                                            aria-hidden="true"></i>&nbsp;
+                                                Настройки профиля</a>
+                                            <a ng-click="logout()" class="sub_menu__item"><i class="fa fa-sign-out fa-fw"
+                                                                          aria-hidden="true"></i>&nbsp;
+                                                Выйти</a>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

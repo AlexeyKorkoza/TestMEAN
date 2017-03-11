@@ -7,6 +7,7 @@ angular
     if ($localStorage.currentUser){
       $scope.isAuthenticated = true;
       $scope.id = $localStorage.currentUser.id;
+      $scope.username = $localStorage.currentUser.username;
     } else {
       $scope.isAuthenticated = false;
     }
@@ -144,18 +145,6 @@ angular
 
     $scope.logout = function () {
       authenticationService.logout();
-    };
-
-    $scope.OpenOrCloseUserMenu = function () {
-      var usermenu = document.getElementById('menu-of-user');
-      var triangle = document.getElementById('triangle');
-      if (triangle.className === "triangle-down") {
-        triangle.className = "triangle-up";
-        usermenu.style.display = "block";
-      } else {
-        triangle.className = "triangle-down";
-        usermenu.style.display = "none";
-      }
     };
 
     cfpLoadingBar.start();
