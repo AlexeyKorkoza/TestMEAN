@@ -1,39 +1,57 @@
 <div ng-controller="AddTypeCtrl">
     <div class="container profile">
         <div class="row">
-            <div class="span12">
-                <div class="well clearfix">
-                    <h1 class="page-header">Добавление нового типа объекта</h1>
+            <div class="well clearfix">
+                <h1>Добавление нового типа объекта</h1>
+                <div class="col-lg-8 col-xs-12">
                     <form class="form-horizontal" name="addForm" novalidate>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Название типа:</label>
-                            <div class="col-lg-8">
-                                <input class="form-control"
-                                       name="typename"
-                                       ng-model="addTypeData.typename"
-                                       type="text"
-                                       required/>
-                                <p ng-show="addForm.typename.$invalid && !addForm.typename.$pristine" class="help-block">
-                                    Введите название типа</p>
+                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Название типа:</label>
+                            <input class="form-control"
+                                   name="typename"
+                                   ng-model="addTypeData.typename"
+                                   type="text"
+                                   required/>
+                            <p ng-show="addForm.typename.$invalid && !addForm.typename.$pristine"
+                               class="help-block">
+                                Введите название типа</p>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
+                                    <div class="button icon-attachment">
+                                        <span>Выберите иконку</span>
+                                        <input type="file"
+                                               ngf-select
+                                               ng-model="addTypeData.file"
+                                               name="file"
+                                               accept="image/*"
+                                               ngf-max-size="2MB"
+                                               required
+                                               ngf-model-invalid="errorFile"
+                                               ng-change="changeFilename(addTypeData.file)">
+                                        <i ng-show="addForm.file.$error.maxSize">Большой размер файла
+                                            {{errorFile.size / 1000000|number:1}}MB: максимум 2M</i>
+                                    </div>
+                                    <span ng-model="filename">{{filename}}</span>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Выберите картинку:</label>
-                            <input type="file" ngf-select ng-model="addTypeData.file" name="file"
-                                   accept="image/*" ngf-max-size="2MB" required
-                                   ngf-model-invalid="errorFile">
-                            <i ng-show="addForm.file.$error.maxSize">File too large
-                                {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-8">
-                                <button class="btn btn-primary"
-                                        ng-disabled="addForm.$invalid"
-                                        type="submit"
-                                        ng-click="add(addTypeData.file)">Добавить
-                                </button>
-                                <a href="#/types" class="btn btn-default">Назад</a>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
+                                    <button class="button icon-add"
+                                            ng-disabled="addForm.$invalid"
+                                            type="submit"
+                                            ng-click="add(addTypeData.file)">
+                                        <span>Добавить</span>
+                                    </button>
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                                    <a href="#/types" class="button icon-return">
+                                        <span>Назад</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </form>

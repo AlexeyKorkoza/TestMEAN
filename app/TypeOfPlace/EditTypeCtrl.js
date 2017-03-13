@@ -4,6 +4,15 @@ angular
   .module('myApp')
   .controller('EditTypeCtrl', function ($scope, $location, $timeout, $routeParams, Upload, typeService) {
 
+    $scope.filename = "Иконка не выбрана";
+    $scope.changeFilename = function (file) {
+      if(file) {
+        $scope.filename = $scope.editData.file.name;
+      } else {
+        $scope.filename = "Иконка не выбрана";
+      }
+    };
+
     typeService.getTypeById($routeParams.id)
       .then(function (response) {
         $scope.typename = response.data.name_type;

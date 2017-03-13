@@ -4,6 +4,15 @@ angular
   .module('myApp')
   .controller('AddTypeCtrl', function ($scope, $location, $timeout, Upload, typeService) {
 
+    $scope.filename = "Иконка не выбрана";
+    $scope.changeFilename = function (file) {
+      if(file) {
+        $scope.filename = $scope.addTypeData.file.name;
+      } else {
+        $scope.filename = "Иконка не выбрана";
+      }
+    };
+
     $scope.getAllTypes = "";
     $scope.myConfig = {
       create: true,

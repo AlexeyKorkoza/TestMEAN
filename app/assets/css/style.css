@@ -260,10 +260,6 @@ span.psw {
   line-height: 1em;
 }
 
-#view_types_container{
-  width: auto;
-}
-
 .add-back-buttons{
   margin: 30px 0;
 }
@@ -425,6 +421,37 @@ span.psw {
 
 .icon_username span{
   font-weight: 600;
+}
+
+/*
+  Types
+*/
+
+.name_type{
+  font: 1.3em 'Open Sans, sans-serif';
+  vertical-align: middle !important;
+}
+
+.button input[type="file"]{
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.filename{
+  height: 30px;
+  display: table;
+  clear: both;
+}
+
+.filename span{
+  display: table-cell;
+  vertical-align: middle;
+  font: 1.3em 'Open Sans, sans-serif';
 }
 
 @media (max-width: 767px) {
