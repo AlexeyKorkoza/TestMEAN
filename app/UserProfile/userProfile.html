@@ -36,15 +36,18 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label"></label>
-                                        <div class="row">
-                                            <div class="col-md-12 col-lg-6">
-                                                <button class="col-md-12 col-lg-6 btn btn-primary"
-                                                        ng-disabled="form.$invalid"
-                                                        type="submit"
-                                                        ng-click="update()">Сохранить изменения
-                                                </button>
-                                            </div>
+                                        <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
+                                            <button class="button icon-save"
+                                                    ng-disabled="form.$invalid"
+                                                    type="submit"
+                                                    ng-click="update()">
+                                                <span>Сохранить изменения</span>
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                                            <a href="#/" class="button icon-home">
+                                                <span>На Главную</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </form>
@@ -60,7 +63,8 @@
                                                    id="UserProfilePassword"
                                                    type="password"
                                                    required/>
-                                            <p ng-show="formPassword.password.$error.minlength" class="help-block">Пароль должен
+                                            <p ng-show="formPassword.password.$error.minlength" class="help-block">
+                                                Пароль должен
                                                 состоять из 6 символов
                                                 минимум</p>
                                         </div>
@@ -74,23 +78,24 @@
                                                    pw-check="UserProfilePassword"
                                                    type="password"
                                                    required/>
-                                            <p class="help-block" ng-show="formPassword.confirmpassword.$error.pwmatch">Пароли
+                                            <p class="help-block" ng-show="formPassword.confirmpassword.$error.pwmatch">
+                                                Пароли
                                                 не совпадают</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label"></label>
-                                        <div class="row">
-                                            <div class="col-md-12 col-lg-6">
-                                                <button class="col-md-12 col-lg-6 btn btn-primary"
-                                                        ng-disabled="formPassword.$invalid"
-                                                        type="submit"
-                                                        ng-click="updatePassword()">Обновить пароль
-                                                </button>
-                                            </div>
-                                            <div class="col-md-12 col-lg-6">
-                                                <a href="#/" class="button-date btn btn-info col-md-12 col-lg-6" id="userBack">Назад</a>
-                                            </div>
+                                        <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
+                                            <button class="button icon-save"
+                                                    ng-disabled="formPassword.$invalid"
+                                                    type="submit"
+                                                    ng-click="updatePassword()">
+                                                <span>Обновить пароль</span>
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                                            <a href="#/" class="button icon-home">
+                                                <span>На Главную</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </form>
