@@ -454,6 +454,18 @@ span.psw {
   font: 1.3em 'Open Sans, sans-serif';
 }
 
+/*
+  Places
+*/
+
+.errorSelectize{
+  font: 1.3em 'Open Sans, sans-serif';
+}
+
+textarea{
+  resize: none;
+}
+
 @media (max-width: 767px) {
   .profile img {
     width: 75px;

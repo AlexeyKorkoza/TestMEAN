@@ -25,26 +25,31 @@ angular
       });
 
     $scope.add = function () {
-      placeService.create($scope.addData).then(function (response) {
-        if (response.data.code) {
-          swal({
-            title: "Место не добавлено",
-            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-            confirmButtonText: "ОК",
-            html: true
-          })
-        } else {
-          swal({
-            title: "Место добавлено",
-            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-            confirmButtonText: "ОК",
-            html: true
-          }), function (isConfirm) {
-            if (isConfirm) {
-              $location.path('/places');
+      if($scope.addData.id_type) {
+        placeService.create($scope.addData).then(function (response) {
+          $scope.error = "";
+          if (response.data.code) {
+            swal({
+              title: "Место не добавлено",
+              text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
+              confirmButtonText: "ОК",
+              html: true
+            })
+          } else {
+            swal({
+              title: "Место добавлено",
+              text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
+              confirmButtonText: "ОК",
+              html: true
+            }), function (isConfirm) {
+              if (isConfirm) {
+                $location.path('/places');
+              }
             }
           }
-        }
-      });
+        });
+      } else {
+        $scope.error = "Выберите тип объекта";
+      }
     };
   });

@@ -1,41 +1,54 @@
 <div ng-controller="ViewPlacesCtrl">
     <div class="container profile">
         <div class="row">
-            <div class="span12">
-                <div class="well clearfix">
-                    <div class="container" id="view_types_container">
-                        <h2>Список мест</h2>
-                        <div class="add-back-buttons">
-                            <a class="btn btn-success" href="#/places/add">Добавить место</a>
-                            <a class="btn btn-success" href="#/">Вернуться на Главную</a>
-                        </div>
-                        <table class="table table-striped" wt-responsive-table>
-                            <thead>
-                            <tr>
-                                <th>Имя</th>
-                                <th>Описание</th>
-                                <th>Широта</th>
-                                <th>Долгота</th>
-                                <th>Адрес</th>
-                                <th>Действия</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="place in places">
-                                <td>{{place.name_place}}</td>
-                                <td>{{place.description}}</td>
-                                <td>{{place.lat}}</td>
-                                <td>{{place.lng}}</td>
-                                <td>{{place.address}}</td>
-                                <td>
-                                    <a class="btn btn-success" href="#/places/{{place._id}}">Редактировать</a>
-                                    <a class="btn btn-danger" href="#/" ng-click="delete(place._id)">Удалить</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+            <div class="well clearfix">
+                <h2>Список мест</h2>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                        <a href="#/places/add" class="button icon-add">
+                            <span>Добавить место</span>
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                        <a href="#/" class="button icon-home">
+                            <span>На Главную</span>
+                        </a>
                     </div>
                 </div>
+                <table class="table table-striped all_places" wt-responsive-table>
+                    <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Описание</th>
+                        <th>Широта</th>
+                        <th>Долгота</th>
+                        <th>Адрес</th>
+                        <th>Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="place in places">
+                        <td>{{place.name_place}}</td>
+                        <td>{{place.description}}</td>
+                        <td>{{place.lat}}</td>
+                        <td>{{place.lng}}</td>
+                        <td>{{place.address}}</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
+                                    <a class="button icon-edit" href="#/places/{{place._id}}">
+                                        <span>Редактировать</span>
+                                    </a>
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
+                                    <a class="button icon-remove" href="#/" ng-click="delete(place._id)">
+                                        <span>Удалить</span></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

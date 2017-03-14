@@ -37,26 +37,31 @@ angular
       });
 
     $scope.update = function () {
-      placeService.update($scope.editData, $routeParams.id).then(function (response) {
-        if (response.data.code) {
-          swal({
-            title: "Данные о месте не обновлены",
-            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-            confirmButtonText: "ОК",
-            html: true
-          })
-        } else {
-          swal({
-            title: "Данные о месте успешно обновлены",
-            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-            confirmButtonText: "ОК",
-            html: true
-          }), function (isConfirm) {
-            if (isConfirm) {
-              $location.path('/places');
+      if($scope.addData.id_type) {
+        placeService.update($scope.editData, $routeParams.id).then(function (response) {
+          $scope.error = "";
+          if (response.data.code) {
+            swal({
+              title: "Данные о месте не обновлены",
+              text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
+              confirmButtonText: "ОК",
+              html: true
+            })
+          } else {
+            swal({
+              title: "Данные о месте успешно обновлены",
+              text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
+              confirmButtonText: "ОК",
+              html: true
+            }), function (isConfirm) {
+              if (isConfirm) {
+                $location.path('/places');
+              }
             }
           }
-        }
-      });
+        });
+      } else {
+        $scope.error = "Выберите тип объекта";
+      }
     };
   });
