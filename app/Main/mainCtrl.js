@@ -91,7 +91,7 @@ angular
       if ($scope.getData !== '') {
         response.forEach(function (item, i) {
           var typeOfPlace = $scope.getData[item.id_type - 1].name_type;
-          var nameOfImage = $scope.getData[item.id_type - 1].name_type;
+          var nameOfImage = $scope.getData[item.id_type - 1].image;
           var lat = parseFloat(item.lat);
           var lng = parseFloat(item.lng);
           $scope.markers["marker" + (i + 1)] = {
@@ -105,7 +105,7 @@ angular
               iconSize: [54, 54],
               iconAnchor: [16, 37],
               popupAnchor: [0, -30],
-              iconUrl: '../../uploads/' + nameOfImage + '.png'
+              iconUrl: '../../uploads/' + nameOfImage
             }
           }
         });
