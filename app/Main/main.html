@@ -1,46 +1,59 @@
 <div ng-controller="mainCtrl">
-    <div class="form-group" id="select">
+    <div class="form-group" id="header">
         <div class="row">
-            <div class="col-xs-6 col-lg-4 col-md-4 col-sm-4 selectize">
-                <selectize config='myConfig' ng-disabled='disable' ng-change="getByType(type)" options='select'
-                           ng-model="type"></selectize>
-            </div>
-            <div class="col-xs-6 col-lg-3 col-md-4 col-sm-5 auth">
-                <div ng-if="!isAuthenticated">
-                    <div class="no_auth">
-                        <a href="#/signin" class="btn btn-default">Войти</a>
-                        <a href="#/signup" class="btn btn-success">Регистрация</a>
-                    </div>
+            <div id="flex">
+                <div class="col-xs-12 col-lg-4 col-md-4 col-sm-5 select">
+                    <selectize config='myConfig' ng-disabled='disable' ng-change="getByType(type)" options='select'
+                               ng-model="type"></selectize>
                 </div>
-                <div ng-if="isAuthenticated">
-                    <nav>
-                        <ul class="menu">
-                            <li class="menu__item">
-                                <a><i class="fa fa-user-circle-o fa-3x user-icon" aria-hidden="true"></i></a>
-                                <div class="dropdownContain">
-                                    <div class="dropOut">
-                                        <div class="triangle"></div>
-                                        <div class="icon_username">
-                                            <p>Вы вошли под <span>{{username}}</span></p>
+                <div class="col-xs-12 col-lg-4 col-md-4 col-sm-5 auth">
+                    <div ng-if="!isAuthenticated">
+                        <div class="row no_auth">
+                            <div class="col-xs-6 col-md-6 col-lg-5 col-sm-6">
+                                <a href="#/signin" class="button icon-login">
+                                    <span>Войти</span>
+                                </a>
+                            </div>
+                            <div class="col-xs-6 col-md-6 col-lg-5 col-sm-6">
+                                <a href="#/signup" class="button icon-register">
+                                    <span>Регистрация</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="isAuthenticated">
+                        <nav>
+                            <ul class="menu">
+                                <li class="menu__item">
+                                    <a><i class="fa fa-user-circle-o fa-3x user-icon" aria-hidden="true"></i></a>
+                                    <div class="dropdownContain">
+                                        <div class="dropOut">
+                                            <div class="triangle"></div>
+                                            <div class="icon_username">
+                                                <p>Вы вошли под <span>{{username}}</span></p>
+                                            </div>
+                                            <nav class="sub_menu">
+                                                <a href="#/types" class="sub_menu__item"><i class="fa fa-cog fa-fw"
+                                                                                            aria-hidden="true"></i>&nbsp;
+                                                    Управление типами объекта</a>
+                                                <a href="#/places" class="sub_menu__item"><i class="fa fa-book fa-fw"
+                                                                                             aria-hidden="true"></i>&nbsp;
+                                                    Управление местами</a>
+                                                <a href="#/users/{{id}}" class="sub_menu__item"><i
+                                                    class="fa fa-cog fa-fw"
+                                                    aria-hidden="true"></i>&nbsp;
+                                                    Настройки профиля</a>
+                                                <a ng-click="logout()" class="sub_menu__item"><i
+                                                    class="fa fa-sign-out fa-fw"
+                                                    aria-hidden="true"></i>&nbsp;
+                                                    Выйти</a>
+                                            </nav>
                                         </div>
-                                        <nav class="sub_menu">
-                                            <a href="#/types" class="sub_menu__item"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;
-                                                Управление типами объекта</a>
-                                            <a href="#/places" class="sub_menu__item"><i class="fa fa-book fa-fw"
-                                                                      aria-hidden="true"></i>&nbsp;
-                                                Управление местами</a>
-                                            <a href="#/users/{{id}}" class="sub_menu__item"><i class="fa fa-cog fa-fw"
-                                                                            aria-hidden="true"></i>&nbsp;
-                                                Настройки профиля</a>
-                                            <a ng-click="logout()" class="sub_menu__item"><i class="fa fa-sign-out fa-fw"
-                                                                          aria-hidden="true"></i>&nbsp;
-                                                Выйти</a>
-                                        </nav>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>

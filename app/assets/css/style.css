@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-html, body{
+html, body {
   height: 100%;
   width: 100%;
 }
@@ -14,7 +14,7 @@ html, body{
   z-index: 2;
 }
 
-.leaflet-bottom{
+.leaflet-bottom {
   display: none;
 }
 
@@ -26,7 +26,7 @@ html, body{
   Buttons
 */
 
-.button{
+.button {
   background: #823aa0;
   color: white;
   overflow: hidden;
@@ -49,7 +49,7 @@ html, body{
   text-align: center;
 }
 
-.button:before{
+.button:before {
   color: white;
   left: 0;
   top: -120%;
@@ -62,7 +62,7 @@ html, body{
   transition: all 0.3s;
 }
 
-.button:after{
+.button:after {
   content: '';
   position: absolute;
   z-index: -1;
@@ -75,19 +75,19 @@ html, body{
   top: -20%;
 }
 
-.button:hover{
+.button:hover {
   color: white;
   text-decoration: none;
 }
 
-.button:hover span{
+.button:hover span {
   -webkit-transform: translateY(300%);
   -moz-transform: translateY(300%);
   -ms-transform: translateY(300%);
   transform: translateY(300%);
 }
 
-.button span{
+.button span {
   display: inline-block;
   width: 100%;
   height: 100%;
@@ -99,12 +99,9 @@ html, body{
   backface-visibility: hidden;
 }
 
-
-
 /*
   UserProfile
 */
-
 
 /*
   SignIn
@@ -260,11 +257,11 @@ span.psw {
   line-height: 1em;
 }
 
-.add-back-buttons{
+.add-back-buttons {
   margin: 30px 0;
 }
 
-.signError{
+.signError {
   color: red;
   font: 1.3em 'Open Sans', sans-serif;
 }
@@ -273,13 +270,14 @@ span.psw {
   Header of Main
 */
 
-#select {
+#header {
   width: 100%;
   background: white;
   box-shadow: 0 5px 5px rgba(176, 176, 176, 0.4);
   padding: 20px;
   position: absolute;
   z-index: 10;
+  height: auto;
 }
 
 .auth {
@@ -292,7 +290,7 @@ span.psw {
 }
 
 .menu > .menu__item,
-.sub_menu > a{
+.sub_menu > a {
   -webkit-transition: padding .05s linear;
   -moz-transition: padding .05s linear;
   -o-transition: padding .05s linear;
@@ -316,11 +314,11 @@ span.psw {
   font: 1em 'Open Sans', sans-serif;
 }
 
-.menu > .menu__item > a .fa{
+.menu > .menu__item > a .fa {
   display: inline;
 }
 
-.menu > .menu__item:hover .dropOut{
+.menu > .menu__item:hover .dropOut {
   opacity: 1;
 }
 
@@ -334,9 +332,9 @@ span.psw {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 6px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 1px 6px rgba(0,0,0,.15);
-  box-shadow: 0 1px 6px rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
+  -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
   -webkit-transition: all .1s ease-out;
   -moz-transition: all .1s ease-out;
   -o-transition: all .1s ease-out;
@@ -378,7 +376,7 @@ span.psw {
   color: white;
 }
 
-.sub_menu .sub_menu__item:hover{
+.sub_menu .sub_menu__item:hover {
   text-decoration: none;
 }
 
@@ -391,7 +389,7 @@ span.psw {
   transform: translateY(0px);
 }
 
-.sub_menu .sub_menu__item::after{
+.sub_menu .sub_menu__item::after {
   position: absolute;
   top: 100%;
   left: 0;
@@ -414,25 +412,38 @@ span.psw {
   padding: 10px 0;
 }
 
-.icon_username p{
+.icon_username p {
   text-align: center;
   margin: 0;
 }
 
-.icon_username span{
+.icon_username span {
   font-weight: 600;
+}
+
+.no_auth .button {
+  margin: 0;
+  padding: 9px 0;
+}
+
+.no_auth .button:before {
+  top: -140%;
+}
+
+.no_auth .button:hover:before {
+  top: -40%;
 }
 
 /*
   Types
 */
 
-.name_type{
+.name_type {
   font: 1.3em 'Open Sans, sans-serif';
   vertical-align: middle !important;
 }
 
-.button input[type="file"]{
+.button input[type="file"] {
   opacity: 0;
   position: absolute;
   top: 0;
@@ -442,13 +453,13 @@ span.psw {
   cursor: pointer;
 }
 
-.filename{
+.filename {
   height: 30px;
   display: table;
   clear: both;
 }
 
-.filename span{
+.filename span {
   display: table-cell;
   vertical-align: middle;
   font: 1.3em 'Open Sans, sans-serif';
@@ -458,11 +469,11 @@ span.psw {
   Places
 */
 
-.errorSelectize{
+.errorSelectize {
   font: 1.3em 'Open Sans, sans-serif';
 }
 
-textarea{
+textarea {
   resize: none;
 }
 
@@ -479,28 +490,31 @@ textarea{
     font-size: 2em;
   }
 
+  #flex{
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .select{
+    top: 35px;
+    padding: 0 10px;
+  }
+
+  .auth{
+    top: 5px;
+    right: 0;
+  }
+
+  #header{
+    height: 100px;
+  }
+
 }
 
 @media (max-width: 450px) {
 
-  .selectize,
-  .auth {
-    width: 75%;
-  }
-
-  .menu .menu__item a{
+  .menu .menu__item a {
     padding: 0;
   }
 
-}
-
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-
-  .cancelbtn {
-    width: 100%;
-  }
 }

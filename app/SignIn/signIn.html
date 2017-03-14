@@ -5,8 +5,7 @@
                 <div>
                     <span class="close" title="Вернуться назад" ng-click="back()">&times;</span>
                 </div>
-
-                <div>
+                <div class="form-group">
                     <label><b>Имя пользователя:*</b></label>
                     <input type="text"
                            name="username"
@@ -17,8 +16,7 @@
                     <p ng-show="form.username.$invalid && !form.username.$pristine" class="help-block">Введите имя
                         пользователя</p>
                 </div>
-
-                <div>
+                <div class="form-group">
                     <label><b>Пароль:*</b></label>
                     <input type="password"
                            name="password"
@@ -31,10 +29,24 @@
                         пароль</p>
                 </div>
                 <p class="signError">{{error}}</p>
-                <button class="btn btn-success" id="LoginSignIn" type="submit"
-                        ng-disabled="form.$invalid" ng-click="LoginBtnClick()">Войти
-                </button>
-                <a class="btn btn-danger" id="CloseSignIn" href="#/" ng-click="back()">Назад</a>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
+                            <button class="button icon-login"
+                                    id="LoginSignIn"
+                                    type="submit"
+                                    ng-disabled="form.$invalid"
+                                    ng-click="LoginBtnClick()">
+                                <span>Войти</span>
+                            </button>
+                        </div>
+                        <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
+                            <a class="button icon-home" id="CloseSignIn" href="#/" ng-click="back()">
+                                <span>На Главную</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
