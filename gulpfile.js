@@ -47,7 +47,8 @@ var styles = [
   'node_modules/selectize/dist/css/selectize.default.css',
   'node_modules/sweetalert/dist/sweetalert.css',
   'node_modules/angular-loading-bar/build/loading-bar.min.css',
-  './app/assets/css/*.css'
+  './app/assets/css/style.css',
+  './app/assets/css/fonts.css'
 ];
 
 gulp.task('jshint', function () {
