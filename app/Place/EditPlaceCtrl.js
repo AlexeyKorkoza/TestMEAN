@@ -41,23 +41,10 @@ angular
         placeService.update($scope.editData, $routeParams.id).then(function (response) {
           $scope.error = "";
           if (response.data.code) {
-            swal({
-              title: "Данные о месте не обновлены",
-              text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-              confirmButtonText: "ОК",
-              html: true
-            })
+            swal("Данные о месте не обновлены", "Проверьте введенные данные", "error");
           } else {
-            swal({
-              title: "Данные о месте успешно обновлены",
-              text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-              confirmButtonText: "ОК",
-              html: true
-            }), function (isConfirm) {
-              if (isConfirm) {
-                $location.path('/places');
-              }
-            }
+            swal("Данные о месте успешно обновлены", "Пожалуйста, нажмите ОК для продолжения", "success");
+            $location.url('/places');
           }
         });
       } else {

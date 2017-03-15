@@ -29,23 +29,10 @@ angular
         placeService.create($scope.addData).then(function (response) {
           $scope.error = "";
           if (response.data.code) {
-            swal({
-              title: "Место не добавлено",
-              text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-              confirmButtonText: "ОК",
-              html: true
-            })
+            swal("Место не добавлено", "Место уже добавлено", "error");
           } else {
-            swal({
-              title: "Место добавлено",
-              text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-              confirmButtonText: "ОК",
-              html: true
-            }), function (isConfirm) {
-              if (isConfirm) {
-                $location.path('/places');
-              }
-            }
+            swal("Место добавлено", "Пожалуйста, нажмите ОК для продолжения", "success");
+            $location.url('/places');
           }
         });
       } else {

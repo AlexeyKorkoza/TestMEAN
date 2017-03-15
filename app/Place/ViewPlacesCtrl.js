@@ -9,27 +9,14 @@ angular
       .then(function (response) {
         $scope.places = response.data;
         if ($scope.places.length < 1) {
-          swal({
-            title: "Список мест пуст",
-            text: '<span style="color:#F8BB86">Пожалуйста, добавьте новое место<span>',
-            confirmButtonText: "ОК",
-            html: true
-          });
+          swal("Список мест пуст", "Пожалуйста, добавьте новый место", "error");
+          $location.url('/types/add');
         }
       });
 
     $scope.delete = function (id) {
       placeService.delete(id).then(function (response) {
-        swal({
-          title: "Тип успешно удален",
-          text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-          confirmButtonText: "ОК",
-          html: true
-        }), function (isConfirm) {
-          if (isConfirm) {
-            $location.path('/places');
-          }
-        }
+        swal("Место успешно удалено", "Пожалуйста, нажмите ОК для продолжения", "success");
       });
     };
 
