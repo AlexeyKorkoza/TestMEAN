@@ -12,21 +12,11 @@ angular
     $scope.update = function () {
       userService.updateUserInfo($routeParams.id, $scope.userData)
         .then(function (response) {
-          if(response.data.code) {
-            swal({
-              title: "Информация не обновлена",
-              text: "Повторите попытку",
-              confirmButtonText: "ОК",
-              html: true
-            });
+          if (response.data.code) {
+            swal("Информация не обновлена", "Повторите попытку", "error");
           }
           else {
-            swal({
-              title: "Информация успешно обновлена",
-              text: "После выхода данные будут успешные применены",
-              confirmButtonText: "ОК",
-              html: true
-            });
+            swal("Информация успешно обновлена", "После выхода данные будут успешные применены", "success");
           }
         });
 
@@ -41,12 +31,7 @@ angular
       };
       userService.updateUserInfo($routeParams.id, data)
         .then(function () {
-          swal({
-            title: "Информация успешно обновлена",
-            text: "После выхода данные будут успешные применены",
-            confirmButtonText: "ОК",
-            html: true
-          });
+          swal("Информация успешно обновлена", "После выхода данные будут успешные применены", "success");
         });
     };
 
