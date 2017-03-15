@@ -35,38 +35,25 @@ angular
     $scope.add = function (file) {
       Upload.rename(file, $scope.addTypeData.typename);
       var max = 0;
-      $scope.getAllTypes.forEach(function (item) {
+      if ($scope.getAllTypes.length > 0) {
+        max = $scope.getAllTypes[0].id_type;
+        $scope.getAllTypes.forEach(function (item) {
 
-        if (item.id_type > max) {
-          max = item.id_type + 1;
-        }
+          if (item.id_type > max) {
+            max = item.id_type;
+          }
 
-      });
-      $scope.addTypeData.id = ++max;
+        });
+      }
+      max++;
+      $scope.addTypeData.id = max;
       typeService.create($scope.addTypeData, file).then(function (response) {
         if (response.data.code) {
-          swal({
-            title: "Новый тип не добавлен",
-            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-            confirmButtonText: "ОК",
-            html: true
-          }), function (isConfirm) {
-            if (isConfirm) {
-              $location.path('/types');
-            }
-          }
+          swal("Новый тип не добавлен", "Тип объекта уже существует", "error");
         } else {
           $scope.addTypeData = response.data;
-          swal({
-            title: "Новый тип успешно добавлен",
-            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-            confirmButtonText: "ОК",
-            html: true
-          }), function (isConfirm) {
-            if (isConfirm) {
-              $location.path('/types');
-            }
-          }
+          swal("Новый тип успешно добавлен", "Пожалуйста, нажмите ОК для продолжения", "success");
+          $location.url('/types');
         }
       });
     };

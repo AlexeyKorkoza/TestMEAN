@@ -9,28 +9,19 @@ angular
       .then(function (response) {
         $scope.types = response.data;
         if($scope.types.length < 1) {
-          swal({
-            title: "Список типов объектов пуст",
-            text: '<span style="color:#F8BB86">Пожалуйста, добавьте новый тип объекта<span>',
-            confirmButtonText: "ОК",
-            html: true
-          })
+          swal("Список типов объектов пуст", "Пожалуйста, добавьте новый тип объекта", "error");
+          $location.url('/types/add');
         }
       });
 
     $scope.delete = function (id) {
       typeService.delete(id).then(function (response) {
-        swal({
-          title: "Тип успешно удален",
-          text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-          confirmButtonText: "ОК",
-          html: true
-        }), function (isConfirm) {
-          if (isConfirm) {
-            $location.path('/types');
-          }
-        }
+        swal("Тип успешно удален", "Пожалуйста, нажмите ОК для продолжения", "success");
       });
     };
+
+    $scope.add = function () {
+      typeService.setTypes($scope.types);
+    }
 
   });

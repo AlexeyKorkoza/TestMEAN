@@ -24,27 +24,10 @@ angular
       }
       typeService.update($routeParams.id, $scope.editData, file).then(function (response) {
         if (response.data.code) {
-          swal({
-            title: "Тип не отредактирован",
-            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-            confirmButtonText: "ОК",
-            html: true
-          }), function (isConfirm) {
-            if (isConfirm) {
-              $location.path('/types');
-            }
-          }
+          swal("Тип не отредактирован", "Пожалуйста, проверьте введенные данные", "error");
         } else {
-          swal({
-            title: "Тип успешно отредактирован",
-            text: '<span style="color:#F8BB86">Пожалуйста, нажмите ОК для продолжения<span>',
-            confirmButtonText: "ОК",
-            html: true
-          }), function (isConfirm) {
-            if (isConfirm) {
-              $location.path('/types');
-            }
-          }
+          swal("Тип успешно отредактирован", "Пожалуйста, нажмите ОК для продолжения", "success");
+          $location.url('/types');
         }
       });
     };
