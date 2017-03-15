@@ -28,7 +28,7 @@ angular
     });
 
     $scope.myConfig = {
-      create: true,
+      create: false,
       valueField: 'value',
       labelField: 'text',
       delimiter: '|',

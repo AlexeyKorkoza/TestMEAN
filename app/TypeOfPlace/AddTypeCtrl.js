@@ -6,31 +6,12 @@ angular
 
     $scope.filename = "Иконка не выбрана";
     $scope.changeFilename = function (file) {
-      if(file) {
+      if (file) {
         $scope.filename = $scope.addTypeData.file.name;
       } else {
         $scope.filename = "Иконка не выбрана";
       }
     };
-
-    $scope.getAllTypes = "";
-    $scope.myConfig = {
-      create: true,
-      valueField: 'value',
-      labelField: 'text',
-      delimiter: '|',
-      placeholder: 'Выберите тип объекта',
-      maxItems: 1
-    };
-
-    $scope.getAllTypes = typeService.getTypes();
-    $scope.select = [];
-    for (var i = 0; i < $scope.getAllTypes.length; i++) {
-      $scope.select.push({
-        value: $scope.getAllTypes[i].id_type,
-        text: $scope.getAllTypes[i].name_type
-      })
-    }
 
     $scope.add = function (file) {
       Upload.rename(file, $scope.addTypeData.typename);

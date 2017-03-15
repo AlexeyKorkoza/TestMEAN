@@ -5,7 +5,7 @@ angular
   .controller('addPlaceCtrl', function ($scope, $location, $timeout, typeService, placeService) {
 
     $scope.myConfig = {
-      create: true,
+      create: false,
       valueField: 'value',
       labelField: 'text',
       delimiter: '|',
