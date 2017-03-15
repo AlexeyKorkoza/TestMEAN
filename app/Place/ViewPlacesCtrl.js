@@ -14,9 +14,10 @@ angular
         }
       });
 
-    $scope.delete = function (id) {
+    $scope.delete = function (id, index) {
       placeService.delete(id).then(function (response) {
         swal("Место успешно удалено", "Пожалуйста, нажмите ОК для продолжения", "success");
+        $scope.places.splice(index, 1);
       });
     };
 
