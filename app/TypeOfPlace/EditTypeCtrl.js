@@ -15,7 +15,9 @@ angular
 
     typeService.getTypeById($routeParams.id)
       .then(function (response) {
-        $scope.typename = response.data.name_type;
+        $scope.editData = {
+          typename: response.data.name_type
+        }
       });
 
     $scope.update = function (file) {
