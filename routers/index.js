@@ -45,7 +45,7 @@ router.delete('', function (req, res) {
 });
 
 router.get('*', function (req, res) {
-  res.sendFile(path.resolve('app/index.html'));
+  res.sendFile(path.resolve('./index.html'));
 });
 
 module.exports = router;

@@ -16,7 +16,6 @@ var app = express();
 mongoose.Promise = global.Promise;
 mongoose.connect(config.get('db'));
 
-app.use(express.static(__dirname + "/app"));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -28,6 +27,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(flash());
+app.use(serveStatic(__dirname + ''));
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");

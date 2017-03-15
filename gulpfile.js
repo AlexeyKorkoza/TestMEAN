@@ -51,26 +51,11 @@ var styles = [
   './app/assets/css/fonts.css'
 ];
 
-gulp.task('jshint', function () {
-  return gulp.src([
-    './js/*.js',
-    './js/Main/*.js',
-    './js/SignIn/*.js',
-    './js/SignUp/*.js',
-    './js/Place/*.js',
-    './js/directivies/*.js',
-    './js/TypeOfPlace/*.js',
-    './js/UserProfile/*.js'
-  ])
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-});
-
 gulp.task('scripts', function () {
   return gulp.src(scripts)
     .on('error', console.log)
     .pipe(concat('build.js'))
-    .pipe(gulp.dest('./app/build/'))
+    .pipe(gulp.dest('./build/'))
     .pipe(livereload());
 });
 
@@ -83,7 +68,7 @@ gulp.task('styles', function () {
     .pipe(cssmin())
     .pipe(csslint())
     .pipe(concat('build.css'))
-    .pipe(gulp.dest('./app/build/'))
+    .pipe(gulp.dest('./build/'))
     .pipe(livereload());
 });
 
