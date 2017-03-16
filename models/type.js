@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var Type = mongoose.model('Type', {
+var Type = mongoose.model("Type", {
   id_type: Number,
   name_type: {
     type: String,

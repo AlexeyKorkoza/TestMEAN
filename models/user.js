@@ -1,13 +1,13 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var User = mongoose.model('User', {
+var User = mongoose.model("User", {
   username: {
-    type:String,
+    type: String,
     unique: true
   },
   email: {
-    type:String,
+    type: String,
     unique: true
   },
   password: String,

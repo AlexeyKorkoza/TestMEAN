@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var Place = mongoose.model('Place', {
+var Place = mongoose.model("Place", {
   id_place: Number,
   name_place: String,
   description: String,

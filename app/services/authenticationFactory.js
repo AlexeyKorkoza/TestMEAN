@@ -1,21 +1,19 @@
 angular
-  .module('myApp')
-  .factory('authenticationService', function ($http, $localStorage, $location) {
-
+  .module("myApp")
+  .factory("authenticationService", function($http, $localStorage, $location) {
     return {
-
-      login: function (data) {
-        return $http.post('/auth/login', data);
+      login: function(data) {
+        return $http.post("/auth/login", data);
       },
 
-      signup: function (data) {
-        return $http.post('/auth/signup', data);
+      signup: function(data) {
+        return $http.post("/auth/signup", data);
       },
 
-      logout: function () {
+      logout: function() {
         delete $localStorage.currentUser;
-        $http.defaults.headers.common.Authorization = '';
-        $location.path('/signin');
+        $http.defaults.headers.common.Authorization = "";
+        $location.path("/signin");
       }
-    }
+    };
   });
