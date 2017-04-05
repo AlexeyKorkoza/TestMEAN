@@ -1,16 +1,12 @@
 "use strict";
 
 var gulp = require("gulp"),
-  watch = require("gulp-watch"),
   autoprefixer = require("gulp-autoprefixer"),
-  uglify = require("gulp-uglify"),
   cssmin = require("gulp-minify-css"),
   livereload = require("gulp-livereload"),
   concat = require("gulp-concat"),
   csslint = require("gulp-csslint"),
-  jscpd = require("gulp-jscpd"),
-  nodemon = require("gulp-nodemon"),
-  jshint = require("gulp-jshint");
+  nodemon = require("gulp-nodemon");
 
 var scripts = [
   "node_modules/jquery/dist/jquery.min.js",
@@ -54,7 +50,6 @@ var styles = [
 gulp.task("scripts", function() {
   return gulp
     .src(scripts)
-    .on("error", console.log)
     .pipe(concat("build.js"))
     .pipe(gulp.dest("./build/"))
     .pipe(livereload());
