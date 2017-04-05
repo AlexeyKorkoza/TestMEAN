@@ -1,13 +1,11 @@
 var express = require("express");
 var config = require("./config");
-var path = require("path");
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
 var serveStatic = require("serve-static");
 var methodOverride = require("method-override");
 var mongoose = require("mongoose");
 var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
 var fs = require("fs");
 var flash = require("connect-flash");
 var session = require("express-session");
@@ -53,10 +51,4 @@ if (!fs.existsSync("./uploads")) {
 var initPassport = require("./Passport/passport-init");
 initPassport(passport);
 
-app.listen(config.get("port"), function(error) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log("Express server listening on port " + config.get("port"));
-  }
-});
+app.listen(config.get("port"));
