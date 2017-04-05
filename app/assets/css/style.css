@@ -49,10 +49,6 @@ html, body {
   text-align: center;
 }
 
-.button:focus {
-  outline: none;
-}
-
 .button:before {
   color: white;
   left: 0;
@@ -73,6 +69,7 @@ html, body {
   z-index: -1;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -136,8 +133,8 @@ button {
   padding: 16px;
 }
 
-#LoginSignIn,
-#CloseSignIn {
+.LoginSignIn,
+.CloseSignIn {
   padding: 15px;
   font: 1.3em 'Open Sans', sans-serif;
   margin-top: 20px;
@@ -183,6 +180,7 @@ button {
 .animate {
   -moz-animation: animatezomm 0.6s;
   -webkit-animation: animatezoom 0.6s;
+  -o-animation: aanimatezoom 0.6s;
   animation: animatezoom 0.6s
 }
 
@@ -201,6 +199,24 @@ button {
   }
   to {
     -webkit-transform: scale(1)
+  }
+}
+
+@-moz-keyframes animatezoom {
+  from {
+    -moz-transform: scale(0)
+  }
+  to {
+    -moz-transform: scale(1)
+  }
+}
+
+@-o-keyframes animatezoom {
+  from {
+    -o-transform: scale(0)
+  }
+  to {
+    -o-transform: scale(1)
   }
 }
 
