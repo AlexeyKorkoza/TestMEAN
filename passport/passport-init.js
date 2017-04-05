@@ -1,4 +1,3 @@
-var mongoose = require('mongoose');
 var User = require('../models/user');
 var LocalStrategy = require('passport-local').Strategy;
 var crypto = require('crypto');
@@ -7,13 +6,11 @@ var config = require('../config');
 module.exports = function (passport) {
 // Passport needs to be able to serialize and deserialize users to support persistent login sessions
   passport.serializeUser(function (user, done) {
-    console.log('serializing user:', user.username);
     done(null, user._id);
   });
 
   passport.deserializeUser(function (id, done) {
     User.findById(id, function (err, user) {
-      console.log('deserializing user:', user.username);
       done(err, user);
     });
   });
