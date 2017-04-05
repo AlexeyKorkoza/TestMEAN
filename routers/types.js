@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 var typeModel = require("../models/type");
-var mongoose = require("mongoose");
 var multer = require("multer");
 var fs = require("fs");
 
@@ -78,10 +77,7 @@ router.put("/:id", function(req, res) {
       var arr = result.image.split(".");
       var index = arr.length - 1;
       var newName = req.body.data.typename + "." + arr[index];
-      fs.rename("uploads/" + result.image, "uploads/" + newName, function(err) {
-        if (err) console.log(err);
-      });
-
+      fs.rename("uploads/" + result.image, "uploads/" + newName);
       result.name_type = req.body.data.typename;
       result.image = newName;
       result.save(function(err) {
@@ -108,9 +104,7 @@ router.delete("/:id", function(req, res) {
 
 function removeImage(id) {
   typeModel.findOne({ id_type: id }, function(err, result) {
-    if (err) {
-      console.log(err);
-    } else {
+    if (!err) {
       fs.unlink("uploads/" + result.image);
     }
   });
