@@ -4,7 +4,7 @@ angular
   .module("myApp")
   .controller(
     "mainCtrl",
-    function($location, $scope, $http, $timeout, authenticationService, $localStorage, cfpLoadingBar) {
+    function ($location, $scope, $http, $timeout, authenticationService, $localStorage, cfpLoadingBar) {
       if ($localStorage.currentUser) {
         $scope.isAuthenticated = true;
         $scope.id = $localStorage.currentUser.id;
@@ -38,8 +38,8 @@ angular
       };
 
       $scope.select = [];
-      $scope.getAllTypes = function() {
-        $http.post("", { allTypes: "allTypes" }).then(
+      $scope.getAllTypes = function () {
+        $http.post("", {allTypes: "allTypes"}).then(
           function Success(response) {
             $scope.getData = response.data;
             $scope.select.push({
@@ -53,50 +53,26 @@ angular
               });
             }
           },
-          function myError(response) {
-            swal(
-              {
-                title: "Данные с сервера не загрузились!",
-                text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
-                confirmButtonText: "Обновить страницу",
-                html: true
-              },
-              function(isConfirm) {
-                if (isConfirm) {
-                  location.reload();
-                }
-              }
-            );
+          function myError() {
+            dataNoLoad();
           }
         );
       };
 
-      $scope.getAllPlaces = function() {
-        $http.post("", { allPlaces: "allPlaces" }).then(
+      $scope.getAllPlaces = function () {
+        $http.post("", {allPlaces: "allPlaces"}).then(
           function Success(response) {
             $scope.addPlaceInMap(response.data);
           },
-          function Error(response) {
-            swal(
-              {
-                title: "Данные с сервера не загрузились!",
-                text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
-                confirmButtonText: "Обновить страницу",
-                html: true
-              },
-              function(isConfirm) {
-                if (isConfirm) {
-                  location.reload();
-                }
-              }
-            );
+          function Error() {
+            dataNoLoad();
           }
         );
       };
 
-      $scope.addPlaceInMap = function(response) {
+      $scope.addPlaceInMap = function (response) {
         if ($scope.getData !== "") {
-          response.forEach(function(item, i) {
+          response.forEach(function (item, i) {
             var typeOfPlace = $scope.getData[item.id_type - 1].name_type;
             var nameOfImage = $scope.getData[item.id_type - 1].image;
             var lat = parseFloat(item.lat);
@@ -107,12 +83,12 @@ angular
               focus: false,
               draggable: false,
               message: '<b>"' +
-                item.name_place +
-                '",</b> ' +
-                typeOfPlace +
-                "<br>" +
-                item.address +
-                "<br/>",
+              item.name_place +
+              '",</b> ' +
+              typeOfPlace +
+              "<br>" +
+              item.address +
+              "<br/>",
               icon: {
                 iconSize: [54, 54],
                 iconAnchor: [16, 37],
@@ -123,42 +99,27 @@ angular
           });
           cfpLoadingBar.complete();
         } else {
-          swal(
-            {
-              title: "Данные с сервера не загрузились!",
-              text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
-              confirmButtonText: "Обновить страницу",
-              html: true
-            },
-            function(isConfirm) {
-              if (isConfirm) {
-                location.reload();
-              }
-            }
-          );
+            dataNoLoad();
         }
       };
 
-      $scope.getByType = function(type) {
+      $scope.getByType = function (type) {
         $scope.typeIsNumber = parseInt(type);
         cfpLoadingBar.start();
         if ($scope.typeIsNumber === 0) {
           $scope.getAllPlaces();
         } else {
           $scope.markers = {};
-          $http.post("", { type: $scope.typeIsNumber }).then(
+          $http.post("", {type: $scope.typeIsNumber}).then(
             function Success(response) {
               $scope.places = response.data;
               $scope.addPlaceInMap($scope.places);
-            },
-            function Error(response) {
-              console.log(response);
             }
           );
         }
       };
 
-      $scope.logout = function() {
+      $scope.logout = function () {
         authenticationService.logout();
       };
 
@@ -166,5 +127,21 @@ angular
       $scope.getAllTypes();
       $scope.getAllPlaces();
       cfpLoadingBar.complete();
+
+      function dataNoLoad() {
+        swal(
+          {
+            title: "Данные с сервера не загрузились!",
+            text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
+            confirmButtonText: "Обновить страницу",
+            html: true
+          },
+          function (isConfirm) {
+            if (isConfirm) {
+              location.reload();
+            }
+          }
+        );
+      }
     }
   );
