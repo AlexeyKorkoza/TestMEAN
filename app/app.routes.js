@@ -6,31 +6,31 @@ angular.module("myApp").config(function($routeProvider) {
       templateUrl: "app/Main/main.html"
     })
     .when("/signin", {
-      templateUrl: "app/SignIn/signIn.html"
+      templateUrl: "app/SignIn/sign-in.html"
     })
     .when("/signup", {
-      templateUrl: "app/SignUp/signUp.html"
+      templateUrl: "app/SignUp/sign-up.html"
     })
     .when("/users/:id", {
-      templateUrl: "app/UserProfile/userProfile.html"
+      templateUrl: "app/UserProfile/user-profile.html"
     })
     .when("/types", {
-      templateUrl: "app/TypeOfPlace/ViewTypes.html"
+      templateUrl: "app/TypeOfPlace/view-types.html"
     })
     .when("/types/add", {
-      templateUrl: "app/TypeOfPlace/AddType.html"
+      templateUrl: "app/TypeOfPlace/add-type.html"
     })
     .when("/types/:id", {
-      templateUrl: "app/TypeOfPlace/EditType.html"
+      templateUrl: "app/TypeOfPlace/edit-type.html"
     })
     .when("/places", {
-      templateUrl: "app/Place/ViewPlaces.html"
+      templateUrl: "app/Place/view-places.html"
     })
     .when("/places/add", {
-      templateUrl: "app/Place/addPlace.html"
+      templateUrl: "app/Place/add-place.html"
     })
     .when("/places/:id", {
-      templateUrl: "app/Place/EditPlace.html"
+      templateUrl: "app/Place/edit-place.html"
     })
     .otherwise({ redirectTo: "/" });
 });

@@ -20,7 +20,7 @@ module.exports = function(config) {
       "app/assets/js/*.js",
 
       "app/*.js",
-      "app/Main/mainCtrl.js",
+      "app/Main/main.controller.js",
       "app/Place/*.js",
       "app/SignIn/*.js",
       "app/SignUp/*.js",
