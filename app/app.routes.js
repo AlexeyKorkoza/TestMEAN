@@ -12,16 +12,16 @@ angular.module("myApp").config(function($routeProvider) {
       templateUrl: "app/SignUp/sign-up.html"
     })
     .when("/users/:id", {
-      templateUrl: "app/UserProfile/user-profile.html"
+      templateUrl: "app/User/user-profile.html"
     })
     .when("/types", {
-      templateUrl: "app/TypeOfPlace/view-types.html"
+      templateUrl: "app/Type/view-types.html"
     })
     .when("/types/add", {
-      templateUrl: "app/TypeOfPlace/add-type.html"
+      templateUrl: "app/Type/add-type.html"
     })
     .when("/types/:id", {
-      templateUrl: "app/TypeOfPlace/edit-type.html"
+      templateUrl: "app/Type/edit-type.html"
     })
     .when("/places", {
       templateUrl: "app/Place/view-places.html"

@@ -24,8 +24,8 @@ module.exports = function(config) {
       "app/Place/*.js",
       "app/SignIn/*.js",
       "app/SignUp/*.js",
-      "app/TypeOfPlace/*.js",
-      "app/UserProfile/*.js",
+      "app/Type/*.js",
+      "app/User/*.js",
       "app/services/*.js",
       "app/test/*.js"
     ],

@@ -8,7 +8,7 @@ var gulp = require("gulp"),
   csslint = require("gulp-csslint"),
   nodemon = require("gulp-nodemon");
 
-var scripts = [
+var js = [
   "node_modules/jquery/dist/jquery.min.js",
   "node_modules/angular/angular.min.js",
   "node_modules/angular-route/angular-route.min.js",
@@ -32,11 +32,11 @@ var scripts = [
   "./app/Main/*.js",
   "./app/SignUp/*.js",
   "./app/Place/*.js",
-  "./app/TypeOfPlace/*.js",
-  "./app/UserProfile/*.js"
+  "./app/Type/*.js",
+  "./app/User/*.js"
 ];
 
-var styles = [
+var css = [
   "node_modules/bootstrap/dist/css/bootstrap.min.css",
   "node_modules/normalize.css/normalize.css",
   "node_modules/leaflet/dist/leaflet.css",
@@ -47,17 +47,17 @@ var styles = [
   "./app/assets/css/fonts.css"
 ];
 
-gulp.task("scripts", function() {
+gulp.task("js", function() {
   return gulp
-    .src(scripts)
+    .src(js)
     .pipe(concat("build.js"))
     .pipe(gulp.dest("./build/"))
     .pipe(livereload());
 });
 
-gulp.task("styles", function() {
+gulp.task("css", function() {
   return gulp
-    .src(styles)
+    .src(css)
     .pipe(
       autoprefixer({
         browsers: ["last 2 versions"],
@@ -71,13 +71,15 @@ gulp.task("styles", function() {
     .pipe(livereload());
 });
 
+gulp.task('watch', ['js'], function () {
+  gulp.watch('app/**/*.js', ['js'])
+});
+
 gulp.task("server", function() {
-  gulp.start("styles");
-  gulp.start("scripts");
   nodemon({
     script: "server.js",
     env: { NODE_ENV: "development" }
   });
 });
 
-gulp.task("start", ["server"]);
+gulp.task("start", ["server", "css", "js", "watch"]);
