@@ -2,46 +2,58 @@
 
 angular
   .module("myApp")
-  .controller(
-    "addPlaceCtrl",
-    function($scope, $location, $timeout, typeService, placeService) {
-      $scope.myConfig = {
-        create: false,
-        valueField: "value",
-        labelField: "text",
-        delimiter: "|",
-        placeholder: "Выберите тип объекта",
-        maxItems: 1
-      };
+  .controller("addPlaceCtrl", addPlaceCtrl);
 
-      $scope.select = [];
-      typeService.getAllTypes().then(function(response) {
-        for (var i = 0; i < response.data.length; i++) {
-          $scope.select.push({
-            value: response.data[i].id_type,
-            text: response.data[i].name_type
-          });
+addPlaceCtrl.$inject = ['$location', 'typeService', 'placeService'];
+
+function addPlaceCtrl($location, typeService, placeService) {
+
+  var vm = this;
+  vm.select = [];
+  vm.activate = activate;
+  vm.add = add;
+
+  activate();
+
+  function activate() {
+
+    vm.myConfig = {
+      create: false,
+      valueField: "value",
+      labelField: "text",
+      delimiter: "|",
+      placeholder: "Выберите тип объекта",
+      maxItems: 1
+    };
+
+    typeService.getAllTypes().then(function (response) {
+      for (var i = 0; i < response.data.length; i++) {
+        vm.select.push({
+          value: response.data[i].id_type,
+          text: response.data[i].name_type
+        });
+      }
+    });
+
+  }
+
+  function add() {
+    if (vm.addData.id_type) {
+      placeService.create(vm.addData).then(function (response) {
+        vm.error = "";
+        if (response.data.code) {
+          swal("Место не добавлено", "Место уже добавлено", "error");
+        } else {
+          swal(
+            "Место добавлено",
+            "Пожалуйста, нажмите ОК для продолжения",
+            "success"
+          );
+          $location.url("/places");
         }
       });
-
-      $scope.add = function() {
-        if ($scope.addData.id_type) {
-          placeService.create($scope.addData).then(function(response) {
-            $scope.error = "";
-            if (response.data.code) {
-              swal("Место не добавлено", "Место уже добавлено", "error");
-            } else {
-              swal(
-                "Место добавлено",
-                "Пожалуйста, нажмите ОК для продолжения",
-                "success"
-              );
-              $location.url("/places");
-            }
-          });
-        } else {
-          $scope.error = "Выберите тип объекта";
-        }
-      };
+    } else {
+      vm.error = "Выберите тип объекта";
     }
-  );
+  }
+}

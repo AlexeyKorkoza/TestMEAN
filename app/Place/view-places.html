@@ -1,4 +1,4 @@
-<div ng-controller="ViewPlacesCtrl">
+<div ng-controller="viewPlacesCtrl as vm">
     <div class="container">
         <div class="row">
             <div class="well clearfix">
@@ -27,7 +27,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="place in places">
+                    <tr ng-repeat="place in vm.places">
                         <td>{{place.name_place}}</td>
                         <td>{{place.description}}</td>
                         <td>{{place.lat}}</td>
@@ -41,7 +41,7 @@
                                     </a>
                                 </div>
                                 <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
-                                    <a class="button icon-remove" ng-click="delete(place._id, $index)">
+                                    <a class="button icon-remove" ng-click="vm.remove(place._id, $index)">
                                         <span>Удалить</span></a>
                                 </div>
                             </div>

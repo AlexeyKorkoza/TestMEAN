@@ -1,4 +1,4 @@
-<div ng-controller="addPlaceCtrl">
+<div ng-controller="addPlaceCtrl as vm">
     <div class="container">
         <div class="row">
             <div class="well clearfix">
@@ -7,16 +7,16 @@
                     <form class="form-horizontal" name="addForm" novalidate>
                         <div class="form-group">
                             <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Тип объекта:</label>
-                            <selectize config='myConfig' ng-disabled='disable' options='select'
-                                       ng-model="addData.id_type"></selectize>
-                            <span class="errorSelectize">{{error}}</span>
+                            <selectize config='vm.myConfig' ng-disabled='disable' options='vm.select'
+                                       ng-model="vm.addData.id_type"></selectize>
+                            <span class="errorSelectize">{{vm.error}}</span>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Название места:</label>
                             <input class="form-control"
                                    type="text"
                                    name="typename"
-                                   ng-model="addData.name_place"
+                                   ng-model="vm.addData.name_place"
                                    required/>
                             <p ng-show="addForm.typename.$invalid && !addForm.typename.$pristine"
                                class="help-block">Введите имя название места</p>
@@ -26,7 +26,7 @@
                             <textarea class="form-control"
                                       type="text"
                                       name="description"
-                                      ng-model="addData.description"
+                                      ng-model="vm.addData.description"
                                       required></textarea>
                             <p ng-show="addForm.description.$invalid && !addForm.description.$pristine"
                                class="help-block">Введите описание места</p>
@@ -36,7 +36,7 @@
                             <input class="form-control"
                                    type="text"
                                    name="latitude"
-                                   ng-model="addData.lat"
+                                   ng-model="vm.addData.lat"
                                    required/>
                             <p ng-show="addForm.latitude.$invalid && !addForm.latitude.$pristine"
                                class="help-block">Введите широту</p>
@@ -46,7 +46,7 @@
                             <input class="form-control"
                                    type="text"
                                    name="longitude"
-                                   ng-model="addData.lng"
+                                   ng-model="vm.addData.lng"
                                    required/>
                             <p ng-show="addForm.longitude.$invalid && !addForm.longitude.$pristine"
                                class="help-block">Введите долготу</p>
@@ -56,7 +56,7 @@
                             <textarea class="form-control"
                                       type="text"
                                       name="address"
-                                      ng-model="addData.address"
+                                      ng-model="vm.addData.address"
                                       required></textarea>
                             <p ng-show="addForm.address.$invalid && !addForm.address.$pristine"
                                class="help-block">Введите адрес места</p>
@@ -67,7 +67,7 @@
                                     <button class="button icon-add"
                                             ng-disabled="addForm.$invalid"
                                             type="submit"
-                                            ng-click="add()">
+                                            ng-click="vm.add()">
                                         <span>Добавить</span>
                                     </button>
                                 </div>

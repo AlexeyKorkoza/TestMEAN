@@ -1,36 +1,52 @@
-angular.module("myApp").factory("placeService", function($http) {
-  var Places = "";
+'use strict';
 
-  function setPlaces(places) {
-    Places = places;
-  }
+angular
+  .module("myApp")
+  .factory("placeService",placeService);
 
-  function getPlaces() {
-    return Places;
-  }
+  placeService.$inject = ['$http'];
 
-  return {
-    setPlaces: setPlaces,
-    getPlaces: getPlaces,
+  function placeService($http){
 
-    getAllPlaces: function() {
+    var service = {
+      getAllPlaces: getAllPlaces,
+      create: create,
+      remove: remove,
+      update: update,
+      getPlaceById: getPlaceById,
+      setPlaces: setPlaces,
+      getPlaces: getPlaces,
+    };
+
+    return service;
+
+    function getAllPlaces () {
       return $http.get("/places");
-    },
+    }
 
-    create: function(data) {
+    function create(data) {
       return $http.post("/places/add", data);
-    },
+    }
 
-    delete: function(id) {
+    function remove(id) {
       return $http.delete("/places/" + id, { params: { id: id } });
-    },
+    }
 
-    update: function(data, id) {
+    function update(data, id) {
       return $http.put("/places/" + id, data);
-    },
+    }
 
-    getPlaceById: function(id) {
+    function getPlaceById(id) {
       return $http.get("/places/" + id);
     }
-  };
-});
+
+    var Places = "";
+
+    function setPlaces(places) {
+      Places = places;
+    }
+
+    function getPlaces() {
+      return Places;
+    }
+}
