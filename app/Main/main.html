@@ -1,10 +1,10 @@
-<div ng-controller="mainCtrl">
-    <div ng-if="isAuthenticated">
+<div data ng-controller="mainCtrl as vm">
+    <div ng-if="vm.isAuthenticated">
         <div class="header">
             <div class="row">
                 <div class="col-xs-8 col-lg-4 col-md-4 col-sm-5">
-                    <selectize config='myConfig' ng-disabled='disable' ng-change="getByType(type)" options='select'
-                               ng-model="type"></selectize>
+                    <selectize config='vm.myConfig' ng-disabled='disable' ng-change="vm.getByType(vm.type)" options='vm.select'
+                               ng-model="vm.type"></selectize>
                 </div>
                 <div class="col-xs-4 col-lg-4 col-md-4 col-sm-5 auth">
                     <nav>
@@ -42,12 +42,12 @@
             </div>
         </div>
     </div>
-    <div ng-if="!isAuthenticated">
+    <div ng-if="!vm.isAuthenticated">
         <div class="header mob_header">
             <div class="row">
                 <div class="col-xs-12 col-lg-4 col-md-4 col-sm-5 mob_select">
-                    <selectize config='myConfig' ng-disabled='disable' ng-change="getByType(type)" options='select'
-                               ng-model="type"></selectize>
+                    <selectize config='vm.myConfig' ng-disabled='disable' ng-change="vm.getByType(type)" options='vm.select'
+                               ng-model="vm.type"></selectize>
                 </div>
                 <div class="col-xs-12 col-lg-4 col-md-4 col-sm-5 no_auth">
                     <div class="row">
@@ -66,5 +66,5 @@
             </div>
         </div>
     </div>
-    <leaflet lf-center="grodno" markers="markers" height="100%" width="100%"></leaflet>
+    <leaflet lf-center="vm.grodno" markers="vm.markers" height="100%" width="100%"></leaflet>
 </div>
