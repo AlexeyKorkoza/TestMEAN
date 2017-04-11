@@ -1,4 +1,25 @@
-angular.module("myApp").factory("typeService", function($http, Upload) {
+"use strict";
+
+angular
+  .module("myApp")
+  .factory("typeService", typeService);
+
+typeService.$inject = ['$http', 'Upload'];
+
+function typeService($http, Upload) {
+
+  var service = {
+    setTypes: setTypes,
+    getTypes: getTypes,
+    getAllTypes: getAllTypes,
+    create: create,
+    update: update,
+    remove: remove,
+    getTypeById: getTypeById
+  };
+
+  return service;
+
   var Types = "";
 
   function setTypes(types) {
@@ -9,41 +30,37 @@ angular.module("myApp").factory("typeService", function($http, Upload) {
     return Types;
   }
 
-  return {
-    setTypes: setTypes,
-    getTypes: getTypes,
+  function getAllTypes() {
+    return $http.get("/types");
+  }
 
-    getAllTypes: function() {
-      return $http.get("/types");
-    },
+  function create(data, file) {
+    return Upload.upload({
+      url: "/types/add",
+      data: {
+        file: file,
+        data: data
+      }
+    });
+  }
 
-    create: function(data, file) {
-      return Upload.upload({
-        url: "/types/add",
-        data: {
-          file: file,
-          data: data
-        }
-      });
-    },
+  function update(id, data, file) {
+    return Upload.upload({
+      url: "/types/" + id,
+      method: "PUT",
+      data: {
+        file: file,
+        data: data
+      }
+    });
+  }
 
-    update: function(id, data, file) {
-      return Upload.upload({
-        url: "/types/" + id,
-        method: "PUT",
-        data: {
-          file: file,
-          data: data
-        }
-      });
-    },
+  function remove(id) {
+    return $http.delete("/types/" + id, {params: {id: id}});
+  }
 
-    delete: function(id) {
-      return $http.delete("/types/" + id, { params: { id: id } });
-    },
+  function getTypeById(id) {
+    return $http.get("/types/" + id);
+  }
 
-    getTypeById: function(id) {
-      return $http.get("/types/" + id);
-    }
-  };
-});
+}

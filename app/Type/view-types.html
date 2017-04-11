@@ -1,11 +1,11 @@
-<div ng-controller="ViewTypesCtrl">
+<div ng-controller="viewTypesCtrl as vm">
     <div class="container">
         <div class="row">
             <div class="well clearfix">
                 <h2>Список типов</h2>
                 <div class="row">
                     <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                        <a href="#/types/add" ng-click="add()" class="button icon-add">
+                        <a href="#/types/add" ng-click="vm.add()" class="button icon-add">
                             <span>Добавить тип</span>
                         </a>
                     </div>
@@ -23,7 +23,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="type in types">
+                    <tr ng-repeat="type in vm.types">
                         <td class="name_type">{{type.name_type}}</td>
                         <td>
                             <div class="row">
@@ -33,7 +33,7 @@
                                     </a>
                                 </div>
                                 <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
-                                    <a class="button icon-remove" ng-click="delete(type._id, $index)">
+                                    <a class="button icon-remove" ng-click="vm.remove(type._id, vm.$index)">
                                         <span>Удалить</span>
                                     </a>
                                 </div>

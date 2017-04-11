@@ -4,7 +4,7 @@ angular
   .module("myApp")
   .controller("viewPlacesCtrl", viewPlacesCtrl);
 
-viewPlacesCtrl.inject = ['$location', 'placeService'];
+viewPlacesCtrl.$inject = ['$location', 'placeService'];
 
 function viewPlacesCtrl($location, placeService) {
 

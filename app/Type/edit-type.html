@@ -1,4 +1,4 @@
-<div ng-controller="EditTypeCtrl">
+<div ng-controller="editTypeCtrl as vm">
     <div class="container">
         <div class="row">
             <div class="well clearfix">
@@ -9,8 +9,8 @@
                             <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Название типа объекта:</label>
                             <input class="form-control"
                                    name="typename"
-                                   ng-model="editData.typename"
-                                   value="{{editData.typename}}"
+                                   ng-model="vm.editData.typename"
+                                   value="{{vm.editData.typename}}"
                                    required />
                             <p ng-show="editForm.typename.$invalid && !editForm.typename.$pristine"
                                class="help-block">Введите имя типа объекта:</p>
@@ -23,18 +23,18 @@
                                         <span>Выберите иконку</span>
                                         <input type="file"
                                                ngf-select
-                                               ng-model="editData.file"
+                                               ng-model="vm.editData.file"
                                                name="file"
                                                accept="image/*"
                                                ngf-max-size="2MB"
                                                ngf-model-invalid="errorFile"
-                                               ng-change="changeFilename(editData.file)">
+                                               ng-change="vm.changeFilename(vm.editData.file)">
                                         <i ng-show="addForm.file.$error.maxSize">Большой размер файла
                                             {{errorFile.size / 1000000|number:1}}MB: максимум 2M</i>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-4 filename">
-                                    <span ng-model="filename">{{filename}}</span>
+                                    <span ng-model="filename">{{vm.filename}}</span>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                                     <button class="button icon-save"
                                             ng-disabled="editForm.$invalid"
                                             type="submit"
-                                            ng-click="update(editData.file)">
+                                            ng-click="vm.update(vm.editData.file)">
                                         <span>Сохранить</span>
                                     </button>
                                 </div>
