@@ -4,9 +4,9 @@ angular
   .module("myApp")
   .controller("mainCtrl", mainCtrl);
 
-mainCtrl.$inject = ['$http', 'authenticationService', '$localStorage', 'cfpLoadingBar'];
+mainCtrl.$inject = ['$http', '$location', '$localStorage', 'cfpLoadingBar', 'mainService'];
 
-function mainCtrl($http, authenticationService, $localStorage, cfpLoadingBar) {
+function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
 
   var vm = this;
   vm.getAllPlaces = getAllPlaces;
@@ -58,7 +58,7 @@ function mainCtrl($http, authenticationService, $localStorage, cfpLoadingBar) {
 
   function getAllTypes() {
     vm.select = [];
-    $http.post("", {allTypes: "allTypes"}).then(
+    mainService.getAllTypes().then(
       function Success(response) {
         vm.getData = response.data;
         vm.select.push({
@@ -79,7 +79,7 @@ function mainCtrl($http, authenticationService, $localStorage, cfpLoadingBar) {
   };
 
   function getAllPlaces() {
-    $http.post("", {allPlaces: "allPlaces"}).then(
+    mainService.getAllPlaces().then(
       function Success(response) {
         vm.addPlaceInMap(response.data);
       },
@@ -122,14 +122,14 @@ function mainCtrl($http, authenticationService, $localStorage, cfpLoadingBar) {
     }
   };
 
-  function getByType(type) {
-    vm.typeIsNumber = parseInt(type);
+  function getByType() {
+    vm.typeIsNumber = parseInt(vm.type);
     cfpLoadingBar.start();
     if (vm.typeIsNumber === 0) {
       vm.getAllPlaces();
     } else {
       vm.markers = {};
-      $http.post("", {type: vm.typeIsNumber}).then(
+      mainService.getByType(vm.typeIsNumber).then(
         function Success(response) {
           vm.places = response.data;
           vm.addPlaceInMap(vm.places);
@@ -139,7 +139,7 @@ function mainCtrl($http, authenticationService, $localStorage, cfpLoadingBar) {
   };
 
   function logout() {
-    authenticationService.logout();
+    mainService.logout();
   };
 
   function dataNoLoad() {

@@ -15,7 +15,7 @@ angular
       update: update,
       getPlaceById: getPlaceById,
       setPlaces: setPlaces,
-      getPlaces: getPlaces,
+      getPlaces: getPlaces
     };
 
     return service;

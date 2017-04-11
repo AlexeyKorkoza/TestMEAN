@@ -2,41 +2,46 @@
 
 angular
   .module('myApp')
-  .controller('signUpCtrl', function ($scope, $http, $location, $timeout, cfpLoadingBar, authenticationService) {
+  .controller('signUpCtrl', signUpCtrl);
 
-    $scope.back = function () {
-      $location.path('/');
-    };
+signUpCtrl.$inject = ['$location', 'cfpLoadingBar', 'signUpService'];
 
-    $scope.RegBtnClick = function () {
-      $scope.error = "";
-      $scope.formData.date = "";
-      var date = new Date();
-      if (date.getDay() < 10) {
-        $scope.formData.date = "0" + date.getDay() + ".";
-      } else {
-        $scope.formData.date = date.getDay() + ".";
-      }
-      if (date.getMonth() + 1 < 10) {
-        $scope.formData.date += "0" + (date.getMonth() + 1) + "." + date.getFullYear();
-      } else {
-        $scope.formData.date += date.getMonth() + 1 + "." + date.getFullYear();
-      }
-      authenticationService.signup($scope.formData)
-        .then(function (response) {
-          cfpLoadingBar.start();
-          if (response.data.state == 'success') {
-            $location.path('/');
-          }
-          if(response.data.state == 'failure'){
-            $scope.error = response.data.message;
-          }
-        })
-        .catch(function (response) {
-          console.log(response);
-        })
-        .finally(function () {
-          cfpLoadingBar.complete();
-        });
+function signUpCtrl($location, cfpLoadingBar, signUpService) {
+
+  var vm = this;
+  vm.error = "";
+  vm.back = back;
+  vm.RegBtnClick = RegBtnClick;
+
+  function back() {
+    $location.path('/');
+  };
+
+  function RegBtnClick() {
+    vm.formData.date = "";
+    var date = new Date();
+    if (date.getDay() < 10) {
+      vm.formData.date = "0" + date.getDay() + ".";
+    } else {
+      vm.formData.date = date.getDay() + ".";
     }
-  });
+    if (date.getMonth() + 1 < 10) {
+      vm.formData.date += "0" + (date.getMonth() + 1) + "." + date.getFullYear();
+    } else {
+      vm.formData.date += date.getMonth() + 1 + "." + date.getFullYear();
+    }
+    signUpService.signup(vm.formData)
+      .then(function (response) {
+        cfpLoadingBar.start();
+        if (response.data.state == 'success') {
+          $location.path('/');
+        }
+        if (response.data.state == 'failure') {
+          vm.error = response.data.message;
+        }
+      })
+      .finally(function () {
+        cfpLoadingBar.complete();
+      });
+  }
+}
