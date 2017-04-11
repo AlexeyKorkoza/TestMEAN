@@ -1,4 +1,4 @@
-<div ng-controller="userProfileCtrl">
+<div ng-controller="userProfileCtrl as vm">
     <div class="container">
         <div class="row">
             <div class="span12">
@@ -13,8 +13,8 @@
                                         <div class="col-lg-8">
                                             <input class="form-control"
                                                    name="username"
-                                                   ng-model="userData.username"
-                                                   value={{userData.username}}
+                                                   ng-model="vm.userData.username"
+                                                   value={{vm.userData.username}}
                                                    type="text"
                                                    required/>
                                             <p ng-show="form.username.$invalid && !form.username.$pristine"
@@ -27,8 +27,8 @@
                                             <input class="form-control"
                                                    type="email"
                                                    name="email"
-                                                   ng-model="userData.email"
-                                                   value={{userData.email}}
+                                                   ng-model="vm.userData.email"
+                                                   value={{vm.userData.email}}
                                                    required/>
                                             <p ng-show="form.email.$invalid && !form.email.$pristine"
                                                class="help-block">Электронный адрес
@@ -40,7 +40,7 @@
                                             <button class="button icon-save"
                                                     ng-disabled="form.$invalid"
                                                     type="submit"
-                                                    ng-click="update()">
+                                                    ng-click="vm.update()">
                                                 <span>Сохранить изменения</span>
                                             </button>
                                         </div>
@@ -58,7 +58,7 @@
                                         <div class="col-lg-8">
                                             <input class="form-control"
                                                    name="password"
-                                                   ng-model="settingPassword.password"
+                                                   ng-model="vm.settingPassword.password"
                                                    ng-minlength="6"
                                                    id="UserProfilePassword"
                                                    type="password"
@@ -74,7 +74,7 @@
                                         <div class="col-lg-8">
                                             <input class="form-control"
                                                    name="confirmpassword"
-                                                   ng-model="settingPassword.confirmpassword"
+                                                   ng-model="vm.settingPassword.confirmpassword"
                                                    pw-check="UserProfilePassword"
                                                    type="password"
                                                    required/>
@@ -88,7 +88,7 @@
                                             <button class="button icon-save"
                                                     ng-disabled="formPassword.$invalid"
                                                     type="submit"
-                                                    ng-click="updatePassword()">
+                                                    ng-click="vm.updatePassword()">
                                                 <span>Обновить пароль</span>
                                             </button>
                                         </div>
