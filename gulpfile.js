@@ -23,6 +23,7 @@ var js = [
   "node_modules/angular-simple-logger/dist/angular-simple-logger.js",
   "node_modules/ui-leaflet/dist/ui-leaflet.min.js",
   "node_modules/ngstorage/ngStorage.min.js",
+  'node_modules/leaflet.markercluster/dist/leaflet.markercluster.js',
   "./app/assets/js/*.js",
   "./app/app.module.js",
   "./app/app.routes.js",
@@ -43,6 +44,7 @@ var css = [
   "node_modules/selectize/dist/css/selectize.default.css",
   "node_modules/sweetalert/dist/sweetalert.css",
   "node_modules/angular-loading-bar/build/loading-bar.min.css",
+  'node_modules/leaflet.markercluster/dist/*.css',
   "./app/assets/css/style.css",
   "./app/assets/css/fonts.css"
 ];

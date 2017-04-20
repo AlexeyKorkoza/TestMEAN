@@ -9,6 +9,7 @@ mainCtrl.$inject = ['$http', '$location', '$localStorage', 'cfpLoadingBar', 'mai
 function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
 
   var vm = this;
+  vm.group_markers = [];
   vm.getAllPlaces = getAllPlaces;
   vm.getAllTypes = getAllTypes;
   vm.addPlaceInMap = addPlaceInMap;
@@ -101,6 +102,7 @@ function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
           lng: lng,
           focus: false,
           draggable: false,
+          group: 'vm.group_markers',
           message: '<b>"' +
           item.name_place +
           '",</b> ' +
