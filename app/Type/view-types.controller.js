@@ -30,14 +30,14 @@ function viewTypesCtrl($location, typeService) {
     });
   }
 
-  function remove() {
-    typeService.remove(vm.id).then(function () {
+  function remove(id,index) {
+    typeService.remove(id).then(function () {
       swal(
         "Тип успешно удален",
         "Пожалуйста, нажмите ОК для продолжения",
         "success"
       );
-      vm.types.splice(vm.index, 1);
+      vm.types.splice(index, 1);
     });
   }
 

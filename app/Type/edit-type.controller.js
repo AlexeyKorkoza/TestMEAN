@@ -25,7 +25,7 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
   }
 
   function changeFilename() {
-    if (vm.file) {
+    if (vm.editData.file) {
       vm.filename = vm.editData.file.name;
     } else {
       vm.filename = "Иконка не выбрана";
@@ -34,11 +34,11 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
 
 
   function update() {
-    if (vm.file) {
-      Upload.rename(vm.file, vm.editData.typename);
+    if (vm.editData.file) {
+      Upload.rename(vm.editData.file, vm.editData.typename);
     }
     typeService
-      .update($routeParams.id, vm.editData, vm.file)
+      .update($routeParams.id, vm.editData, vm.editData.file)
       .then(function (response) {
         if (response.data.code) {
           swal(
