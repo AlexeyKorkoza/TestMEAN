@@ -5,7 +5,13 @@ var mongoose = require("mongoose");
 var crypto = require("crypto");
 var config = require("../config");
 
-router.get("/:id", function(req, res) {
+router.get("/:id", getUserById);
+router.put("/:id", updateInfo);
+router.put("/:id", updatePassword);
+
+module.exports = router;
+
+function getUserById(req, res) {
   userModel.findOne({ _id: req.params.id }, function(err, user) {
     if (err) {
       res.send(err);
@@ -13,9 +19,9 @@ router.get("/:id", function(req, res) {
       res.json(user);
     }
   });
-});
+}
 
-router.put("/:id", function(req, res, next) {
+function updateInfo(req, res, next) {
   userModel.findOne(
     { _id: req.params.id, password: req.body.password },
     function(err, user) {
@@ -41,9 +47,9 @@ router.put("/:id", function(req, res, next) {
       }
     }
   );
-});
+}
 
-router.put("/:id", function(req, res) {
+function updatePassword(req, res) {
   userModel.findOneAndUpdate(
     { _id: req.params.id },
     {
@@ -57,7 +63,7 @@ router.put("/:id", function(req, res) {
       }
     }
   );
-});
+}
 
 function encrypt(text) {
   var cipher = crypto.createCipher(
@@ -68,5 +74,3 @@ function encrypt(text) {
   crypted += cipher.final("hex");
   return crypted;
 }
-
-module.exports = router;

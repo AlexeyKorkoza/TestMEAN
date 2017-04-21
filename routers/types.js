@@ -15,21 +15,30 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-router.get("/", function(req, res) {
+router.get("/", getTypes);
+router.get("/:id", getTypeById);
+router.post("/add", upload.any(), addType);
+router.put("/:id", upload.any(), updateTypeWithImage);
+router.put("/:id", updateTypeWithoutImage);
+router.delete("/:id", removeType);
+
+module.exports = router;
+
+function getTypes(req, res) {
   typeModel.find({}, function(err, types) {
     if (err) res.send(err);
     res.send(types);
   });
-});
+}
 
-router.get("/:id", function(req, res) {
+function getTypeById(req, res) {
   typeModel.findOne({ _id: req.params.id }, function(err, type) {
     if (err) res.send(err);
     res.send(type);
   });
-});
+}
 
-router.post("/add", upload.any(), function(req, res) {
+function addType(req, res) {
   if (req.files) {
     var type = new typeModel({
       id_type: req.body.data.id,
@@ -45,9 +54,9 @@ router.post("/add", upload.any(), function(req, res) {
       }
     });
   }
-});
+}
 
-router.put("/:id", upload.any(), function(req, res, next) {
+function updateTypeWithImage(req, res, next) {
   if (req.files.length === 1) {
     removeImage(req.body.data.id);
     typeModel.findOneAndUpdate(
@@ -67,9 +76,9 @@ router.put("/:id", upload.any(), function(req, res, next) {
   } else {
     next();
   }
-});
+}
 
-router.put("/:id", function(req, res) {
+function updateTypeWithoutImage(req, res) {
   typeModel.findById(req.params.id, function(err, result) {
     if (err) {
       res.send(err);
@@ -89,9 +98,9 @@ router.put("/:id", function(req, res) {
       });
     }
   });
-});
+}
 
-router.delete("/:id", function(req, res) {
+function removeType(req, res) {
   typeModel.findByIdAndRemove({ _id: req.params.id }, function(err, type) {
     if (err) {
       res.send(err);
@@ -100,7 +109,7 @@ router.delete("/:id", function(req, res) {
       res.json(type);
     }
   });
-});
+}
 
 function removeImage(id) {
   typeModel.findOne({ id_type: id }, function(err, result) {
@@ -109,5 +118,3 @@ function removeImage(id) {
     }
   });
 }
-
-module.exports = router;
