@@ -1,17 +1,20 @@
-# TestMEAN
+## TestMEAN
+TestMEAN is test application for working with map. User can add place and type of place.
 
-### Using technologies:<br/>
+## Using technologies:<br/>
 - [x] 1. MongoDB
 - [x] 2. ExpressJS
 - [x] 3. AngularJS
 - [x] 4. NodeJS
 
-**How to Run ?**
+## How to Run ?
 =====================
-***1. git clone: https://github.com/AlexeyKorkoza/TestMEAN.git <br/>
-2.  npm install<br/>
-3. gulp start***
+```
+1. git clone: https://github.com/AlexeyKorkoza/TestMEAN.git
+2. npm install or yarn install
+3. gulp start
+```
 
-**How to Run Tests?**
+## How to Run Tests?
 =====================
 <b>karma start</b>
