@@ -9,7 +9,7 @@ TestMEAN is test application for working with map. User can add place and type o
 
 ## How to Run ?
 ```
-1. git clone: https://github.com/AlexeyKorkoza/TestMEAN.git
+1. git clone https://github.com/AlexeyKorkoza/TestMEAN.git
 2. npm install or yarn install
 3. gulp start
 ```
