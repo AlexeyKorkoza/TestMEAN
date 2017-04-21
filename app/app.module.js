@@ -11,12 +11,19 @@ angular
     "ui-leaflet",
     "ngStorage"
   ])
-  .config(function(cfpLoadingBarProvider) {
-    cfpLoadingBarProvider.latencyThreshold = 1000;
-  })
-  .run(function($rootScope, $http, $location, $localStorage) {
-    if ($localStorage.currentUser) {
-      $http.defaults.headers.common.Authorization = "Bearer " +
-        $localStorage.currentUser.token;
-    }
-  });
+  .config(config)
+  .run(run);
+
+config.$inject = ["cfpLoadingBarProvider"];
+run.$inject = ["$http", "$localStorage"];
+
+function config(cfpLoadingBarProvider) {
+  cfpLoadingBarProvider.latencyThreshold = 1000;
+}
+
+function run($http, $localStorage) {
+  if ($localStorage.currentUser) {
+    $http.defaults.headers.common.Authorization = "Bearer " +
+      $localStorage.currentUser.token;
+  }
+}

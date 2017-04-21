@@ -1,6 +1,11 @@
 "use strict";
 
-angular.module("myApp").config(function($routeProvider) {
+angular.module("myApp")
+  .config(routeConfig);
+
+routeConfig.$inject = ["$routeProvider"];
+
+function routeConfig($routeProvider) {
   $routeProvider
     .when("/", {
       templateUrl: "app/Main/main.html"
@@ -32,5 +37,5 @@ angular.module("myApp").config(function($routeProvider) {
     .when("/places/:id", {
       templateUrl: "app/Place/edit-place.html"
     })
-    .otherwise({ redirectTo: "/" });
-});
+    .otherwise({redirectTo: "/"});
+}
