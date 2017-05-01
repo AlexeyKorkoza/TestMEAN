@@ -77,7 +77,7 @@ function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
         dataNoLoad();
       }
     );
-  };
+  }
 
   function getAllPlaces() {
     mainService.getAllPlaces().then(
@@ -88,7 +88,7 @@ function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
         dataNoLoad();
       }
     );
-  };
+  }
 
   function addPlaceInMap(response) {
     if (vm.getData !== "") {
@@ -122,7 +122,7 @@ function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
     } else {
       dataNoLoad();
     }
-  };
+  }
 
   function getByType() {
     vm.typeIsNumber = parseInt(vm.type);
@@ -138,11 +138,11 @@ function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
         }
       );
     }
-  };
+  }
 
   function logout() {
     mainService.logout();
-  };
+  }
 
   function dataNoLoad() {
     swal(
@@ -160,4 +160,4 @@ function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
     );
   }
 
-};
+}

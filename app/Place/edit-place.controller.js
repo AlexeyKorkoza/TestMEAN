@@ -71,6 +71,6 @@ function editPlaceCtrl($location, $routeParams, typeService, placeService) {
     } else {
       vm.error = "Выберите тип объекта";
     }
-  };
+  }
 }
     
