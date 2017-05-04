@@ -51,4 +51,5 @@ if (!fs.existsSync("./uploads")) {
 var initPassport = require("./Passport/passport-init");
 initPassport(passport);
 
-app.listen(config.get("port"));
+var port = process.env.PORT || config.get("port");
+app.listen(port);
