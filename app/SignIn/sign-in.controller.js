@@ -31,9 +31,6 @@ function signInCtrl($http, $location, signInService, cfpLoadingBar) {
           vm.error = response.data.message;
         }
       })
-      .catch(function (response) {
-        console.log(response);
-      })
       .finally(function () {
         cfpLoadingBar.complete();
       });
