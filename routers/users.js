@@ -7,9 +7,9 @@ var token = require("./token");
 var config = require("../config");
 
 router.get("", token.required, getUser);
-router.get("/:id", getUserById);
-router.put("/:id", updateInfo);
-router.put("/:id", updatePassword);
+router.get("/edit/:username", getUserByUsername);
+router.put("/edit/:username", updateInfo);
+router.put("/edit/:username", updatePassword);
 
 module.exports = router;
 
@@ -31,8 +31,8 @@ function getUser(req, res) {
   })
 }
 
-function getUserById(req, res) {
-  userModel.findOne({ _id: req.params.id }, function(err, user) {
+function getUserByUsername(req, res) {
+  userModel.findOne({ username: req.params.username }, function(err, user) {
     if (err) {
       res.send(err);
     } else {
@@ -43,7 +43,7 @@ function getUserById(req, res) {
 
 function updateInfo(req, res, next) {
   userModel.findOne(
-    { _id: req.params.id, password: req.body.password },
+    { username: req.params.username, password: req.body.password },
     function(err, user) {
       if (err) {
         res.send(err);
@@ -71,10 +71,8 @@ function updateInfo(req, res, next) {
 
 function updatePassword(req, res) {
   userModel.findOneAndUpdate(
-    { _id: req.params.id },
-    {
-      password: encrypt(req.body.password)
-    },
+    { username: req.params.username },
+    { password: encrypt(req.body.password) },
     function(err, user) {
       if (err) {
         res.send(err);

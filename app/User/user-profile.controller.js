@@ -16,18 +16,19 @@ function userProfileCtrl($routeParams, userService) {
   activate();
 
   function activate() {
-    userService.getUserInfo($routeParams.id).then(function (response) {
+    userService.getUserInfo(localStorage.getItem("username")).then(function (response) {
       vm.userData = response.data;
     });
   }
 
   function update() {
     userService
-      .updateUserInfo($routeParams.id, vm.userData)
+      .updateUserInfo(localStorage.getItem("username"), vm.userData)
       .then(function (response) {
         if (response.data.code) {
           swal("Информация не обновлена", "Повторите попытку", "error");
         } else {
+          localStorage.setItem("username", response.data.username);
           swal(
             "Информация успешно обновлена",
             "После выхода данные будут успешные применены",
@@ -44,7 +45,8 @@ function userProfileCtrl($routeParams, userService) {
       password: vm.settingPassword.password,
       date: vm.userData.date
     };
-    userService.updateUserInfo($routeParams.id, data).then(function () {
+    userService.updateUserInfo(localStorage.getItem("username"), data).then(function (response) {
+      localStorage.setItem("username", response.data.username);
       swal(
         "Информация успешно обновлена",
         "После выхода данные будут успешные применены",

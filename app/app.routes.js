@@ -16,7 +16,7 @@ function routeConfig($routeProvider) {
     .when("/signup", {
       templateUrl: "app/SignUp/sign-up.html"
     })
-    .when("/users/:id", {
+    .when("/user/edit", {
       templateUrl: "app/User/user-profile.html"
     })
     .when("/types", {

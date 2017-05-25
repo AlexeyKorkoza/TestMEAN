@@ -10,7 +10,6 @@ function mainCtrl($http, $location, cfpLoadingBar, mainService) {
 
   var vm = this;
   vm.group_markers = [];
-  vm.username = "";
   vm.isAuthenticated = false;
   vm.getAllPlaces = getAllPlaces;
   vm.getAllTypes = getAllTypes;
@@ -24,7 +23,6 @@ function mainCtrl($http, $location, cfpLoadingBar, mainService) {
   function activate() {
     if (localStorage.getItem("username")) {
       vm.isAuthenticated = true;
-      vm.username = localStorage.getItem("username");
     }
 
     angular.extend(vm, {

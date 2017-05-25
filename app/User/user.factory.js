@@ -21,15 +21,12 @@ function userService($http) {
     return $http.get('/user', { headers: headers });
   }
 
-  function getUserInfo(id) {
-    return $http({
-      url: "/users/" + id,
-      method: "get"
-    });
+  function getUserInfo(username) {
+    return $http.get("/user/edit/" + username);
   }
 
   function updateUserInfo(username, data) {
-    return $http.put("/users/" + username, data);
+    return $http.put("/user/edit/" + username, data);
   }
 
 }
