@@ -38,7 +38,7 @@ module.exports = function (passport) {
 
           var userData = {
             "username": user.username,
-            "id": user._id
+            "token": user.generateJWT()
           }
 
           return done(null, userData);

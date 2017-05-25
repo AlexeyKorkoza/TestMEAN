@@ -8,22 +8,24 @@ angular
     "ngAnimate",
     "ngFileUpload",
     "wt.responsive",
-    "ui-leaflet",
-    "ngStorage"
+    "ui-leaflet"
   ])
   .config(config)
   .run(run);
 
 config.$inject = ["cfpLoadingBarProvider"];
-run.$inject = ["$http", "$localStorage"];
+run.$inject = ["$http", "userService"];
 
 function config(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.latencyThreshold = 1000;
 }
 
-function run($http, $localStorage) {
-  if ($localStorage.currentUser) {
-    $http.defaults.headers.common.Authorization = "Bearer " +
-      $localStorage.currentUser.token;
-  }
+function run($http, userService) {
+  
+    if(localStorage.getItem("username")){
+      userService.getUser().then(function(response){
+        localStorage.setItem("username", response.data.user.username);
+        localStorage.setItem("token", response.data.user.token);
+      })
+    }
 }

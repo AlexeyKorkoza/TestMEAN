@@ -3,13 +3,33 @@ var router = express.Router();
 var userModel = require("../models/user");
 var mongoose = require("mongoose");
 var crypto = require("crypto");
+var token = require("./token");
 var config = require("../config");
 
+router.get("", token.required, getUser);
 router.get("/:id", getUserById);
 router.put("/:id", updateInfo);
 router.put("/:id", updatePassword);
 
 module.exports = router;
+
+function getUser(req, res) {
+  userModel.findById(req.payload.id, function(err, user) {
+    if (err) {
+      res.json(err);
+    }
+    if (user) {
+      var token = user.generateJWT();
+      console.log(token);
+      res.json({
+        user: {
+          username: user.username,
+          token: token
+        }
+      })
+    }
+  })
+}
 
 function getUserById(req, res) {
   userModel.findOne({ _id: req.params.id }, function(err, user) {

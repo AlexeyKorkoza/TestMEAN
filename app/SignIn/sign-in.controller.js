@@ -4,9 +4,9 @@ angular
   .module("myApp")
   .controller("signInCtrl", signInCtrl);
 
-signInCtrl.$inject = ['$http', '$location', '$localStorage', 'signInService', 'cfpLoadingBar'];
+signInCtrl.$inject = ['$http', '$location', 'signInService', 'cfpLoadingBar'];
 
-function signInCtrl($http, $location, $localStorage, signInService, cfpLoadingBar) {
+function signInCtrl($http, $location, signInService, cfpLoadingBar) {
 
   var vm = this;
   vm.back = back;
@@ -23,13 +23,8 @@ function signInCtrl($http, $location, $localStorage, signInService, cfpLoadingBa
       .then(function (response) {
         cfpLoadingBar.start();
         if (response.data.state == "success") {
-          $localStorage.currentUser = {
-            id: response.data.user.id,
-            username: vm.formData.username,
-            token: response.token
-          };
-          $http.defaults.headers.common.Authorization = "Bearer " +
-            response.token;
+          localStorage.setItem("username", vm.formData.username);
+          localStorage.setItem("token", response.data.user.token);
           $location.path("/");
         }
         if (response.data.state == "failure") {

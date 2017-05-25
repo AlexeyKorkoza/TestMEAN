@@ -8,7 +8,7 @@ var passport = require("passport");
 router.use("/places", require("./places"));
 router.use("/types", require("./types"));
 router.use("/auth", require("./authentication")(passport));
-router.use("/users", require("./users"));
+router.use("/user", require("./users"));
 router.post("", startLoadData);
 router.get("*", errorPath);
 

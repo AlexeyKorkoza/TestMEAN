@@ -4,12 +4,14 @@ angular
   .module("myApp")
   .controller("mainCtrl", mainCtrl);
 
-mainCtrl.$inject = ['$http', '$location', '$localStorage', 'cfpLoadingBar', 'mainService'];
+mainCtrl.$inject = ['$http', '$location', 'cfpLoadingBar', 'mainService'];
 
-function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
+function mainCtrl($http, $location, cfpLoadingBar, mainService) {
 
   var vm = this;
   vm.group_markers = [];
+  vm.username = "";
+  vm.isAuthenticated = false;
   vm.getAllPlaces = getAllPlaces;
   vm.getAllTypes = getAllTypes;
   vm.addPlaceInMap = addPlaceInMap;
@@ -20,12 +22,9 @@ function mainCtrl($http, $location, $localStorage, cfpLoadingBar, mainService) {
   activate();
 
   function activate() {
-    if ($localStorage.currentUser) {
+    if (localStorage.getItem("username")) {
       vm.isAuthenticated = true;
-      vm.id = $localStorage.currentUser.id;
-      vm.username = $localStorage.currentUser.username;
-    } else {
-      vm.isAuthenticated = false;
+      vm.username = localStorage.getItem("username");
     }
 
     angular.extend(vm, {

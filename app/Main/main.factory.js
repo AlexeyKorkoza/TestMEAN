@@ -4,9 +4,9 @@ angular
   .module("myApp")
   .factory("mainService", mainService);
 
-mainService.$inject = ['$http', '$localStorage', '$location'];
+mainService.$inject = ['$http', '$location'];
 
-function mainService($http, $localStorage, $location) {
+function mainService($http, $location) {
 
   var service = {
     getAllPlaces: getAllPlaces,
@@ -30,8 +30,8 @@ function mainService($http, $localStorage, $location) {
   }
 
   function logout() {
-    delete $localStorage.currentUser;
-    $http.defaults.headers.common.Authorization = "";
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
     $location.path("/signin");
   }
 
