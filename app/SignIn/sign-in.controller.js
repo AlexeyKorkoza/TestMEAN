@@ -24,7 +24,7 @@ function signInCtrl($http, $location, $localStorage, signInService, cfpLoadingBa
         cfpLoadingBar.start();
         if (response.data.state == "success") {
           $localStorage.currentUser = {
-            id: response.data.id,
+            id: response.data.user.id,
             username: vm.formData.username,
             token: response.token
           };

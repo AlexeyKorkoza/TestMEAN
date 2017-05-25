@@ -35,7 +35,13 @@ module.exports = function (passport) {
           }
           // User and password both match, return user from done method
           // which will be treated like success
-          return done(null, user, req.flash('loginMessage', user._id));
+
+          var userData = {
+            "username": user.username,
+            "id": user._id
+          }
+
+          return done(null, userData);
         }
       );
     }

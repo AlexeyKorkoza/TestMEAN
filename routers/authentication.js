@@ -1,35 +1,83 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-module.exports = function (passport) {
-  //sends successful login state back to view(angular)
-  router.get('/successSignUp', function (req, res) {
-    res.send({state: 'success'});
+module.exports = function(passport) {
+
+  router.post("/login", function(req, res) {
+    passport.authenticate("login", { failureFlash: true }, function( err, userData ) {
+      if (err) {
+        if (err.name === "Incorrect Credentials Error") {
+          return res.status(400).json({
+            state: "failure",
+            errors: [
+              {
+                type: "Authentication Error",
+                messages: "Incorrect Credentials Error"
+              }
+            ]
+          });
+        }
+
+        return res.status(400).json({
+          state: "failure",
+          errors: [
+            {
+              type: "Authentication Error",
+              messages: "Could not process the form."
+            }
+          ]
+        });
+      }
+
+      if (userData) {
+        return res.status(200).json({
+          state: "success",
+          user: userData
+        })
+      } else {
+        return res.status(200).json({
+          state: "failure",
+          message: req.flash('loginMessage')[0],
+      })
+    }
+
+    })(req, res);
   });
-  //send failure login state back to view(angular)
-  router.get('/failureSignUp', function (req, res) {
-    res.send({state: 'failure', message: req.flash('signUpMessage')[0]});
-  });
-  router.get('/successLogin', function (req, res) {
-    res.send({state: 'success', id: req.flash('loginMessage')[0]});
-  });
-  //send failure login state back to view(angular)
-  router.get('/failureLogin', function (req, res) {
-    res.send({state: 'failure', message: req.flash('loginMessage')[0]});
-  });
-  //login requeset
-  router.post('/login', passport.authenticate('login', {
-    successRedirect: '/auth/successLogin',
-    failureRedirect: '/auth/failureLogin',
-    failureFlash: true
-  }));
 
   //signup request
-  router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/auth/successSignUp',
-    failureRedirect: '/auth/failureSignUp',
-    failureFlash: true
-  }));
+  router.post("/signup", function(req, res) {
+    passport.authenticate("signup", { failureFlash: true }, function(err) {
+
+      if (err) {
+        if (err.name === "Incorrect Credentials Error") {
+          return res.status(400).json({
+            state: "failure",
+            errors: [
+              {
+                type: "Authentication Error",
+                messages: "Incorrect Credentials Error"
+              }
+            ]
+          });
+        }
+
+        return res.status(400).json({
+          state: "failure",
+          errors: [
+            {
+              type: "Authentication Error",
+              messages: "Could not process the form."
+            }
+          ]
+        });
+      }
+
+      return res.status(200).json({
+          state: "success"
+      })
+
+    })(req, res);
+  });
 
   return router;
 };
