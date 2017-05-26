@@ -5,30 +5,40 @@ var mongoose = require("mongoose");
 var crypto = require("crypto");
 var token = require("./token");
 var config = require("../config");
+var jwt = require("jsonwebtoken");
 
-router.get("", token.required, getUser);
+router.get("", getUser);
 router.get("/edit/:username", getUserByUsername);
 router.put("/edit/:username", updateInfo);
 router.put("/edit/:username", updatePassword);
 
 module.exports = router;
 
-function getUser(req, res) {
-  userModel.findById(req.payload.id, function(err, user) {
-    if (err) {
-      res.json(err);
-    }
-    if (user) {
-      var token = user.generateJWT();
-      console.log(token);
-      res.json({
-        user: {
-          username: user.username,
-          token: token
-        }
-      })
-    }
-  })
+function getUser(req, res, next) {
+  
+  if (!req.headers.authorization) {
+    return res.status(403).end("User not authenticated");
+  }
+  
+  var token = req.headers.authorization.split(" ")[1];
+  var decoded = jwt.decode(token, config.get("secret"));
+  jwt.verify(token, config.get("secret"), function(err) {
+    var userId = decoded.id;
+    userModel.findById(userId, function(err, user) {
+      if (err) {
+        res.json(err);
+      }
+      if (user) {
+        var token = user.generateJWT();
+        res.json({
+          user: {
+            username: user.username,
+            token: token
+          }
+        });
+      }
+    });
+  });
 }
 
 function getUserByUsername(req, res) {
