@@ -4,9 +4,9 @@ angular
   .module("myApp")
   .controller("signInCtrl", signInCtrl);
 
-signInCtrl.$inject = ['$http', '$location', 'signInService', 'cfpLoadingBar'];
+signInCtrl.$inject = ['$http', '$location', 'authenticationService', 'cfpLoadingBar'];
 
-function signInCtrl($http, $location, signInService, cfpLoadingBar) {
+function signInCtrl($http, $location, authenticationService, cfpLoadingBar) {
 
   var vm = this;
   vm.back = back;
@@ -18,7 +18,7 @@ function signInCtrl($http, $location, signInService, cfpLoadingBar) {
 
   function LoginBtnClick() {
     vm.error = "";
-    signInService
+    authenticationService
       .login(vm.formData)
       .then(function (response) {
         cfpLoadingBar.start();

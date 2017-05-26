@@ -4,9 +4,9 @@ angular
   .module("myApp")
   .controller("mainCtrl", mainCtrl);
 
-mainCtrl.$inject = ['$http', '$location', 'cfpLoadingBar', 'mainService'];
+mainCtrl.$inject = ['$http', '$location', 'cfpLoadingBar', 'authenticationService', 'mainService'];
 
-function mainCtrl($http, $location, cfpLoadingBar, mainService) {
+function mainCtrl($http, $location, cfpLoadingBar, authenticationService, mainService) {
 
   var vm = this;
   vm.group_markers = [];
@@ -138,7 +138,7 @@ function mainCtrl($http, $location, cfpLoadingBar, mainService) {
   }
 
   function logout() {
-    mainService.logout();
+    authenticationService.logout();
   }
 
   function dataNoLoad() {

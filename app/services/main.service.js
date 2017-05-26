@@ -11,8 +11,7 @@ function mainService($http, $location) {
   var service = {
     getAllPlaces: getAllPlaces,
     getAllTypes: getAllTypes,
-    getByType: getByType,
-    logout: logout
+    getByType: getByType
   };
 
   return service;
@@ -27,12 +26,6 @@ function mainService($http, $location) {
 
   function getByType(type) {
     return $http.post("", {type: type});
-  }
-
-  function logout() {
-    localStorage.removeItem("username");
-    localStorage.removeItem("token");
-    $location.path("/signin");
   }
 
 }
