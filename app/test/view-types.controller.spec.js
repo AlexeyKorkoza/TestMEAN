@@ -2,24 +2,21 @@
 
 describe("ViewTypesCtrl", function () {
 
-  var ctrl;
-  var scope;
+  var vm;
 
-  beforeEach(module('myApp'));
-
-  beforeEach(inject(function ($rootScope, $controller) {
-
-    scope = $rootScope.$new();
-    ctrl = $controller('ViewTypesCtrl', {$scope: scope});
-
-  }));
+  beforeEach(module("myApp"));
+  beforeEach(
+    inject(function($controller) {
+      vm = $controller("viewTypesCtrl", {}, {});
+    })
+  );
 
   it('Check initialize of controller', function () {
-    expect(ctrl).not.toBeUndefined();
+    expect(vm).not.toBeUndefined();
   });
 
   it('Check initialize of variable in controller', function () {
-    expect(scope.types).not.toBeUndefined();
+    expect(vm.types).not.toBeUndefined();
   });
 
 });

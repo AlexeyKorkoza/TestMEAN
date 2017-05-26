@@ -2,20 +2,17 @@
 
 describe("editPlaceCtrl", function () {
 
-  var ctrl;
-  var scope;
+  var vm;
 
-  beforeEach(module('myApp'));
-
-  beforeEach(inject(function ($rootScope, $controller) {
-
-    scope = $rootScope.$new();
-    ctrl = $controller('EditPlaceCtrl', {$scope: scope});
-
-  }));
+  beforeEach(module("myApp"));
+  beforeEach(
+    inject(function($controller) {
+      vm = $controller("editPlaceCtrl", {}, {});
+    })
+  );
 
   it('Check initialize of controller', function () {
-    expect(ctrl).not.toBeUndefined();
+    expect(vm).not.toBeUndefined();
   });
 
 });

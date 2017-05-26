@@ -10,6 +10,7 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, mainSe
 
   var vm = this;
   vm.group_markers = [];
+  vm.select = [];
   vm.isAuthenticated = false;
   vm.getAllPlaces = getAllPlaces;
   vm.getAllTypes = getAllTypes;
@@ -55,7 +56,6 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, mainSe
   }
 
   function getAllTypes() {
-    vm.select = [];
     mainService.getAllTypes().then(
       function Success(response) {
         vm.getData = response.data;

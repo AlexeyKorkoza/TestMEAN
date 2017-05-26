@@ -1,34 +1,29 @@
-'use strict';
+"use strict";
 
-describe('mainCtrl', function () {
+describe("mainCtrl", function() {
+  var vm;
 
-  var ctrl;
-  var scope;
+  beforeEach(module("myApp"));
+  beforeEach(
+    inject(function($controller) {
+      vm = $controller("mainCtrl", {}, {});
+    })
+  );
 
-  beforeEach(module('myApp'));
-
-  beforeEach(inject(function ($rootScope, $controller) {
-
-    scope = $rootScope.$new();
-    ctrl = $controller('mainCtrl', {$scope: scope});
-
-  }));
-
-  it('Check initialize of controller', function () {
-    expect(ctrl).not.toBeUndefined();
+  it("Check initialize of controller", function() {
+    expect(vm).not.toBeUndefined();
   });
 
-  it('should init an empty array of select', function () {
-    expect(scope.select).toBeDefined();
-    expect(scope.select.length).toEqual(0);
+  it("should init an empty array of select", function() {
+    expect(vm.select).toBeDefined();
+    expect(vm.select.length).toEqual(0);
   });
 
-  it('add default value in select', function () {
-    scope.select.push({
+  it("add default value in select", function() {
+    vm.select.push({
       value: 0,
       text: "Все объекты"
     });
-    expect(scope.select.length).toEqual(1);
+    expect(vm.select.length).toEqual(1);
   });
-
 });

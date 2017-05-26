@@ -2,31 +2,28 @@
 
 describe("addPlaceCtrl", function () {
 
-  var ctrl;
-  var scope;
+  var vm;
 
-  beforeEach(module('myApp'));
-
-  beforeEach(inject(function ($rootScope, $controller) {
-
-    scope = $rootScope.$new();
-    ctrl = $controller('addPlaceCtrl', {$scope: scope});
-
-  }));
+  beforeEach(module("myApp"));
+  beforeEach(
+    inject(function($controller) {
+      vm = $controller("addPlaceCtrl", {}, {});
+    })
+  );
 
   it('Check initialize of controller', function () {
-    expect(ctrl).not.toBeUndefined();
+    expect(vm).not.toBeUndefined();
   });
 
   it('Select is defined', function () {
-    expect(scope.select).toBeDefined();
+    expect(vm.select).toBeDefined();
   });
 
   it('Add in select', function () {
-    scope.select.push({
+    vm.select.push({
       value: "1",
       text: "Клуб"
     });
-    expect(scope.select.length).toEqual(1);
+    expect(vm.select.length).toEqual(1);
   });
 });

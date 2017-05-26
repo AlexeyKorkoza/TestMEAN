@@ -2,24 +2,21 @@
 
 describe("AddTypeCtrl", function () {
 
-  var ctrl;
-  var scope;
+  var vm;
 
-  beforeEach(module('myApp'));
-
-  beforeEach(inject(function ($rootScope, $controller) {
-
-    scope = $rootScope.$new();
-    ctrl = $controller('AddTypeCtrl', {$scope: scope});
-
-  }));
+  beforeEach(module("myApp"));
+  beforeEach(
+    inject(function($controller) {
+      vm = $controller("addTypeCtrl", {}, {});
+    })
+  );
 
   it('Check initialize of controller', function () {
-    expect(ctrl).not.toBeUndefined();
+    expect(vm).not.toBeUndefined();
   });
 
   it('Check initialize of variable in controller', function () {
-    expect(scope.getAllTypes).not.toBeUndefined();
+    expect(vm.filename).toEqual("Иконка не выбрана");
   });
 
 });
