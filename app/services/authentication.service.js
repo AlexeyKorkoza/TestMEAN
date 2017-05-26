@@ -4,8 +4,8 @@ angular
     .module("myApp")
     .factory("authenticationService", authenticationService);
 
-authenticationService.inject = ["$http"];
-function authenticationService($http) {
+authenticationService.inject = ["$http", '$location'];
+function authenticationService ($http, $location) {
   var service = {
     login: login,
     logout: logout
