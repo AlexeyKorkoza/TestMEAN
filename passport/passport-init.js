@@ -30,7 +30,7 @@ module.exports = function (passport) {
             return done(null, false, req.flash('loginMessage', 'Пользователь не найден'));
           }
           // User exists but wrong password, log the error
-          if (!isValidPassword(user, password)) {
+          if (user.isValidPassword(user, password)) {
             return done(null, false, req.flash('loginMessage', 'Неверный пароль')); // redirect back to login page
           }
           // User and password both match, return user from done method
@@ -75,7 +75,7 @@ module.exports = function (passport) {
             if (!user1) {
               var newUser = new User({
                 'username': username,
-                'password': encrypt(req.body.password),
+                'password': user.generatePassword(req.body.password),
                 'email': req.body.email,
                 'date': req.body.date
               });
@@ -92,26 +92,4 @@ module.exports = function (passport) {
       });
     })
   );
-
-  function isValidPassword(user, password) {
-    var flag = true;
-    if (decrypt(user.password) !== password) {
-      flag = false;
-    }
-    return flag;
-  }
-
-  function encrypt(text) {
-    var cipher = crypto.createCipher(config.get('algorithm'), config.get('passwordAlgorithm'));
-    var crypted = cipher.update(text, 'utf8', 'hex');
-    crypted += cipher.final('hex');
-    return crypted;
-  }
-
-  function decrypt(text) {
-    var decipher = crypto.createDecipher(config.get('algorithm'), config.get('passwordAlgorithm'));
-    var dec = decipher.update(text, 'hex', 'utf8');
-    dec += decipher.final('utf8');
-    return dec;
-  }
 };
