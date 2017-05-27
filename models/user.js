@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var config = require("../config");
 var jwt = require("jsonwebtoken");
+var bcrypt = require("bcrypt-nodejs");
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -32,21 +33,11 @@ userSchema.methods.generateJWT = function() {
 };
 
 userSchema.methods.validPasswrod = function(user, password) {
-  var flag = true;
-  if (decrypt(user.password) !== password) {
-    flag = false;
-  }
-  return flag;
+  return bcrypt.compareSync(password, user.password);
 };
 
-userSchema.methods.generatePassword = function(text) {
-  var cipher = crypto.createCipher(
-    config.get("algorithm"),
-    config.get("passwordAlgorithm")
-  );
-  var crypted = cipher.update(text, "utf8", "hex");
-  crypted += cipher.final("hex");
-  return crypted;
+userSchema.methods.generatePassword = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 var User = mongoose.model("User", userSchema);

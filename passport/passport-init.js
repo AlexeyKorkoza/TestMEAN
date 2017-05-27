@@ -1,6 +1,5 @@
 var User = require('../models/user');
 var LocalStrategy = require('passport-local').Strategy;
-var crypto = require('crypto');
 var config = require('../config');
 
 module.exports = function (passport) {
@@ -30,7 +29,7 @@ module.exports = function (passport) {
             return done(null, false, req.flash('loginMessage', 'Пользователь не найден'));
           }
           // User exists but wrong password, log the error
-          if (user.isValidPassword(user, password)) {
+          if (!user.validPasswrod(user, password)) {
             return done(null, false, req.flash('loginMessage', 'Неверный пароль')); // redirect back to login page
           }
           // User and password both match, return user from done method
@@ -75,10 +74,11 @@ module.exports = function (passport) {
             if (!user1) {
               var newUser = new User({
                 'username': username,
-                'password': user.generatePassword(req.body.password),
                 'email': req.body.email,
                 'date': req.body.date
               });
+
+              newUser.password = newUser.generatePassword(req.body.password);
               // save the user
               newUser.save(function (err) {
                 if (err) {
