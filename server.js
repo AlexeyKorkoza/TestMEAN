@@ -11,8 +11,16 @@ var flash = require("connect-flash");
 var session = require("express-session");
 var app = express();
 
-mongoose.Promise = global.Promise;
 mongoose.connect(config.get("db"));
+var db = mongoose.connection;
+
+db.once('open', function(){
+  console.log('Connected to MongoDB');
+});
+
+db.on('error', function(err){
+  console.log(err);
+});
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
