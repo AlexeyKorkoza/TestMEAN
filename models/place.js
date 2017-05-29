@@ -2,7 +2,6 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var Place = mongoose.model("Place", {
-  id_place: Number,
   name_place: String,
   description: String,
   lat: {

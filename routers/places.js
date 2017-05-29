@@ -5,6 +5,7 @@ var mongoose = require("mongoose");
 
 router.get("/", getPlaces);
 router.get("/:id", getPlaceById);
+router.post("/", getPlacesByType);
 router.post("/add", addPlace);
 router.put("/:id", updatePlace);
 router.delete("/:id", removePlace);
@@ -31,6 +32,15 @@ function getPlaceById(req, res) {
   });
 }
 
+function getPlacesByType(req, res) {
+  console.log(req.body.id);
+  placeModel.find({ id_type: req.body.id }, function(err, places) {
+    if (err)
+     res.send(err);
+    res.json(places);
+  });
+}
+
 function addPlace(req, res) {
   var place = new placeModel({
     name_place: req.body.name_place,
@@ -38,7 +48,7 @@ function addPlace(req, res) {
     lat: req.body.lat,
     lng: req.body.lng,
     address: req.body.address,
-    id_type: req.body.id_type
+    name_type: req.body.name_type
   });
   place.save(function (err, places) {
     if (err) {

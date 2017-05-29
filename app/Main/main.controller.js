@@ -4,9 +4,9 @@ angular
   .module("myApp")
   .controller("mainCtrl", mainCtrl);
 
-mainCtrl.$inject = ['$http', '$location', 'cfpLoadingBar', 'authenticationService', 'mainService'];
+mainCtrl.$inject = ['$http', '$location', 'cfpLoadingBar', 'authenticationService', 'placeService', 'typeService'];
 
-function mainCtrl($http, $location, cfpLoadingBar, authenticationService, mainService) {
+function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeService, typeService) {
 
   var vm = this;
   vm.group_markers = [];
@@ -15,7 +15,7 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, mainSe
   vm.getAllPlaces = getAllPlaces;
   vm.getAllTypes = getAllTypes;
   vm.addPlaceInMap = addPlaceInMap;
-  vm.getByType = getByType;
+  vm.getPlacesByType = getPlacesByType;
   vm.logout = logout;
   vm.activate = activate;
 
@@ -56,7 +56,7 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, mainSe
   }
 
   function getAllTypes() {
-    mainService.getAllTypes().then(
+    typeService.getAllTypes().then(
       function Success(response) {
         vm.getData = response.data;
         vm.select.push({
@@ -77,7 +77,7 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, mainSe
   }
 
   function getAllPlaces() {
-    mainService.getAllPlaces().then(
+    placeService.getAllPlaces().then(
       function Success(response) {
         vm.addPlaceInMap(response.data);
       },
@@ -89,7 +89,7 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, mainSe
 
   function addPlaceInMap(response) {
     if (vm.getData !== "") {
-      response.forEach(function (item, i) {
+     response.forEach(function (item, i) {
         var typeOfPlace = vm.getData[item.id_type - 1].name_type;
         var nameOfImage = vm.getData[item.id_type - 1].image;
         var lat = parseFloat(item.lat);
@@ -121,14 +121,14 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, mainSe
     }
   }
 
-  function getByType() {
+  function getPlacesByType() {
     vm.typeIsNumber = parseInt(vm.type);
     cfpLoadingBar.start();
     if (vm.typeIsNumber === 0) {
       vm.getAllPlaces();
     } else {
       vm.markers = {};
-      mainService.getByType(vm.typeIsNumber).then(
+      placeService.getPlacesByType(vm.typeIsNumber).then(
         function Success(response) {
           vm.places = response.data;
           vm.addPlaceInMap(vm.places);

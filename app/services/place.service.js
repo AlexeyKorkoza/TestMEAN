@@ -14,6 +14,7 @@ angular
       remove: remove,
       update: update,
       getPlaceById: getPlaceById,
+      getPlacesByType: getPlacesByType,
       setPlaces: setPlaces,
       getPlaces: getPlaces
     };
@@ -38,6 +39,10 @@ angular
 
     function getPlaceById(id) {
       return $http.get("/places/" + id);
+    }
+
+    function getPlacesByType(id){
+      return $http.post("/places/", {id: id});
     }
 
     var Places = "";
