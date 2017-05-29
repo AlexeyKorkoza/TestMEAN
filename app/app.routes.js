@@ -17,7 +17,7 @@ function routeConfig($routeProvider) {
       templateUrl: "app/SignUp/sign-up.html"
     })
     .when("/user/edit", {
-      templateUrl: "app/User/user-profile.html"
+      templateUrl: "app/Profile/profile.html"
     })
     .when("/types", {
       templateUrl: "app/Type/view-types.html"

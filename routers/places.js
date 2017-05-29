@@ -33,7 +33,6 @@ function getPlaceById(req, res) {
 }
 
 function getPlacesByType(req, res) {
-  console.log(req.body.id);
   placeModel.find({ id_type: req.body.id }, function(err, places) {
     if (err)
      res.send(err);

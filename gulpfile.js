@@ -34,7 +34,7 @@ var js = [
   "./app/SignUp/*.js",
   "./app/Place/*.js",
   "./app/Type/*.js",
-  "./app/User/*.js"
+  "./app/Profile/*.js"
 ];
 
 var css = [
