@@ -4,7 +4,9 @@
   "description": "test-project-and-nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "eslint": "eslint models/*.js, passport/*.js, routers/*.js server.js",
+    "fix": "eslint models/*.js, passport/*.js, routers/*.js server.js --fix"
   },
   "repository": {
     "type": "git",
@@ -55,6 +57,7 @@
     "ui-leaflet": "^1.0.3"
   },
   "devDependencies": {
+    "eslint": "^4.6.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-concat": "^2.6.1",
