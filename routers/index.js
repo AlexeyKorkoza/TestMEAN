@@ -1,14 +1,15 @@
 import express from "express";
 import path from "path";
-import typeModel from "../models/type";
-import placeModel from "../models/place";
-import passport from "passport";
+import places from '../controllers/placeController';
+import types from '../controllers/typeController';
+import users from '../controllers/userController';
+import auth from '../controllers/authController';
 var router = express.Router();
 
-router.use("/places", require("./places"));
-router.use("/types", require("./types"));
-router.use("/auth", require("./authentication")(passport));
-router.use("/user", require("./users"));
+router.use("/places", places);
+router.use("/types", types);
+router.use("/auth", auth);
+router.use("/user", users);
 router.get("*", errorPath);
 
 module.exports = router;
