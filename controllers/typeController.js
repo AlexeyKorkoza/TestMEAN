@@ -1,5 +1,4 @@
 import typeModel from "../models/type";
-import multer from "multer";
 import fs from "fs";
 
 export default {
