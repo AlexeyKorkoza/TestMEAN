@@ -9,6 +9,7 @@ import passport from "passport";
 import fs from "fs";
 import flash from "connect-flash";
 import session from "express-session";
+import cors from 'cors';
 var app = express();
 
 mongoose.connect(config.get("db"));
@@ -37,18 +38,7 @@ app.use(passport.initialize());
 app.use(flash());
 app.use(serveStatic(__dirname + ""));
 
-app.use(function(req, res, next) {
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "POST, PUT, OPTIONS, DELETE, GET"
-  );
-  res.header("Access-Control-Allow-Origin", "http://localhost");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(cors());
 
 app.use(require("./routers"));
 
