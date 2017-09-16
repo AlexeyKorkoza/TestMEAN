@@ -1,11 +1,11 @@
-var express = require("express");
+import express from "express";
+import userModel from "../models/user";
+import mongoose from "mongoose";
+import crypto from "crypto";
+import token from "./token";
+import config from "../config";
+import jwt from "jsonwebtoken";
 var router = express.Router();
-var userModel = require("../models/user");
-var mongoose = require("mongoose");
-var crypto = require("crypto");
-var token = require("./token");
-var config = require("../config");
-var jwt = require("jsonwebtoken");
 
 router.get("", getUser);
 router.get("/edit/:username", getUserByUsername);

@@ -1,6 +1,7 @@
-var User = require('../models/user');
-var LocalStrategy = require('passport-local').Strategy;
-var config = require('../config');
+import User from '../models/user';
+import passportLocal from 'passport-local';
+import config from '../config';
+var LocalStrategy = passportLocal.Strategy;
 
 module.exports = function (passport) {
 // Passport needs to be able to serialize and deserialize users to support persistent login sessions

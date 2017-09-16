@@ -1,5 +1,5 @@
-var jwt = require("express-jwt");
-var config = require("../config");
+import jwt from "express-jwt";
+import config from "../config";
 
 function getTokenFromHeader(req) {
 

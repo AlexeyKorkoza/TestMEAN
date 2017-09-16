@@ -1,14 +1,14 @@
-var express = require("express");
-var config = require("./config");
-var morgan = require("morgan");
-var bodyParser = require("body-parser");
-var serveStatic = require("serve-static");
-var methodOverride = require("method-override");
-var mongoose = require("mongoose");
-var passport = require("passport");
-var fs = require("fs");
-var flash = require("connect-flash");
-var session = require("express-session");
+import express from "express";
+import config from "./config";
+import morgan from "morgan";
+import bodyParser from "body-parser";
+import serveStatic from "serve-static";
+import methodOverride from "method-override";
+import mongoose from "mongoose";
+import passport from "passport";
+import fs from "fs";
+import flash from "connect-flash";
+import session from "express-session";
 var app = express();
 
 mongoose.connect(config.get("db"));

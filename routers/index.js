@@ -1,9 +1,9 @@
-var express = require("express");
-var path = require("path");
+import express from "express";
+import path from "path";
+import typeModel from "../models/type";
+import placeModel from "../models/place";
+import passport from "passport";
 var router = express.Router();
-var typeModel = require("../models/type");
-var placeModel = require("../models/place");
-var passport = require("passport");
 
 router.use("/places", require("./places"));
 router.use("/types", require("./types"));

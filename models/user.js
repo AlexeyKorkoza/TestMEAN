@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
-var config = require("../config");
-var jwt = require("jsonwebtoken");
-var bcrypt = require("bcrypt-nodejs");
+import mongoose from "mongoose";
+import config from "../config";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt-nodejs";
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({

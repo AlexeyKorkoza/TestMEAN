@@ -1,8 +1,8 @@
-var express = require("express");
+import express from "express";
+import typeModel from "../models/type";
+import multer from "multer";
+import fs from "fs";
 var router = express.Router();
-var typeModel = require("../models/type");
-var multer = require("multer");
-var fs = require("fs");
 
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {

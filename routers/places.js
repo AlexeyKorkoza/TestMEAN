@@ -1,7 +1,7 @@
-var express = require("express");
+import express from "express";
+import placeModel from "../models/place";
+import mongoose from "mongoose";
 var router = express.Router();
-var placeModel = require("../models/place");
-var mongoose = require("mongoose");
 
 router.get("/", getPlaces);
 router.get("/:id", getPlaceById);

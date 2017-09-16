@@ -1,7 +1,7 @@
-var express = require("express");
+import express from "express";
 var router = express.Router();
 
-module.exports = function(passport) {
+module.exports = passport => {
 
   router.post("/login", function(req, res) {
     passport.authenticate("login", { failureFlash: true }, function( err, userData ) {
