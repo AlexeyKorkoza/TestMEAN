@@ -1,6 +1,6 @@
 'use strict';
 
-import express from "express";
+import express from 'express';
 import authController from '../controllers/authController';
 const router = express();
 

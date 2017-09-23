@@ -1,12 +1,12 @@
 'use strict';
 
-import express from "express";
+import express from 'express';
 import userController from '../controllers/userController';
-var router = express();
+const router = express();
 
-router.get("", userController.getUser);
-router.get("/edit/:username", userController.getUserByUsername);
-router.put("/edit/:username", userController.updateInfo);
-router.put("/edit/:username", userController.updatePassword);
+router.get('', userController.getUser);
+router.get('/edit/:username', userController.getUserByUsername);
+router.put('/edit/:username', userController.updateInfo);
+router.put('/edit/:username', userController.updatePassword);
 
 export default router;

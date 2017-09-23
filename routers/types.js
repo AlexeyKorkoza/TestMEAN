@@ -1,26 +1,26 @@
 'use strict';
 
-import express from "express";
+import express from 'express';
 import multer from 'multer';
 import typeController from '../controllers/typeController';
-var router = express();
+const router = express();
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./uploads/");
+    cb(null, './uploads/');
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname + "." + file.mimetype.split("/")[1]);
+    cb(null, file.originalname + '.' + file.mimetype.split('/')[1]);
   }
 });
 
-var upload = multer({storage: storage});
+const upload = multer({storage: storage});
 
-router.get("/", typeController.getTypes);
-router.get("/:id", typeController.getTypeById);
-router.post("/add", upload.any(), typeController.addType);
-router.put("/:id", upload.any(), typeController.updateTypeWithImage);
-router.put("/:id", typeController.updateTypeWithoutImage);
-router.delete("/:id", typeController.removeType);
+router.get('/', typeController.getTypes);
+router.get('/:id', typeController.getTypeById);
+router.post('/add', upload.any(), typeController.addType);
+router.put('/:id', upload.any(), typeController.updateTypeWithImage);
+router.put('/:id', typeController.updateTypeWithoutImage);
+router.delete('/:id', typeController.removeType);
 
 export default router;
