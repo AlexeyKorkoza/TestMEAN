@@ -1,7 +1,6 @@
 'use strict';
 
 import jwt from 'express-jwt';
-import config from '../config';
 
 function getTokenFromHeader(req) {
 
@@ -14,7 +13,7 @@ function getTokenFromHeader(req) {
 
 const token = {
   required: jwt({
-    secret: config.get('secret'),
+    secret: process.env.SECRET,
     userProperty: 'payload',
     getToken: getTokenFromHeader
   })

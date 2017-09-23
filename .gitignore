@@ -5,3 +5,4 @@ npm-debug-log
 build/
 debug.log
 .vscode/
+.env

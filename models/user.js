@@ -1,5 +1,5 @@
+require('dotenv').config();
 import mongoose from 'mongoose';
-import config from '../config';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt-nodejs';
 const Schema = mongoose.Schema;
@@ -28,7 +28,7 @@ userSchema.methods.generateJWT = () =>{
       username: this.username,
       exp: parseInt(exp.getTime() / 1000)
     },
-    config.get('secret')
+    process.env.SECRET
   );
 };
 

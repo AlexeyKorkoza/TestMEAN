@@ -1,6 +1,6 @@
+require('dotenv').config();
 import User from '../models/user';
 import crypto from 'crypto';
-import config from '../config';
 import jwt from 'jsonwebtoken';
 
 export default {
@@ -12,10 +12,10 @@ export default {
     }
 
     const token = req.headers.authorization.split(' ')[1];
-    const decoded = jwt.decode(token, config.get('secret'));
-    jwt.verify(token, config.get('secret'), err => {
+    const decoded = jwt.decode(token, process.env.SECRET);
+    jwt.verify(token, process.env.SECRET, err => {
       const userId = decoded.id;
-      User.findById(userId, (err, user) =>{
+      User.findById(userId, (err, user) => {
         if (err) {
           res.status(500).json(err);
         }
@@ -83,8 +83,8 @@ export default {
 
 function encrypt(text) {
   const cipher = crypto.createCipher(
-    config.get('algorithm'),
-    config.get('passwordAlgorithm')
+    process.env.ALGORITHM,
+    process.env.PASSWORD_ALGORITHM
   );
   let crypted = cipher.update(text, 'utf8', 'hex');
   crypted += cipher.final('hex');

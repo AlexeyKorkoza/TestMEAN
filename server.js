@@ -1,5 +1,5 @@
+require('dotenv').config();
 import express from 'express';
-import config from './config';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import serveStatic from 'serve-static';
@@ -14,7 +14,7 @@ import routers from './routers';
 import initPassport from './passport/passport-init';
 const app = express();
 
-mongoose.connect(config.get('db'));
+mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
 const db = mongoose.connection;
 
 db.once('open', () => {
@@ -50,5 +50,5 @@ if (!fs.existsSync('./uploads')) {
 
 initPassport(passport);
 
-const port = process.env.PORT || config.get('port');
+const port = process.env.PORT;
 app.listen(port);

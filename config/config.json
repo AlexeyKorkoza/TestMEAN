@@ -1,5 +1,0 @@
-{
-  "port": 8080,
-  "db": "mongodb://localhost:27017/interactive_map",
-  "secret": "Anaheim Mighty Ducks"
-}
