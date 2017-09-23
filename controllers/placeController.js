@@ -1,9 +1,9 @@
-import placeModel from "../models/place";
+import placeModel from '../models/place';
 
 export default {
 
   getPlaces(req, res) {
-    placeModel.find({}, function (err, places) {
+    placeModel.find({}, (err, places) => {
       if (err) {
         res.send(err);
       } else {
@@ -13,7 +13,7 @@ export default {
   },
 
   getPlaceById(req, res) {
-    placeModel.findOne({_id: req.params.id}, function (err, place) {
+    placeModel.findOne({_id: req.params.id}, (err, place) => {
       if (err) {
         res.send(err);
       } else {
@@ -23,7 +23,7 @@ export default {
   },
 
   getPlacesByType(req, res) {
-    placeModel.find({id_type: req.body.id}, function (err, places) {
+    placeModel.find({id_type: req.body.id}, (err, places) => {
       if (err)
         res.send(err);
       res.json(places);
@@ -31,7 +31,7 @@ export default {
   },
 
   addPlace(req, res) {
-    var place = new placeModel({
+    const place = new placeModel({
       name_place: req.body.name_place,
       description: req.body.description,
       lat: req.body.lat,
@@ -39,7 +39,7 @@ export default {
       address: req.body.address,
       name_type: req.body.name_type
     });
-    place.save(function (err, places) {
+    place.save((err, places) => {
       if (err) {
         res.send(err);
       } else {
@@ -53,7 +53,7 @@ export default {
       {_id: req.params.id},
       req.body,
       {runValidators: true},
-      function (err, places) {
+      (err, places) => {
         if (err) {
           res.send(err);
         } else {
@@ -64,7 +64,7 @@ export default {
   },
 
   removePlace(req, res) {
-    placeModel.findByIdAndRemove({_id: req.params.id}, function (err, place) {
+    placeModel.findByIdAndRemove({_id: req.params.id}, (err, place) => {
       if (err) {
         res.send(err);
       } else {

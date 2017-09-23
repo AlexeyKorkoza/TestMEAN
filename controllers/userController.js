@@ -1,26 +1,26 @@
-import userModel from "../models/user";
-import crypto from "crypto";
-import config from "../config";
-import jwt from "jsonwebtoken";
+import userModel from '../models/user';
+import crypto from 'crypto';
+import config from '../config';
+import jwt from 'jsonwebtoken';
 
 export default {
 
   getUser(req, res, next) {
 
     if (!req.headers.authorization) {
-      return res.status(403).end("User not authenticated");
+      return res.status(403).end('User not authenticated');
     }
 
-    var token = req.headers.authorization.split(" ")[1];
-    var decoded = jwt.decode(token, config.get("secret"));
-    jwt.verify(token, config.get("secret"), function (err) {
-      var userId = decoded.id;
-      userModel.findById(userId, function (err, user) {
+    const token = req.headers.authorization.split(' ')[1];
+    const decoded = jwt.decode(token, config.get('secret'));
+    jwt.verify(token, config.get('secret'), err => {
+      const userId = decoded.id;
+      userModel.findById(userId, (err, user) =>{
         if (err) {
           res.json(err);
         }
         if (user) {
-          var token = user.generateJWT();
+          const token = user.generateJWT();
           res.json({
             user: {
               username: user.username,
@@ -33,7 +33,7 @@ export default {
   },
 
   getUserByUsername(req, res) {
-    userModel.findOne({username: req.params.username}, function (err, user) {
+    userModel.findOne({username: req.params.username}, (err, user) => {
       if (err) {
         res.send(err);
       } else {
@@ -45,7 +45,7 @@ export default {
   updateInfo(req, res, next) {
     userModel.findOne(
       {username: req.params.username, password: req.body.password},
-      function (err, user) {
+      (err, user) => {
         if (err) {
           res.send(err);
         }
@@ -55,7 +55,7 @@ export default {
           user.password = req.body.password;
           user.confirmpassword = req.body.confirmpassword;
           user.date = req.body.date;
-          user.save(function (err) {
+          user.save(err => {
             if (err) {
               res.send(err);
             } else {
@@ -74,7 +74,7 @@ export default {
     userModel.findOneAndUpdate(
       {username: req.params.username},
       {password: encrypt(req.body.password)},
-      function (err, user) {
+      (err, user) => {
         if (err) {
           res.send(err);
         } else {
@@ -86,11 +86,11 @@ export default {
 }
 
 function encrypt(text) {
-  var cipher = crypto.createCipher(
-    config.get("algorithm"),
-    config.get("passwordAlgorithm")
+  const cipher = crypto.createCipher(
+    config.get('algorithm'),
+    config.get('passwordAlgorithm')
   );
-  var crypted = cipher.update(text, "utf8", "hex");
-  crypted += cipher.final("hex");
+  let crypted = cipher.update(text, 'utf8', 'hex');
+  crypted += cipher.final('hex');
   return crypted;
 }
