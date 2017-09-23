@@ -10,6 +10,7 @@ import fs from "fs";
 import flash from "connect-flash";
 import session from "express-session";
 import cors from 'cors';
+import routers from './routers';
 var app = express();
 
 mongoose.connect(config.get("db"));
@@ -40,7 +41,7 @@ app.use(serveStatic(__dirname + ""));
 
 app.use(cors());
 
-app.use(require("./routers"));
+app.use('/', routers);
 
 if (!fs.existsSync("./uploads")) {
   fs.mkdirSync("./uploads");

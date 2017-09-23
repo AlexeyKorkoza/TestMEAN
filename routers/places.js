@@ -1,6 +1,8 @@
+'use strict';
+
 import express from "express";
 import placeController from '../controllers/placeController';
-var router = express.Router();
+const router = express();
 
 router.get("/", placeController.getPlaces);
 router.get("/:id", placeController.getPlaceById);
@@ -9,4 +11,4 @@ router.post("/add", placeController.addPlace);
 router.put("/:id", placeController.updatePlace);
 router.delete("/:id", placeController.removePlace);
 
-module.exports = router;
+export default router;

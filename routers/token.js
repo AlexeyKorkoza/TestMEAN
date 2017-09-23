@@ -1,3 +1,5 @@
+'use strict';
+
 import jwt from "express-jwt";
 import config from "../config";
 
@@ -20,4 +22,4 @@ var token = {
   })
 };
 
-module.exports = token;
+export default token;

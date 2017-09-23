@@ -1,8 +1,10 @@
+'use strict';
+
 import express from "express";
 import authController from '../controllers/authController';
-var router = express.Router();
+const router = express();
 
 router.post('/login', authController.login);
 router.post('/signup', authController.signUp);
 
-module.exports = router;
+export default router;

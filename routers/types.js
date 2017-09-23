@@ -1,6 +1,9 @@
+'use strict';
+
 import express from "express";
+import multer from 'multer';
 import typeController from '../controllers/typeController';
-var router = express.Router();
+var router = express();
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -20,4 +23,4 @@ router.put("/:id", upload.any(), typeController.updateTypeWithImage);
 router.put("/:id", typeController.updateTypeWithoutImage);
 router.delete("/:id", typeController.removeType);
 
-module.exports = router;
+export default router;

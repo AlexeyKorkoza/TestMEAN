@@ -1,19 +1,16 @@
+'use strict';
+
 import express from "express";
 import path from "path";
-import places from '../controllers/placeController';
-import types from '../controllers/typeController';
-import users from '../controllers/userController';
-import auth from '../controllers/authController';
-var router = express.Router();
+import places from './places';
+import types from './types';
+import users from './users';
+import auth from './authentication';
+const router = express();
 
 router.use("/places", places);
 router.use("/types", types);
 router.use("/auth", auth);
 router.use("/user", users);
-router.get("*", errorPath);
 
-module.exports = router;
-
-function errorPath(req, res) {
-  res.sendFile(path.resolve("./index.html"));
-}
+export default router;
