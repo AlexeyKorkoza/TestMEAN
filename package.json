@@ -6,8 +6,8 @@
   "scripts": {
     "test": "karma start",
     "dev": "nodemon server.js --exec babel-node --presets es2015 --presets es2017",
-    "eslint": "eslint models/*.js, passport/*.js, routers/*.js server.js",
-    "fix": "eslint models/*.js, passport/*.js, routers/*.js server.js --fix"
+    "eslint": "eslint *.js",
+    "fix": "eslint *.js --fix"
   },
   "repository": {
     "type": "git",
