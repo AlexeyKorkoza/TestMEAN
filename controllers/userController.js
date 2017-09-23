@@ -1,4 +1,4 @@
-import userModel from '../models/user';
+import User from '../models/user';
 import crypto from 'crypto';
 import config from '../config';
 import jwt from 'jsonwebtoken';
@@ -15,13 +15,13 @@ export default {
     const decoded = jwt.decode(token, config.get('secret'));
     jwt.verify(token, config.get('secret'), err => {
       const userId = decoded.id;
-      userModel.findById(userId, (err, user) =>{
+      User.findById(userId, (err, user) =>{
         if (err) {
-          res.json(err);
+          res.status(500).json(err);
         }
         if (user) {
           const token = user.generateJWT();
-          res.json({
+          res.status(200).json({
             user: {
               username: user.username,
               token: token
@@ -32,56 +32,52 @@ export default {
     });
   },
 
-  getUserByUsername(req, res) {
-    userModel.findOne({username: req.params.username}, (err, user) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.json(user);
+  async getUserByUsername(req, res) {
+    try {
+      const user = await User.findOne({username: req.params.username});
+      if (!user) {
+        res.status(400).json('User is not found');
       }
-    });
+
+      res.status(200).json(user);
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
   },
 
-  updateInfo(req, res, next) {
-    userModel.findOne(
-      {username: req.params.username, password: req.body.password},
-      (err, user) => {
-        if (err) {
-          res.send(err);
-        }
-        if (user) {
-          user.username = req.body.username;
-          user.email = req.body.email;
-          user.password = req.body.password;
-          user.confirmpassword = req.body.confirmpassword;
-          user.date = req.body.date;
-          user.save(err => {
-            if (err) {
-              res.send(err);
-            } else {
-              res.send(user);
+  async updateInfo(req, res, next) {
+    try {
+      const result = await User.findOne({username: req.params.username, password: req.body.password});
+
+          if (result) {
+            const user = new User({
+              'username': req.body.username,
+              'email': req.body.email,
+              'password': req.body.password,
+              'confirmpassword': req.body.confirmpassword,
+              'date': req.body.date
+            });
+
+            await user.save();
+
+            res.status(200).json('Account is updated');
+          } else {
+            const user = new User({
+              'password': encrypt(req.body.password)
+            });
+
+            const result = await User.findOneAndUpdate({username: req.params.username}, {$set: user}, {new: true });
+            if (!result) {
+              res.status(400).json('Account is not updated');
             }
-          });
-        }
-        if (!user) {
-          next();
-        }
-      }
-    );
-  },
 
-  updatePassword(req, res) {
-    userModel.findOneAndUpdate(
-      {username: req.params.username},
-      {password: encrypt(req.body.password)},
-      (err, user) => {
-        if (err) {
-          res.send(err);
-        } else {
-          res.status(200).send(user);
-        }
-      }
-    );
+            res.status(200).json('Account is updated');
+          }
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
   }
 }
 

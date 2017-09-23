@@ -7,6 +7,5 @@ const router = express();
 router.get('', userController.getUser);
 router.get('/edit/:username', userController.getUserByUsername);
 router.put('/edit/:username', userController.updateInfo);
-router.put('/edit/:username', userController.updatePassword);
 
 export default router;

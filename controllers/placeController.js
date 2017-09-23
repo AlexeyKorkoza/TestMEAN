@@ -1,75 +1,96 @@
-import placeModel from '../models/place';
+import Place from '../models/place';
 
 export default {
 
-  getPlaces(req, res) {
-    placeModel.find({}, (err, places) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(places);
+  async getPlaces(req, res) {
+    try {
+      const places = await Place.find({});
+      if (places.length) {
+        res.status(200).json(places);
       }
-    });
+
+      res.status(400).json('Places are not found');
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
   },
 
-  getPlaceById(req, res) {
-    placeModel.findOne({_id: req.params.id}, (err, place) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(place);
+  async getPlaceById(req, res) {
+    try {
+      const place = await Place.findOne({_id: req.params.id});
+      if (!place) {
+        res.status(400).json('Place is not found');
       }
-    });
+
+      res.status(200).json(place);
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
   },
 
-  getPlacesByType(req, res) {
-    placeModel.find({id_type: req.body.id}, (err, places) => {
-      if (err)
-        res.send(err);
-      res.json(places);
-    });
+  async getPlacesByType(req, res) {
+    try {
+      const places = await Place.find({id_type: req.body.id});
+      if (places.length) {
+        res.status(200).json(places);
+      }
+
+      res.status(400).json('Places are not found');
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
   },
 
-  addPlace(req, res) {
-    const place = new placeModel({
-      name_place: req.body.name_place,
-      description: req.body.description,
-      lat: req.body.lat,
-      lng: req.body.lng,
-      address: req.body.address,
-      name_type: req.body.name_type
-    });
-    place.save((err, places) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(places);
-      }
-    });
+  async addPlace(req, res) {
+    try {
+      const place = new Place({
+        name_place: req.body.name_place,
+        description: req.body.description,
+        lat: req.body.lat,
+        lng: req.body.lng,
+        address: req.body.address,
+        name_type: req.body.name_type
+      });
+
+      await place.save();
+
+      res.status(200).json('Place is added');
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
   },
 
-  updatePlace(req, res) {
-    placeModel.findOneAndUpdate(
-      {_id: req.params.id},
-      req.body,
-      {runValidators: true},
-      (err, places) => {
-        if (err) {
-          res.send(err);
-        } else {
-          res.send(places);
-        }
+  async updatePlace(req, res) {
+    try {
+      const place = req.body;
+
+      const result = await Place.findOneAndUpdate({_id: req.params.id}, {$set: place}, {new: true});
+      if (!result) {
+        res.status(400).json('Place is not updated');
       }
-    );
+
+      res.status(200).json('Place is updated');
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
   },
 
-  removePlace(req, res) {
-    placeModel.findByIdAndRemove({_id: req.params.id}, (err, place) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(place);
+  async removePlace(req, res) {
+    try {
+      const place = await Place.findByIdAndRemove({_id: req.params.id});
+      if (!place) {
+        res.status(400).json('Place is not removed');
       }
-    });
+
+      res.status(200).json('Place is removed');
+    }
+    catch (err) {
+      res.status(500).json(err);
+    }
   }
 }
