@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-var Schema = mongoose.Schema;
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-var Type = mongoose.model("Type", {
+const Type = mongoose.model('Type', {
   id_type: Number,
   name_type: {
     type: String,
@@ -10,4 +10,4 @@ var Type = mongoose.model("Type", {
   image: String
 });
 
-module.exports = Type;
+export default Type;

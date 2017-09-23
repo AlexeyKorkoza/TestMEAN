@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-var Schema = mongoose.Schema;
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-var Place = mongoose.model("Place", {
+const Place = mongoose.model('Place', {
   name_place: String,
   description: String,
   lat: {
@@ -16,4 +16,4 @@ var Place = mongoose.model("Place", {
   id_type: Number
 });
 
-module.exports = Place;
+export default Place;
