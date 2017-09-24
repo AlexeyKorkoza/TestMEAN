@@ -53,11 +53,13 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeS
     vm.getAllTypes();
     vm.getAllPlaces();
     cfpLoadingBar.complete();
+    dataNoLoad();
   }
 
   function getAllTypes() {
     typeService.getAllTypes().then(
       function Success(response) {
+        console.log(response);
         vm.getData = response.data;
         vm.select.push({
           value: 0,
@@ -69,9 +71,6 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeS
             text: response.data[i].name_type
           });
         }
-      },
-      function myError() {
-        dataNoLoad();
       }
     );
   }
@@ -79,6 +78,7 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeS
   function getAllPlaces() {
     placeService.getAllPlaces().then(
       function Success(response) {
+        console.log(response);
         vm.addPlaceInMap(response.data);
       },
       function Error() {
@@ -116,8 +116,6 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeS
         };
       });
       cfpLoadingBar.complete();
-    } else {
-      dataNoLoad();
     }
   }
 
@@ -142,19 +140,58 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeS
   }
 
   function dataNoLoad() {
-    swal(
-      {
-        title: "Данные с сервера не загрузились!",
-        text: '<span style="color:#F8BB86">Пожалуйста, обновите страницу<span>',
-        confirmButtonText: "Обновить страницу",
-        html: true
-      },
-      function (isConfirm) {
-        if (isConfirm) {
-          location.reload();
-        }
-      }
-    );
-  }
 
+    if (!vm.isAuthenticated && !vm.places && !vm.select.length) {
+      swal(
+        {
+          title: "Please log in or sign up",
+          text: '<span style="color:#F8BB86">Please log in or sign up<span>',
+          confirmButtonText: "OK",
+          html: true
+        });
+    }
+
+    if (!vm.isAuthenticated && vm.places && vm.select.length) {
+      swal(
+        {
+          title: "Please log in or sign up",
+          text: '<span style="color:#F8BB86">Please log in or sign up<span>',
+          confirmButtonText: "OK",
+          html: true
+        }
+      );
+    }
+
+    if (vm.isAuthenticated && !vm.select.length) {
+      swal(
+        {
+          title: "No categories of places",
+          text: '<span style="color:#F8BB86">Please, add new category of places<span>',
+          confirmButtonText: "Add new category",
+          html: true
+        },
+        function (isConfirm) {
+          if (isConfirm) {
+            window.href = '/types/add';
+          }
+        }
+      );
+    }
+
+    if (vm.isAuthenticated && vm.select.length && !vm.places) {
+      swal(
+        {
+          title: "No places",
+          text: '<span style="color:#F8BB86">Please, add new place<span>',
+          confirmButtonText: "Add new place",
+          html: true
+        },
+        function (isConfirm) {
+          if (isConfirm) {
+            window.href = '/places/add';
+          }
+        }
+      );
+    }
+  }
 }

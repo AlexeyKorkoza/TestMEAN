@@ -77,11 +77,4 @@ gulp.task('watch', ['js'], () => {
     gulp.watch('app/**/*.js', ['js']);
 });
 
-gulp.task('server', () => {
-    nodemon({
-        script: 'server.js',
-        env: { NODE_ENV: 'development' }
-    });
-});
-
-gulp.task('start', ['server', 'css', 'js', 'watch']);
+gulp.task('start', ['css', 'js', 'watch']);
