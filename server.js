@@ -52,3 +52,5 @@ initPassport(passport);
 
 const port = process.env.PORT;
 app.listen(port);
+
+export default app;
