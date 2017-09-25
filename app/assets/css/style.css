@@ -113,7 +113,7 @@ html, body {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -182,6 +182,7 @@ button {
   from {
     -webkit-transform: scale(0)
   }
+
   to {
     -webkit-transform: scale(1)
   }
@@ -191,6 +192,7 @@ button {
   from {
     -moz-transform: scale(0)
   }
+
   to {
     -moz-transform: scale(1)
   }
@@ -200,6 +202,7 @@ button {
   from {
     -o-transform: scale(0)
   }
+
   to {
     -o-transform: scale(1)
   }
@@ -209,6 +212,7 @@ button {
   from {
     transform: scale(0)
   }
+
   to {
     transform: scale(1)
   }
@@ -454,7 +458,6 @@ textarea {
 }
 
 @media (max-width: 767px) {
-
   .mob_select {
     top: 35px;
     padding: 0 10px;
@@ -472,7 +475,6 @@ textarea {
 }
 
 @media (max-width: 450px) {
-
   .menu .menu__item a {
     padding: 0;
   }

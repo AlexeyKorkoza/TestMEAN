@@ -6,8 +6,9 @@
   "scripts": {
     "test": "karma start",
     "dev": "nodemon server.js --exec babel-node --presets es2015 --presets es2017",
+    "stylelint": "stylelint app/assets/css/*.css",
     "eslint": "eslint *.js",
-    "fix": "eslint *.js --fix"
+    "eslint-fix": "eslint *.js --fix"
   },
   "repository": {
     "type": "git",
@@ -78,6 +79,7 @@
     "karma": "^1.5.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
-    "karma-jasmine": "^1.1.0"
+    "karma-jasmine": "^1.1.0",
+    "stylelint": "^8.1.1"
   }
 }
