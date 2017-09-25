@@ -11,7 +11,8 @@ TestMEAN is test application for working with map. User can add place and type o
 ```
 1. git clone https://github.com/AlexeyKorkoza/TestMEAN.git
 2. npm install or yarn install
-3. gulp start
+3. gulp start - build client part
+4. npm run dev - start server
 ```
 
 ## How to Run Tests?
