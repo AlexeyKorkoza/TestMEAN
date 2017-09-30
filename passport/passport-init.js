@@ -19,12 +19,12 @@ module.exports = passport => {
     },
     (req, username, password, done) => {
 
-      User.findOne({'username': username},
-        (err, user) => {
+      User.findOne({'username': username}, (err, user) => {
           
-          if (err)
+          if (err) {
             return done(err);
-
+          }
+          console.log(user);
           if (!user) {
             return done(null, false, req.flash('loginMessage', 'Пользователь не найден'));
           }
@@ -35,7 +35,7 @@ module.exports = passport => {
 
           const userData = {
             'username': user.username,
-            'token': user.generateJWT()
+            'token': user.generateJWT(user)
           };
 
           return done(null, userData);
