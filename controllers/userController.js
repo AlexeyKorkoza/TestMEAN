@@ -20,7 +20,7 @@ export default {
           res.status(500).json(err);
         }
         if (user) {
-          const token = user.generateJWT();
+          const token = user.generateJWT(user);
           res.status(200).json({
             user: {
               username: user.username,
