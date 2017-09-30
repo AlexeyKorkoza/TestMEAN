@@ -6,11 +6,11 @@ export default {
   async getTypes(req, res) {
     try {
       const types = await Type.find({});
-      if (types.length) {
-        res.status(200).json(types);
+      if (!types.length) {
+        res.status(400).json('Types are not found');
       }
 
-      res.status(400).json('Types are not found');
+      res.status(200).json(types);
     }
     catch (err) {
       res.status(500).json(err);
@@ -63,11 +63,11 @@ export default {
         });
 
         const result = await Type.findOneAndUpdate({_id: req.params.id}, type);
-        if (result) {
-          res.status(200).json('Type is updated');
+        if (!result) {
+          res.status(400).json('Type is not found');
         }
 
-        res.status(400).json('Type is not found');
+        res.status(200).json('Type is updated');
       }
       catch (err) {
         res.status(500).json(err);

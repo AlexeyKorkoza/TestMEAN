@@ -5,11 +5,11 @@ export default {
   async getPlaces(req, res) {
     try {
       const places = await Place.find({});
-      if (places.length) {
-        res.status(200).json(places);
+      if (!places.length) {
+        res.status(400).json('Places are not found');
       }
 
-      res.status(400).json('Places are not found');
+      res.status(200).json(places);
     }
     catch (err) {
       res.status(500).json(err);
@@ -33,11 +33,11 @@ export default {
   async getPlacesByType(req, res) {
     try {
       const places = await Place.find({id_type: req.body.id});
-      if (places.length) {
-        res.status(200).json(places);
+      if (!places.length) {
+        res.status(400).json('Places are not found');
       }
 
-      res.status(400).json('Places are not found');
+      res.status(200).json(places);
     }
     catch (err) {
       res.status(500).json(err);
