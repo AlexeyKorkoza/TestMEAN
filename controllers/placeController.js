@@ -52,10 +52,14 @@ export default {
         lat: req.body.lat,
         lng: req.body.lng,
         address: req.body.address,
-        name_type: req.body.name_type
+        name_type: req.body.name_type,
+        id_type: req.body.id_type
       });
 
-      await place.save();
+      const result = await place.save();
+      if (!result) {
+        res.status(400).json('Place is not found')
+      }
 
       res.status(200).json('Place is added');
     }

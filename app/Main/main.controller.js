@@ -59,7 +59,6 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeS
   function getAllTypes() {
     typeService.getAllTypes().then(
       function Success(response) {
-        console.log(response);
         vm.getData = response.data;
         vm.select.push({
           value: 0,
@@ -78,7 +77,6 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeS
   function getAllPlaces() {
     placeService.getAllPlaces().then(
       function Success(response) {
-        console.log(response);
         vm.addPlaceInMap(response.data);
       },
       function Error() {
@@ -162,7 +160,7 @@ function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeS
       );
     }
 
-    if (vm.isAuthenticated && !vm.select.length) {
+    if (vm.isAuthenticated && !vm.select) {
       swal(
         {
           title: "No categories of places",

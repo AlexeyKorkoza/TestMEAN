@@ -15,15 +15,7 @@ import initPassport from './passport/passport-init';
 const app = express();
 
 mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
-const db = mongoose.connection;
-
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
-
-db.on('error', err => {
-  console.log(err);
-});
+mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
