@@ -14,7 +14,7 @@ angular
     .run(run);
 
 config.$inject = ['cfpLoadingBarProvider'];
-run.$inject = ['$http', 'userService'];
+run.$inject = ['userService'];
 
 function config(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.latencyThreshold = 1000;
