@@ -49,33 +49,30 @@ export default {
   async updateInfo(req, res) {
     try {
       if (!req.body.password) {
-        const user = new User({
-          'username': req.body.username,
-          'email': req.body.email
-        });
 
-        let result = await User.findById({'_id': req.body._id});
-        if (!result) {
-          res.status(400).json('Account is not updated');
+        let user = await User.findById({'_id': req.body._id});
+        if (!user) {
+          res.status(400).json('Account is not found');
         }
 
-        result = user.save();
+        user.username = req.body.username;
+        user.email = req.body.email;
+
+        const result = user.save();
         if (!result) {
           res.status(400).json('Account is not updated');
         }
 
         res.status(200).json(result);
       } else {
-        let user = new User({});
-        user.generatePassword(req.body.password);
 
-        let result = await User.findById({'_id': req.body._id});
-
-        if (!result) {
-          res.status(400).json('Account is not updated');
+        let user = await User.findById(req.body._id);
+        if (!user) {
+          res.status(400).json('Account is not found');
         }
+        user.password = user.generatePassword(req.body.password);
 
-        result = await user.save();
+        const result = await user.save();
 
         if (!result) {
           res.status(400).json('Account is not updated');

@@ -57,14 +57,18 @@ export default {
     if (req.files.length === 1) {
       try {
         removeImage(req.body.data.id);
-        const type = new Type({
-          'name_type': req.body.data.typename,
-          'image': req.files[0].filename
-        });
 
-        const result = await Type.findOneAndUpdate({_id: req.params.id}, type);
-        if (!result) {
+        let type = await Type.findById(req.params.id);
+        if (!type) {
           res.status(400).json('Type is not found');
+        }
+
+        type.name_type = req.body.data.typename;
+        type.image = req.files[0].filename;
+
+        const result = type.save();
+        if(!result) {
+          res.status(400).json('Type is not updated');
         }
 
         res.status(200).json('Type is updated');
@@ -79,19 +83,21 @@ export default {
 
   async updateTypeWithoutImage(req, res) {
     try {
-      const type = await Type.findById(req.params.id);
+      let type = await Type.findById(req.params.id);
+
+      if (!type) {
+        res.status(400).json('Type is not found');
+      }
 
       const arr = type.image.split('.');
       const index = arr.length - 1;
       const newName = req.body.data.typename + '.' + arr[index];
-      fs.rename('uploads/' + result.image, 'uploads/' + newName);
+      fs.rename('uploads/' + type.image, 'uploads/' + newName);
 
-      const updateType = new Type({
-        'name_type': req.body.data.typename,
-        'image': newName
-      });
+      type.name_type = req.body.data.typename;
+      type.image = newName;
 
-      const result = await updateType.save();
+      const result = await type.save();
       if (!result) {
         res.status(400).json('Type is not updated');
       }

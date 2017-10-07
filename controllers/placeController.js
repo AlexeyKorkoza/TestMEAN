@@ -70,9 +70,19 @@ export default {
 
   async updatePlace(req, res) {
     try {
-      const place = req.body;
+      const place = await Place.findById(req.params.id);
+      if (!place) {
+        res.status(400).json('Place is not found');
+      }
 
-      const result = await Place.findOneAndUpdate({_id: req.params.id}, {$set: place}, {new: true});
+      place.name_place = req.body.name_place;
+      place.description = req.body.description;
+      place.lat = req.body.lat;
+      place.lng = req.body.lng;
+      place.address = req.body.address;
+      place.id_type = req.body.id_type;
+
+      const result = place.save();
       if (!result) {
         res.status(400).json('Place is not updated');
       }
