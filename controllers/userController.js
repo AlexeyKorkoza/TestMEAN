@@ -13,7 +13,7 @@ export default {
 
     const token = req.headers.authorization.split(' ')[1];
     const decoded = jwt.decode(token, process.env.SECRET);
-    jwt.verify(token, process.env.SECRET, err => {
+    jwt.verify(token, process.env.JWT_SECRET, () => {
       const userId = decoded.id;
       User.findById(userId, (err, user) => {
         if (err) {
@@ -46,34 +46,43 @@ export default {
     }
   },
 
-  async updateInfo(req, res, next) {
+  async updateInfo(req, res) {
     try {
-      const result = await User.findOne({username: req.params.username, password: req.body.password});
+      if (!req.body.password) {
+        const user = new User({
+          'username': req.body.username,
+          'email': req.body.email
+        });
 
-          if (result) {
-            const user = new User({
-              'username': req.body.username,
-              'email': req.body.email,
-              'password': req.body.password,
-              'confirmpassword': req.body.confirmpassword,
-              'date': req.body.date
-            });
+        let result = await User.findById({'_id': req.body._id});
+        if (!result) {
+          res.status(400).json('Account is not updated');
+        }
 
-            await user.save();
+        result = user.save();
+        if (!result) {
+          res.status(400).json('Account is not updated');
+        }
 
-            res.status(200).json('Account is updated');
-          } else {
-            const user = new User({
-              'password': encrypt(req.body.password)
-            });
+        res.status(200).json(result);
+      } else {
+        let user = new User({});
+        user.generatePassword(req.body.password);
 
-            const result = await User.findOneAndUpdate({username: req.params.username}, {$set: user}, {new: true });
-            if (!result) {
-              res.status(400).json('Account is not updated');
-            }
+        let result = await User.findById({'_id': req.body._id});
 
-            res.status(200).json('Account is updated');
-          }
+        if (!result) {
+          res.status(400).json('Account is not updated');
+        }
+
+        result = await user.save();
+
+        if (!result) {
+          res.status(400).json('Account is not updated');
+        }
+
+        res.status(200).json('Account is updated');
+      }
     }
     catch (err) {
       res.status(500).json(err);

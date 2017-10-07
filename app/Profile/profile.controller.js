@@ -4,9 +4,9 @@ angular
   .module("myApp")
   .controller("userProfileCtrl", userProfileCtrl);
 
-userProfileCtrl.$inject = ['$routeParams', 'userService'];
+userProfileCtrl.$inject = ['userService'];
 
-function userProfileCtrl($routeParams, userService) {
+function userProfileCtrl(userService) {
 
   var vm = this;
   vm.activate = activate;
@@ -16,14 +16,22 @@ function userProfileCtrl($routeParams, userService) {
   activate();
 
   function activate() {
-    userService.getUserInfo(localStorage.getItem("username")).then(function (response) {
+
+    var username = localStorage.getItem("username");
+    userService.getUserInfo(username).then(function (response) {
       vm.userData = response.data;
     });
   }
 
   function update() {
+    var username = localStorage.getItem("username");
+    var data = {
+      _id: vm.userData._id,
+      email: vm.userData.email,
+      username: vm.userData.username
+    };
     userService
-      .updateUserInfo(localStorage.getItem("username"), vm.userData)
+      .updateUserInfo(username, data)
       .then(function (response) {
         if (response.data.code) {
           swal("Информация не обновлена", "Повторите попытку", "error");
@@ -36,16 +44,16 @@ function userProfileCtrl($routeParams, userService) {
           );
         }
       });
-  };
+  }
 
   function updatePassword() {
     var data = {
-      username: vm.userData.username,
-      email: vm.userData.email,
-      password: vm.settingPassword.password,
-      date: vm.userData.date
+      _id: vm.userData._id,
+      password: vm.settingPassword.password
     };
-    userService.updateUserInfo(localStorage.getItem("username"), data).then(function (response) {
+
+    var username = localStorage.getItem("username");
+    userService.updateUserInfo(username, data).then(function (response) {
       localStorage.setItem("username", response.data.username);
       swal(
         "Информация успешно обновлена",
@@ -53,5 +61,5 @@ function userProfileCtrl($routeParams, userService) {
         "success"
       );
     });
-  };
+  }
 }
