@@ -7,8 +7,10 @@
     "test": "karma start",
     "dev": "nodemon server.js --exec babel-node --presets es2015 --presets es2017",
     "stylelint": "stylelint app/assets/css/*.css",
-    "eslint": "eslint *.js",
-    "eslint-fix": "eslint *.js --fix"
+    "eslint:backend": "eslint *.js",
+    "eslint-fix:backend": "eslint *.js --fix",
+    "eslint:frontend":"eslint app/*.js",
+    "eslint-fix:frontend": "eslint app/*.js --fix"
   },
   "repository": {
     "type": "git",
