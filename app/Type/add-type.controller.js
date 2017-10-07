@@ -59,5 +59,5 @@ function addTypeCtrl($location, Upload, typeService) {
         $location.url("/types");
       }
     });
-  };
+  }
 }

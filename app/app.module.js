@@ -20,8 +20,7 @@ function config(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.latencyThreshold = 1000;
 }
 
-function run($http, userService) {
-  
+function run(userService) {
     if(localStorage.getItem('username')){
         userService.getUser().then(function(response){
             localStorage.setItem('username', response.data.user.username);

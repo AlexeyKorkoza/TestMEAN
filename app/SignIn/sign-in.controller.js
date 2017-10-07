@@ -4,9 +4,9 @@ angular
   .module("myApp")
   .controller("signInCtrl", signInCtrl);
 
-signInCtrl.$inject = ['$http', '$location', 'authenticationService', 'cfpLoadingBar'];
+signInCtrl.$inject = ['$location', 'authenticationService', 'cfpLoadingBar'];
 
-function signInCtrl($http, $location, authenticationService, cfpLoadingBar) {
+function signInCtrl($location, authenticationService, cfpLoadingBar) {
 
   var vm = this;
   vm.back = back;
@@ -14,7 +14,7 @@ function signInCtrl($http, $location, authenticationService, cfpLoadingBar) {
 
   function back() {
     $location.path("/");
-  };
+  }
 
   function LoginBtnClick() {
     vm.error = "";

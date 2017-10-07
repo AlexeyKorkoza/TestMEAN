@@ -4,9 +4,9 @@ angular
   .module("myApp")
   .controller("mainCtrl", mainCtrl);
 
-mainCtrl.$inject = ['$http', '$location', 'cfpLoadingBar', 'authenticationService', 'placeService', 'typeService'];
+mainCtrl.$inject = ['cfpLoadingBar', 'authenticationService', 'placeService', 'typeService'];
 
-function mainCtrl($http, $location, cfpLoadingBar, authenticationService, placeService, typeService) {
+function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeService) {
 
   var vm = this;
   vm.group_markers = [];

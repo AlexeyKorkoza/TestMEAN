@@ -15,7 +15,7 @@ function signUpCtrl($location, cfpLoadingBar, signUpService) {
 
   function back() {
     $location.path('/');
-  };
+  }
 
   function RegBtnClick() {
     vm.formData.date = "";

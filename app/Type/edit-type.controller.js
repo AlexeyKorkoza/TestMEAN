@@ -30,8 +30,7 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
     } else {
       vm.filename = "Иконка не выбрана";
     }
-  };
-
+  }
 
   function update() {
     if (vm.editData.file) {
@@ -55,5 +54,5 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
           $location.url("/types");
         }
       });
-  };
+  }
 }
