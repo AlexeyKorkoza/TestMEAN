@@ -42,7 +42,7 @@ angular
     }
 
     function getPlacesByType(id){
-      return $http.post("/places/", {id: id});
+      return $http.get("/places/type/" + id);
     }
 
     var Places = "";

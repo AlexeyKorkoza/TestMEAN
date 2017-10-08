@@ -32,7 +32,7 @@ export default {
 
   async getPlacesByType(req, res) {
     try {
-      const places = await Place.find({id_type: req.body.id});
+      const places = await Place.find({id_type: req.params.id});
       if (!places.length) {
         res.status(400).json('Places are not found');
       }
