@@ -14,7 +14,10 @@ const userSchema = new Schema({
     unique: true
   },
   password: String,
-  date: String
+  date: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 userSchema.methods.generateJWT = user =>{

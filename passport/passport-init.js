@@ -24,7 +24,7 @@ module.exports = passport => {
           if (err) {
             return done(err);
           }
-          console.log(user);
+
           if (!user) {
             return done(null, false, req.flash('loginMessage', 'Пользователь не найден'));
           }

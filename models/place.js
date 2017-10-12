@@ -13,7 +13,11 @@ const Place = mongoose.model('Place', {
     unique: true
   },
   address: String,
-  id_type: Number
+  id_type: Number,
+  date: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 export default Place;

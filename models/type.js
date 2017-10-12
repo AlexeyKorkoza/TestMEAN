@@ -7,7 +7,11 @@ const Type = mongoose.model('Type', {
     type: String,
     unique: true
   },
-  image: String
+  image: String,
+  date: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 export default Type;
