@@ -10,7 +10,7 @@ import fs from 'fs';
 import flash from 'connect-flash';
 import session from 'express-session';
 import cors from 'cors';
-import routers from './routers';
+import routers from './routes';
 import initPassport from './passport/passport-init';
 const app = express();
 
