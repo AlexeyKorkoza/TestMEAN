@@ -25,7 +25,6 @@ function signUpCtrl($location, cfpLoadingBar, signUpService) {
         $location.path('/');
       })
       .catch(function (err) {
-        console.log(err);
         vm.error = err.data.message;
         cfpLoadingBar.complete();
       });

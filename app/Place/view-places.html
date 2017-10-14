@@ -2,28 +2,28 @@
     <div class="container">
         <div class="row">
             <div class="well clearfix">
-                <h2>Список мест</h2>
+                <h2>List of places</h2>
                 <div class="row">
                     <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
                         <a href="#/places/add" class="button icon-add">
-                            <span>Добавить место</span>
+                            <span>Add place</span>
                         </a>
                     </div>
                     <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
                         <a href="#/" class="button icon-home">
-                            <span>На Главную</span>
+                            <span>Back to Main</span>
                         </a>
                     </div>
                 </div>
                 <table class="table table-striped all_places" wt-responsive-table>
                     <thead>
                     <tr>
-                        <th>Имя</th>
-                        <th>Описание</th>
-                        <th>Широта</th>
-                        <th>Долгота</th>
-                        <th>Адрес</th>
-                        <th>Действия</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Address</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,12 +37,12 @@
                             <div class="row">
                                 <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
                                     <a class="button icon-edit" href="#/places/{{place._id}}">
-                                        <span>Редактировать</span>
+                                        <span>Edit</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
                                     <a class="button icon-remove" ng-click="vm.remove(place._id, index)">
-                                        <span>Удалить</span></a>
+                                        <span>Remove</span></a>
                                 </div>
                             </div>
                         </td>

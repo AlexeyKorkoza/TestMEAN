@@ -3,53 +3,50 @@
         <form class="modal-content animate" name="form" novalidate>
             <div class="containerSignUp">
                 <div>
-                    <span class="close" title="Вернуться назад" ng-click="vm.back()">&times;</span>
+                    <span class="close" title="Back to Main" ng-click="vm.back()">&times;</span>
                 </div>
                 <div class="form-group">
-                    <label><b>Имя пользователя:*</b></label>
+                    <label><b>Username:*</b></label>
                     <input type="text"
                            name="username"
-                           placeholder="Введите имя"
+                           placeholder="Username"
                            ng-model="vm.formData.username"
                            class="username"
                            required/>
-                    <p ng-show="form.username.$invalid && !form.username.$pristine" class="help-block">Введите имя
-                        пользователя</p>
+                    <p ng-show="form.username.$invalid && !form.username.$pristine" class="help-block">Input username</p>
                 </div>
                 <div class="form-group">
-                    <label><b>Электронный адрес:*</b></label>
+                    <label><b>Email:*</b></label>
                     <input type="email"
                            name="email"
                            placeholder="example@mail.com"
                            ng-model="vm.formData.email"
                            class="email"
                            required/>
-                    <p ng-show="form.email.$invalid && !form.email.$pristine" class="help-block">Электронный адрес
-                        некорректный</p>
+                    <p ng-show="form.email.$invalid && !form.email.$pristine" class="help-block">Email is incorrect</p>
                 </div>
                 <div class="form-group">
-                    <label><b>Пароль:*</b></label>
+                    <label><b>Password:*</b></label>
                     <input type="password"
                            name="password"
-                           placeholder="Введите пароль"
+                           placeholder="Password"
                            ng-model="vm.formData.password"
                            ng-minlength="6"
                            id="signUpPassword"
                            class="password"
                            required/>
-                    <p ng-show="form.password.$error.minlength" class="help-block">Пароль должен состоять из 6 символов
-                        минимум</p>
+                    <p ng-show="form.password.$error.minlength" class="help-block">Password must consist from 6 symbols</p>
                 </div>
                 <div class="form-group">
-                    <label><b>Повторите пароль:*</b></label>
+                    <label><b>Confirm password:*</b></label>
                     <input type="password"
                            name="confirmpassword"
-                           placeholder="Повторите пароль"
+                           placeholder="Confirm password"
                            ng-model="vm.formData.confirmpassword"
                            pw-check="signUpPassword"
                            class="password"
                            required/>
-                    <p class="help-block" ng-show="form.confirmpassword.$error.pwmatch">Пароли не совпадают</p>
+                    <p class="help-block" ng-show="form.confirmpassword.$error.pwmatch">Password are not comparing</p>
                 </div>
                 <p class="signError">{{vm.error}}</p>
                 <div class="row">
@@ -58,12 +55,12 @@
                                 type="submit"
                                 ng-disabled="form.$invalid"
                                 ng-click="vm.RegBtnClick()">
-                            <span>Зарегистрироваться</span>
+                            <span>Sign In</span>
                         </button>
                     </div>
                     <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
                         <a class="button icon-home CloseSignIn"  href="#/">
-                            <span>Назад</span>
+                            <span>Back to Main</span>
                         </a>
                     </div>
                 </div>

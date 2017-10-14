@@ -21,8 +21,8 @@ function viewTypesCtrl($location, typeService) {
       vm.types = response.data;
       if (vm.types.length < 1) {
         swal(
-          "Список типов объектов пуст",
-          "Пожалуйста, добавьте новый тип объекта",
+          "List types is empty",
+          "Please, add new type of place",
           "error"
         );
         $location.url("/types/add");
@@ -34,16 +34,16 @@ function viewTypesCtrl($location, typeService) {
     typeService.remove(id)
       .then(function () {
       swal(
-        "Тип успешно удален",
-        "Пожалуйста, нажмите ОК для продолжения",
+        "Type was removed successfully",
+        "Please, click ОК for continue",
         "success"
       );
       vm.types.splice(index, 1);
     })
       .catch(function () {
         swal(
-          "Тип не удален",
-          "Повторите попытку",
+          "Type was not removed",
+          "Retry",
           "error"
         );
       });

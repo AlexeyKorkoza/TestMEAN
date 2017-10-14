@@ -1,4 +1,4 @@
-<div data ng-controller="mainCtrl as vm">
+<div data-ng-controller="mainCtrl as vm">
     <div ng-if="vm.isAuthenticated">
         <div class="header">
             <div class="row">
@@ -15,23 +15,23 @@
                                     <div class="dropOut">
                                         <div class="triangle"></div>
                                         <div class="icon_username">
-                                            <p>Вы вошли под <span>{{username}}</span></p>
+                                            <p>You signed in by<span>{{username}}</span></p>
                                         </div>
                                         <nav class="sub_menu">
                                             <a href="#/types" class="sub_menu__item"><i class="fa fa-cog fa-fw"
                                                                                         aria-hidden="true"></i>&nbsp;
-                                                Управление типами объекта</a>
+                                                Manage types objects</a>
                                             <a href="#/places" class="sub_menu__item"><i class="fa fa-book fa-fw"
                                                                                          aria-hidden="true"></i>&nbsp;
-                                                Управление местами</a>
+                                                Manage places</a>
                                             <a href="#/user/edit" class="sub_menu__item"><i
                                                 class="fa fa-cog fa-fw"
                                                 aria-hidden="true"></i>&nbsp;
-                                                Настройки профиля</a>
+                                                Settings profile</a>
                                             <a ng-click="vm.logout()" class="sub_menu__item"><i
                                                 class="fa fa-sign-out fa-fw"
                                                 aria-hidden="true"></i>&nbsp;
-                                                Выйти</a>
+                                                Log out</a>
                                         </nav>
                                     </div>
                                 </div>
@@ -53,12 +53,12 @@
                     <div class="row">
                         <div class="col-xs-6 col-md-6 col-lg-5 col-sm-6">
                             <a href="#/signin" class="button icon-login">
-                                <span>Войти</span>
+                                <span>Sign In</span>
                             </a>
                         </div>
                         <div class="col-xs-6 col-md-6 col-lg-5 col-sm-6">
                             <a href="#/signup" class="button icon-register">
-                                <span>Регистрация</span>
+                                <span>Sign Up</span>
                             </a>
                         </div>
                     </div>

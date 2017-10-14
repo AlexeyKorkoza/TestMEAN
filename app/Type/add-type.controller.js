@@ -9,7 +9,7 @@ addTypeCtrl.$inject = ['$location', 'Upload', 'typeService'];
 function addTypeCtrl($location, Upload, typeService) {
 
   var vm = this;
-  vm.filename = "Иконка не выбрана";
+  vm.filename = "Icon was not chosen";
   vm.getAllTypes = "";
   vm.changeFilename = changeFilename;
   vm.add = add;
@@ -25,7 +25,7 @@ function addTypeCtrl($location, Upload, typeService) {
     if (vm.addTypeData.file) {
       vm.filename = vm.addTypeData.file.name;
     } else {
-      vm.filename = "Иконка не выбрана";
+      vm.filename = "Icon was not chosen";
     }
   }
 
@@ -46,16 +46,16 @@ function addTypeCtrl($location, Upload, typeService) {
       .then(function (response) {
         vm.addTypeData = response.data;
         swal(
-          "Новый тип успешно добавлен",
-          "Пожалуйста, нажмите ОК для продолжения",
+          "Type of object was added",
+          "Please, click ОК for continue",
           "success"
         );
         $location.url("/types");
     })
       .catch(function () {
         swal(
-          "Новый тип не добавлен",
-          "Тип объекта уже существует",
+          "Type of place was not added",
+          "Type of place has already existed",
           "error"
         );
       });

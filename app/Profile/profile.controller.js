@@ -35,13 +35,17 @@ function userProfileCtrl(userService) {
       .then(function (response) {
         localStorage.setItem("username", response.data.username);
         swal(
-          "Информация успешно обновлена",
-          "После выхода данные будут успешные применены",
+          "Profile was updated successfully",
+          "Data will apply after log out",
           "success"
         );
       })
       .catch(function () {
-        swal("Информация не обновлена", "Повторите попытку", "error");
+        swal(
+          "Profile was not updated",
+          "Retry",
+          "error"
+        );
       });
   }
 
@@ -56,15 +60,15 @@ function userProfileCtrl(userService) {
       .then(function (response) {
         localStorage.setItem("username", response.data.username);
         swal(
-          "Информация успешно обновлена",
-          "После выхода данные будут успешные применены",
+          "Profile was updated successfully",
+          "Data will apply after log out",
           "success"
         );
       })
       .catch(function () {
         swal(
-          "Информация не обновлена",
-          "Повторите попытку",
+          "Profile was not updated",
+          "Retry",
           "error"
         );
       });

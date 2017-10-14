@@ -22,7 +22,7 @@ function addPlaceCtrl($location, typeService, placeService) {
       valueField: "value",
       labelField: "text",
       delimiter: "|",
-      placeholder: "Выберите тип объекта",
+      placeholder: "Choose type object",
       maxItems: 1
     };
 
@@ -42,16 +42,21 @@ function addPlaceCtrl($location, typeService, placeService) {
       placeService.create(vm.addData)
         .then(function () {
           swal(
-            "Место добавлено",
-            "Пожалуйста, нажмите ОК для продолжения",
+            "Place was added",
+            "Please, click ОК for continue",
             "success"
           );
           $location.url("/places");
         })
         .catch(function () {
-          swal("Место не добавлено", "Проверьте введенные данные", "error");
-          vm.error = "Выберите тип объекта";
+          swal(
+            "Place was not added",
+            "Check input data",
+            "error"
+          );
         });
+    } else {
+      vm.error = "Choose type object";
     }
   }
 }

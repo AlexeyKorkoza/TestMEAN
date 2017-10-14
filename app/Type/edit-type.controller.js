@@ -9,7 +9,7 @@ editTypeCtrl.$inject = ['$location', '$routeParams', 'Upload', 'typeService'];
 function editTypeCtrl($location, $routeParams, Upload, typeService) {
 
   var vm = this;
-  vm.filename = "Иконка не выбрана";
+  vm.filename = "Icon was not chosen";
   vm.changeFilename = changeFilename;
   vm.update = update;
   vm.activate = activate;
@@ -28,7 +28,7 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
     if (vm.editData.file) {
       vm.filename = vm.editData.file.name;
     } else {
-      vm.filename = "Иконка не выбрана";
+      vm.filename = "Icon was not chosen";
     }
   }
 
@@ -40,16 +40,16 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
       .update($routeParams.id, vm.editData, vm.editData.file)
       .then(function () {
         swal(
-          "Тип успешно отредактирован",
-          "Пожалуйста, нажмите ОК для продолжения",
+          "Type was edited successfully",
+          "Please, click ОК for continue",
           "success"
         );
         $location.url("/types");
       })
       .catch(function () {
         swal(
-          "Тип не отредактирован",
-          "Пожалуйста, проверьте введенные данные",
+          "Type was not edited",
+          "Please, check input data",
           "error"
         );
       });

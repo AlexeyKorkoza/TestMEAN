@@ -46,7 +46,7 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
       valueField: "value",
       labelField: "text",
       delimiter: "|",
-      placeholder: "Выберите тип объекта",
+      placeholder: "Choose type object",
       maxItems: 1
     };
     cfpLoadingBar.start();

@@ -26,11 +26,11 @@ module.exports = passport => {
           }
 
           if (!user) {
-            return done(null, false, req.flash('loginMessage', 'Пользователь не найден'));
+            return done(null, false, req.flash('loginMessage', 'User is not found'));
           }
 
           if (!user.validPasswrod(user, password)) {
-            return done(null, false, req.flash('loginMessage', 'Неверный пароль'));
+            return done(null, false, req.flash('loginMessage', 'Incorrect password'));
           }
 
           const userData = {
@@ -58,7 +58,7 @@ module.exports = passport => {
         }
 
         if (user) {
-          return done(null, false, req.flash('signUpMessage', 'Данный пользователь уже существует'));
+          return done(null, false, req.flash('signUpMessage', 'User has already existed'));
         }
         else {
           User.findOne({'email': email}, (err, user1) => {
@@ -67,7 +67,7 @@ module.exports = passport => {
             }
 
             if (user1) {
-              return done(null, false, req.flash('signUpMessage', 'Данный электронный адрес уже существует'));
+              return done(null, false, req.flash('signUpMessage', 'Email has already existed'));
             }
             if (!user1) {
               const newUser = new User({

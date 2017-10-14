@@ -22,7 +22,7 @@ function editPlaceCtrl($location, $routeParams, typeService, placeService) {
       valueField: "value",
       labelField: "text",
       delimiter: "|",
-      placeholder: "Выберите тип объекта",
+      placeholder: "Choose type object",
       maxItems: 1
     };
 
@@ -54,21 +54,21 @@ function editPlaceCtrl($location, $routeParams, typeService, placeService) {
         .update(vm.editData, $routeParams.id)
         .then(function () {
             swal(
-              "Данные о месте успешно обновлены",
-              "Пожалуйста, нажмите ОК для продолжения",
+              "Place was updated successfully",
+              "Please, click OK for continue",
               "success"
             );
             $location.url("/places");
         })
         .catch(function () {
           swal(
-            "Данные о месте не обновлены",
-            "Проверьте введенные данные",
+            "Place was not updated",
+            "Check input data",
             "error"
           );
         });
     } else {
-      vm.error = "Выберите тип объекта";
+      vm.error = "Choose type object";
     }
   }
 }

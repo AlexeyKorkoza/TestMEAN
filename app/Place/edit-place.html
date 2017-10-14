@@ -2,64 +2,64 @@
     <div class="container">
         <div class="row">
             <div class="well clearfix">
-                <h1 class="page-header">Редактирование места</h1>
+                <h1 class="page-header">Edit place</h1>
                 <div class="col-lg-8 col-xs-12">
                     <form class="form-horizontal" name="editForm" novalidate>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Тип объекта:</label>
+                            <label class="col-lg-3 control-label">Type of object:</label>
                             <selectize config='vm.myConfig' ng-disabled='disable' options='vm.select'
                                        ng-model="vm.editData.id_type"></selectize>
                             <span class="errorSelectize">{{error}}</span>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Название места:</label>
+                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Name of place:</label>
                             <input class="form-control"
                                    type="text"
                                    name="typename"
                                    ng-model="vm.editData.name_place"
                                    required/>
                             <p ng-show="editForm.typename.$invalid && !editForm.typename.$pristine"
-                               class="help-block">Введите название места</p>
+                               class="help-block">Input name of place</p>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Описание места:</label>
+                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Description of place:</label>
                             <textarea class="form-control"
                                       type="text"
                                       name="description"
                                       ng-model="vm.editData.description"
                                       required></textarea>
                             <p ng-show="editForm.description.$invalid && !editForm.description.$pristine"
-                               class="help-block">Введите описание места</p>
+                               class="help-block">Input description of place</p>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Широта:</label>
+                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Latitude:</label>
                             <input class="form-control"
                                    type="text"
                                    name="latitude"
                                    ng-model="vm.editData.lat"
                                    required/>
                             <p ng-show="editForm.latitude.$invalid && !editForm.latitude.$pristine"
-                               class="help-block">Введите широту</p>
+                               class="help-block">Input latitude</p>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Долгота:</label>
+                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Longitude:</label>
                             <input class="form-control"
                                    type="text"
                                    name="longitude"
                                    ng-model="vm.editData.lng"
                                    required/>
                             <p ng-show="editForm.longitude.$invalid && !editForm.longitude.$pristine"
-                               class="help-block">Введите долготу</p>
+                               class="help-block">Input longitude</p>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Адрес места:</label>
+                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Address of place:</label>
                             <textarea class="form-control"
                                       type="text"
                                       name="address"
                                       ng-model="vm.editData.address"
                                       required></textarea>
                             <p ng-show="editForm.address.$invalid && !editForm.address.$pristine"
-                               class="help-block">Введите адрес места</p>
+                               class="help-block">Input address of place</p>
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -67,12 +67,12 @@
                                     <button class="button icon-save"
                                             ng-disabled="editForm.$invalid"
                                             type="submit"
-                                            ng-click="vm.update()"><span>Сохранить</span>
+                                            ng-click="vm.update()"><span>Save</span>
                                     </button>
                                 </div>
                                 <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
                                     <a href="#/places" class="button icon-return">
-                                        <span>Назад</span>
+                                        <span>Back</span>
                                     </a>
                                 </div>
                             </div>

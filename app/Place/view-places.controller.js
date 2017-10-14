@@ -20,7 +20,11 @@ function viewPlacesCtrl($location, placeService) {
     placeService.getAllPlaces().then(function (response) {
       vm.places = response.data;
       if (vm.places.length < 1) {
-        swal("Список мест пуст", "Пожалуйста, добавьте новый место", "error");
+        swal(
+          "List of places is empty",
+          "Please, add new place",
+          "error"
+        );
         $location.url("/types/add");
       }
     });
@@ -31,16 +35,16 @@ function viewPlacesCtrl($location, placeService) {
     placeService.remove(id)
       .then(function () {
         swal(
-          "Место успешно удалено",
-          "Пожалуйста, нажмите ОК для продолжения",
+          "Place was removed",
+          "Please, click OK for continue",
           "success"
         );
         vm.places.splice(index, 1);
       })
       .catch(function () {
         swal(
-          "Место не удалено",
-          "Повторите попытку",
+          "Place was not removed",
+          "Retry",
           "error"
         );
       });
