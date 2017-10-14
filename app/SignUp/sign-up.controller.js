@@ -18,17 +18,15 @@ function signUpCtrl($location, cfpLoadingBar, signUpService) {
   }
 
   function RegBtnClick() {
+    cfpLoadingBar.start();
     signUpService.signup(vm.formData)
-      .then(function (response) {
-        cfpLoadingBar.start();
-        if (response.data.state == 'success') {
-          $location.path('/');
-        }
-        if (response.data.state == 'failure') {
-          vm.error = response.data.message;
-        }
+      .then(function () {
+        cfpLoadingBar.complete();
+        $location.path('/');
       })
-      .finally(function () {
+      .catch(function (err) {
+        console.log(err);
+        vm.error = err.data.message;
         cfpLoadingBar.complete();
       });
   }

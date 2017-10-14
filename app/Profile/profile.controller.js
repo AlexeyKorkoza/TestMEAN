@@ -33,16 +33,15 @@ function userProfileCtrl(userService) {
     userService
       .updateUserInfo(username, data)
       .then(function (response) {
-        if (response.data.code) {
-          swal("Информация не обновлена", "Повторите попытку", "error");
-        } else {
-          localStorage.setItem("username", response.data.username);
-          swal(
-            "Информация успешно обновлена",
-            "После выхода данные будут успешные применены",
-            "success"
-          );
-        }
+        localStorage.setItem("username", response.data.username);
+        swal(
+          "Информация успешно обновлена",
+          "После выхода данные будут успешные применены",
+          "success"
+        );
+      })
+      .catch(function () {
+        swal("Информация не обновлена", "Повторите попытку", "error");
       });
   }
 
@@ -53,13 +52,21 @@ function userProfileCtrl(userService) {
     };
 
     var username = localStorage.getItem("username");
-    userService.updateUserInfo(username, data).then(function (response) {
-      localStorage.setItem("username", response.data.username);
-      swal(
-        "Информация успешно обновлена",
-        "После выхода данные будут успешные применены",
-        "success"
-      );
-    });
+    userService.updateUserInfo(username, data)
+      .then(function (response) {
+        localStorage.setItem("username", response.data.username);
+        swal(
+          "Информация успешно обновлена",
+          "После выхода данные будут успешные применены",
+          "success"
+        );
+      })
+      .catch(function () {
+        swal(
+          "Информация не обновлена",
+          "Повторите попытку",
+          "error"
+        );
+      });
   }
 }

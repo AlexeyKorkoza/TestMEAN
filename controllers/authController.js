@@ -7,7 +7,6 @@ export default  {
       if (err) {
         if (err.name === 'Incorrect Credentials Error') {
           return res.status(400).json({
-            state: 'failure',
             errors: [
               {
                 type: 'Authentication Error',
@@ -18,7 +17,6 @@ export default  {
         }
 
         return res.status(400).json({
-          state: 'failure',
           errors: [
             {
               type: 'Authentication Error',
@@ -30,12 +28,10 @@ export default  {
 
       if (userData) {
         return res.status(200).json({
-          state: 'success',
           user: userData
         })
       } else {
-        return res.status(200).json({
-          state: 'failure',
+        return res.status(400).json({
           message: req.flash('loginMessage')[0],
         })
       }
@@ -49,7 +45,6 @@ export default  {
       if (err) {
         if (err.name === 'Incorrect Credentials Error') {
           return res.status(400).json({
-            state: 'failure',
             errors: [
               {
                 type: 'Authentication Error',
@@ -60,7 +55,6 @@ export default  {
         }
 
         return res.status(400).json({
-          state: 'failure',
           errors: [
             {
               type: 'Authentication Error',
@@ -70,9 +64,7 @@ export default  {
         });
       }
 
-      return res.status(200).json({
-        state: 'success'
-      })
+      return res.status(200);
 
     })(req, res);
   }

@@ -28,13 +28,21 @@ function viewPlacesCtrl($location, placeService) {
 
   function remove(id, index) {
 
-    placeService.remove(id).then(function (response) {
-      swal(
-        "Место успешно удалено",
-        "Пожалуйста, нажмите ОК для продолжения",
-        "success"
-      );
-      vm.places.splice(index, 1);
-    });
+    placeService.remove(id)
+      .then(function () {
+        swal(
+          "Место успешно удалено",
+          "Пожалуйста, нажмите ОК для продолжения",
+          "success"
+        );
+        vm.places.splice(index, 1);
+      })
+      .catch(function () {
+        swal(
+          "Место не удалено",
+          "Повторите попытку",
+          "error"
+        );
+      });
   }
 }

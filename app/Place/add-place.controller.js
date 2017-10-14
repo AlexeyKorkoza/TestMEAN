@@ -39,21 +39,19 @@ function addPlaceCtrl($location, typeService, placeService) {
 
   function add() {
     if (vm.addData.id_type) {
-      placeService.create(vm.addData).then(function (response) {
-        vm.error = "";
-        if (response.data.code) {
-          swal("Место не добавлено", "Место уже добавлено", "error");
-        } else {
+      placeService.create(vm.addData)
+        .then(function () {
           swal(
             "Место добавлено",
             "Пожалуйста, нажмите ОК для продолжения",
             "success"
           );
           $location.url("/places");
-        }
-      });
-    } else {
-      vm.error = "Выберите тип объекта";
+        })
+        .catch(function () {
+          swal("Место не добавлено", "Проверьте введенные данные", "error");
+          vm.error = "Выберите тип объекта";
+        });
     }
   }
 }

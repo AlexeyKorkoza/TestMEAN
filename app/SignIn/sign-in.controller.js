@@ -9,6 +9,7 @@ signInCtrl.$inject = ['$location', 'authenticationService', 'cfpLoadingBar'];
 function signInCtrl($location, authenticationService, cfpLoadingBar) {
 
   var vm = this;
+  vm.error = '';
   vm.back = back;
   vm.LoginBtnClick = LoginBtnClick;
 
@@ -17,21 +18,18 @@ function signInCtrl($location, authenticationService, cfpLoadingBar) {
   }
 
   function LoginBtnClick() {
-    vm.error = "";
+    vm.error = '';
+    cfpLoadingBar.start();
     authenticationService
       .login(vm.formData)
       .then(function (response) {
-        cfpLoadingBar.start();
-        if (response.data.state == "success") {
-          localStorage.setItem("username", vm.formData.username);
-          localStorage.setItem("token", response.data.user.token);
-          $location.path("/");
-        }
-        if (response.data.state == "failure") {
-          vm.error = response.data.message;
-        }
+        cfpLoadingBar.complete();
+        localStorage.setItem("username", vm.formData.username);
+        localStorage.setItem("token", response.data.user.token);
+        $location.path("/");
       })
-      .finally(function () {
+      .catch(function (err) {
+        vm.error = err.data.message;
         cfpLoadingBar.complete();
       });
   }

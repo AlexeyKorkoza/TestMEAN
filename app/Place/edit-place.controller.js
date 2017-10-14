@@ -48,25 +48,24 @@ function editPlaceCtrl($location, $routeParams, typeService, placeService) {
   }
 
   function update() {
+    vm.error = '';
     if (vm.editData.id_type) {
       placeService
         .update(vm.editData, $routeParams.id)
-        .then(function (response) {
-          vm.error = "";
-          if (response.data.code) {
-            swal(
-              "Данные о месте не обновлены",
-              "Проверьте введенные данные",
-              "error"
-            );
-          } else {
+        .then(function () {
             swal(
               "Данные о месте успешно обновлены",
               "Пожалуйста, нажмите ОК для продолжения",
               "success"
             );
             $location.url("/places");
-          }
+        })
+        .catch(function () {
+          swal(
+            "Данные о месте не обновлены",
+            "Проверьте введенные данные",
+            "error"
+          );
         });
     } else {
       vm.error = "Выберите тип объекта";

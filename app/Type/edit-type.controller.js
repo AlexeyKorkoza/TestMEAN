@@ -38,21 +38,20 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
     }
     typeService
       .update($routeParams.id, vm.editData, vm.editData.file)
-      .then(function (response) {
-        if (response.data.code) {
-          swal(
-            "Тип не отредактирован",
-            "Пожалуйста, проверьте введенные данные",
-            "error"
-          );
-        } else {
-          swal(
-            "Тип успешно отредактирован",
-            "Пожалуйста, нажмите ОК для продолжения",
-            "success"
-          );
-          $location.url("/types");
-        }
+      .then(function () {
+        swal(
+          "Тип успешно отредактирован",
+          "Пожалуйста, нажмите ОК для продолжения",
+          "success"
+        );
+        $location.url("/types");
+      })
+      .catch(function () {
+        swal(
+          "Тип не отредактирован",
+          "Пожалуйста, проверьте введенные данные",
+          "error"
+        );
       });
   }
 }

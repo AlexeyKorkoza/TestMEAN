@@ -42,14 +42,8 @@ function addTypeCtrl($location, Upload, typeService) {
     }
     max++;
     vm.addTypeData.id = max;
-    typeService.create(vm.addTypeData, vm.addTypeData.file).then(function (response) {
-      if (response.data.code) {
-        swal(
-          "Новый тип не добавлен",
-          "Тип объекта уже существует",
-          "error"
-        );
-      } else {
+    typeService.create(vm.addTypeData, vm.addTypeData.file)
+      .then(function (response) {
         vm.addTypeData = response.data;
         swal(
           "Новый тип успешно добавлен",
@@ -57,7 +51,13 @@ function addTypeCtrl($location, Upload, typeService) {
           "success"
         );
         $location.url("/types");
-      }
-    });
+    })
+      .catch(function () {
+        swal(
+          "Новый тип не добавлен",
+          "Тип объекта уже существует",
+          "error"
+        );
+      });
   }
 }

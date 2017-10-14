@@ -11,9 +11,12 @@ export default {
       return res.status(403).end('User not authenticated');
     }
 
+    console.log(req.headers);
     const token = req.headers.authorization.split(' ')[1];
     const decoded = jwt.decode(token, process.env.SECRET);
     jwt.verify(token, process.env.JWT_SECRET, () => {
+      console.log(decoded);
+      if (decoded) {
       const userId = decoded.id;
       User.findById(userId, (err, user) => {
         if (err) {
@@ -29,6 +32,9 @@ export default {
           });
         }
       });
+      } else {
+        res.status(403).json('User is not authenticated');
+      }
     });
   },
 
