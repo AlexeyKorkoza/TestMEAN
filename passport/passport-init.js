@@ -61,15 +61,15 @@ module.exports = passport => {
           return done(null, false, req.flash('signUpMessage', 'User has already existed'));
         }
         else {
-          User.findOne({'email': email}, (err, user1) => {
+          User.findOne({'email': email}, (err, user) => {
             if (err) {
               return done(err);
             }
 
-            if (user1) {
+            if (user) {
               return done(null, false, req.flash('signUpMessage', 'Email has already existed'));
             }
-            if (!user1) {
+            if (!user) {
               const newUser = new User({
                 'username': username,
                 'email': req.body.email,

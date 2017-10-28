@@ -7,22 +7,12 @@ export default  {
       if (err) {
         if (err.name === 'Incorrect Credentials Error') {
           return res.status(400).json({
-            errors: [
-              {
-                type: 'Authentication Error',
-                messages: 'Incorrect Credentials Error'
-              }
-            ]
+             message: 'Incorrect Credentials Error'
           });
         }
 
         return res.status(400).json({
-          errors: [
-            {
-              type: 'Authentication Error',
-              messages: 'Could not process the form.'
-            }
-          ]
+            messages: 'Could not process the form.'
         });
       }
 
@@ -45,26 +35,18 @@ export default  {
       if (err) {
         if (err.name === 'Incorrect Credentials Error') {
           return res.status(400).json({
-            errors: [
-              {
-                type: 'Authentication Error',
-                messages: 'Incorrect Credentials Error'
-              }
-            ]
+             message: 'Incorrect Credentials Error'
           });
         }
 
         return res.status(400).json({
-          errors: [
-            {
-              type: 'Authentication Error',
-              messages: 'Could not process the form.'
-            }
-          ]
+            message: 'Could not process the form.'
         });
       }
 
-      return res.status(200);
+      return res.status(200).json({
+          message: 'Sign up is successfully'
+      });
 
     })(req, res);
   }
