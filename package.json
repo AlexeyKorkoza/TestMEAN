@@ -9,7 +9,7 @@
     "stylelint": "stylelint app/assets/css/*.css",
     "eslint:backend": "eslint *.js",
     "eslint-fix:backend": "eslint *.js --fix",
-    "eslint:frontend":"eslint app/*.js",
+    "eslint:frontend": "eslint app/*.js",
     "eslint-fix:frontend": "eslint app/*.js --fix"
   },
   "repository": {

@@ -10,7 +10,7 @@ import fs from 'fs';
 import flash from 'connect-flash';
 import session from 'express-session';
 import cors from 'cors';
-import routers from './routes';
+import routes from './routes';
 import initPassport from './passport/passport-init';
 const app = express();
 
@@ -34,7 +34,7 @@ app.use(serveStatic(__dirname + ''));
 
 app.use(cors());
 
-app.use('/', routers);
+app.use('/', routes);
 
 if (!fs.existsSync('./uploads')) {
   fs.mkdirSync('./uploads');
