@@ -14,12 +14,12 @@ function authenticationService ($http, $location) {
   return service;
 
   function login(data) {
-    return $http.post("/auth/login", data);
+    return $http.post("/api/v1/auth/login", data);
   }
 
   function logout() {
     localStorage.removeItem("username");
     localStorage.removeItem("token");
-    $location.path("/signin");
+    $location.path("/api/v1/signin");
   }
 }

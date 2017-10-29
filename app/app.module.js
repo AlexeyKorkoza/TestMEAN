@@ -22,7 +22,8 @@ function config(cfpLoadingBarProvider) {
 
 function run(userService) {
     if(localStorage.getItem('username')){
-        userService.getUser().then(function(response){
+        userService.getUser()
+            .then(response =>{
             localStorage.setItem('username', response.data.user.username);
             localStorage.setItem('token', response.data.user.token);
         });

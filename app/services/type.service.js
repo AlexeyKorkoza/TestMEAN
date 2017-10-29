@@ -31,12 +31,12 @@ function typeService($http, Upload) {
   }
 
   function getAllTypes() {
-    return $http.get("/types");
+    return $http.get("/api/v1/types");
   }
 
   function create(data, file) {
     return Upload.upload({
-      url: "/types/add",
+      url: "/api/v1/types/add",
       data: {
         file: file,
         data: data
@@ -46,7 +46,7 @@ function typeService($http, Upload) {
 
   function update(id, data, file) {
     return Upload.upload({
-      url: "/types/" + id,
+      url: "/api/v1/types/" + id,
       method: "PUT",
       data: {
         file: file,
@@ -56,11 +56,11 @@ function typeService($http, Upload) {
   }
 
   function remove(id) {
-    return $http.delete("/types/" + id, {params: {id: id}});
+    return $http.delete("/api/v1/types/" + id, {params: {id: id}});
   }
 
   function getTypeById(id) {
-    return $http.get("/types/" + id);
+    return $http.get("/api/v1/types/" + id);
   }
 
 }

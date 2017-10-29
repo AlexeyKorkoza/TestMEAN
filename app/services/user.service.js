@@ -18,15 +18,15 @@ function userService($http) {
     const headers = {
       "authorization": "Token " + localStorage.getItem("token")
     };
-    return $http.get('/user', { headers: headers });
+    return $http.get('/api/v1/user', { headers: headers });
   }
 
   function getUserInfo(username) {
-    return $http.get("/user/edit/" + username);
+    return $http.get("/api/v1/user/edit/" + username);
   }
 
   function updateUserInfo(username, data) {
-    return $http.put("/user/edit/" + username, data);
+    return $http.put("/api/v1/user/edit/" + username, data);
   }
 
 }

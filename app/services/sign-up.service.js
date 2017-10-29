@@ -13,7 +13,7 @@ function signUpService($http) {
   return service;
 
   function signup(data) {
-    return $http.post("/auth/signup", data);
+    return $http.post("/api/v1/auth/signup", data);
   }
 
 }
