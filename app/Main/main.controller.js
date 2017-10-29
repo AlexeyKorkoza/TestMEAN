@@ -8,7 +8,7 @@ mainCtrl.$inject = ['cfpLoadingBar', 'authenticationService', 'placeService', 't
 
 function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeService) {
 
-  var vm = this;
+  const vm = this;
   vm.group_markers = [];
   vm.select = [];
   vm.isAuthenticated = false;
@@ -57,29 +57,28 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
   }
 
   function getAllTypes() {
-    typeService.getAllTypes().then(
-      function Success(response) {
+    typeService.getAllTypes()
+        .then(response => {
         vm.getData = response.data;
         vm.select.push({
           value: 0,
           text: "Все объекты"
         });
-        for (var i = 0; i < response.data.length; i++) {
+        response.data.forEach(item => {
           vm.select.push({
-            value: response.data[i].id_type,
-            text: response.data[i].name_type
+            value: item.id_type,
+            text: item.name_type
           });
-        }
-      }
-    );
+        });
+      });
   }
 
   function getAllPlaces() {
-    placeService.getAllPlaces().then(
-      function Success(response) {
+    placeService.getAllPlaces()
+        .then(response => {
         vm.addPlaceInMap(response.data);
-      },
-      function Error() {
+      })
+        .catch(err => {
         dataNoLoad();
       }
     );
@@ -87,11 +86,11 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
 
   function addPlaceInMap(response) {
     if (vm.getData !== "") {
-     response.forEach(function (item, i) {
-        var typeOfPlace = vm.getData[item.id_type - 1].name_type;
-        var nameOfImage = vm.getData[item.id_type - 1].image;
-        var lat = parseFloat(item.lat);
-        var lng = parseFloat(item.lng);
+     response.forEach((item, i) => {
+        const typeOfPlace = vm.getData[item.id_type - 1].name_type;
+        const nameOfImage = vm.getData[item.id_type - 1].image;
+        const lat = parseFloat(item.lat);
+        const lng = parseFloat(item.lng);
         vm.markers["marker" + (i + 1)] = {
           lat: lat,
           lng: lng,
@@ -124,8 +123,8 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
       vm.getAllPlaces();
     } else {
       vm.markers = {};
-      placeService.getPlacesByType(vm.typeIsNumber).then(
-        function Success(response) {
+      placeService.getPlacesByType(vm.typeIsNumber)
+          .then(response => {
           vm.places = response.data;
           vm.addPlaceInMap(vm.places);
         }
@@ -168,7 +167,7 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
           confirmButtonText: "Add new category",
           html: true
         },
-        function (isConfirm) {
+        isConfirm => {
           if (isConfirm) {
             window.href = '/types/add';
           }
@@ -184,7 +183,7 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
           confirmButtonText: "Add new place",
           html: true
         },
-        function (isConfirm) {
+        isConfirm => {
           if (isConfirm) {
             window.href = '/places/add';
           }

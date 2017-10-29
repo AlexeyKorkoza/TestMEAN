@@ -6,7 +6,7 @@ angular
 
 authenticationService.inject = ["$http", '$location'];
 function authenticationService ($http, $location) {
-  var service = {
+  const service = {
     login: login,
     logout: logout
   };

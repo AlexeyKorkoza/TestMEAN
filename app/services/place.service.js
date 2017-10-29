@@ -8,7 +8,7 @@ angular
 
   function placeService($http){
 
-    var service = {
+    const service = {
       getAllPlaces: getAllPlaces,
       create: create,
       remove: remove,
@@ -45,7 +45,7 @@ angular
       return $http.get("/places/type/" + id);
     }
 
-    var Places = "";
+    let Places = "";
 
     function setPlaces(places) {
       Places = places;

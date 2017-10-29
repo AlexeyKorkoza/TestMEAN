@@ -1,17 +1,17 @@
 'use strict';
 
-describe("signInCtrl", function () {
+describe("signInCtrl", () => {
 
-  var vm;
+  let vm = {};
 
   beforeEach(module("myApp"));
   beforeEach(
-    inject(function($controller) {
+    inject($controller => {
       vm = $controller("signInCtrl", {}, {});
     })
   );
 
-  it('Check initialize of controller', function () {
+  it('Check initialize of controller', () => {
     expect(vm).not.toBeUndefined();
   });
 

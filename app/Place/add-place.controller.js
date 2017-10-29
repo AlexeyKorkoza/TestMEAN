@@ -8,7 +8,7 @@ addPlaceCtrl.$inject = ['$location', 'typeService', 'placeService'];
 
 function addPlaceCtrl($location, typeService, placeService) {
 
-  var vm = this;
+  const vm = this;
   vm.select = [];
   vm.activate = activate;
   vm.add = add;
@@ -26,13 +26,14 @@ function addPlaceCtrl($location, typeService, placeService) {
       maxItems: 1
     };
 
-    typeService.getAllTypes().then(function (response) {
-      for (var i = 0; i < response.data.length; i++) {
+    typeService.getAllTypes()
+        .then(response => {
+      response.data.forEach(item => {
         vm.select.push({
-          value: response.data[i].id_type,
-          text: response.data[i].name_type
+          value: item.id_type,
+          text: item.name_type
         });
-      }
+      });
     });
 
   }
@@ -40,7 +41,7 @@ function addPlaceCtrl($location, typeService, placeService) {
   function add() {
     if (vm.addData.id_type) {
       placeService.create(vm.addData)
-        .then(function () {
+        .then(() => {
           swal(
             "Place was added",
             "Please, click ОК for continue",
@@ -48,7 +49,7 @@ function addPlaceCtrl($location, typeService, placeService) {
           );
           $location.url("/places");
         })
-        .catch(function () {
+        .catch(() => {
           swal(
             "Place was not added",
             "Check input data",

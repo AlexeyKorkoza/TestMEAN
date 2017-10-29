@@ -6,7 +6,7 @@ userService.$inject = ['$http'];
 
 function userService($http) {
 
-  var service = {
+  const service = {
     getUser: getUser,
     getUserInfo: getUserInfo,
     updateUserInfo: updateUserInfo
@@ -15,9 +15,9 @@ function userService($http) {
   return service;
 
   function getUser() {
-    var headers = {
+    const headers = {
       "authorization": "Token " + localStorage.getItem("token")
-    }
+    };
     return $http.get('/user', { headers: headers });
   }
 

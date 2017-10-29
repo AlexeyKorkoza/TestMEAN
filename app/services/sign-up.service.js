@@ -6,7 +6,7 @@ signUpService.$inject = ['$http'];
 
 function signUpService($http) {
 
-  var service = {
+  const service = {
     signup: signup
   };
 

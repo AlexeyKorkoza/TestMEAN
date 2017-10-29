@@ -8,7 +8,7 @@ signUpCtrl.$inject = ['$location', 'cfpLoadingBar', 'signUpService'];
 
 function signUpCtrl($location, cfpLoadingBar, signUpService) {
 
-  var vm = this;
+  const vm = this;
   vm.error = "";
   vm.back = back;
   vm.RegBtnClick = RegBtnClick;
@@ -20,11 +20,11 @@ function signUpCtrl($location, cfpLoadingBar, signUpService) {
   function RegBtnClick() {
     cfpLoadingBar.start();
     signUpService.signup(vm.formData)
-      .then(function () {
+      .then(() => {
         cfpLoadingBar.complete();
         $location.path('/');
       })
-      .catch(function (err) {
+      .catch(err => {
         vm.error = err.data.message;
         cfpLoadingBar.complete();
       });

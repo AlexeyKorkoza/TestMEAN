@@ -1,25 +1,25 @@
 'use strict';
 
-describe("addPlaceCtrl", function () {
+describe("addPlaceCtrl", () => {
 
-  var vm;
+  let vm = {};
 
   beforeEach(module("myApp"));
   beforeEach(
-    inject(function($controller) {
+    inject($controller => {
       vm = $controller("addPlaceCtrl", {}, {});
     })
   );
 
-  it('Check initialize of controller', function () {
+  it('Check initialize of controller', () => {
     expect(vm).not.toBeUndefined();
   });
 
-  it('Select is defined', function () {
+  it('Select is defined', () => {
     expect(vm.select).toBeDefined();
   });
 
-  it('Add in select', function () {
+  it('Add in select', () => {
     vm.select.push({
       value: "1",
       text: "Клуб"

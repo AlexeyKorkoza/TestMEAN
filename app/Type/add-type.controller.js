@@ -8,7 +8,7 @@ addTypeCtrl.$inject = ['$location', 'Upload', 'typeService'];
 
 function addTypeCtrl($location, Upload, typeService) {
 
-  var vm = this;
+  const vm = this;
   vm.filename = "Icon was not chosen";
   vm.getAllTypes = "";
   vm.changeFilename = changeFilename;
@@ -31,10 +31,10 @@ function addTypeCtrl($location, Upload, typeService) {
 
   function add() {
     Upload.rename(vm.addTypeData.file, vm.addTypeData.typename);
-    var max = 0;
+    let max = 0;
     if (vm.getAllTypes.length > 0) {
       max = vm.getAllTypes[0].id_type;
-      vm.getAllTypes.forEach(function (item) {
+      vm.getAllTypes.forEach(item => {
         if (item.id_type > max) {
           max = item.id_type;
         }
@@ -43,7 +43,7 @@ function addTypeCtrl($location, Upload, typeService) {
     max++;
     vm.addTypeData.id = max;
     typeService.create(vm.addTypeData, vm.addTypeData.file)
-      .then(function (response) {
+      .then(response => {
         vm.addTypeData = response.data;
         swal(
           "Type of object was added",
@@ -52,7 +52,7 @@ function addTypeCtrl($location, Upload, typeService) {
         );
         $location.url("/types");
     })
-      .catch(function () {
+      .catch(() => {
         swal(
           "Type of place was not added",
           "Type of place has already existed",

@@ -8,7 +8,7 @@ viewTypesCtrl.$inject = ['$location', 'typeService'];
 
 function viewTypesCtrl($location, typeService) {
 
-  var vm = this;
+  const vm = this;
   vm.types = "";
   vm.remove = remove;
   vm.add = add;
@@ -17,7 +17,8 @@ function viewTypesCtrl($location, typeService) {
   activate();
 
   function activate() {
-    typeService.getAllTypes().then(function (response) {
+    typeService.getAllTypes()
+        .then(response => {
       vm.types = response.data;
       if (vm.types.length < 1) {
         swal(
@@ -32,7 +33,7 @@ function viewTypesCtrl($location, typeService) {
 
   function remove(id,index) {
     typeService.remove(id)
-      .then(function () {
+      .then(() => {
       swal(
         "Type was removed successfully",
         "Please, click ОК for continue",
@@ -40,7 +41,7 @@ function viewTypesCtrl($location, typeService) {
       );
       vm.types.splice(index, 1);
     })
-      .catch(function () {
+      .catch(() => {
         swal(
           "Type was not removed",
           "Retry",

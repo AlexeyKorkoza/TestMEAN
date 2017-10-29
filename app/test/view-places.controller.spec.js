@@ -1,17 +1,17 @@
 'use strict';
 
-describe("viewPlaceCtrl", function () {
+describe("viewPlaceCtrl", () => {
 
-  var vm;
+  let vm = {};
 
   beforeEach(module("myApp"));
   beforeEach(
-    inject(function($controller) {
+    inject($controller => {
       vm = $controller("viewPlacesCtrl", {}, {});
     })
   );
 
-  it('Check initialize of controller', function () {
+  it('Check initialize of controller', () => {
     expect(vm).not.toBeUndefined();
   });
 

@@ -8,7 +8,7 @@ editTypeCtrl.$inject = ['$location', '$routeParams', 'Upload', 'typeService'];
 
 function editTypeCtrl($location, $routeParams, Upload, typeService) {
 
-  var vm = this;
+  const vm = this;
   vm.filename = "Icon was not chosen";
   vm.changeFilename = changeFilename;
   vm.update = update;
@@ -17,7 +17,8 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
   activate();
 
   function activate() {
-    typeService.getTypeById($routeParams.id).then(function (response) {
+    typeService.getTypeById($routeParams.id)
+        .then(response => {
       vm.editData = {
         typename: response.data.name_type
       };
@@ -38,7 +39,7 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
     }
     typeService
       .update($routeParams.id, vm.editData, vm.editData.file)
-      .then(function () {
+      .then(() => {
         swal(
           "Type was edited successfully",
           "Please, click ОК for continue",
@@ -46,7 +47,7 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
         );
         $location.url("/types");
       })
-      .catch(function () {
+      .catch(() => {
         swal(
           "Type was not edited",
           "Please, check input data",

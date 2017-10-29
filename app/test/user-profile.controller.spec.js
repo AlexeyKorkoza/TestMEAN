@@ -1,17 +1,17 @@
 'use strict';
 
-describe("userProfileCtrl", function () {
+describe("userProfileCtrl", () => {
 
-  var vm;
+  let vm = {};
 
   beforeEach(module("myApp"));
   beforeEach(
-    inject(function($controller) {
+    inject($controller => {
       vm = $controller("userProfileCtrl", {}, {});
     })
   );
 
-  it('Check initialize of controller', function () {
+  it('Check initialize of controller', () => {
     expect(vm).not.toBeUndefined();
   });
 

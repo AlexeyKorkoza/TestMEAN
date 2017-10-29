@@ -8,7 +8,7 @@ editPlaceCtrl.$inject = ['$location', '$routeParams', 'typeService', 'placeServi
 
 function editPlaceCtrl($location, $routeParams, typeService, placeService) {
 
-  var vm = this;
+  const vm = this;
   vm.select = [];
   vm.activate = activate;
   vm.update = update;
@@ -26,16 +26,18 @@ function editPlaceCtrl($location, $routeParams, typeService, placeService) {
       maxItems: 1
     };
 
-    typeService.getAllTypes().then(function (response) {
-      for (var i = 0; i < response.data.length; i++) {
+    typeService.getAllTypes()
+        .then(response => {
+      response.data.forEach(item => {
         vm.select.push({
-          value: response.data[i].id_type,
-          text: response.data[i].name_type
+          value: item.id_type,
+          text: item.name_type
         });
-      }
+      })
     });
 
-    placeService.getPlaceById($routeParams.id).then(function (response) {
+    placeService.getPlaceById($routeParams.id)
+        .then(response => {
       vm.editData = {
         name_place: response.data.name_place,
         description: response.data.description,
@@ -52,7 +54,7 @@ function editPlaceCtrl($location, $routeParams, typeService, placeService) {
     if (vm.editData.id_type) {
       placeService
         .update(vm.editData, $routeParams.id)
-        .then(function () {
+        .then(() => {
             swal(
               "Place was updated successfully",
               "Please, click OK for continue",
@@ -60,7 +62,7 @@ function editPlaceCtrl($location, $routeParams, typeService, placeService) {
             );
             $location.url("/places");
         })
-        .catch(function () {
+        .catch(() => {
           swal(
             "Place was not updated",
             "Check input data",

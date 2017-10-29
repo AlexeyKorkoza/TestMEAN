@@ -1,21 +1,21 @@
 'use strict';
 
-describe("ViewTypesCtrl", function () {
+describe("ViewTypesCtrl", () => {
 
-  var vm;
+  let vm = {};
 
   beforeEach(module("myApp"));
   beforeEach(
-    inject(function($controller) {
+    inject($controller => {
       vm = $controller("viewTypesCtrl", {}, {});
     })
   );
 
-  it('Check initialize of controller', function () {
+  it('Check initialize of controller', () => {
     expect(vm).not.toBeUndefined();
   });
 
-  it('Check initialize of variable in controller', function () {
+  it('Check initialize of variable in controller', () => {
     expect(vm.types).not.toBeUndefined();
   });
 

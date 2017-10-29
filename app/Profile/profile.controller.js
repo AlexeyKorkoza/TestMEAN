@@ -8,7 +8,7 @@ userProfileCtrl.$inject = ['userService'];
 
 function userProfileCtrl(userService) {
 
-  var vm = this;
+  const vm = this;
   vm.activate = activate;
   vm.update = update;
   vm.updatePassword = updatePassword;
@@ -17,22 +17,23 @@ function userProfileCtrl(userService) {
 
   function activate() {
 
-    var username = localStorage.getItem("username");
-    userService.getUserInfo(username).then(function (response) {
+    const username = localStorage.getItem("username");
+    userService.getUserInfo(username)
+        .then(response => {
       vm.userData = response.data;
     });
   }
 
   function update() {
-    var username = localStorage.getItem("username");
-    var data = {
+    const username = localStorage.getItem("username");
+    const data = {
       _id: vm.userData._id,
       email: vm.userData.email,
       username: vm.userData.username
     };
     userService
       .updateUserInfo(username, data)
-      .then(function (response) {
+      .then(response => {
         localStorage.setItem("username", response.data.username);
         swal(
           "Profile was updated successfully",
@@ -40,7 +41,7 @@ function userProfileCtrl(userService) {
           "success"
         );
       })
-      .catch(function () {
+      .catch(() => {
         swal(
           "Profile was not updated",
           "Retry",
@@ -50,14 +51,14 @@ function userProfileCtrl(userService) {
   }
 
   function updatePassword() {
-    var data = {
+    const data = {
       _id: vm.userData._id,
       password: vm.settingPassword.password
     };
 
-    var username = localStorage.getItem("username");
+    const username = localStorage.getItem("username");
     userService.updateUserInfo(username, data)
-      .then(function (response) {
+      .then(response => {
         localStorage.setItem("username", response.data.username);
         swal(
           "Profile was updated successfully",
@@ -65,7 +66,7 @@ function userProfileCtrl(userService) {
           "success"
         );
       })
-      .catch(function () {
+      .catch(() => {
         swal(
           "Profile was not updated",
           "Retry",

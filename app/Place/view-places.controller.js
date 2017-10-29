@@ -17,7 +17,8 @@ function viewPlacesCtrl($location, placeService) {
 
   function activate() {
 
-    placeService.getAllPlaces().then(function (response) {
+    placeService.getAllPlaces()
+        .then(response => {
       vm.places = response.data;
       if (vm.places.length < 1) {
         swal(
@@ -33,7 +34,7 @@ function viewPlacesCtrl($location, placeService) {
   function remove(id, index) {
 
     placeService.remove(id)
-      .then(function () {
+      .then(() =>{
         swal(
           "Place was removed",
           "Please, click OK for continue",
@@ -41,7 +42,7 @@ function viewPlacesCtrl($location, placeService) {
         );
         vm.places.splice(index, 1);
       })
-      .catch(function () {
+      .catch(() => {
         swal(
           "Place was not removed",
           "Retry",

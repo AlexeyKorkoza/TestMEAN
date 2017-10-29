@@ -8,7 +8,7 @@ signInCtrl.$inject = ['$location', 'authenticationService', 'cfpLoadingBar'];
 
 function signInCtrl($location, authenticationService, cfpLoadingBar) {
 
-  var vm = this;
+  const vm = this;
   vm.error = '';
   vm.back = back;
   vm.LoginBtnClick = LoginBtnClick;
@@ -22,13 +22,13 @@ function signInCtrl($location, authenticationService, cfpLoadingBar) {
     cfpLoadingBar.start();
     authenticationService
       .login(vm.formData)
-      .then(function (response) {
+      .then(response => {
         cfpLoadingBar.complete();
         localStorage.setItem("username", vm.formData.username);
         localStorage.setItem("token", response.data.user.token);
         $location.path("/");
       })
-      .catch(function (err) {
+      .catch(err => {
         vm.error = err.data.message;
         cfpLoadingBar.complete();
       });

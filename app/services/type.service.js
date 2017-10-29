@@ -8,7 +8,7 @@ typeService.$inject = ['$http', 'Upload'];
 
 function typeService($http, Upload) {
 
-  var service = {
+  const service = {
     setTypes: setTypes,
     getTypes: getTypes,
     getAllTypes: getAllTypes,
@@ -20,7 +20,7 @@ function typeService($http, Upload) {
 
   return service;
 
-  var Types = "";
+  let Types = "";
 
   function setTypes(types) {
     Types = types;

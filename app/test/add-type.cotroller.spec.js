@@ -1,21 +1,21 @@
 'use strict';
 
-describe("AddTypeCtrl", function () {
+describe("AddTypeCtrl", () => {
 
-  var vm;
+  let vm = {};
 
   beforeEach(module("myApp"));
   beforeEach(
-    inject(function($controller) {
+    inject($controller => {
       vm = $controller("addTypeCtrl", {}, {});
     })
   );
 
-  it('Check initialize of controller', function () {
+  it('Check initialize of controller', () => {
     expect(vm).not.toBeUndefined();
   });
 
-  it('Check initialize of variable in controller', function () {
+  it('Check initialize of variable in controller', () => {
     expect(vm.filename).toEqual("Иконка не выбрана");
   });
 
