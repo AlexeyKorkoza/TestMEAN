@@ -31,6 +31,7 @@
     "angular-route": "<1.5.0",
     "angular-selectize2": "^1.2.3",
     "angular-simple-logger": "^0.1.7",
+    "angular-ui-router": "^0.4.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
