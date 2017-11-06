@@ -11,7 +11,7 @@ const nodemon = require('gulp-nodemon');
 const js = [
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/angular/angular.min.js',
-    'node_modules/angular-route/angular-route.min.js',
+    'node_modules/angular-ui-router/release/angular-ui-router.min.js',
     'node_modules/selectize/dist/js/standalone/selectize.min.js',
     'node_modules/angular-loading-bar/build/loading-bar.min.js',
     'node_modules/ng-file-upload/dist/ng-file-upload.min.js',

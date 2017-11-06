@@ -4,20 +4,20 @@ angular
   .module("myApp")
   .controller("viewTypesCtrl", viewTypesCtrl);
 
-viewTypesCtrl.$inject = ['$location', 'typeService'];
+viewTypesCtrl.$inject = ['$state', 'typeService'];
 
-function viewTypesCtrl($location, typeService) {
+function viewTypesCtrl($state, typeService) {
 
   const vm = this;
   vm.types = "";
   vm.remove = remove;
-  vm.add = add;
+  vm.edit = edit;
   vm.activate = activate;
 
   activate();
 
   function activate() {
-    typeService.getAllTypes()
+    typeService.getAll()
         .then(response => {
       vm.types = response.data;
       if (vm.types.length < 1) {
@@ -26,9 +26,13 @@ function viewTypesCtrl($location, typeService) {
           "Please, add new type of place",
           "error"
         );
-        $location.url("/types/add");
+        $state.go('types_new');
       }
     });
+  }
+
+  function edit(type) {
+    $state.go('types_one', { id: type._id });
   }
 
   function remove(id,index) {
@@ -49,9 +53,4 @@ function viewTypesCtrl($location, typeService) {
         );
       });
   }
-
-  function add() {
-    typeService.setTypes(vm.types);
-  }
-
 }

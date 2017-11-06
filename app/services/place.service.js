@@ -9,19 +9,17 @@ angular
   function placeService($http){
 
     const service = {
-      getAllPlaces: getAllPlaces,
-      create: create,
-      remove: remove,
-      update: update,
-      getPlaceById: getPlaceById,
-      getPlacesByType: getPlacesByType,
-      setPlaces: setPlaces,
-      getPlaces: getPlaces
+      getAll,
+      create,
+      remove,
+      update,
+      getPlaceById,
+      getPlacesByType,
     };
 
     return service;
 
-    function getAllPlaces () {
+    function getAll() {
       return $http.get("/api/v1/places");
     }
 
@@ -43,15 +41,5 @@ angular
 
     function getPlacesByType(id){
       return $http.get("/api/v1/places/type/" + id);
-    }
-
-    let Places = "";
-
-    function setPlaces(places) {
-      Places = places;
-    }
-
-    function getPlaces() {
-      return Places;
     }
 }

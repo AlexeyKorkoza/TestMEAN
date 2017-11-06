@@ -4,20 +4,21 @@ angular
   .module("myApp")
   .controller("viewPlacesCtrl", viewPlacesCtrl);
 
-viewPlacesCtrl.$inject = ['$location', 'placeService'];
+viewPlacesCtrl.$inject = ['$state', 'placeService'];
 
-function viewPlacesCtrl($location, placeService) {
+function viewPlacesCtrl($state, placeService) {
 
-  var vm = this;
+  const vm = this;
   vm.places = "";
   vm.activate = activate;
+  vm.edit = edit;
   vm.remove = remove;
 
   activate();
 
   function activate() {
 
-    placeService.getAllPlaces()
+    placeService.getAll()
         .then(response => {
       vm.places = response.data;
       if (vm.places.length < 1) {
@@ -26,9 +27,13 @@ function viewPlacesCtrl($location, placeService) {
           "Please, add new place",
           "error"
         );
-        $location.url("/types/add");
+        $state.go('places_new');
       }
     });
+  }
+
+  function edit(place) {
+    $state.go('place.one', { id: place._id });
   }
 
   function remove(id, index) {

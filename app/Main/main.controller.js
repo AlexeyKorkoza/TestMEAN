@@ -57,7 +57,7 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
   }
 
   function getAllTypes() {
-    typeService.getAllTypes()
+    typeService.getAll()
         .then(response => {
         vm.getData = response.data;
         vm.select.push({
@@ -74,7 +74,7 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
   }
 
   function getAllPlaces() {
-    placeService.getAllPlaces()
+    placeService.getAll()
         .then(response => {
         vm.addPlaceInMap(response.data);
       })

@@ -18,13 +18,13 @@
                                             <p>You signed in by<span>{{username}}</span></p>
                                         </div>
                                         <nav class="sub_menu">
-                                            <a href="#/types" class="sub_menu__item"><i class="fa fa-cog fa-fw"
+                                            <a ui-sref="types_all" class="sub_menu__item"><i class="fa fa-cog fa-fw"
                                                                                         aria-hidden="true"></i>&nbsp;
                                                 Manage types objects</a>
-                                            <a href="#/places" class="sub_menu__item"><i class="fa fa-book fa-fw"
+                                            <a ui-sref="places_all" class="sub_menu__item"><i class="fa fa-book fa-fw"
                                                                                          aria-hidden="true"></i>&nbsp;
                                                 Manage places</a>
-                                            <a href="#/user/edit" class="sub_menu__item"><i
+                                            <a ui-sref="profile" class="sub_menu__item"><i
                                                 class="fa fa-cog fa-fw"
                                                 aria-hidden="true"></i>&nbsp;
                                                 Settings profile</a>
@@ -52,12 +52,12 @@
                 <div class="col-xs-12 col-lg-4 col-md-4 col-sm-5 no_auth">
                     <div class="row">
                         <div class="col-xs-6 col-md-6 col-lg-5 col-sm-6">
-                            <a href="#/signin" class="button icon-login">
+                            <a ui-sref="signin" class="button icon-login">
                                 <span>Sign In</span>
                             </a>
                         </div>
                         <div class="col-xs-6 col-md-6 col-lg-5 col-sm-6">
-                            <a href="#/signup" class="button icon-register">
+                            <a ui-sref="signup" class="button icon-register">
                                 <span>Sign Up</span>
                             </a>
                         </div>

@@ -3,39 +3,50 @@
 angular.module('myApp')
     .config(routeConfig);
 
-routeConfig.$inject = ['$routeProvider'];
+routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-function routeConfig($routeProvider) {
-    $routeProvider
-        .when('/', {
+function routeConfig($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+        .state('main', {
+            url: '/',
             templateUrl: 'app/Main/main.html'
         })
-        .when('/signin', {
+        .state('signin', {
+            url: '/signin',
             templateUrl: 'app/SignIn/sign-in.html'
         })
-        .when('/signup', {
+        .state('signup', {
+            url: '/signup',
             templateUrl: 'app/SignUp/sign-up.html'
         })
-        .when('/user/edit', {
+        .state('profile', {
+            url: '/profile',
             templateUrl: 'app/Profile/profile.html'
         })
-        .when('/types', {
+        .state('types_all', {
+            url: '/types',
             templateUrl: 'app/Type/view-types.html'
         })
-        .when('/types/add', {
+        .state('types_new', {
+            url: '/types/add',
             templateUrl: 'app/Type/add-type.html'
         })
-        .when('/types/:id', {
+        .state('types_one', {
+            url: '/types/:id',
             templateUrl: 'app/Type/edit-type.html'
         })
-        .when('/places', {
+        .state('places_all', {
+            url: '/places',
             templateUrl: 'app/Place/view-places.html'
         })
-        .when('/places/add', {
+        .state('places_new', {
+            url: '/places/add',
             templateUrl: 'app/Place/add-place.html'
         })
-        .when('/places/:id', {
+        .state('places_one', {
+            url: '/places/:id',
             templateUrl: 'app/Place/edit-place.html'
         })
-        .otherwise({redirectTo: '/'});
 }

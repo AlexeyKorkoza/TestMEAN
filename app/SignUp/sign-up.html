@@ -3,7 +3,7 @@
         <form class="modal-content animate" name="form" novalidate>
             <div class="containerSignUp">
                 <div>
-                    <span class="close" title="Back to Main" ng-click="vm.back()">&times;</span>
+                    <span class="close" title="Back to Main" ui-sref="main">&times;</span>
                 </div>
                 <div class="form-group">
                     <label><b>Username:*</b></label>
@@ -55,11 +55,11 @@
                                 type="submit"
                                 ng-disabled="form.$invalid"
                                 ng-click="vm.RegBtnClick()">
-                            <span>Sign In</span>
+                            <span>Sign Up</span>
                         </button>
                     </div>
                     <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
-                        <a class="button icon-home CloseSignIn"  href="#/">
+                        <a class="button icon-home CloseSignIn" ui-sref="main">
                             <span>Back to Main</span>
                         </a>
                     </div>

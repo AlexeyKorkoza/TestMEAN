@@ -6,7 +6,7 @@ export default {
     try {
       const places = await Place.find({});
       if (!places.length) {
-        res.status(400).json('Places are not found');
+        res.status(200).json('Places are not found');
       }
 
       res.status(200).json(places);
@@ -20,7 +20,7 @@ export default {
     try {
       const place = await Place.findOne({_id: req.params.id});
       if (!place) {
-        res.status(400).json('Place is not found');
+        res.status(200).json('Place is not found');
       }
 
       res.status(200).json(place);
@@ -34,7 +34,7 @@ export default {
     try {
       const places = await Place.find({id_type: req.params.id});
       if (!places.length) {
-        res.status(400).json('Places are not found');
+        res.status(200).json('Places are not found');
       }
 
       res.status(200).json(places);
@@ -58,7 +58,7 @@ export default {
 
       const result = await place.save();
       if (!result) {
-        res.status(400).json('Place is not found')
+        res.status(400).json('Place is not added')
       }
 
       res.status(200).json('Place is added');

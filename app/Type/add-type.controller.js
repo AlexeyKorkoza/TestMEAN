@@ -18,7 +18,7 @@ function addTypeCtrl($location, Upload, typeService) {
   activate();
 
   function activate () {
-    vm.getAllTypes = typeService.getTypes();
+    vm.getAllTypes = typeService.getAll();
   }
 
   function changeFilename() {
@@ -40,7 +40,7 @@ function addTypeCtrl($location, Upload, typeService) {
         }
       });
     }
-    max++;
+    max += 1;
     vm.addTypeData.id = max;
     typeService.create(vm.addTypeData, vm.addTypeData.file)
       .then(response => {

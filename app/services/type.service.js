@@ -9,28 +9,16 @@ typeService.$inject = ['$http', 'Upload'];
 function typeService($http, Upload) {
 
   const service = {
-    setTypes: setTypes,
-    getTypes: getTypes,
-    getAllTypes: getAllTypes,
-    create: create,
-    update: update,
-    remove: remove,
-    getTypeById: getTypeById
+    getAll,
+    create,
+    update,
+    remove,
+    getTypeById
   };
 
   return service;
 
-  let Types = "";
-
-  function setTypes(types) {
-    Types = types;
-  }
-
-  function getTypes() {
-    return Types;
-  }
-
-  function getAllTypes() {
+  function getAll() {
     return $http.get("/api/v1/types");
   }
 

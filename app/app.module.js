@@ -2,7 +2,7 @@
 
 angular
     .module('myApp', [
-        'ngRoute',
+        'ui.router',
         'selectize',
         'angular-loading-bar',
         'ngAnimate',
