@@ -7,9 +7,9 @@ userService.$inject = ['$http'];
 function userService($http) {
 
   const service = {
-    getUser: getUser,
-    getUserInfo: getUserInfo,
-    updateUserInfo: updateUserInfo
+    getUser,
+    getUserInfo,
+    updateUserInfo
   };
 
   return service;

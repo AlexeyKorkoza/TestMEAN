@@ -7,7 +7,7 @@ signUpService.$inject = ['$http'];
 function signUpService($http) {
 
   const service = {
-    signup: signup
+    signup
   };
 
   return service;
