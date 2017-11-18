@@ -50,7 +50,7 @@ function addTypeCtrl($state, Upload, typeService) {
           'Please, click ОК for continue',
           'success'
         );
-        $state.url('types_all');
+        $state.go('types_all');
     })
       .catch(() => {
         swal(

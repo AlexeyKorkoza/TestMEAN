@@ -26,7 +26,7 @@ function addPlaceCtrl($state, typeService, placeService) {
       maxItems: 1
     };
 
-    typeService.getAllTypes()
+    typeService.getAll()
         .then(response => {
       response.data.forEach(item => {
         vm.select.push({
