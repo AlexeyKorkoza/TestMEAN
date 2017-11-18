@@ -1,32 +1,20 @@
 angular
-  .module("myApp")
-  .factory("userService", userService);
+  .module('myApp')
+  .factory('userService', userService);
 
 userService.$inject = ['$http'];
 
 function userService($http) {
 
   const service = {
-    getUser,
-    getUserInfo,
-    updateUserInfo
+    getUser
   };
 
   return service;
 
   function getUser() {
-    const headers = {
-      "authorization": "Token " + localStorage.getItem("token")
-    };
+    const headers = {};
+    headers.authorization = localStorage.getItem('token') ? 'Bearer ' + localStorage.getItem('token') : null;
     return $http.get('/api/v1/user', { headers: headers });
   }
-
-  function getUserInfo(username) {
-    return $http.get("/api/v1/user/edit/" + username);
-  }
-
-  function updateUserInfo(username, data) {
-    return $http.put("/api/v1/user/edit/" + username, data);
-  }
-
 }

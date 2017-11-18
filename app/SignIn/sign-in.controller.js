@@ -19,7 +19,6 @@ function signInCtrl($state, authenticationService, cfpLoadingBar) {
       .login(vm.formData)
       .then(response => {
         cfpLoadingBar.complete();
-        localStorage.setItem("username", vm.formData.username);
         localStorage.setItem("token", response.data.user.token);
         $state.go('main');
       })

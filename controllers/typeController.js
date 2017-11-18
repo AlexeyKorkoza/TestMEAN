@@ -7,7 +7,7 @@ export default {
     try {
       const types = await Type.find({});
       if (!types.length) {
-        res.status(400).json('Types are not found');
+        res.status(200).json('Types are not found');
       }
 
       res.status(200).json(types);

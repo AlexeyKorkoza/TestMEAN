@@ -6,12 +6,19 @@ angular.module('myApp')
 routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function routeConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/signin');
 
     $stateProvider
         .state('main', {
             url: '/',
-            templateUrl: 'app/Main/main.html'
+            templateUrl: 'app/Main/main.html',
+            controller: 'mainCtrl',
+            controllerAs: 'vm',
+            resolve: {
+                userData: function(userService) {
+                    return userService.getUser();
+                }
+            }
         })
         .state('signin', {
             url: '/signin',
@@ -22,7 +29,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/SignUp/sign-up.html'
         })
         .state('profile', {
-            url: '/profile',
+            url: '/profile/{id}',
             templateUrl: 'app/Profile/profile.html'
         })
         .state('types_all', {

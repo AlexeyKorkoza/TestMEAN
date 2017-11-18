@@ -1,4 +1,4 @@
-<div data-ng-controller="mainCtrl as vm">
+<div>
     <div ng-if="vm.isAuthenticated">
         <div class="header">
             <div class="row">
@@ -24,7 +24,7 @@
                                             <a ui-sref="places_all" class="sub_menu__item"><i class="fa fa-book fa-fw"
                                                                                          aria-hidden="true"></i>&nbsp;
                                                 Manage places</a>
-                                            <a ui-sref="profile" class="sub_menu__item"><i
+                                            <a ng-click="vm.profile()" class="sub_menu__item"><i
                                                 class="fa fa-cog fa-fw"
                                                 aria-hidden="true"></i>&nbsp;
                                                 Settings profile</a>

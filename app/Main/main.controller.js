@@ -4,26 +4,29 @@ angular
   .module("myApp")
   .controller("mainCtrl", mainCtrl);
 
-mainCtrl.$inject = ['cfpLoadingBar', 'authenticationService', 'placeService', 'typeService'];
+mainCtrl.$inject = ['$state', 'cfpLoadingBar', 'authenticationService', 'placeService', 'typeService', 'userData'];
 
-function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeService) {
+function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, typeService, userData) {
 
   const vm = this;
   vm.group_markers = [];
   vm.select = [];
+  vm.id = '';
   vm.isAuthenticated = false;
   vm.getAllPlaces = getAllPlaces;
   vm.getAllTypes = getAllTypes;
   vm.addPlaceInMap = addPlaceInMap;
   vm.getPlacesByType = getPlacesByType;
+  vm.profile = profile;
   vm.logout = logout;
   vm.activate = activate;
 
   activate();
 
   function activate() {
-    if (localStorage.getItem("username")) {
+    if (localStorage.getItem('token')) {
       vm.isAuthenticated = true;
+      vm.id = userData.data._id;
     }
 
     angular.extend(vm, {
@@ -64,12 +67,14 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
           value: 0,
           text: "Все объекты"
         });
-        response.data.forEach(item => {
-          vm.select.push({
-            value: item.id_type,
-            text: item.name_type
-          });
-        });
+        if (!response.data) {
+            response.data.forEach(item => {
+                vm.select.push({
+                    value: item.id_type,
+                    text: item.name_type
+                });
+            });
+        }
       });
   }
 
@@ -85,7 +90,7 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
   }
 
   function addPlaceInMap(response) {
-    if (vm.getData !== "") {
+    if (!vm.getData) {
      response.forEach((item, i) => {
         const typeOfPlace = vm.getData[item.id_type - 1].name_type;
         const nameOfImage = vm.getData[item.id_type - 1].image;
@@ -130,6 +135,10 @@ function mainCtrl(cfpLoadingBar, authenticationService, placeService, typeServic
         }
       );
     }
+  }
+
+  function profile() {
+      $state.go('profile', {'id': vm.id});
   }
 
   function logout() {

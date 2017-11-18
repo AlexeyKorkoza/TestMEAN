@@ -20,17 +20,17 @@ const userSchema = new Schema({
   }
 });
 
-userSchema.methods.generateJWT = user =>{
-  const today = new Date();
-  const exp = new Date(today);
-  exp.setDate(today.getDate() + 60);
+userSchema.methods.generateJWT = user => {
+  const expiresIn = '7d';
+  const payload = {
+    id: user._id,
+    username: user.username,
+  };
+
   return jwt.sign(
-    {
-      id: user._id,
-      username: user.username,
-      exp: parseInt(exp.getTime() / 1000)
-    },
-    process.env.JWT_SECRET
+    payload,
+    process.env.JWT_SECRET,
+    { expiresIn }
   );
 };
 

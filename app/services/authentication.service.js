@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 angular
-    .module("myApp")
-    .factory("authenticationService", authenticationService);
+    .module('myApp')
+    .factory('authenticationService', authenticationService);
 
-authenticationService.inject = ["$http", '$location'];
-function authenticationService ($http, $location) {
+authenticationService.inject = ['$http', '$state'];
+function authenticationService ($http, $state) {
   const service = {
     login,
     logout
@@ -14,12 +14,11 @@ function authenticationService ($http, $location) {
   return service;
 
   function login(data) {
-    return $http.post("/api/v1/auth/login", data);
+    return $http.post('/api/v1/auth/login', data);
   }
 
   function logout() {
-    localStorage.removeItem("username");
-    localStorage.removeItem("token");
-    $location.path("/api/v1/signin");
+    localStorage.removeItem('token');
+    $state.go('signin');
   }
 }
