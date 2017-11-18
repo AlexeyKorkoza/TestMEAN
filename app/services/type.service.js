@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .factory("typeService", typeService);
+  .module('myApp')
+  .factory('typeService', typeService);
 
 typeService.$inject = ['$http', 'Upload'];
 
@@ -19,12 +19,12 @@ function typeService($http, Upload) {
   return service;
 
   function getAll() {
-    return $http.get("/api/v1/types");
+    return $http.get('/api/v1/types');
   }
 
   function create(data, file) {
     return Upload.upload({
-      url: "/api/v1/types/add",
+      url: '/api/v1/types/add',
       data: {
         file: file,
         data: data
@@ -34,8 +34,8 @@ function typeService($http, Upload) {
 
   function update(id, data, file) {
     return Upload.upload({
-      url: "/api/v1/types/" + id,
-      method: "PUT",
+      url: '/api/v1/types/' + id,
+      method: 'PUT',
       data: {
         file: file,
         data: data
@@ -44,11 +44,11 @@ function typeService($http, Upload) {
   }
 
   function remove(id) {
-    return $http.delete("/api/v1/types/" + id, {params: {id: id}});
+    return $http.delete('/api/v1/types/' + id, {params: {id: id}});
   }
 
   function getTypeById(id) {
-    return $http.get("/api/v1/types/" + id);
+    return $http.get('/api/v1/types/' + id);
   }
 
 }

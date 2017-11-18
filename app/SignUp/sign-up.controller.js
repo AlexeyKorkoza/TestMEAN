@@ -9,7 +9,7 @@ signUpCtrl.$inject = ['$state', 'cfpLoadingBar', 'signUpService'];
 function signUpCtrl($state, cfpLoadingBar, signUpService) {
 
   const vm = this;
-  vm.error = "";
+  vm.error = '';
   vm.RegBtnClick = RegBtnClick;
 
   function RegBtnClick() {

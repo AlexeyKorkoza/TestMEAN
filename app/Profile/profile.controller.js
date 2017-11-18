@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .controller("userProfileCtrl", userProfileCtrl);
+  .module('myApp')
+  .controller('userProfileCtrl', userProfileCtrl);
 
 userProfileCtrl.$inject = ['$state', 'profileService'];
 
@@ -31,16 +31,16 @@ function userProfileCtrl($state, profileService) {
       .update(data)
       .then(() => {
         swal(
-          "Profile was updated successfully",
-          "Data will apply after log out",
-          "success"
+          'Profile was updated successfully',
+          'Data will apply after log out',
+          'success'
         );
       })
       .catch(() => {
         swal(
-          "Profile was not updated",
-          "Retry",
-          "error"
+          'Profile was not updated',
+          'Retry',
+          'error'
         );
       });
   }
@@ -54,16 +54,16 @@ function userProfileCtrl($state, profileService) {
       profileService.update(data)
       .then(() => {
         swal(
-          "Profile was updated successfully",
-          "Data will apply after log out",
-          "success"
+          'Profile was updated successfully',
+          'Data will apply after log out',
+          'success'
         );
       })
       .catch(() => {
         swal(
-          "Profile was not updated",
-          "Retry",
-          "error"
+          'Profile was not updated',
+          'Retry',
+          'error'
         );
       });
   }

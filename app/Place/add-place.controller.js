@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .controller("addPlaceCtrl", addPlaceCtrl);
+  .module('myApp')
+  .controller('addPlaceCtrl', addPlaceCtrl);
 
-addPlaceCtrl.$inject = ['$location', 'typeService', 'placeService'];
+addPlaceCtrl.$inject = ['$state', 'typeService', 'placeService'];
 
-function addPlaceCtrl($location, typeService, placeService) {
+function addPlaceCtrl($state, typeService, placeService) {
 
   const vm = this;
   vm.select = [];
@@ -19,10 +19,10 @@ function addPlaceCtrl($location, typeService, placeService) {
 
     vm.myConfig = {
       create: false,
-      valueField: "value",
-      labelField: "text",
-      delimiter: "|",
-      placeholder: "Choose type object",
+      valueField: 'value',
+      labelField: 'text',
+      delimiter: '|',
+      placeholder: 'Choose type object',
       maxItems: 1
     };
 
@@ -43,21 +43,21 @@ function addPlaceCtrl($location, typeService, placeService) {
       placeService.create(vm.addData)
         .then(() => {
           swal(
-            "Place was added",
-            "Please, click ОК for continue",
-            "success"
+            'Place was added',
+            'Please, click ОК for continue',
+            'success'
           );
-          $location.url("/places");
+          $state.go('places_all');
         })
         .catch(() => {
           swal(
-            "Place was not added",
-            "Check input data",
-            "error"
+            'Place was not added',
+            'Check input data',
+            'error'
           );
         });
     } else {
-      vm.error = "Choose type object";
+      vm.error = 'Choose type object';
     }
   }
 }

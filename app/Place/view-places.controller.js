@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .controller("viewPlacesCtrl", viewPlacesCtrl);
+  .module('myApp')
+  .controller('viewPlacesCtrl', viewPlacesCtrl);
 
 viewPlacesCtrl.$inject = ['$state', 'placeService'];
 
 function viewPlacesCtrl($state, placeService) {
 
   const vm = this;
-  vm.places = "";
+  vm.places = '';
   vm.activate = activate;
   vm.edit = edit;
   vm.remove = remove;
@@ -23,9 +23,9 @@ function viewPlacesCtrl($state, placeService) {
       vm.places = response.data;
       if (vm.places.length < 1) {
         swal(
-          "List of places is empty",
-          "Please, add new place",
-          "error"
+          'List of places is empty',
+          'Please, add new place',
+          'error'
         );
         $state.go('places_new');
       }
@@ -41,17 +41,17 @@ function viewPlacesCtrl($state, placeService) {
     placeService.remove(id)
       .then(() =>{
         swal(
-          "Place was removed",
-          "Please, click OK for continue",
-          "success"
+          'Place was removed',
+          'Please, click OK for continue',
+          'success'
         );
         vm.places.splice(index, 1);
       })
       .catch(() => {
         swal(
-          "Place was not removed",
-          "Retry",
-          "error"
+          'Place was not removed',
+          'Retry',
+          'error'
         );
       });
   }

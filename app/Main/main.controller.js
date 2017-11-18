@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .controller("mainCtrl", mainCtrl);
+  .module('myApp')
+  .controller('mainCtrl', mainCtrl);
 
 mainCtrl.$inject = ['$state', 'cfpLoadingBar', 'authenticationService', 'placeService', 'typeService', 'userData'];
 
@@ -37,7 +37,7 @@ function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, ty
       },
       markers: {},
       tiles: {
-        url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         options: {
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }
@@ -46,17 +46,16 @@ function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, ty
 
     vm.myConfig = {
       create: false,
-      valueField: "value",
-      labelField: "text",
-      delimiter: "|",
-      placeholder: "Choose type object",
+      valueField: 'value',
+      labelField: 'text',
+      delimiter: '|',
+      placeholder: 'Choose type object',
       maxItems: 1
     };
     cfpLoadingBar.start();
     vm.getAllTypes();
     vm.getAllPlaces();
     cfpLoadingBar.complete();
-    dataNoLoad();
   }
 
   function getAllTypes() {
@@ -65,7 +64,7 @@ function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, ty
         vm.getData = response.data;
         vm.select.push({
           value: 0,
-          text: "Все объекты"
+          text: 'Все объекты'
         });
         if (!response.data) {
             response.data.forEach(item => {
@@ -82,11 +81,7 @@ function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, ty
     placeService.getAll()
         .then(response => {
         vm.addPlaceInMap(response.data);
-      })
-        .catch(err => {
-        dataNoLoad();
-      }
-    );
+      });
   }
 
   function addPlaceInMap(response) {
@@ -96,24 +91,24 @@ function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, ty
         const nameOfImage = vm.getData[item.id_type - 1].image;
         const lat = parseFloat(item.lat);
         const lng = parseFloat(item.lng);
-        vm.markers["marker" + (i + 1)] = {
+        vm.markers['marker' + (i + 1)] = {
           lat: lat,
           lng: lng,
           focus: false,
           draggable: false,
           group: 'vm.group_markers',
-          message: '<b>"' +
+          message: '<b>' +
           item.name_place +
-          '",</b> ' +
+          ',</b> ' +
           typeOfPlace +
-          "<br>" +
+          '<br>' +
           item.address +
-          "<br/>",
+          '<br/>',
           icon: {
             iconSize: [54, 54],
             iconAnchor: [16, 37],
             popupAnchor: [0, -30],
-            iconUrl: "./uploads/" + nameOfImage
+            iconUrl: './uploads/' + nameOfImage
           }
         };
       });
@@ -143,61 +138,5 @@ function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, ty
 
   function logout() {
     authenticationService.logout();
-  }
-
-  function dataNoLoad() {
-
-    if (!vm.isAuthenticated && !vm.places && !vm.select.length) {
-      swal(
-        {
-          title: "Please log in or sign up",
-          text: '<span style="color:#F8BB86">Please log in or sign up<span>',
-          confirmButtonText: "OK",
-          html: true
-        });
-    }
-
-    if (!vm.isAuthenticated && vm.places && vm.select.length) {
-      swal(
-        {
-          title: "Please log in or sign up",
-          text: '<span style="color:#F8BB86">Please log in or sign up<span>',
-          confirmButtonText: "OK",
-          html: true
-        }
-      );
-    }
-
-    if (vm.isAuthenticated && !vm.select) {
-      swal(
-        {
-          title: "No categories of places",
-          text: '<span style="color:#F8BB86">Please, add new category of places<span>',
-          confirmButtonText: "Add new category",
-          html: true
-        },
-        isConfirm => {
-          if (isConfirm) {
-            window.href = '/types/add';
-          }
-        }
-      );
-    }
-
-    if (vm.isAuthenticated && vm.select.length && !vm.places) {
-      swal(
-        {
-          title: "No places",
-          text: '<span style="color:#F8BB86">Please, add new place<span>',
-          confirmButtonText: "Add new place",
-          html: true
-        },
-        isConfirm => {
-          if (isConfirm) {
-            window.href = '/places/add';
-          }
-        }
-      );
-    }
   }
 }

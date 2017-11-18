@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .controller("addTypeCtrl", addTypeCtrl);
+  .module('myApp')
+  .controller('addTypeCtrl', addTypeCtrl);
 
-addTypeCtrl.$inject = ['$location', 'Upload', 'typeService'];
+addTypeCtrl.$inject = ['$state', 'Upload', 'typeService'];
 
-function addTypeCtrl($location, Upload, typeService) {
+function addTypeCtrl($state, Upload, typeService) {
 
   const vm = this;
-  vm.filename = "Icon was not chosen";
-  vm.getAllTypes = "";
+  vm.filename = 'Icon was not chosen';
+  vm.getAllTypes = '';
   vm.changeFilename = changeFilename;
   vm.add = add;
   vm.activate = activate;
@@ -25,7 +25,7 @@ function addTypeCtrl($location, Upload, typeService) {
     if (vm.addTypeData.file) {
       vm.filename = vm.addTypeData.file.name;
     } else {
-      vm.filename = "Icon was not chosen";
+      vm.filename = 'Icon was not chosen';
     }
   }
 
@@ -46,17 +46,17 @@ function addTypeCtrl($location, Upload, typeService) {
       .then(response => {
         vm.addTypeData = response.data;
         swal(
-          "Type of object was added",
-          "Please, click ОК for continue",
-          "success"
+          'Type of object was added',
+          'Please, click ОК for continue',
+          'success'
         );
-        $location.url("/types");
+        $state.url('types_all');
     })
       .catch(() => {
         swal(
-          "Type of place was not added",
-          "Type of place has already existed",
-          "error"
+          'Type of place was not added',
+          'Type of place has already existed',
+          'error'
         );
       });
   }

@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .controller("editTypeCtrl", editTypeCtrl);
+  .module('myApp')
+  .controller('editTypeCtrl', editTypeCtrl);
 
-editTypeCtrl.$inject = ['$location', '$routeParams', 'Upload', 'typeService'];
+editTypeCtrl.$inject = ['$state', '$routeParams', 'Upload', 'typeService'];
 
-function editTypeCtrl($location, $routeParams, Upload, typeService) {
+function editTypeCtrl($state, $routeParams, Upload, typeService) {
 
   const vm = this;
-  vm.filename = "Icon was not chosen";
+  vm.filename = 'Icon was not chosen';
   vm.changeFilename = changeFilename;
   vm.update = update;
   vm.activate = activate;
@@ -29,7 +29,7 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
     if (vm.editData.file) {
       vm.filename = vm.editData.file.name;
     } else {
-      vm.filename = "Icon was not chosen";
+      vm.filename = 'Icon was not chosen';
     }
   }
 
@@ -41,17 +41,17 @@ function editTypeCtrl($location, $routeParams, Upload, typeService) {
       .update($routeParams.id, vm.editData, vm.editData.file)
       .then(() => {
         swal(
-          "Type was edited successfully",
-          "Please, click ОК for continue",
-          "success"
+          'Type was edited successfully',
+          'Please, click ОК for continue',
+          'success'
         );
-        $location.url("/types");
+        $state.url('types_all');
       })
       .catch(() => {
         swal(
-          "Type was not edited",
-          "Please, check input data",
-          "error"
+          'Type was not edited',
+          'Please, check input data',
+          'error'
         );
       });
   }

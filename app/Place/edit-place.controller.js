@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .controller("editPlaceCtrl", editPlaceCtrl);
+  .module('myApp')
+  .controller('editPlaceCtrl', editPlaceCtrl);
 
-editPlaceCtrl.$inject = ['$location', '$routeParams', 'typeService', 'placeService'];
+editPlaceCtrl.$inject = ['$state', '$routeParams', 'typeService', 'placeService'];
 
-function editPlaceCtrl($location, $routeParams, typeService, placeService) {
+function editPlaceCtrl($state, $routeParams, typeService, placeService) {
 
   const vm = this;
   vm.select = [];
@@ -19,10 +19,10 @@ function editPlaceCtrl($location, $routeParams, typeService, placeService) {
 
     vm.myConfig = {
       create: false,
-      valueField: "value",
-      labelField: "text",
-      delimiter: "|",
-      placeholder: "Choose type object",
+      valueField: 'value',
+      labelField: 'text',
+      delimiter: '|',
+      placeholder: 'Choose type object',
       maxItems: 1
     };
 
@@ -56,21 +56,21 @@ function editPlaceCtrl($location, $routeParams, typeService, placeService) {
         .update(vm.editData, $routeParams.id)
         .then(() => {
             swal(
-              "Place was updated successfully",
-              "Please, click OK for continue",
-              "success"
+              'Place was updated successfully',
+              'Please, click OK for continue',
+              'success'
             );
-            $location.url("/places");
+            $state.go('places_all');
         })
         .catch(() => {
           swal(
-            "Place was not updated",
-            "Check input data",
-            "error"
+            'Place was not updated',
+            'Check input data',
+            'error'
           );
         });
     } else {
-      vm.error = "Choose type object";
+      vm.error = 'Choose type object';
     }
   }
 }

@@ -1,19 +1,19 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .directive("pwCheck", pwCheck);
+  .module('myApp')
+  .directive('pwCheck', pwCheck);
 
 function pwCheck() {
   return {
-    restrict: "A",
-    require: "ngModel",
+    restrict: 'A',
+    require: 'ngModel',
     link: (scope, elem, attrs, ctrl) => {
-      const firstPassword = "#" + attrs.pwCheck;
-      elem.add(firstPassword).on("keyup", function () {
+      const firstPassword = '#' + attrs.pwCheck;
+      elem.add(firstPassword).on('keyup', () => {
         scope.$apply(function () {
           const v = elem.val() === $(firstPassword).val();
-          ctrl.$setValidity("pwmatch", v);
+          ctrl.$setValidity('pwmatch', v);
         });
       });
     }

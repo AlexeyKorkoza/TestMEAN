@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 angular
-  .module("myApp")
-  .controller("signInCtrl", signInCtrl);
+  .module('myApp')
+  .controller('signInCtrl', signInCtrl);
 
 signInCtrl.$inject = ['$state', 'authenticationService', 'cfpLoadingBar'];
 
@@ -19,7 +19,7 @@ function signInCtrl($state, authenticationService, cfpLoadingBar) {
       .login(vm.formData)
       .then(response => {
         cfpLoadingBar.complete();
-        localStorage.setItem("token", response.data.user.token);
+        localStorage.setItem('token', response.data.user.token);
         $state.go('main');
       })
       .catch(err => {
