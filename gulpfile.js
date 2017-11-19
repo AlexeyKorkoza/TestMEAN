@@ -29,7 +29,6 @@ const js = [
     './app/jwt.factory.js',
     './app/services/*.js',
     './app/directivies/**/*.js',
-    './app/directivies/*.js',
     './app/signIn/*.js',
     './app/main/*.js',
     './app/signUp/*.js',
