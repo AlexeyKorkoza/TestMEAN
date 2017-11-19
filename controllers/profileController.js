@@ -13,7 +13,7 @@ export default {
             }
 
             if (!user) {
-                res.status(401).json('Profile of user is not found');
+                res.status(401).json('profile of user is not found');
             }
         }
         catch (err) {
@@ -28,7 +28,7 @@ export default {
 
                 let user = await User.findById(id);
                 if (!user) {
-                    res.status(400).json('Profile is not found');
+                    res.status(400).json('profile is not found');
                 }
 
                 user.username = req.body.username;
@@ -36,7 +36,7 @@ export default {
 
                 const result = user.save();
                 if (!result) {
-                    res.status(400).json('Profile is not updated');
+                    res.status(400).json('profile is not updated');
                 }
 
                 res.status(200).json(result);
@@ -44,17 +44,17 @@ export default {
 
                 let user = await User.findById(id);
                 if (!user) {
-                    res.status(400).json('Profile is not found');
+                    res.status(400).json('profile is not found');
                 }
                 user.password = user.generatePassword(req.body.password);
 
                 const result = await user.save();
 
                 if (!result) {
-                    res.status(400).json('Profile is not updated');
+                    res.status(400).json('profile is not updated');
                 }
 
-                res.status(200).json('Profile is updated');
+                res.status(200).json('profile is updated');
             }
         }
         catch (err) {

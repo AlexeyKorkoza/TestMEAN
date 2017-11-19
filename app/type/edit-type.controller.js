@@ -41,7 +41,7 @@ function editTypeCtrl($state, $routeParams, Upload, typeService) {
       .update($routeParams.id, vm.editData, vm.editData.file)
       .then(() => {
         swal(
-          'Type was edited successfully',
+          'type was edited successfully',
           'Please, click ОК for continue',
           'success'
         );
@@ -49,7 +49,7 @@ function editTypeCtrl($state, $routeParams, Upload, typeService) {
       })
       .catch(() => {
         swal(
-          'Type was not edited',
+          'type was not edited',
           'Please, check input data',
           'error'
         );

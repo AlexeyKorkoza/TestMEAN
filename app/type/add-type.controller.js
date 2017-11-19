@@ -46,7 +46,7 @@ function addTypeCtrl($state, Upload, typeService) {
       .then(response => {
         vm.addTypeData = response.data;
         swal(
-          'Type of object was added',
+          'type of object was added',
           'Please, click ОК for continue',
           'success'
         );
@@ -54,8 +54,8 @@ function addTypeCtrl($state, Upload, typeService) {
     })
       .catch(() => {
         swal(
-          'Type of place was not added',
-          'Type of place has already existed',
+          'type of place was not added',
+          'type of place has already existed',
           'error'
         );
       });

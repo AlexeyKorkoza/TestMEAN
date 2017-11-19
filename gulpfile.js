@@ -29,12 +29,12 @@ const js = [
     './app/jwt.factory.js',
     './app/services/*.js',
     './app/directivies/*.js',
-    './app/SignIn/*.js',
-    './app/Main/*.js',
-    './app/SignUp/*.js',
-    './app/Place/*.js',
-    './app/Type/*.js',
-    './app/Profile/*.js'
+    './app/signIn/*.js',
+    './app/main/*.js',
+    './app/signUp/*.js',
+    './app/place/*.js',
+    './app/type/*.js',
+    './app/profile/*.js'
 ];
 
 const css = [

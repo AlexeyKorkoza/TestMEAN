@@ -19,11 +19,11 @@ module.exports = config => {
             'app/assets/js/*.js',
 
             'app/*.js',
-            'app/Main/main.controller.js',
-            'app/Place/*.js',
-            'app/SignIn/*.js',
-            'app/SignUp/*.js',
-            'app/Type/*.js',
+            'app/main/main.controller.js',
+            'app/place/*.js',
+            'app/signIn/*.js',
+            'app/signUp/*.js',
+            'app/type/*.js',
             'app/services/*.js',
             'app/test/*.js'
         ],

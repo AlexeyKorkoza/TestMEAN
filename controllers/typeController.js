@@ -21,7 +21,7 @@ export default {
     try {
       const type = await Type.findOne({_id: req.params.id});
       if (!type) {
-        res.status(400).json('Type is not found');
+        res.status(400).json('type is not found');
       }
 
       res.status(200).json(type);
@@ -42,10 +42,10 @@ export default {
 
         const result = await type.save();
         if (!result) {
-          res.status(400).json('Type is not found')
+          res.status(400).json('type is not found')
         }
 
-        res.status(200).json('Type is added');
+        res.status(200).json('type is added');
       }
     }
     catch (err) {
@@ -60,7 +60,7 @@ export default {
 
         let type = await Type.findById(req.params.id);
         if (!type) {
-          res.status(400).json('Type is not found');
+          res.status(400).json('type is not found');
         }
 
         type.name_type = req.body.data.typename;
@@ -68,10 +68,10 @@ export default {
 
         const result = type.save();
         if(!result) {
-          res.status(400).json('Type is not updated');
+          res.status(400).json('type is not updated');
         }
 
-        res.status(200).json('Type is updated');
+        res.status(200).json('type is updated');
       }
       catch (err) {
         res.status(500).json(err);
@@ -86,7 +86,7 @@ export default {
       let type = await Type.findById(req.params.id);
 
       if (!type) {
-        res.status(400).json('Type is not found');
+        res.status(400).json('type is not found');
       }
 
       const arr = type.image.split('.');
@@ -99,10 +99,10 @@ export default {
 
       const result = await type.save();
       if (!result) {
-        res.status(400).json('Type is not updated');
+        res.status(400).json('type is not updated');
       }
 
-      res.status(200).json('Type is updated');
+      res.status(200).json('type is updated');
     }
     catch (err) {
       res.status(500).json(err);
@@ -113,11 +113,11 @@ export default {
     try {
       const type = await Type.findByIdAndRemove({_id: req.params.id});
       if (!type) {
-        res.status(400).json('Type is not removed');
+        res.status(400).json('type is not removed');
       }
 
       fs.unlink('uploads/' + type.image);
-      res.status(200).json('Type is removed');
+      res.status(200).json('type is removed');
     }
     catch (err) {
       res.status(500).json(err);

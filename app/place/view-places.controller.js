@@ -41,7 +41,7 @@ function viewPlacesCtrl($state, placeService) {
     placeService.remove(id)
       .then(() =>{
         swal(
-          'Place was removed',
+          'place was removed',
           'Please, click OK for continue',
           'success'
         );
@@ -49,7 +49,7 @@ function viewPlacesCtrl($state, placeService) {
       })
       .catch(() => {
         swal(
-          'Place was not removed',
+          'place was not removed',
           'Retry',
           'error'
         );

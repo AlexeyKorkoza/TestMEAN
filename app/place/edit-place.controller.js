@@ -56,7 +56,7 @@ function editPlaceCtrl($state, $routeParams, typeService, placeService) {
         .update(vm.editData, $routeParams.id)
         .then(() => {
             swal(
-              'Place was updated successfully',
+              'place was updated successfully',
               'Please, click OK for continue',
               'success'
             );
@@ -64,7 +64,7 @@ function editPlaceCtrl($state, $routeParams, typeService, placeService) {
         })
         .catch(() => {
           swal(
-            'Place was not updated',
+            'place was not updated',
             'Check input data',
             'error'
           );

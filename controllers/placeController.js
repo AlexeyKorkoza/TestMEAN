@@ -20,7 +20,7 @@ export default {
     try {
       const place = await Place.findOne({_id: req.params.id});
       if (!place) {
-        res.status(200).json('Place is not found');
+        res.status(200).json('place is not found');
       }
 
       res.status(200).json(place);
@@ -58,10 +58,10 @@ export default {
 
       const result = await place.save();
       if (!result) {
-        res.status(400).json('Place is not added')
+        res.status(400).json('place is not added')
       }
 
-      res.status(200).json('Place is added');
+      res.status(200).json('place is added');
     }
     catch (err) {
       res.status(500).json(err);
@@ -72,7 +72,7 @@ export default {
     try {
       const place = await Place.findById(req.params.id);
       if (!place) {
-        res.status(400).json('Place is not found');
+        res.status(400).json('place is not found');
       }
 
       place.name_place = req.body.name_place;
@@ -84,10 +84,10 @@ export default {
 
       const result = place.save();
       if (!result) {
-        res.status(400).json('Place is not updated');
+        res.status(400).json('place is not updated');
       }
 
-      res.status(200).json('Place is updated');
+      res.status(200).json('place is updated');
     }
     catch (err) {
       res.status(500).json(err);
@@ -98,10 +98,10 @@ export default {
     try {
       const place = await Place.findByIdAndRemove({_id: req.params.id});
       if (!place) {
-        res.status(400).json('Place is not removed');
+        res.status(400).json('place is not removed');
       }
 
-      res.status(200).json('Place is removed');
+      res.status(200).json('place is removed');
     }
     catch (err) {
       res.status(500).json(err);

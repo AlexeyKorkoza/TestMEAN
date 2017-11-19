@@ -43,7 +43,7 @@ function addPlaceCtrl($state, typeService, placeService) {
       placeService.create(vm.addData)
         .then(() => {
           swal(
-            'Place was added',
+            'place was added',
             'Please, click ОК for continue',
             'success'
           );
@@ -51,7 +51,7 @@ function addPlaceCtrl($state, typeService, placeService) {
         })
         .catch(() => {
           swal(
-            'Place was not added',
+            'place was not added',
             'Check input data',
             'error'
           );

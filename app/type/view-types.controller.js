@@ -39,7 +39,7 @@ function viewTypesCtrl($state, typeService) {
     typeService.remove(id)
       .then(() => {
       swal(
-        'Type was removed successfully',
+        'type was removed successfully',
         'Please, click ОК for continue',
         'success'
       );
@@ -47,7 +47,7 @@ function viewTypesCtrl($state, typeService) {
     })
       .catch(() => {
         swal(
-          'Type was not removed',
+          'type was not removed',
           'Retry',
           'error'
         );

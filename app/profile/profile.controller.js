@@ -31,14 +31,14 @@ function userProfileCtrl($state, profileService) {
       .update(data)
       .then(() => {
         swal(
-          'Profile was updated successfully',
+          'profile was updated successfully',
           'Data will apply after log out',
           'success'
         );
       })
       .catch(() => {
         swal(
-          'Profile was not updated',
+          'profile was not updated',
           'Retry',
           'error'
         );
@@ -54,14 +54,14 @@ function userProfileCtrl($state, profileService) {
       profileService.update(data)
       .then(() => {
         swal(
-          'Profile was updated successfully',
+          'profile was updated successfully',
           'Data will apply after log out',
           'success'
         );
       })
       .catch(() => {
         swal(
-          'Profile was not updated',
+          'profile was not updated',
           'Retry',
           'error'
         );
