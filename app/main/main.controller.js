@@ -4,15 +4,13 @@ angular
   .module('myApp')
   .controller('mainCtrl', mainCtrl);
 
-mainCtrl.$inject = ['$state', 'cfpLoadingBar', 'authenticationService', 'placeService', 'typeService', 'userData'];
+mainCtrl.$inject = ['$state', 'cfpLoadingBar', 'placeService', 'typeService'];
 
-function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, typeService, userData) {
+function mainCtrl($state, cfpLoadingBar, placeService, typeService) {
 
   const vm = this;
   vm.group_markers = [];
   vm.select = [];
-  vm.id = '';
-  vm.isAuthenticated = false;
   vm.getAllPlaces = getAllPlaces;
   vm.getAllTypes = getAllTypes;
   vm.addPlaceInMap = addPlaceInMap;
@@ -24,10 +22,6 @@ function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, ty
   activate();
 
   function activate() {
-    if (localStorage.getItem('token')) {
-      vm.isAuthenticated = true;
-      vm.id = userData.data._id;
-    }
 
     angular.extend(vm, {
       grodno: {
@@ -130,13 +124,5 @@ function mainCtrl($state, cfpLoadingBar, authenticationService, placeService, ty
         }
       );
     }
-  }
-
-  function profile() {
-      $state.go('profile', {'id': vm.id});
-  }
-
-  function logout() {
-    authenticationService.logout();
   }
 }
