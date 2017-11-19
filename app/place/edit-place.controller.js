@@ -4,9 +4,9 @@ angular
   .module('myApp')
   .controller('editPlaceCtrl', editPlaceCtrl);
 
-editPlaceCtrl.$inject = ['$state', '$routeParams', 'typeService', 'placeService'];
+editPlaceCtrl.$inject = ['$state', 'typeService', 'placeService'];
 
-function editPlaceCtrl($state, $routeParams, typeService, placeService) {
+function editPlaceCtrl($state, typeService, placeService) {
 
   const vm = this;
   vm.select = [];
@@ -36,7 +36,7 @@ function editPlaceCtrl($state, $routeParams, typeService, placeService) {
       })
     });
 
-    placeService.getPlaceById($routeParams.id)
+    placeService.getPlaceById($state.params.id)
         .then(response => {
       vm.editData = {
         name_place: response.data.name_place,
@@ -53,7 +53,7 @@ function editPlaceCtrl($state, $routeParams, typeService, placeService) {
     vm.error = '';
     if (vm.editData.id_type) {
       placeService
-        .update(vm.editData, $routeParams.id)
+        .update(vm.editData, $state.params.id)
         .then(() => {
             swal(
               'place was updated successfully',

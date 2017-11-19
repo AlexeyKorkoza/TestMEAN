@@ -4,9 +4,9 @@ angular
   .module('myApp')
   .controller('editTypeCtrl', editTypeCtrl);
 
-editTypeCtrl.$inject = ['$state', '$routeParams', 'Upload', 'typeService'];
+editTypeCtrl.$inject = ['$state', 'Upload', 'typeService'];
 
-function editTypeCtrl($state, $routeParams, Upload, typeService) {
+function editTypeCtrl($state, Upload, typeService) {
 
   const vm = this;
   vm.filename = 'Icon was not chosen';
@@ -17,7 +17,7 @@ function editTypeCtrl($state, $routeParams, Upload, typeService) {
   activate();
 
   function activate() {
-    typeService.getTypeById($routeParams.id)
+    typeService.getTypeById($state.params.id)
         .then(response => {
       vm.editData = {
         typename: response.data.name_type
@@ -38,7 +38,7 @@ function editTypeCtrl($state, $routeParams, Upload, typeService) {
       Upload.rename(vm.editData.file, vm.editData.typename);
     }
     typeService
-      .update($routeParams.id, vm.editData, vm.editData.file)
+      .update($state.params.id, vm.editData, vm.editData.file)
       .then(() => {
         swal(
           'type was edited successfully',
