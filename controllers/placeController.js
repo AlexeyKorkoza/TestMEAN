@@ -5,10 +5,6 @@ export default {
   async getPlaces(req, res) {
     try {
       const places = await Place.find({});
-      if (!places.length) {
-        res.status(200).json('Places are not found');
-      }
-
       res.status(200).json(places);
     }
     catch (err) {

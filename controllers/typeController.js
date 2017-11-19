@@ -6,10 +6,6 @@ export default {
   async getTypes(req, res) {
     try {
       const types = await Type.find({});
-      if (!types.length) {
-        res.status(200).json('Types are not found');
-      }
-
       res.status(200).json(types);
     }
     catch (err) {
