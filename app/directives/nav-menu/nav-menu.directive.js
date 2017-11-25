@@ -6,7 +6,7 @@ angular
 
 function navMenu() {
     const directive = {
-        templateUrl: './app/directivies/nav-menu/nav-menu.html',
+        templateUrl: './app/directives/nav-menu/nav-menu.html',
         restrict: 'EA',
         controller,
         controllerAs: 'vm'

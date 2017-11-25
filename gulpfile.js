@@ -28,7 +28,7 @@ const js = [
     './app/app.routes.js',
     './app/jwt.factory.js',
     './app/services/*.js',
-    './app/directivies/**/*.js',
+    './app/directives/**/*.js',
     './app/signIn/*.js',
     './app/map/*.js',
     './app/signUp/*.js',
