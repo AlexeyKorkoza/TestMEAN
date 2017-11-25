@@ -30,7 +30,7 @@ const js = [
     './app/services/*.js',
     './app/directivies/**/*.js',
     './app/signIn/*.js',
-    './app/main/*.js',
+    './app/map/*.js',
     './app/signUp/*.js',
     './app/place/*.js',
     './app/type/*.js',

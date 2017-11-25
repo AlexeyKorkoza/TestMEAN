@@ -11,7 +11,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('main', {
             url: '/',
-            templateUrl: 'app/main/main.html',
+            templateUrl: 'app/map/map.html',
             controller: 'mainCtrl',
             controllerAs: 'vm',
             resolve: {
