@@ -1,13 +1,13 @@
 "use strict";
 
-describe("mainCtrl", () => {
+describe("mapCtrl", () => {
 
   let vm = {};
 
   beforeEach(module("myApp"));
   beforeEach(
     inject($controller => {
-      vm = $controller("mainCtrl", {}, {});
+      vm = $controller("mapCtrl", {}, {});
     })
   );
 

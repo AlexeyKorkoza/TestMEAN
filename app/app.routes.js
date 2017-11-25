@@ -12,7 +12,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
         .state('main', {
             url: '/',
             templateUrl: 'app/map/map.html',
-            controller: 'mainCtrl',
+            controller: 'mapCtrl',
             controllerAs: 'vm',
             resolve: {
                 userData: function(userService) {

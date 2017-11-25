@@ -2,11 +2,11 @@
 
 angular
   .module('myApp')
-  .controller('mainCtrl', mainCtrl);
+  .controller('mapCtrl', mapCtrl);
 
-mainCtrl.$inject = ['$state', 'cfpLoadingBar', 'placeService', 'typeService'];
+mapCtrl.$inject = ['cfpLoadingBar', 'placeService', 'typeService'];
 
-function mainCtrl($state, cfpLoadingBar, placeService, typeService) {
+function mapCtrl(cfpLoadingBar, placeService, typeService) {
 
   const vm = this;
   vm.group_markers = [];
@@ -15,7 +15,6 @@ function mainCtrl($state, cfpLoadingBar, placeService, typeService) {
   vm.getAllTypes = getAllTypes;
   vm.addPlaceInMap = addPlaceInMap;
   vm.getPlacesByType = getPlacesByType;
-  vm.profile = profile;
   vm.logout = logout;
   vm.activate = activate;
 
