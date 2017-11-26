@@ -2,14 +2,13 @@
 
 angular
     .module('myApp')
-    .directive('navMenu', navMenu);
+    .directive('subMenu', subMenu);
 
-function navMenu() {
+function subMenu() {
     const directive = {
-        templateUrl: './app/directives/nav-menu/nav-menu.html',
-        restrict: 'EA',
+        templateUrl: './app/directives/sub-menu/sub-menu.html',
+        restrict: 'E',
         controller,
-        controllerAs: 'vm'
     };
     return directive;
 }

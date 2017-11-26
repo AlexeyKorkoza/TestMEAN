@@ -73,8 +73,9 @@ gulp.task('css', () => {
         .pipe(livereload());
 });
 
-gulp.task('watch', ['js'], () => {
+gulp.task('watch', ['js', 'css'], () => {
     gulp.watch('app/**/*.js', ['js']);
+    gulp.watch('app/assets/css/*.css', ['css']);
 });
 
 gulp.task('start', ['css', 'js', 'watch']);
