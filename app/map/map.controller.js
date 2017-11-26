@@ -15,7 +15,6 @@ function mapCtrl(cfpLoadingBar, placeService, typeService) {
   vm.getAllTypes = getAllTypes;
   vm.addPlaceInMap = addPlaceInMap;
   vm.getPlacesByType = getPlacesByType;
-  vm.logout = logout;
   vm.activate = activate;
 
   activate();
