@@ -243,7 +243,7 @@ button {
 
 .header,
 .no_auth,
-.auth{
+.auth {
   position: absolute;
 }
 
@@ -257,12 +257,37 @@ button {
 }
 
 .no_auth,
-.auth{
+.auth {
   right: 0;
 }
 
-.menu {
-  text-align: right;
+.page {
+  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  background: #e5eaf3;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.submenu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 20px 8px 0;
+  background-color: white;
+  border-right: 1px solid #e5eaf3;
+  z-index: 11;
+}
+
+.page-wrapper {
+  height: 100%;
+}
+
+.well {
+  background: #e5eaf3;
+  border: none;
+  box-shadow: none;
 }
 
 .menu > .menu__item,
@@ -300,40 +325,21 @@ button {
 
 .dropOut {
   width: 100%;
-  background: #2ac56c;
   float: left;
   position: relative;
   margin-top: 10px;
-  opacity: 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
-  -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, .15);
-  -webkit-transition: all .1s ease-out;
-  -moz-transition: all .1s ease-out;
-  -o-transition: all .1s ease-out;
-  transition: all .1s ease-out;
-}
-
-.dropOut .triangle {
-  width: 0;
-  height: 0;
-  position: absolute;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid #2ac56c;
-  top: -8px;
-  right: 15px;
+  opacity: 1;
 }
 
 .sub_menu {
-  float: left;
   padding: 10px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .sub_menu .sub_menu__item {
+  display: flex;
+  flex-direction: row;
   position: relative;
   text-align: left;
   float: left;
@@ -348,11 +354,24 @@ button {
   transition: background .1s ease-out;
   font: 1em 'Open Sans', sans-serif;
   cursor: pointer;
-  color: white;
+  color: red;
+}
+
+.sub_menu .sub_menu__item i {
+  font-size: 30px;
+}
+
+.sidebar-menu__item-name {
+  display: none;
+  padding: 5px 0;
 }
 
 .sub_menu .sub_menu__item:hover {
   text-decoration: none;
+}
+
+.sub_menu .sub_menu__item:hover .sidebar-menu__item-name {
+  display: block;
 }
 
 .sub_menu .sub_menu__item:hover::after,

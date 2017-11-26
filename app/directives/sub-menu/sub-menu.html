@@ -1,35 +1,25 @@
-<div class="row">
-    <div class="col-xs-4 col-lg-4 col-md-4 col-sm-5">
-        <nav>
-            <ul class="menu">
-                <li class="menu__item">
-                    <a><i class="fa fa-user-circle-o fa-3x user-icon" aria-hidden="true"></i></a>
-                    <div class="dropdownContain">
-                        <div class="dropOut">
-                            <div class="triangle"></div>
-                            <div class="icon_username">
-                                <p>You signed in by<span>{{username}}</span></p>
-                            </div>
-                            <nav class="sub_menu">
-                                <a ui-sref="types_all" class="sub_menu__item"><i class="fa fa-cog fa-fw"
-                                                                                 aria-hidden="true"></i>&nbsp;
-                                    Manage types objects</a>
-                                <a ui-sref="places_all" class="sub_menu__item"><i class="fa fa-book fa-fw"
-                                                                                  aria-hidden="true"></i>&nbsp;
-                                    Manage places</a>
-                                <a ng-click="vm.profile()" class="sub_menu__item"><i
-                                        class="fa fa-cog fa-fw"
-                                        aria-hidden="true"></i>&nbsp;
-                                    Settings profile</a>
-                                <a ng-click="vm.logout()" class="sub_menu__item"><i
-                                        class="fa fa-sign-out fa-fw"
-                                        aria-hidden="true"></i>&nbsp;
-                                    Log out</a>
-                            </nav>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+<nav class="menu">
+    <a class="menu__item"><i class="fa fa-user-circle-o fa-3x user-icon" aria-hidden="true"></i></a>
+    <div class="dropdownContain">
+        <div class="dropOut">
+            <nav class="sub_menu">
+                <a ui-sref="types_all" class="sub_menu__item">
+                    <i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;
+                    <span class="sidebar-menu__item-name">Manage types objects</span>
+                </a>
+                <a ui-sref="places_all" class="sub_menu__item">
+                    <i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;
+                    <span class="sidebar-menu__item-name">Manage places</span>
+                </a>
+                <a ng-click="vm.profile()" class="sub_menu__item">
+                    <i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;
+                    <span class="sidebar-menu__item-name">Settings profile</span>
+                </a>
+                <a ng-click="vm.logout()" class="sub_menu__item">
+                    <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp;
+                    <span class="sidebar-menu__item-name">Log out</span>
+                </a>
+            </nav>
+        </div>
     </div>
-</div>
+</nav>

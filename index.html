@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <title>Test Project</title>
     <link rel="stylesheet" type="text/css" href="build/build.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -11,8 +11,10 @@
 </head>
 <body>
 
-<nav-menu></nav-menu>
-<ui-view></ui-view>
+<div class="page">
+    <sub-menu class="submenu"></sub-menu>
+    <div ui-view class="page-wrapper"></div>
+</div>
 
 <script src="build/build.js"></script>
 
