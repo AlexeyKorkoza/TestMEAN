@@ -46,7 +46,8 @@ const css = [
     'node_modules/angular-loading-bar/build/loading-bar.min.css',
     'node_modules/leaflet.markercluster/dist/*.css',
     './app/assets/css/style.css',
-    './app/assets/css/fonts.css'
+    './app/assets/css/fonts.css',
+    './app/assets/css/sidebar.css',
 ];
 
 gulp.task('js', () => {

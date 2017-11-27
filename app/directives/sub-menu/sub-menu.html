@@ -1,7 +1,11 @@
 <nav class="menu">
-    <a class="menu__item"><i class="fa fa-user-circle-o fa-3x user-icon" aria-hidden="true"></i></a>
+    <div class="nav-icon" ng-class="{'open': isOpen}" ng-click="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <div class="dropdownContain">
-        <div class="dropOut">
+        <div class="dropOut" ng-class="{'-is-open': isOpen}">
             <nav class="sub_menu">
                 <a ui-sref="types_all" class="sub_menu__item">
                     <i class="fa fa-cog fa-fw" aria-hidden="true"></i>&nbsp;
