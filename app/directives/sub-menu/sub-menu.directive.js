@@ -12,7 +12,6 @@ function subMenu() {
     };
     return directive;
 
-    // TODO remove focus after click by item of menu
     function link(scope) {
 
         scope.isOpen = false;

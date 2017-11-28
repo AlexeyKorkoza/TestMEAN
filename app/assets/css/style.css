@@ -274,7 +274,6 @@ button {
     position: absolute;
     left: 0;
     top: 0;
-    padding: 20px 8px 0;
     background-color: white;
     border-right: 1px solid #e5eaf3;
     z-index: 11;
