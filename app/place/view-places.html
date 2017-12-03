@@ -1,55 +1,53 @@
 <div>
-    <div class="container">
-        <div class="row">
-            <div class="well clearfix">
-                <h2>List of places</h2>
-                <div class="row">
-                    <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                        <a ui-sref="places_new" class="button icon-add">
-                            <span>Add place</span>
-                        </a>
-                    </div>
-                    <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                        <a ui-sref="main" class="button icon-home">
-                            <span>Back to Main</span>
-                        </a>
-                    </div>
+    <div class="row">
+        <div class="well clearfix">
+            <h2>List of places</h2>
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                    <a ui-sref="places_new" class="button icon-add">
+                        <span>Add place</span>
+                    </a>
                 </div>
-                <table class="table table-striped all_places" wt-responsive-table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th>Address</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="place in vm.places">
-                        <td>{{place.name_place}}</td>
-                        <td>{{place.description}}</td>
-                        <td>{{place.lat}}</td>
-                        <td>{{place.lng}}</td>
-                        <td>{{place.address}}</td>
-                        <td>
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
-                                    <a class="button icon-edit" ng-click="vm.edit(place)">
-                                        <span>Edit</span>
-                                    </a>
-                                </div>
-                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
-                                    <a class="button icon-remove" ng-click="vm.remove(place._id, index)">
-                                        <span>Remove</span></a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                    <a ui-sref="main" class="button icon-home">
+                        <span>Back to Main</span>
+                    </a>
+                </div>
             </div>
+            <table class="table table-striped all_places" wt-responsive-table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="place in vm.places">
+                    <td>{{place.name_place}}</td>
+                    <td>{{place.description}}</td>
+                    <td>{{place.lat}}</td>
+                    <td>{{place.lng}}</td>
+                    <td>{{place.address}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
+                                <a class="button icon-edit" ng-click="vm.edit(place)">
+                                    <span>Edit</span>
+                                </a>
+                            </div>
+                            <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
+                                <a class="button icon-remove" ng-click="vm.remove(place._id, index)">
+                                    <span>Remove</span></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

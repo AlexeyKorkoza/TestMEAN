@@ -1,60 +1,58 @@
 <div>
-    <div class="container">
-        <div class="row">
-            <div class="well clearfix">
-                <h1>Add new type place</h1>
-                <div class="col-lg-8 col-xs-12">
-                    <form class="form-horizontal" name="addForm" novalidate>
-                        <div class="form-group">
-                            <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Name type:</label>
-                            <input class="form-control"
-                                   name="typename"
-                                   ng-model="vm.addTypeData.typename"
-                                   type="text"
-                                   required/>
-                            <p ng-show="addForm.typename.$invalid && !addForm.typename.$pristine"
-                               class="help-block">Input name type</p>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
-                                    <div class="button icon-attachment">
-                                        <span>Choose icon</span>
-                                        <input type="file"
-                                               ngf-select
-                                               ng-model="vm.addTypeData.file"
-                                               name="file"
-                                               accept="image/*"
-                                               ngf-max-size="2MB"
-                                               required
-                                               ngf-model-invalid="errorFile"
-                                               ng-change="vm.changeFilename(vm.addTypeData.file)">
-                                        <i ng-show="addForm.file.$error.maxSize">Big size file
-                                            {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-                                    </div>
-                                    <span ng-model="filename">{{vm.filename}}</span>
+    <div class="row">
+        <div class="well clearfix">
+            <h1>Add new type place</h1>
+            <div class="col-lg-8 col-xs-12">
+                <form class="form-horizontal" name="addForm" novalidate>
+                    <div class="form-group">
+                        <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Name type:</label>
+                        <input class="form-control"
+                               name="typename"
+                               ng-model="vm.addTypeData.typename"
+                               type="text"
+                               required/>
+                        <p ng-show="addForm.typename.$invalid && !addForm.typename.$pristine"
+                           class="help-block">Input name type</p>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
+                                <div class="button icon-attachment">
+                                    <span>Choose icon</span>
+                                    <input type="file"
+                                           ngf-select
+                                           ng-model="vm.addTypeData.file"
+                                           name="file"
+                                           accept="image/*"
+                                           ngf-max-size="2MB"
+                                           required
+                                           ngf-model-invalid="errorFile"
+                                           ng-change="vm.changeFilename(vm.addTypeData.file)">
+                                    <i ng-show="addForm.file.$error.maxSize">Big size file
+                                        {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
                                 </div>
+                                <span ng-model="filename">{{vm.filename}}</span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
-                                    <button class="button icon-add"
-                                            ng-disabled="addForm.$invalid"
-                                            type="submit"
-                                            ng-click="vm.add(vm.addTypeData.file)">
-                                        <span>Add</span>
-                                    </button>
-                                </div>
-                                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                                    <a ui-sref="types_all" class="button icon-return">
-                                        <span>Back</span>
-                                    </a>
-                                </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
+                                <button class="button icon-add"
+                                        ng-disabled="addForm.$invalid"
+                                        type="submit"
+                                        ng-click="vm.add(vm.addTypeData.file)">
+                                    <span>Add</span>
+                                </button>
+                            </div>
+                            <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                                <a ui-sref="types_all" class="button icon-return">
+                                    <span>Back</span>
+                                </a>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
