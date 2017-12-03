@@ -9,7 +9,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/signin');
 
     $stateProvider
-        .state('main', {
+        .state('map', {
             url: '/',
             templateUrl: 'app/map/map.html',
             controller: 'mapCtrl',
