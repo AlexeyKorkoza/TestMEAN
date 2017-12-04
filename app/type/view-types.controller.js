@@ -20,6 +20,14 @@ function viewTypesCtrl($state, typeService) {
     typeService.getAll()
         .then(response => {
       vm.types = response.data;
+      if (vm.types.length < 1) {
+        swal(
+          'List types is empty',
+          'Please, add new type of place',
+          'error'
+        );
+        $state.go('types_new');
+      }
     });
   }
 
