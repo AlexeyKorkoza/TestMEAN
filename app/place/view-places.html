@@ -14,7 +14,7 @@
                     </a>
                 </div>
             </div>
-            <table class="table table-striped all_places" wt-responsive-table>
+            <table ng-if="vm.places.length" class="table table-striped all_places" wt-responsive-table>
                 <thead>
                 <tr>
                     <th>Name</th>
@@ -48,6 +48,7 @@
                 </tr>
                 </tbody>
             </table>
+            <p class="empty_list" ng-if="!vm.places.length">List of places is empty.</p>
         </div>
     </div>
 </div>

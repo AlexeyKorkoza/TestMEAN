@@ -14,7 +14,7 @@
                     </a>
                 </div>
             </div>
-            <table class="table table-striped" wt-responsive-table>
+            <table ng-if="vm.types.length" class="table table-striped" wt-responsive-table>
                 <thead>
                 <tr>
                     <th>Name</th>
@@ -41,6 +41,7 @@
                 </tr>
                 </tbody>
             </table>
+            <p class="empty_list" ng-if="!vm.types.length">List of types is empty.</p>
         </div>
     </div>
 </div>

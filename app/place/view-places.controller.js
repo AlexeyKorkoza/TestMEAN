@@ -21,14 +21,6 @@ function viewPlacesCtrl($state, placeService) {
     placeService.getAll()
         .then(response => {
       vm.places = response.data;
-      if (vm.places.length < 1) {
-        swal(
-          'List of places is empty',
-          'Please, add new place',
-          'error'
-        );
-        $state.go('places_new');
-      }
     });
   }
 
