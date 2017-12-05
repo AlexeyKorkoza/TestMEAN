@@ -21,8 +21,6 @@ module.exports = config => {
             'app/*.js',
             'app/map/*.js',
             'app/place/*.js',
-            'app/signIn/*.js',
-            'app/signUp/*.js',
             'app/type/*.js',
             'app/services/*.js',
             'app/test/*.js'

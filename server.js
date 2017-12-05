@@ -12,10 +12,14 @@ import session from 'express-session';
 import cors from 'cors';
 import routes from './routes';
 import initPassport from './passport/passport-init';
+import path from 'path';
 const app = express();
 
 mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
 mongoose.Promise = global.Promise;
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));

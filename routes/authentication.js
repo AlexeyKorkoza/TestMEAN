@@ -4,7 +4,9 @@ import express from 'express';
 import authController from '../controllers/authController';
 const router = express();
 
+router.get('/login', authController.loginPage);
 router.post('/login', authController.login);
+router.get('/signup', authController.signUpPage);
 router.post('/signup', authController.signUp);
 
 export default router;

@@ -2,6 +2,10 @@ import passport from 'passport';
 
 export default  {
 
+  loginPage(req, res) {
+    res.render('login.ejs', {});
+  },
+
   login(req, res) {
     passport.authenticate('login', { failureFlash: true }, (err, userData) => {
       if (err) {
@@ -17,9 +21,7 @@ export default  {
       }
 
       if (userData) {
-        return res.status(200).json({
-          user: userData
-        })
+        return res.status(200).redirect('/app');
       } else {
         return res.status(400).json({
           message: req.flash('loginMessage')[0],
@@ -27,6 +29,10 @@ export default  {
       }
 
     })(req, res);
+  },
+
+  signUpPage(req, res) {
+    res.render('signup.ejs', {});
   },
 
   signUp(req, res) {
