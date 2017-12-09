@@ -3,7 +3,7 @@ import passport from 'passport';
 export default {
 
   loginPage(req, res) {
-    res.render('../views/login.ejs', {});
+    res.render('../app/views/login.ejs', {});
   },
 
   login(req, res) {
@@ -32,7 +32,7 @@ export default {
   },
 
   signUpPage(req, res) {
-    res.render('../views/signup.ejs', {});
+    res.render('../app/views/signup.ejs', {});
   },
 
   signUp(req, res) {
@@ -58,6 +58,6 @@ export default {
   },
 
   mainPage(req, res) {
-      res.render('../views/app.ejs', {});
+      res.render('../app/views/app.ejs', {});
   }
 }

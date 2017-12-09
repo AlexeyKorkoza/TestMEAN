@@ -10,8 +10,8 @@ import fs from 'fs';
 import flash from 'connect-flash';
 import session from 'express-session';
 import cors from 'cors';
-import routes from './routes';
-import initPassport from './passport/passport-init';
+import routes from './app/routes';
+import initPassport from './app/passport/passport-init';
 import path from 'path';
 const app = express();
 
@@ -19,7 +19,7 @@ mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB
 mongoose.Promise = global.Promise;
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app', 'views'));
 app.set('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('dev'));
