@@ -35,7 +35,7 @@ const js = [
 ];
 
 const css = [
-    'node_modules/bootstrap/dist/css/bootstrap.min.css',
+    'public/vendor/bootstrap/bootstrap.min.css',
     'node_modules/normalize.css/normalize.css',
     'node_modules/leaflet/dist/leaflet.css',
     'node_modules/selectize/dist/css/selectize.default.css',
