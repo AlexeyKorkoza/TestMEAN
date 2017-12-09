@@ -20,6 +20,7 @@ mongoose.Promise = global.Promise;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.set('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));

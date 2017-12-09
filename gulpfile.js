@@ -23,16 +23,15 @@ const js = [
     'node_modules/angular-simple-logger/dist/angular-simple-logger.js',
     'node_modules/ui-leaflet/dist/ui-leaflet.min.js',
     'node_modules/leaflet.markercluster/dist/leaflet.markercluster.js',
-    './app/assets/js/*.js',
-    './app/app.module.js',
-    './app/app.routes.js',
-    './app/jwt.factory.js',
-    './app/services/*.js',
-    './app/directives/**/*.js',
-    './app/map/*.js',
-    './app/place/*.js',
-    './app/type/*.js',
-    './app/profile/*.js'
+    './public/app/assets/js/*.js',
+    './public/app/app.module.js',
+    './public/app/app.routes.js',
+    './public/app/services/*.js',
+    './public/app/directives/**/*.js',
+    './public/app/map/*.js',
+    './public/app/place/*.js',
+    './public/app/type/*.js',
+    './public/app/profile/*.js'
 ];
 
 const css = [
@@ -43,16 +42,16 @@ const css = [
     'node_modules/sweetalert/dist/sweetalert.css',
     'node_modules/angular-loading-bar/build/loading-bar.min.css',
     'node_modules/leaflet.markercluster/dist/*.css',
-    './app/assets/css/style.css',
-    './app/assets/css/fonts.css',
-    './app/assets/css/sidebar.css',
+    './public/app/assets/css/style.css',
+    './public/app/assets/css/fonts.css',
+    './public/app/assets/css/sidebar.css',
 ];
 
 gulp.task('js', () => {
     return gulp
         .src(js)
         .pipe(concat('build.js'))
-        .pipe(gulp.dest('./build/'))
+        .pipe(gulp.dest('./public/build/'))
         .pipe(livereload());
 });
 
@@ -68,13 +67,13 @@ gulp.task('css', () => {
         .pipe(cssmin())
         .pipe(csslint())
         .pipe(concat('build.css'))
-        .pipe(gulp.dest('./build/'))
+        .pipe(gulp.dest('./public/build/'))
         .pipe(livereload());
 });
 
 gulp.task('watch', ['js', 'css'], () => {
-    gulp.watch('app/**/*.js', ['js']);
-    gulp.watch('app/assets/css/*.css', ['css']);
+    gulp.watch('public/app/**/*.js', ['js']);
+    gulp.watch('public/app/assets/css/*.css', ['css']);
 });
 
 gulp.task('start', ['css', 'js', 'watch']);

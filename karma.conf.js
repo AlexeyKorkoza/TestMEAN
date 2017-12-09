@@ -16,14 +16,14 @@ module.exports = config => {
             'node_modules/angular-selectize2/dist/selectize.js',
             'node_modules/angular-simple-logger/dist/angular-simple-logger.js',
             'node_modules/ui-leaflet/dist/ui-leaflet.min.js',
-            'app/assets/js/*.js',
+            'public/assets/js/*.js',
 
             'app/*.js',
-            'app/map/*.js',
-            'app/place/*.js',
-            'app/type/*.js',
-            'app/services/*.js',
-            'app/test/*.js'
+            'public/map/*.js',
+            'public/place/*.js',
+            'public/type/*.js',
+            'public/services/*.js',
+            'public/test/*.js'
         ],
 
         exclude: [],

@@ -1,9 +1,9 @@
 import passport from 'passport';
 
-export default  {
+export default {
 
   loginPage(req, res) {
-    res.render('login.ejs', {});
+    res.render('../views/login.ejs', {});
   },
 
   login(req, res) {
@@ -32,7 +32,7 @@ export default  {
   },
 
   signUpPage(req, res) {
-    res.render('signup.ejs', {});
+    res.render('../views/signup.ejs', {});
   },
 
   signUp(req, res) {
@@ -55,5 +55,9 @@ export default  {
       });
 
     })(req, res);
+  },
+
+  mainPage(req, res) {
+      res.render('../views/app.ejs', {});
   }
 }
