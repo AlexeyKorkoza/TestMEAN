@@ -2,7 +2,6 @@ require('dotenv').config();
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import serveStatic from 'serve-static';
 import methodOverride from 'method-override';
 import mongoose from 'mongoose';
 import passport from 'passport';
@@ -13,14 +12,16 @@ import cors from 'cors';
 import routes from './app/routes';
 import initPassport from './app/passport/passport-init';
 import path from 'path';
+import favicon from 'serve-favicon';
 const app = express();
 
 mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
 mongoose.Promise = global.Promise;
 
+app.use(favicon(path.join(__dirname, '/favicon.png')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'app', 'views'));
-app.set('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,7 +36,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(flash());
-app.use(serveStatic(__dirname + ''));
 
 app.use(cors());
 
