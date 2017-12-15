@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 import jwt from 'express-jwt';
+import jsonWebToken from 'jsonwebtoken';
 import UnauthorizedError from '../errors/unauthorized';
 
 const getTokenFromHeader = req => {
@@ -30,7 +31,20 @@ const token = {
     secret: process.env.JWT_SECRET,
     userProperty,
     getToken: getTokenFromHeader
-  })
+  }),
+  generateJWT(user) {
+      const expiresIn = '7d';
+      const payload = {
+          id: user._id,
+          username: user.username,
+      };
+
+      return jsonWebToken.sign(
+          payload,
+          process.env.JWT_SECRET,
+          {expiresIn}
+      );
+  },
 };
 
 export default token;

@@ -9,11 +9,15 @@ import fs from 'fs';
 import flash from 'connect-flash';
 import session from 'express-session';
 import cors from 'cors';
-import routes from './app/routes';
-import initPassport from './app/passport/passport-init';
 import path from 'path';
 import favicon from 'serve-favicon';
+import redis from 'redis';
+import connectionRedis from 'connect-redis';
+import routes from './app/routes';
+import initPassport from './app/passport/passport-init';
 const app = express();
+const redisStore = connectionRedis(session);
+const client  = redis.createClient();
 
 mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
 mongoose.Promise = global.Promise;
@@ -29,14 +33,16 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(
   session({
-    secret: 'passport',
-    resave: false,
-    saveUnitialized: false
+    secret: process.env.SESSION_SECRET,
+    store: new redisStore({ host: '127.0.0.1', port: 6379, client: client,ttl: 3600, prefix: 'session:'}),
+    saveUninitialized: true,
+    resave: true,
+    cookie: { httpOnly: true },
   })
 );
 app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
-
 app.use(cors());
 
 app.use('/', routes);

@@ -33,12 +33,7 @@ module.exports = passport => {
             return done(null, false, req.flash('loginMessage', 'Incorrect password'));
           }
 
-          const userData = {
-            'username': user.username,
-            'token': user.generateJWT(user)
-          };
-
-          return done(null, userData);
+          return done(null, user);
         }
       );
     }

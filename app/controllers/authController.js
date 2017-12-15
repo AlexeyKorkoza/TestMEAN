@@ -1,4 +1,5 @@
 import passport from 'passport';
+import token from '../middlewares/token';
 
 export default {
 
@@ -7,7 +8,7 @@ export default {
   },
 
   login(req, res) {
-    passport.authenticate('login', { failureFlash: true }, (err, userData) => {
+    passport.authenticate('login', { failureFlash: true }, (err, user) => {
       if (err) {
         if (err.name === 'Incorrect Credentials Error') {
           return res.status(400).json({
@@ -18,14 +19,9 @@ export default {
         return res.status(400).json({
             messages: 'Could not process the form.'
         });
-      }
-
-      if (userData) {
-        return res.status(200).redirect('/app');
       } else {
-        return res.status(400).json({
-          message: req.flash('loginMessage')[0],
-        })
+        req.session.user = user;
+        return res.status(200).redirect('/app');
       }
 
     })(req, res);
@@ -58,6 +54,16 @@ export default {
   },
 
   mainPage(req, res) {
-      res.render('../app/views/app.ejs', {});
+      const tokenForUser = token.generateJWT(req.session.user);
+      const user = Object.assign({}, {
+        'username': req.session.user.username,
+        'email': req.session.user.email,
+        'date': req.session.user.date,
+        'token': tokenForUser
+      });
+      console.log(user);
+      return res.render('../app/views/app.ejs', {
+        user
+      });
   }
 }
