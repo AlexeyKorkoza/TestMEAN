@@ -61,9 +61,13 @@ export default {
         'date': req.session.user.date,
         'token': tokenForUser
       });
-      console.log(user);
       return res.render('../app/views/app.ejs', {
         user
       });
+  },
+
+  logout(req, res) {
+      req.session.destroy();
+      return res.redirect('/login');
   }
 }
