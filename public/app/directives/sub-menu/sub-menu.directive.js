@@ -24,11 +24,6 @@ const buildMenu = () => [
         item: 'Profile',
         link: 'profile',
         class: 'fa fa-user fa-fw'
-    },
-    {
-        item: 'Logout',
-        link: '/logout',
-        class: 'fa fa-sign-out fa-fw'
     }
 ];
 
