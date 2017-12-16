@@ -6,29 +6,9 @@
 <div class="dropdownContain">
     <div class="dropOut" ng-class="{'-is-open': isOpen}">
         <nav class="sub_menu">
-            <a ui-sref="map" class="sub_menu__item">
+            <a ng-repeat="itemMenu in items" ui-sref={{itemMenu.link}} class="sub_menu__item">
                 <div class="icon">
-                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>&nbsp;
-                </div>
-            </a>
-            <a ui-sref="types_all" class="sub_menu__item">
-                <div class="icon">
-                    <i class="fa fa-filter fa-fw" aria-hidden="true"></i>&nbsp;
-                </div>
-            </a>
-            <a ui-sref="places_all" class="sub_menu__item">
-                <div class="icon">
-                    <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i>&nbsp;
-                </div>
-            </a>
-            <a ui-sref="profile" class="sub_menu__item">
-                <div class="icon">
-                    <i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;
-                </div>
-            </a>
-            <a ng-href="/logout" class="sub_menu__item">
-                <div class="icon">
-                    <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp;
+                    <i class={{itemMenu.class}} aria-hidden="true"></i>&nbsp;
                 </div>
             </a>
         </nav>
