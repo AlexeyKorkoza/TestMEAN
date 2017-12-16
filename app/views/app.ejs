@@ -8,7 +8,8 @@
     <link rel="stylesheet" type="text/css" href="/public/vendor/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script>
-        window.token = "<%= user.token %>";
+        window.token = "<%= token %>";
+        window.user = <%- JSON.stringify(user) %>;
     </script>
 </head>
 <body>

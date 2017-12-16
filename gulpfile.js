@@ -24,6 +24,7 @@ const js = [
     'node_modules/ui-leaflet/dist/ui-leaflet.min.js',
     'node_modules/leaflet.markercluster/dist/leaflet.markercluster.js',
     'node_modules/angular-jwt/dist/angular-jwt.min.js',
+    'node_modules/immutable/dist/immutable.min.js',
     './public/app/assets/js/*.js',
     './public/app/app.module.js',
     './public/app/app.routes.js',

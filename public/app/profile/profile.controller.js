@@ -4,26 +4,24 @@ angular
   .module('myApp')
   .controller('userProfileCtrl', userProfileCtrl);
 
-userProfileCtrl.$inject = ['$state', 'profileService'];
+userProfileCtrl.$inject = ['profileService', 'immutableService'];
 
-function userProfileCtrl($state, profileService) {
+function userProfileCtrl(profileService, immutableService) {
 
   const vm = this;
   vm.activate = activate;
   vm.update = update;
   vm.updatePassword = updatePassword;
-  vm.id = $state.params.id;
 
   activate();
 
   function activate() {
-    profileService.get(vm.id)
-        .then(response => vm.userData = response.data);
+    vm.userData = immutableService.buildProfile().toJS();
   }
 
   function update() {
     const data = {
-      id: vm.id,
+      id: vm.userData.id,
       email: vm.userData.email,
       username: vm.userData.username
     };
@@ -36,6 +34,7 @@ function userProfileCtrl($state, profileService) {
           'success'
         );
       })
+      .then(() => immutableService.updateProfile(data))
       .catch(() => {
         swal(
           'profile was not updated',

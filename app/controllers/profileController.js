@@ -4,23 +4,6 @@ import User from '../models/user';
 
 export default {
 
-    async getProfile(req, res, next) {
-        try {
-            const id = req.payload.id;
-            const user = await User.findById(id);
-            if (user) {
-                res.status(200).json(user);
-            }
-
-            if (!user) {
-                res.status(401).json('profile of user is not found');
-            }
-        }
-        catch (err) {
-            res.status(500).json(err);
-        }
-    },
-
     async updateProfile(req, res, next) {
         try {
             const id = req.payload.id;
