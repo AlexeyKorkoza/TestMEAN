@@ -13,6 +13,7 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             url: '/',
             templateUrl: '/public/app/map/map.html',
             controller: 'mapCtrl',
+            controllerAs: 'vm'
         })
         .state('profile', {
             url: '/profile/{id}',
