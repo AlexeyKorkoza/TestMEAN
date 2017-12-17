@@ -13,12 +13,6 @@ function routeConfig($stateProvider, $urlRouterProvider) {
             url: '/',
             templateUrl: '/public/app/map/map.html',
             controller: 'mapCtrl',
-            controllerAs: 'vm',
-            // resolve: {
-            //     userData: function(userService) {
-            //         return userService.getUser();
-            //     }
-            // }
         })
         .state('profile', {
             url: '/profile/{id}',
