@@ -29,7 +29,7 @@ const buildMenu = () => [
 
 function subMenu() {
     const directive = {
-        templateUrl: '/public/app/directives/sub-menu/sub-menu.html',
+        templateUrl: '/public/app/system/directives/sub-menu/sub-menu.html',
         restrict: 'E',
         link,
     };

@@ -1,9 +1,3 @@
-'use strict';
-
-angular
-  .module('myApp')
-  .controller('editTypeCtrl', editTypeCtrl);
-
 editTypeCtrl.$inject = ['$state', 'Upload', 'typeService'];
 
 function editTypeCtrl($state, Upload, typeService) {
@@ -56,3 +50,5 @@ function editTypeCtrl($state, Upload, typeService) {
       });
   }
 }
+
+export default editTypeCtrl;

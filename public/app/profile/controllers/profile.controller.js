@@ -1,12 +1,6 @@
-'use strict';
+profileCtrl.$inject = ['profileService', 'immutableService'];
 
-angular
-  .module('myApp')
-  .controller('userProfileCtrl', userProfileCtrl);
-
-userProfileCtrl.$inject = ['profileService', 'immutableService'];
-
-function userProfileCtrl(profileService, immutableService) {
+function profileCtrl(profileService, immutableService) {
 
   const vm = this;
   vm.activate = activate;
@@ -67,3 +61,5 @@ function userProfileCtrl(profileService, immutableService) {
       });
   }
 }
+
+export default profileCtrl;

@@ -1,9 +1,3 @@
-'use strict';
-
-angular
-  .module('myApp')
-  .controller('editPlaceCtrl', editPlaceCtrl);
-
 editPlaceCtrl.$inject = ['$state', 'typeService', 'placeService'];
 
 function editPlaceCtrl($state, typeService, placeService) {
@@ -74,4 +68,5 @@ function editPlaceCtrl($state, typeService, placeService) {
     }
   }
 }
-    
+
+export default editPlaceCtrl;

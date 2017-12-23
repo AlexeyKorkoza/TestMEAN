@@ -1,9 +1,3 @@
-'use strict';
-
-angular
-  .module('myApp')
-  .controller('viewTypesCtrl', viewTypesCtrl);
-
 viewTypesCtrl.$inject = ['$state', 'typeService'];
 
 function viewTypesCtrl($state, typeService) {
@@ -46,3 +40,5 @@ function viewTypesCtrl($state, typeService) {
       });
   }
 }
+
+export default viewTypesCtrl;

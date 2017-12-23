@@ -1,9 +1,3 @@
-'use strict';
-
-angular
-  .module('myApp')
-  .controller('addTypeCtrl', addTypeCtrl);
-
 addTypeCtrl.$inject = ['$state', 'Upload', 'typeService'];
 
 function addTypeCtrl($state, Upload, typeService) {
@@ -61,3 +55,5 @@ function addTypeCtrl($state, Upload, typeService) {
       });
   }
 }
+
+export default addTypeCtrl;

@@ -1,4 +1,4 @@
-'use strict';
+import angular from 'angular';
 
 angular
   .module('myApp')
@@ -124,3 +124,5 @@ function mapCtrl(cfpLoadingBar, placeService, typeService) {
     }
   }
 }
+
+export default mapCtrl;

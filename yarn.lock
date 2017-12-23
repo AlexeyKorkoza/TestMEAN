@@ -74,13 +74,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular-animate@<1.5.0:
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.4.14.tgz#ee4068cafdb7e230026319ec6cb9207aca898038"
-
-angular-cookies@<1.5.0:
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular-cookies/-/angular-cookies-1.4.14.tgz#b12bb22a4c6bce4234090760a7a57dc3a56a92b3"
+angular-cookies@^1.6.8:
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/angular-cookies/-/angular-cookies-1.6.8.tgz#97b559ed797dd6545e4aafd14ba7a42dd3c6b40f"
 
 angular-jwt@^0.1.9:
   version "0.1.9"
@@ -90,13 +86,13 @@ angular-loading-bar@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/angular-loading-bar/-/angular-loading-bar-0.9.0.tgz#37ef52c25f102c216e7b3cdfd2fc5a5df9628e45"
 
-angular-mocks@<1.5.0:
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.4.14.tgz#ea12ec70a5227697e79575523abbec0e0f9168a7"
+angular-mocks@^1.6.8:
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/angular-mocks/-/angular-mocks-1.6.8.tgz#ba2120057b4edaa56492d8789ddfbc8f18afa3c5"
 
-angular-route@<1.5.0:
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.4.14.tgz#2e5dbfe1239423c678165c39bb38601ad66a0794"
+angular-route@^1.6.8:
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.6.8.tgz#82ace773e7b232bf77768370760244a8caab5d36"
 
 angular-selectize2@^1.2.3:
   version "1.2.3"
@@ -115,13 +111,9 @@ angular-ui-router@^0.4.3:
   dependencies:
     angular "^1.0.8"
 
-angular@1.x, angular@^1.0.8, angular@^1.2:
+angular@1.x, angular@^1.0.8, angular@^1.2, angular@^1.6.8:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.8.tgz#5be378a58be91a5489e78b59c4518cd9fd273ffb"
-
-angular@<1.5.0:
-  version "1.4.14"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.14.tgz#9d0feaf60ce6e52ce50f49ee328656d1e1875c37"
 
 ansi-align@^2.0.0:
   version "2.0.0"

@@ -1,9 +1,3 @@
-'use strict';
-
-angular
-  .module('myApp')
-  .controller('viewPlacesCtrl', viewPlacesCtrl);
-
 viewPlacesCtrl.$inject = ['$state', 'placeService'];
 
 function viewPlacesCtrl($state, placeService) {
@@ -48,3 +42,5 @@ function viewPlacesCtrl($state, placeService) {
       });
   }
 }
+
+export default viewPlacesCtrl;
