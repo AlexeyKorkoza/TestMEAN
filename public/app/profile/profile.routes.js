@@ -8,7 +8,8 @@ function routes($stateProvider) {
             url: '/profile/{id}',
             templateUrl: profileView,
             controller: 'userProfileCtrl',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            module: 'profile'
         })
 }
 
