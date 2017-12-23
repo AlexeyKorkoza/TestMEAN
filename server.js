@@ -17,10 +17,18 @@ import routes from './app/routes';
 import initPassport from './app/passport/passport-init';
 const app = express();
 const redisStore = connectionRedis(session);
-const client  = redis.createClient();
+const client = redis.createClient();
 
 mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
 mongoose.Promise = global.Promise;
+
+client.on('connect', function() {
+    console.log('Connected to Redis');
+});
+
+client.on('error', err => {
+    console.log('Redis error: ' + err);
+});
 
 app.use(favicon(path.join(__dirname, '/favicon.png')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
@@ -34,7 +42,7 @@ app.use(methodOverride());
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    store: new redisStore({ host: '127.0.0.1', port: 6379, client: client,ttl: 3600, prefix: 'session:'}),
+    store: new redisStore({ host: '127.0.0.1', port: 6379, ttl: 3600, prefix: 'session:'}),
     saveUninitialized: true,
     resave: true,
     cookie: { httpOnly: true },
