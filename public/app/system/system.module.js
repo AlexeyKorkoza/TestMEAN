@@ -5,8 +5,9 @@ import subMenu from './directives/sub-menu/sub-menu.directive';
 import authService from './services/authentication.service';
 import immutableService from './services/immutable.service';
 
-export default angular.module('myApp.system')
-    .factory(authService)
-    .factory(immutableService)
-    .directive(pwCheck)
-    .directive(subMenu);
+export default angular.module('myApp.system', [])
+    .factory('authenticationService', authService)
+    .factory('immutableService', immutableService)
+    .directive('pwCheck', pwCheck)
+    .directive('subMenu', subMenu)
+    .name;

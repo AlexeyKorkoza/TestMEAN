@@ -1,9 +1,5 @@
 import angular from 'angular';
 
-angular
-  .module('myApp')
-  .controller('mapCtrl', mapCtrl);
-
 mapCtrl.$inject = ['cfpLoadingBar', 'placeService', 'typeService'];
 
 function mapCtrl(cfpLoadingBar, placeService, typeService) {

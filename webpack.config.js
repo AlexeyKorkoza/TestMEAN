@@ -12,10 +12,15 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
+                query: {
+                    presets: ["es2015", "es2017"]
+                }
             },
-            { test: /\.html$/, loader: "html" },
-            { test: /\.css$/, loader: "style!css" }
+            {
+                test: /\.html$/,
+                loader: 'html-loader',
+                exclude: /node_modules/,
+            },
         ]
     },
-    devtool: "#inline-source-map"
-}
+};

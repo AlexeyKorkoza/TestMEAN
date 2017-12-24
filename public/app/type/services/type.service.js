@@ -1,9 +1,3 @@
-'use strict';
-
-angular
-  .module('myApp')
-  .factory('typeService', typeService);
-
 typeService.$inject = ['$http', 'Upload'];
 
 function typeService($http, Upload) {
@@ -52,3 +46,5 @@ function typeService($http, Upload) {
   }
 
 }
+
+export default typeService;

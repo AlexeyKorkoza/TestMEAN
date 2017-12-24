@@ -1,9 +1,3 @@
-'use strict';
-
-angular
-    .module('myApp')
-    .factory('profileService', profileService);
-
 profileService.$inject = ['$http'];
 
 function profileService($http){
@@ -19,3 +13,5 @@ function profileService($http){
     }
 
 }
+
+export default profileService;

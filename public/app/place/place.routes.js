@@ -1,4 +1,4 @@
-import listView from './views/view-places.html';
+import listView from './views/list-places.html';
 import addView from './views/add-place.html';
 import editView from './views/edit-place.html';
 

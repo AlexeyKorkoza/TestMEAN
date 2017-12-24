@@ -1,4 +1,4 @@
-import listView from './views/view-types.html';
+import listView from './views/list-types.html';
 import addView from './views/add-type.html';
 import editView from './views/edit-type.html';
 

@@ -1,6 +1,6 @@
-viewPlacesCtrl.$inject = ['$state', 'placeService'];
+listPlacesCtrl.$inject = ['$state', 'placeService'];
 
-function viewPlacesCtrl($state, placeService) {
+function listPlacesCtrl($state, placeService) {
 
   const vm = this;
   vm.places = '';
@@ -43,4 +43,4 @@ function viewPlacesCtrl($state, placeService) {
   }
 }
 
-export default viewPlacesCtrl;
+export default listPlacesCtrl;
