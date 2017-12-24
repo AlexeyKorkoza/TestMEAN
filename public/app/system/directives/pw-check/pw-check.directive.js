@@ -1,9 +1,3 @@
-'use strict';
-
-angular
-  .module('myApp')
-  .directive('pwCheck', pwCheck);
-
 function pwCheck() {
   return {
     restrict: 'A',
@@ -19,3 +13,5 @@ function pwCheck() {
     }
   };
 }
+
+export default pwCheck;

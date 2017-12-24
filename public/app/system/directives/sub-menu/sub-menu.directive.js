@@ -1,8 +1,4 @@
-'use strict';
-
-angular
-    .module('myApp')
-    .directive('subMenu', subMenu);
+import view from './sub-menu.html';
 
 const buildMenu = () => [
     {
@@ -29,7 +25,7 @@ const buildMenu = () => [
 
 function subMenu() {
     const directive = {
-        templateUrl: '/public/app/system/directives/sub-menu/sub-menu.html',
+        templateUrl: view,
         restrict: 'E',
         link,
     };
@@ -46,3 +42,4 @@ function subMenu() {
     }
 }
 
+export default subMenu;

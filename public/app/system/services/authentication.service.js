@@ -1,10 +1,5 @@
-'use strict';
-
-angular
-    .module('myApp')
-    .factory('authenticationService', authenticationService);
-
 authenticationService.inject = ['$http', '$state'];
+
 function authenticationService ($http, $state) {
   const service = {
     login,
@@ -22,3 +17,5 @@ function authenticationService ($http, $state) {
     $state.go('signin');
   }
 }
+
+export default authenticationService;

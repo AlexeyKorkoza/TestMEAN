@@ -1,11 +1,3 @@
-'use strict';
-
-angular
-    .module('myApp')
-    .factory('immutableService', immutableService);
-
-immutableService.$inject = [];
-
 function immutableService() {
 
     const service = {
@@ -34,3 +26,5 @@ function immutableService() {
     }
 
 }
+
+export default immutableService;
