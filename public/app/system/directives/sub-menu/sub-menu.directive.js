@@ -1,4 +1,4 @@
-import view from './sub-menu.html';
+import template from './sub-menu.html';
 
 const buildMenu = () => [
     {
@@ -25,7 +25,7 @@ const buildMenu = () => [
 
 function subMenu() {
     const directive = {
-        templateUrl: view,
+        template,
         restrict: 'E',
         link,
     };
