@@ -1,3 +1,5 @@
+import Immutable from 'immutable';
+
 function immutableService() {
 
     const service = {

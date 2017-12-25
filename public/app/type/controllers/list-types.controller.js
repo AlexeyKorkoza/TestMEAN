@@ -1,6 +1,6 @@
-viewTypesCtrl.$inject = ['$state', 'typeService'];
+listTypesCtrl.$inject = ['$state', 'typeService'];
 
-function viewTypesCtrl($state, typeService) {
+function listTypesCtrl($state, typeService) {
 
   const vm = this;
   vm.types = '';
@@ -41,4 +41,4 @@ function viewTypesCtrl($state, typeService) {
   }
 }
 
-export default viewTypesCtrl;
+export default listTypesCtrl;

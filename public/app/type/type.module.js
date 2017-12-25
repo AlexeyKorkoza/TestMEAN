@@ -7,7 +7,7 @@ import service from './services/type.service';
 import routes from './type.routes';
 
 export default angular.module('myApp.types', [])
-    .controller('listTypeCtrl', listCtrl)
+    .controller('listTypesCtrl', listCtrl)
     .controller('addTypeCtrl', addCtrl)
     .controller('editTypeCtrl', editCtrl)
     .factory('typeService', service)

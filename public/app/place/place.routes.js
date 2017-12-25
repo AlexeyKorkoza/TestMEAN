@@ -8,21 +8,21 @@ function routes($stateProvider) {
     $stateProvider
         .state('places_all', {
             url: '/places',
-            templateUrl: listView,
-            controller: 'viewPlacesCtrl',
+            template: listView,
+            controller: 'listPlacesCtrl',
             controllerAs: 'vm',
             module: 'places'
         })
         .state('places_new', {
             url: '/places/add',
-            templateUrl: addView,
+            template: addView,
             controller: 'addPlaceCtrl',
             controllerAs: 'vm',
             module: 'places'
         })
         .state('places_one', {
             url: '/places/:id',
-            templateUrl: editView,
+            template: editView,
             controller: 'editPlaceCtrl',
             controllerAs: 'vm',
             module: 'places'

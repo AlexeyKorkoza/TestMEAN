@@ -1,4 +1,4 @@
-import profileView from './views/profile.html';
+import template from './views/profile.html';
 
 routes.$inject = ['$stateProvider'];
 
@@ -6,8 +6,8 @@ function routes($stateProvider) {
     $stateProvider
         .state('profile', {
             url: '/profile/{id}',
-            templateUrl: profileView,
-            controller: 'userProfileCtrl',
+            template,
+            controller: 'profileCtrl',
             controllerAs: 'vm',
             module: 'profile'
         })

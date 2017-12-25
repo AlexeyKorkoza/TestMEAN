@@ -8,21 +8,21 @@ function routes($stateProvider) {
     $stateProvider
         .state('types_all', {
             url: '/types',
-            templateUrl: listView,
-            controller: 'viewTypesCtrl',
+            template: listView,
+            controller: 'listTypesCtrl',
             controllerAs: 'vm',
             module: 'types'
         })
         .state('types_new', {
             url: '/types/add',
-            templateUrl: editView,
+            template: editView,
             controller: 'addTypeCtrl',
             controllerAs: 'vm',
             module: 'types'
         })
         .state('types_one', {
             url: '/types/:id',
-            templateUrl: addView,
+            template: addView,
             controller: 'editTypeCtrl',
             controllerAs: 'vm',
             module: 'types'

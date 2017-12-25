@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require ('extract-text-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -9,15 +10,20 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        })
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+        }),
+        new ExtractTextPlugin({
+            filename: '/public/build/bundle.css',
+            allChunks: true,
+        }),
     ],
     module: {
         loaders: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: {
                     presets: ["es2015", "es2017"]
@@ -26,7 +32,15 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
-                exclude: /node_modules/,
+                exclude: /(node_modules|bower_components)/,
+            },
+            {
+                test: /\.css$/,
+                loader: 'css-loader'
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                loader: 'file-loader?name=assets/[name].[hash].[ext]'
             },
         ]
     },

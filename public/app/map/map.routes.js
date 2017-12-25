@@ -6,7 +6,7 @@ function routes($stateProvider) {
     $stateProvider
         .state('map', {
             url: '/',
-            templateUrl: mapView,
+            template: mapView,
             controller: 'mapCtrl',
             controllerAs: 'vm',
             module: 'map'
