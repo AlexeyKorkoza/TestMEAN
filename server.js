@@ -15,12 +15,21 @@ import redis from 'redis';
 import connectionRedis from 'connect-redis';
 import routes from './app/routes';
 import initPassport from './app/passport/passport-init';
+import config from './app/config/development';
 const app = express();
 const redisStore = connectionRedis(session);
 const client = redis.createClient();
 
-mongoose.connect(`${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
+mongoose.connect(`${config.mongoDB.host}:${config.mongoDB.port}/${config.mongoDB.dbName}`);
 mongoose.Promise = global.Promise;
+
+if(process.env.NODE_ENV === 'development') {
+    console.log("DEV");
+}
+
+if(process.env.NODE_ENV === 'production') {
+    console.log("PROD");
+}
 
 client.on('connect', function() {
     console.log('Connected to Redis');
@@ -41,8 +50,8 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
-    store: new redisStore({ host: '127.0.0.1', port: 6379, ttl: 3600, prefix: 'session:'}),
+    secret: config.session.secret,
+    store: new redisStore(config.redis),
     saveUninitialized: true,
     resave: true,
     cookie: { httpOnly: true },

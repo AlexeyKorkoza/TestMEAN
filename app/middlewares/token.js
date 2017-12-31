@@ -1,8 +1,8 @@
 'use strict';
 
-require('dotenv').config();
 import jwt from 'express-jwt';
 import jsonWebToken from 'jsonwebtoken';
+import config from '../config/development';
 import UnauthorizedError from '../errors/unauthorized';
 
 const getTokenFromHeader = req => {
@@ -28,7 +28,7 @@ const userProperty = 'payload';
 
 const token = {
   required: jwt({
-    secret: process.env.JWT_SECRET,
+    secret: config.jwtSecret,
     userProperty,
     getToken: getTokenFromHeader
   }),
@@ -41,7 +41,7 @@ const token = {
 
       return jsonWebToken.sign(
           payload,
-          process.env.JWT_SECRET,
+          config.jwtSecret,
           {expiresIn}
       );
   },

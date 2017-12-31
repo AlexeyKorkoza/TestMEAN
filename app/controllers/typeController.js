@@ -56,7 +56,7 @@ export default {
 
         let type = await Type.findById(req.params.id);
         if (!type) {
-          res.status(400).json('type is not found');
+          return res.status(400).json('type is not found');
         }
 
         type.name_type = req.body.data.typename;
