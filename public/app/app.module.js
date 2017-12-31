@@ -1,9 +1,13 @@
-/*import '../vendor/bootstrap/bootstrap.min.css';
-import '../vendor/font-awesome/css/font-awesome.min.css';*/
+import '../vendor/bootstrap/dist/css/bootstrap.min.css';
+import '../vendor/font-awesome/css/font-awesome.min.css';
 // import './assets/css/fonts.css';
-// import './assets/css/style.css';
-// import './assets/css/sidebar.css';
-// import './assets/css/angular-responsive-tables.min.css';
+import './assets/css/style.css';
+import './assets/css/sidebar.css';
+import './assets/css/angular-responsive-tables.min.css';
+import '../../node_modules/leaflet/dist/leaflet.css';
+import '../../node_modules/selectize/dist/css/selectize.default.css';
+import '../../node_modules/angular-loading-bar/build/loading-bar.min.css';
+import '../../node_modules/sweetalert/dist/sweetalert.css';
 
 import 'angular';
 import 'angular-ui-router';

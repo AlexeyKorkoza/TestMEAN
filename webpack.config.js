@@ -15,10 +15,7 @@ module.exports = {
             'window.jQuery': 'jquery',
             Selectize: 'selectize'
         }),
-        new ExtractTextPlugin({
-            filename: '/public/build/bundle.css',
-            allChunks: true,
-        }),
+        new ExtractTextPlugin("bundle.css")
     ],
     module: {
         loaders: [
@@ -37,7 +34,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'css-loader'
+                loader: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
