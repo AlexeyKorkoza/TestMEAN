@@ -54,6 +54,9 @@ export default {
   },
 
   mainPage(req, res) {
+      if (!req.session.user) {
+          return res.redirect('/login');
+      }
       const tokenForUser = token.generateJWT(req.session.user);
       const user = Object.assign({}, {
         username: req.session.user.username,
