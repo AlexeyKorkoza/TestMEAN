@@ -15,7 +15,7 @@ import redis from 'redis';
 import connectionRedis from 'connect-redis';
 import routes from './app/routes';
 import initPassport from './app/passport/passport-init';
-import config from './app/config/development';
+import config from './app/config';
 const app = express();
 const redisStore = connectionRedis(session);
 const client = redis.createClient();

@@ -2,7 +2,7 @@
 
 import jwt from 'express-jwt';
 import jsonWebToken from 'jsonwebtoken';
-import config from '../config/development';
+import config from '../config';
 import UnauthorizedError from '../errors/unauthorized';
 
 const getTokenFromHeader = req => {
