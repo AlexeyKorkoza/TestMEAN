@@ -8,6 +8,8 @@ import '../../node_modules/leaflet/dist/leaflet.css';
 import '../../node_modules/selectize/dist/css/selectize.default.css';
 import '../../node_modules/angular-loading-bar/build/loading-bar.min.css';
 import '../../node_modules/sweetalert/dist/sweetalert.css';
+// import '../../node_modules/leaflet.markercluster/dist/MarkerCluster.css;
+// import '../../node_modules/leaflet.markercluster/dist/MarkerClusterDefault.css;
 
 import 'angular';
 import 'angular-ui-router';
