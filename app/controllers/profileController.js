@@ -19,25 +19,25 @@ export default {
 
                 const result = user.save();
                 if (!result) {
-                    res.status(400).json('profile is not updated');
+                    return res.status(400).json('profile is not updated');
                 }
 
-                res.status(200).json(result);
+                return res.status(200).json(result);
             } else {
 
                 let user = await User.findById(id);
                 if (!user) {
-                    res.status(400).json('profile is not found');
+                    return res.status(400).json('profile is not found');
                 }
                 user.password = user.generatePassword(req.body.password);
 
                 const result = await user.save();
 
                 if (!result) {
-                    res.status(400).json('profile is not updated');
+                    return res.status(400).json('profile is not updated');
                 }
 
-                res.status(200).json('profile is updated');
+                return res.status(200).json('profile is updated');
             }
         }
         catch (err) {

@@ -6,7 +6,7 @@ export default {
   async getTypes(req, res) {
     try {
       const types = await Type.find({});
-      res.status(200).json(types);
+      return res.status(200).json(types);
     }
     catch (err) {
       res.status(500).json(err);
@@ -17,10 +17,10 @@ export default {
     try {
       const type = await Type.findOne({_id: req.params.id});
       if (!type) {
-        res.status(400).json('type is not found');
+        return res.status(400).json('type is not found');
       }
 
-      res.status(200).json(type);
+      return res.status(200).json(type);
     }
     catch (err) {
       res.status(500).json(err);
@@ -38,10 +38,10 @@ export default {
 
         const result = await type.save();
         if (!result) {
-          res.status(400).json('type is not found')
+          return res.status(400).json('type is not found')
         }
 
-        res.status(200).json('type is added');
+        return res.status(200).json('type is added');
       }
     }
     catch (err) {
@@ -64,10 +64,10 @@ export default {
 
         const result = type.save();
         if(!result) {
-          res.status(400).json('type is not updated');
+          return res.status(400).json('type is not updated');
         }
 
-        res.status(200).json('type is updated');
+        return res.status(200).json('type is updated');
       }
       catch (err) {
         res.status(500).json(err);
@@ -82,7 +82,7 @@ export default {
       let type = await Type.findById(req.params.id);
 
       if (!type) {
-        res.status(400).json('type is not found');
+        return res.status(400).json('type is not found');
       }
 
       const arr = type.image.split('.');
@@ -95,10 +95,10 @@ export default {
 
       const result = await type.save();
       if (!result) {
-        res.status(400).json('type is not updated');
+        return res.status(400).json('type is not updated');
       }
 
-      res.status(200).json('type is updated');
+      return res.status(200).json('type is updated');
     }
     catch (err) {
       res.status(500).json(err);
@@ -109,11 +109,11 @@ export default {
     try {
       const type = await Type.findByIdAndRemove({_id: req.params.id});
       if (!type) {
-        res.status(400).json('type is not removed');
+        return res.status(400).json('type is not removed');
       }
 
       fs.unlink('uploads/' + type.image);
-      res.status(200).json('type is removed');
+      return res.status(200).json('type is removed');
     }
     catch (err) {
       res.status(500).json(err);
