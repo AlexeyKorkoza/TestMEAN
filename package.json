@@ -69,7 +69,8 @@
     "selectize": "^0.12.4",
     "serve-favicon": "^2.4.5",
     "sweetalert": "^1.1.3",
-    "ui-leaflet": "^1.0.3"
+    "ui-leaflet": "^1.0.3",
+    "winston": "^2.4.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
