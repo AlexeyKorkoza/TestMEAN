@@ -1,13 +1,16 @@
 import Place from '../models/place';
+import logger from '../utils/logger';
 
 export default {
 
   async getPlaces(req, res) {
     try {
       const places = await Place.find({});
+      logger.info('Get places');
       return res.status(200).json(places);
     }
     catch (err) {
+      logger.error('Error: Get places', err);
       res.status(500).json(err);
     }
   },
@@ -15,13 +18,15 @@ export default {
   async getPlaceById(req, res) {
     try {
       const place = await Place.findOne({_id: req.params.id});
+      logger.info('Get place by id', req.params);
       if (!place) {
-        return res.status(200).json('place is not found');
+        return res.status(200).json('Place is not found');
       }
 
       return res.status(200).json(place);
     }
     catch (err) {
+      logger.error('Error: Get place by id', err);
       res.status(500).json(err);
     }
   },
@@ -29,6 +34,7 @@ export default {
   async getPlacesByType(req, res) {
     try {
       const places = await Place.find({id_type: req.params.id});
+      logger.info('Get place by type', req.params);
       if (!places.length) {
         return res.status(200).json('Places are not found');
       }
@@ -36,6 +42,7 @@ export default {
       return res.status(200).json(places);
     }
     catch (err) {
+      logger.error('Error: Get place by type', err);
       res.status(500).json(err);
     }
   },
@@ -52,14 +59,16 @@ export default {
         id_type: req.body.id_type
       });
 
+      logger.info('Add place', req.body);
       const result = await place.save();
       if (!result) {
-          return res.status(400).json('place is not added')
+          return res.status(400).json('Place is not added')
       }
 
-      return res.status(200).json('place is added');
+      return res.status(200).json('Place is added');
     }
     catch (err) {
+      logger.error('Error: Add place', err);
       res.status(500).json(err);
     }
   },
@@ -67,6 +76,7 @@ export default {
   async updatePlace(req, res) {
     try {
       const place = await Place.findById(req.params.id);
+      logger.info('Update place', req.params.id, req.body);
       if (!place) {
         return res.status(400).json('place is not found');
       }
@@ -86,12 +96,14 @@ export default {
       return res.status(200).json('place is updated');
     }
     catch (err) {
+      logger.info('Error: Update place', err);
       res.status(500).json(err);
     }
   },
 
   async removePlace(req, res) {
     try {
+      logger.info('Remove place', req.params.id);
       const place = await Place.findByIdAndRemove({_id: req.params.id});
       if (!place) {
         return res.status(400).json('place is not removed');
@@ -100,6 +112,7 @@ export default {
       return res.status(200).json('place is removed');
     }
     catch (err) {
+      logger.error('Error: Remove place', err);
       res.status(500).json(err);
     }
   }

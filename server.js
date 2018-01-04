@@ -16,6 +16,7 @@ import connectionRedis from 'connect-redis';
 import routes from './app/routes';
 import initPassport from './app/passport/passport-init';
 import config from './app/config';
+import logger from './app/utils/logger';
 const app = express();
 const redisStore = connectionRedis(session);
 const client = redis.createClient();
@@ -23,20 +24,12 @@ const client = redis.createClient();
 mongoose.connect(`${config.mongoDB.host}:${config.mongoDB.port}/${config.mongoDB.dbName}`);
 mongoose.Promise = global.Promise;
 
-if(process.env.NODE_ENV === 'development') {
-    console.log("DEV");
-}
-
-if(process.env.NODE_ENV === 'production') {
-    console.log("PROD");
-}
-
 client.on('connect', function() {
-    console.log('Connected to Redis');
+    logger.info('Connected to Redis');
 });
 
 client.on('error', err => {
-    console.log('Redis error: ' + err);
+    logger.error('Redis error: ' + err);
 });
 
 app.use(favicon(path.join(__dirname, '/favicon.png')));
@@ -71,6 +64,8 @@ if (!fs.existsSync('./uploads')) {
 initPassport(passport);
 
 const port = process.env.PORT;
-app.listen(port);
+app.listen(port, () => {
+    logger.info(`Server started on port ${port}`);
+});
 
 export default app;

@@ -1,6 +1,5 @@
-'use strict';
-
 import User from '../models/user';
+import logger from '../utils/logger';
 
 export default {
 
@@ -9,6 +8,7 @@ export default {
             const id = req.payload.id;
             if (!req.body.password) {
 
+                logger.info('Update data about user', req.body);
                 let user = await User.findById(id);
                 if (!user) {
                     res.status(400).json('profile is not found');
@@ -25,6 +25,7 @@ export default {
                 return res.status(200).json(result);
             } else {
 
+                logger.info('Update password of user', req.body);
                 let user = await User.findById(id);
                 if (!user) {
                     return res.status(400).json('profile is not found');
@@ -41,6 +42,7 @@ export default {
             }
         }
         catch (err) {
+            logger.error('Error: Update data of user', err);
             res.status(500).json(err);
         }
     }
