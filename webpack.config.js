@@ -11,7 +11,7 @@ const plugins = [
         },
     },
 
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
 
     new webpack.DefinePlugin({
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
