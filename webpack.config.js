@@ -1,6 +1,23 @@
+require('dotenv').config();
 const webpack = require('webpack');
 const ExtractTextPlugin = require ('extract-text-webpack-plugin');
 const path = require('path');
+
+const plugins = [
+    new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        Selectize: 'selectize'
+    }),
+    new ExtractTextPlugin("bundle.css")
+];
+
+if(process.env.NODE_ENV === 'production') {
+    plugins.push(new webpack.optimize.UglifyJsPlugin({
+        compressor: { warnings: false },
+    }));
+}
 
 module.exports = {
     entry: './public/app/app.module.js',
@@ -8,15 +25,7 @@ module.exports = {
         path: path.join(__dirname, '/public/build'),
         filename: 'bundle.js',
     },
-    plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            Selectize: 'selectize'
-        }),
-        new ExtractTextPlugin("bundle.css")
-    ],
+    plugins,
     module: {
         loaders: [
             {
@@ -24,7 +33,7 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ["es2015", "es2017"]
+                    presets: ["env"]
                 }
             },
             {
