@@ -94,6 +94,7 @@
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
     "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
     "style-loader": "^0.19.1",
     "stylelint": "^8.1.1",
     "uglifyjs-webpack-plugin": "^1.1.6",

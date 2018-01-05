@@ -1,9 +1,21 @@
 require('dotenv').config();
 const webpack = require('webpack');
 const ExtractTextPlugin = require ('extract-text-webpack-plugin');
+const rimraf = require('rimraf');
 const path = require('path');
 
 const plugins = [
+    {
+        apply: compiler => {
+            rimraf.sync(compiler.options.output.path);
+        },
+    },
+
+    new webpack.NoErrorsPlugin(),
+
+    new webpack.DefinePlugin({
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    }),
     new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery',
