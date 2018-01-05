@@ -56,6 +56,9 @@ app.use(flash());
 app.use(cors());
 
 app.use('/', routes);
+app.use(function(req, res, next){
+    res.status(404).render('404.ejs');
+});
 
 if (!fs.existsSync('./uploads')) {
   fs.mkdirSync('./uploads');
