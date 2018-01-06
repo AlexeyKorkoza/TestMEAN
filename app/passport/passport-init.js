@@ -1,5 +1,9 @@
 import User from '../models/user';
 import passportLocal from 'passport-local';
+import {
+  generatePassword,
+  checkPassword
+} from '../services/password';
 const LocalStrategy = passportLocal.Strategy;
 
 module.exports = passport => {
@@ -29,7 +33,7 @@ module.exports = passport => {
             return done(null, false, req.flash('loginMessage', 'User is not found'));
           }
 
-          if (!user.validPasswrod(user, password)) {
+          if (checkPassword(user, password)) {
             return done(null, false, req.flash('loginMessage', 'Incorrect password'));
           }
 
@@ -66,12 +70,11 @@ module.exports = passport => {
             }
             if (!user) {
               const newUser = new User({
-                'username': username,
-                'email': req.body.email,
-                'date': req.body.date
+                username,
+                email: req.body.email,
+                date: req.body.date,
+                password: generatePassword(req.body.password)
               });
-
-              newUser.password = newUser.generatePassword(req.body.password);
 
               newUser.save(err => {
                 if (err) {

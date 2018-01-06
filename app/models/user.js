@@ -34,14 +34,6 @@ userSchema.methods.generateJWT = user => {
   );
 };
 
-userSchema.methods.validPasswrod = (user, password) => {
-  return bcrypt.compareSync(password, user.password);
-};
-
-userSchema.methods.generatePassword = password => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
-
 const User = mongoose.model('User', userSchema);
 
 export default User;
