@@ -22,6 +22,7 @@ import 'angular-responsive-tables';
 import 'ui-leaflet';
 import 'angular-jwt';
 import 'immutable';
+import 'sweetalert';
 
 import mapModule from './map/map.module';
 import placesModule from './place/place.module';

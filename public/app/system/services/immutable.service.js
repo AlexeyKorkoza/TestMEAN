@@ -12,7 +12,7 @@ function immutableService() {
     function buildProfile() {
         const user = window.user;
         const a = {
-            id: window.user._id,
+            id: window.user.id,
             username: window.user.username,
             email: window.user.email,
             date: window.user.date

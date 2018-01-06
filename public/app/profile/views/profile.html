@@ -1,100 +1,111 @@
-<div>
-    <div class="row">
-        <div class="span12">
-            <div class="well clearfix">
-                <div class="container">
-                    <h1 class="page-header">Edit profile</h1>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-6 col-xs-12">
-                            <form class="form-horizontal" name="form" novalidate>
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Username:</label>
-                                    <div class="col-lg-8">
-                                        <input class="form-control"
-                                               name="username"
-                                               ng-model="vm.userData.username"
-                                               value={{vm.userData.username}}
-                                               type="text"
-                                               required/>
-                                        <p ng-show="form.username.$invalid && !form.username.$pristine"
-                                           class="help-block">Input username</p>
-                                    </div>
+<div class="row">
+    <div class="span12">
+        <div class="well clearfix">
+            <div class="container">
+                <h1 class="page-header">Edit profile</h1>
+                <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <form class="form-horizontal" name="form" novalidate>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Username:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control"
+                                           name="username"
+                                           ng-model="vm.userData.username"
+                                           value={{vm.userData.username}}
+                                           type="text"
+                                           required/>
+                                    <p ng-show="form.username.$invalid && !form.username.$pristine"
+                                       class="help-block">Input username</p>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Email:</label>
-                                    <div class="col-lg-8">
-                                        <input class="form-control"
-                                               type="email"
-                                               name="email"
-                                               ng-model="vm.userData.email"
-                                               value={{vm.userData.email}}
-                                               required/>
-                                        <p ng-show="form.email.$invalid && !form.email.$pristine"
-                                           class="help-block">Email is incorrect</p>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Email:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control"
+                                           type="email"
+                                           name="email"
+                                           ng-model="vm.userData.email"
+                                           value={{vm.userData.email}}
+                                           required/>
+                                    <p ng-show="form.email.$invalid && !form.email.$pristine"
+                                       class="help-block">Email is incorrect</p>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
-                                        <button class="button icon-save"
-                                                ng-disabled="form.$invalid"
-                                                type="submit"
-                                                ng-click="vm.update()">
-                                            <span>Save</span>
-                                        </button>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                                        <a href="#/" class="button icon-home">
-                                            <span>Back to Main</span>
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
+                                    <button class="button icon-save"
+                                            ng-disabled="form.$invalid"
+                                            type="submit"
+                                            ng-click="vm.update()">
+                                        <span>Save</span>
+                                    </button>
                                 </div>
-                            </form>
-                            <form class="form-horizontal" name="formPassword" novalidate>
-                                <h1>Update password</h1>
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Password:</label>
-                                    <div class="col-lg-8">
-                                        <input class="form-control"
-                                               name="password"
-                                               ng-model="vm.settingPassword.password"
-                                               ng-minlength="6"
-                                               id="UserProfilePassword"
-                                               type="password"
-                                               required/>
-                                        <p ng-show="formPassword.password.$error.minlength" class="help-block">
-                                            Password must consist from min 6 symbols</p>
-                                    </div>
+                                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                                    <a href="#/" class="button icon-home">
+                                        <span>Back to Main</span>
+                                    </a>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Confirm password:</label>
-                                    <div class="col-lg-8">
-                                        <input class="form-control"
-                                               name="confirmpassword"
-                                               ng-model="vm.settingPassword.confirmpassword"
-                                               pw-check="UserProfilePassword"
-                                               type="password"
-                                               required/>
-                                        <p class="help-block" ng-show="formPassword.confirmpassword.$error.pwmatch">
-                                            Passwords are not comparing</p>
-                                    </div>
+                            </div>
+                        </form>
+                        <form class="form-horizontal" name="formPassword" novalidate>
+                            <h1>Update password</h1>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Old Password:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control"
+                                           name="password"
+                                           ng-model="vm.settingPassword.oldPassword"
+                                           ng-minlength="6"
+                                           type="password"
+                                           required/>
+                                    <p ng-show="formPassword.oldPassword.$error.minlength" class="help-block">
+                                        Old Password must consist from min 6 symbols</p>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
-                                        <button class="button icon-save"
-                                                ng-disabled="formPassword.$invalid"
-                                                type="submit"
-                                                ng-click="vm.updatePassword()">
-                                            <span>Update password</span>
-                                        </button>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                                        <a ui-sref="map" class="button icon-home">
-                                            <span>Back to Main</span>
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">New Password:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control"
+                                           name="password"
+                                           ng-model="vm.settingPassword.newPassword"
+                                           ng-minlength="6"
+                                           id="UserProfilePassword"
+                                           type="password"
+                                           required/>
+                                    <p ng-show="formPassword.newPassword.$error.minlength" class="help-block">
+                                        New Password must consist from min 6 symbols</p>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Confirm password:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control"
+                                           name="confirmpassword"
+                                           ng-model="vm.settingPassword.confirmPassword"
+                                           pw-check="UserProfilePassword"
+                                           type="password"
+                                           required/>
+                                    <p class="help-block" ng-show="formPassword.confirmpassword.$error.pwmatch">
+                                        Passwords are not comparing</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
+                                    <button class="button icon-save"
+                                            ng-disabled="formPassword.$invalid"
+                                            type="submit"
+                                            ng-click="vm.updatePassword()">
+                                        <span>Update password</span>
+                                    </button>
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
+                                    <a ui-sref="map" class="button icon-home">
+                                        <span>Back to Main</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

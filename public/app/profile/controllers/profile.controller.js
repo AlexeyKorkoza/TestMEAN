@@ -41,7 +41,9 @@ function profileCtrl(profileService, immutableService) {
   function updatePassword() {
     const data = {
       id: vm.userData.id,
-      password: vm.settingPassword.password
+      old_password: vm.settingPassword.oldPassword,
+      new_password: vm.settingPassword.newPassword,
+      confirm_password: vm.settingPassword.confirmPassword
     };
 
       profileService.update(data)

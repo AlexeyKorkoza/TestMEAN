@@ -66,6 +66,7 @@ export default {
       }
       const tokenForUser = token.generateJWT(req.session.user);
       const user = Object.assign({}, {
+        id: req.session.user._id,
         username: req.session.user.username,
         email: req.session.user.email,
         date: req.session.user.date,
