@@ -33,7 +33,7 @@ module.exports = passport => {
             return done(null, false, req.flash('loginMessage', 'User is not found'));
           }
 
-          if (checkPassword(user, password)) {
+          if (!checkPassword(user, password)) {
             return done(null, false, req.flash('loginMessage', 'Incorrect password'));
           }
 

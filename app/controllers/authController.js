@@ -11,20 +11,12 @@ export default {
 
   login(req, res) {
     passport.authenticate('login', { failureFlash: true }, (err, user) => {
-      if (err) {
-        logger.error('Authentication of user is failed', err);
-        if (err.name === 'Incorrect Credentials Error') {
-          return res.status(400).json({
-             message: 'Incorrect Credentials Error'
-          });
-        }
-
-        return res.status(400).json({
-            messages: 'Could not process the form.'
-        });
+      if (!user) {
+          logger.info('Authentication of user is fail');
+          return res.status(403).json(req.flash('loginMessage')[0]);
       }
 
-      logger.info('Authentication of user is success', user);
+      logger.info('Authentication of user is success');
       req.session.user = user;
       return res.status(200).redirect('/app');
     })(req, res);

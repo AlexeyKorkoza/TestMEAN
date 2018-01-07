@@ -17,6 +17,7 @@
                        name="username"
                        placeholder="Username"
                        class="username"
+                       id="loginUsername"
                        required/>
             </div>
             <div class="form-group">
@@ -24,7 +25,7 @@
                 <input type="password"
                        name="password"
                        placeholder="Password"
-                       id="signUpPassword"
+                       id="loginPassword"
                        class="password"
                        required/>
             </div>
@@ -32,14 +33,74 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
                         <button class="button icon-login LoginSignIn"
-                                type="submit">
-                            <span>Sign In</span>
+                                type="submit"
+                                id="loginButton">
+                            <span>Log In</span>
                         </button>
                     </div>
+                    <p><a href="/signup">Sign Up</a></p>
                 </div>
             </div>
         </div>
     </form>
 </div>
+
+<script src="/public/vendor/jquery/jquery.min.js"></script>
+<script src="/public/vendor/jquery-validation/jquery.validate.min.js"></script>
+<script>
+    function validateForm() {
+        const validator = $('form').validate({
+            rules: {
+                username: true,
+                password: {
+                    required: true,
+                    minlength: 6
+                }
+            },
+            messages: {
+                username: 'Please, enter your username',
+                password: {
+                    required: 'Please, enter your password',
+                    minlength: 'Password must consist from six symbols'
+                }
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+
+        return !!validator.form();
+    }
+
+    $(document).ready(function () {
+        $('#loginButton').click(event => {
+            const success = validateForm();
+            if (!success) {
+                return event.preventDefault();
+            }
+
+            const data = {
+                username: $('#loginUsername').val(),
+                password: $('#loginPassword').val(),
+            }
+
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/login',
+                data,
+                success: () => {
+                    setTimeout(function() {
+                        alert('Login is success');
+                        window.location = '/app';
+                    }, 500)
+                },
+                error: error => {
+                    alert(error.responseText);
+                }
+            })
+        })
+    });
+</script>
 </body>
 </html>
