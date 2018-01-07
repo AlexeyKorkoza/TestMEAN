@@ -17,5 +17,6 @@ module.exports = {
         secret: process.env.SESSION_SECRET,
     },
     passwordAlgorithm: process.env.PASSWORD_ALGORITHM,
-    algorithm: process.env.ALGORITHM
+    algorithm: process.env.ALGORITHM,
+    port: process.env.PORT || 8080,
 };

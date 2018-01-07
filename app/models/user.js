@@ -1,7 +1,6 @@
-require('dotenv').config();
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt-nodejs';
+import config from '../config';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -29,7 +28,7 @@ userSchema.methods.generateJWT = user => {
 
   return jwt.sign(
     payload,
-    process.env.JWT_SECRET,
+    config.jwtSecret,
     { expiresIn }
   );
 };

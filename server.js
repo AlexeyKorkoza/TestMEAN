@@ -66,7 +66,7 @@ if (!fs.existsSync('./uploads')) {
 
 initPassport(passport);
 
-const port = process.env.PORT;
+const port = config.port;
 app.listen(port, () => {
     logger.info(`Server started on port ${port}`);
 });
