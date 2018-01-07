@@ -28,19 +28,10 @@ export default {
   },
 
   signUp(req, res) {
-    passport.authenticate('signup', { failureFlash: true }, err => {
-
-      if (err) {
-        logger.info('SignUp is failed', err);
-        if (err.name === 'Incorrect Credentials Error') {
-          return res.status(400).json({
-             message: 'Incorrect Credentials Error'
-          });
-        }
-
-        return res.status(400).json({
-            message: 'Could not process the form.'
-        });
+    passport.authenticate('signup', { failureFlash: true }, (err, user) => {
+      if (!user) {
+          logger.info('Signup is fail');
+          return res.status(403).json(req.flash('signUpMessage')[0]);
       }
 
       logger.info('Signup is success');

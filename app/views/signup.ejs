@@ -15,6 +15,7 @@
                 <input type="text"
                        name="username"
                        placeholder="Username"
+                       id="signUpUsername"
                        class="username"
                        required/>
             </div>
@@ -23,6 +24,7 @@
                 <input type="email"
                        name="email"
                        placeholder="example@mail.com"
+                       id="signUpEmail"
                        class="email"
                        required/>
             </div>
@@ -40,19 +42,88 @@
                 <input type="password"
                        name="confirmpassword"
                        placeholder="Confirm password"
+                       id="signUpConfirmPassword"
                        class="password"
                        required/>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
                     <button class="button icon-register LoginSignIn"
-                            type="submit">
+                            type="submit"
+                            id="signUpButton">
                         <span>Sign Up</span>
                     </button>
+                    <p><a href="/login">Log in</a></p>
                 </div>
             </div>
         </div>
     </form>
 </div>
+<script src="/public/vendor/jquery/jquery.min.js"></script>
+<script src="/public/vendor/jquery-validation/jquery.validate.min.js"></script>
+<script>
+    function validateForm() {
+        const validator = $('form').validate({
+            rules: {
+                username: true,
+                email: true,
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                confirmpassword: {
+                    required: true,
+                    equalTo: '#signUpPassword'
+                },
+            },
+            messages: {
+                username: 'Please, enter your username',
+                email: 'Please, enter your email',
+                password: {
+                    required: 'Please, enter your password',
+                    minlength: 'Password must consist from six symbols'
+                },
+                confirmpassword: 'Enter Confirm Password Same as Password'
+            },
+            submitHandler: form => {
+                form.submit();
+            }
+        });
+
+        return !!validator.form();
+    }
+
+    $(document).ready(function () {
+        $('#signUpButton').click(event => {
+            const success = validateForm();
+            if (!success) {
+                return event.preventDefault();
+            }
+
+            const data = {
+                username: $('#signUpUsername').val(),
+                email: $('#signUpEmail').val(),
+                password: $('#signUpPassword').val(),
+                confirmpassword: $('#signUpConfirmPassword').val(),
+            }
+
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/signup',
+                data,
+                success: () => {
+                    setTimeout(function() {
+                        alert('Signup is success');
+                        window.location = '/login';
+                    }, 500)
+                },
+                error: error => {
+                    alert(error.responseText);
+                }
+            })
+        })
+    });
+</script>
 </body>
 </html>

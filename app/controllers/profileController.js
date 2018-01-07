@@ -43,8 +43,6 @@ export default {
                 const isComparePasswords = comparePasswords(input.new_password, input.confirm_password);
                 const isCorrectOldPassword = checkPassword(user.password, input.old_password);
 
-                console.log(req.session.user, isWorstPassword, isComparePasswords, isCorrectOldPassword);
-
                 if (isWorstPassword) {
                     return res.status(400).json('Password too weak');
                 }

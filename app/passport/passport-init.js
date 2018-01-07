@@ -2,7 +2,9 @@ import User from '../models/user';
 import passportLocal from 'passport-local';
 import {
   generatePassword,
-  checkPassword
+  checkPassword,
+  comparePasswords,
+  checkWorstPassword
 } from '../services/password';
 const LocalStrategy = passportLocal.Strategy;
 
@@ -49,6 +51,16 @@ module.exports = passport => {
       passReqToCallback: true
     },
    (req, username, email, done) => {
+
+      const isWorstPassword = checkWorstPassword(req.body.password);
+      const isComparePasswords = comparePasswords(req.body.password, req.body.confirmpassword);
+
+      if (isWorstPassword) {
+          return done(null, false, req.flash('signUpMessage', 'Password too weak'));
+      }
+      if (!isComparePasswords) {
+          return done(null, false, req.flash('signUpMessage', 'Passwords don`t compare'));
+      }
 
       User.findOne({'username': username}, (err, user) => {
 
