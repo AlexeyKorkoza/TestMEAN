@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
+    "dev": "babel-node --presets env ./server.js",
+    "dev:watch": "nodemon ./server.js --exec babel-node",
     "webpack:watch": "NODE_ENV=development webpack -d --watch",
     "webpack:build": "NODE_ENV=production webpack -p",
-    "dev": "nodemon server.js --exec babel-node --presets env",
     "stylelint": "stylelint app/assets/css/*.css",
     "eslint:backend": "eslint *.js",
     "eslint-fix:backend": "eslint *.js --fix",
