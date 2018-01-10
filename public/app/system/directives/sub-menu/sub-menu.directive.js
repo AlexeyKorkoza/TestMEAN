@@ -23,7 +23,9 @@ const buildMenu = () => [
     }
 ];
 
-function subMenu() {
+subMenu.$inject = ['$document'];
+
+function subMenu($document) {
     const directive = {
         template,
         restrict: 'E',
@@ -31,14 +33,26 @@ function subMenu() {
     };
     return directive;
 
-    function link(scope) {
+    function link(scope, element) {
 
         scope.items = buildMenu();
         scope.isOpen = false;
 
         scope.toggleMenu = () => {
             scope.isOpen = !scope.isOpen;
-        }
+        };
+
+        $document.bind('click', event => {
+            const isClickedElementChildOfPopup = element
+                .find(event.target)
+                .length > 0;
+
+            if (isClickedElementChildOfPopup)
+                return;
+
+            scope.isOpen = false;
+            scope.$apply();
+        });
     }
 }
 
