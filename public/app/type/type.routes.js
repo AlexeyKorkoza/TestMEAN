@@ -15,14 +15,14 @@ function routes($stateProvider) {
         })
         .state('types_new', {
             url: '/types/add',
-            template: editView,
+            template: addView,
             controller: 'addTypeCtrl',
             controllerAs: 'vm',
             module: 'types'
         })
         .state('types_one', {
             url: '/types/:id',
-            template: addView,
+            template: editView,
             controller: 'editTypeCtrl',
             controllerAs: 'vm',
             module: 'types'
