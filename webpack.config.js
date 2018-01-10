@@ -20,7 +20,8 @@ const plugins = [
         $: 'jquery',
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
-        Selectize: 'selectize'
+        Selectize: 'selectize',
+        leaflet: 'leaflet'
     }),
     new ExtractTextPlugin("bundle.css")
 ];

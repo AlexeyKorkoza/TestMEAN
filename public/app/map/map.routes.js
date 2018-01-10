@@ -1,8 +1,10 @@
 import mapView from './views/map.html';
 
-routes.$inject = ['$stateProvider'];
+routes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-function routes($stateProvider) {
+function routes($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+
     $stateProvider
         .state('map', {
             url: '/',
