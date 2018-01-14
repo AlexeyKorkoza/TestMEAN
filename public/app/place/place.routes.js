@@ -1,6 +1,4 @@
 import listView from './views/list-places.html';
-import addView from './views/add-place.html';
-import editView from './views/edit-place.html';
 import editorView from './views/editor-place.html';
 
 routes.$inject = ['$stateProvider'];

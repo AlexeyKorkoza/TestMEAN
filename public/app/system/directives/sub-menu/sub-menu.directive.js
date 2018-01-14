@@ -8,7 +8,7 @@ const buildMenu = () => [
     },
     {
         item: 'Types',
-        link: 'types_all',
+        link: 'types',
         class: 'fa fa-filter fa-fw'
     },
     {

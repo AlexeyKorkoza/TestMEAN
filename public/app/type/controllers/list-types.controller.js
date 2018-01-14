@@ -5,7 +5,6 @@ function listTypesCtrl($state, typeService) {
   const vm = this;
   vm.types = '';
   vm.remove = remove;
-  vm.edit = edit;
   vm.activate = activate;
 
   activate();
@@ -17,11 +16,7 @@ function listTypesCtrl($state, typeService) {
     });
   }
 
-  function edit(type) {
-    $state.go('types_one', { id: type._id });
-  }
-
-  function remove(id,index) {
+  function remove(id, index) {
     typeService.remove(id)
       .then(() => {
       swal(

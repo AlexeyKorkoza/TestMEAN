@@ -1,12 +1,11 @@
 import listView from './views/list-types.html';
-import addView from './views/add-type.html';
-import editView from './views/edit-type.html';
+import editorView from './views/editor-type.html';
 
 routes.$inject = ['$stateProvider'];
 
 function routes($stateProvider) {
     $stateProvider
-        .state('types_all', {
+        .state('types', {
             url: '/types',
             template: listView,
             controller: 'listTypesCtrl',
@@ -15,15 +14,15 @@ function routes($stateProvider) {
         })
         .state('types_new', {
             url: '/types/add',
-            template: addView,
-            controller: 'addTypeCtrl',
+            template: editorView,
+            controller: 'editorTypeCtrl',
             controllerAs: 'vm',
             module: 'types'
         })
         .state('types_one', {
-            url: '/types/:id',
-            template: editView,
-            controller: 'editTypeCtrl',
+            url: '/types/{id}',
+            template: editorView,
+            controller: 'editorTypeCtrl',
             controllerAs: 'vm',
             module: 'types'
         })
