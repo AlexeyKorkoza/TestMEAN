@@ -42,7 +42,7 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
         vm.getData = types.data;
         vm.select.push({
           value: 0,
-          text: 'Все объекты'
+          text: 'All objects'
         });
         if (!types.data) {
             types.data.forEach(item => {
