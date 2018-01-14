@@ -1,15 +1,15 @@
 import '../vendor/bootstrap/dist/css/bootstrap.min.css';
 import '../vendor/font-awesome/css/font-awesome.min.css';
-// import './assets/css/fonts.css';
+import './assets/css/fonts.css';
 import './assets/css/style.css';
 import './assets/css/sidebar.css';
 import './assets/css/angular-responsive-tables.min.css';
-import '../../node_modules/leaflet/dist/leaflet.css';
-import '../../node_modules/selectize/dist/css/selectize.default.css';
-import '../../node_modules/angular-loading-bar/build/loading-bar.min.css';
-import '../../node_modules/sweetalert/dist/sweetalert.css';
-// import '../../node_modules/leaflet.markercluster/dist/MarkerCluster.css;
-// import '../../node_modules/leaflet.markercluster/dist/MarkerClusterDefault.css;
+import 'leaflet/dist/leaflet.css';
+import 'selectize/dist/css/selectize.default.css';
+import 'angular-loading-bar/build/loading-bar.min.css';
+import 'sweetalert/dist/sweetalert.css';
+// import 'leaflet.markercluster/dist/MarkerCluster.css';
+// import 'leaflet.markercluster/dist/MarkerClusterDefault.css';
 
 import 'angular';
 import 'angular-ui-router';
