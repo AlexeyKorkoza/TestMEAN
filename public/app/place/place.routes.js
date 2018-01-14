@@ -10,7 +10,10 @@ function routes($stateProvider) {
             template: listView,
             controller: 'listPlacesCtrl',
             controllerAs: 'vm',
-            module: 'places'
+            module: 'places',
+            resolve: {
+                places: placeService => placeService.getAll()
+            }
         })
         .state('places_new', {
             url: '/places/add',

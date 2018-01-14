@@ -1,19 +1,16 @@
-listTypesCtrl.$inject = ['$state', 'typeService'];
+listTypesCtrl.$inject = ['typeService', 'types'];
 
-function listTypesCtrl($state, typeService) {
+function listTypesCtrl(typeService, types) {
 
   const vm = this;
-  vm.types = '';
+  vm.types = [];
   vm.remove = remove;
   vm.activate = activate;
 
   activate();
 
   function activate() {
-    typeService.getAll()
-        .then(response => {
-      vm.types = response.data;
-    });
+    vm.types = types.data;
   }
 
   function remove(id, index) {

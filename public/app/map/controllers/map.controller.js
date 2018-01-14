@@ -1,8 +1,9 @@
 import angular from 'angular';
+import config from '../config/config';
 
-mapCtrl.$inject = ['cfpLoadingBar', 'placeService', 'typeService'];
+mapCtrl.$inject = ['cfpLoadingBar', 'placeService', 'places', 'types'];
 
-function mapCtrl(cfpLoadingBar, placeService, typeService) {
+function mapCtrl(cfpLoadingBar, placeService, places, types) {
 
   const vm = this;
   vm.group_markers = [];
@@ -18,18 +19,9 @@ function mapCtrl(cfpLoadingBar, placeService, typeService) {
   function activate() {
 
     angular.extend(vm, {
-      grodno: {
-        lat: 53.6834599,
-        lng: 23.8342648,
-        zoom: 13
-      },
-      markers: {},
-      tiles: {
-        url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        options: {
-          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }
-      }
+      grodno: config.leaflet.center,
+      markers: config.leaflet.markers,
+      tiles: config.leaflet.titles
     });
 
     vm.myConfig = {
@@ -47,34 +39,28 @@ function mapCtrl(cfpLoadingBar, placeService, typeService) {
   }
 
   function getAllTypes() {
-    typeService.getAll()
-        .then(response => {
-        vm.getData = response.data;
+        vm.getData = types.data;
         vm.select.push({
           value: 0,
           text: 'Все объекты'
         });
-        if (!response.data) {
-            response.data.forEach(item => {
+        if (!types.data) {
+            types.data.forEach(item => {
                 vm.select.push({
                     value: item.id_type,
                     text: item.name_type
                 });
             });
         }
-      });
   }
 
   function getAllPlaces() {
-    placeService.getAll()
-        .then(response => {
-        vm.addPlaceInMap(response.data);
-      });
+      vm.addPlaceInMap(places.data);
   }
 
-  function addPlaceInMap(response) {
+  function addPlaceInMap(places) {
     if (!vm.getData) {
-     response.forEach((item, i) => {
+     places.forEach((item, i) => {
         const typeOfPlace = vm.getData[item.id_type - 1].name_type;
         const nameOfImage = vm.getData[item.id_type - 1].image;
         const lat = parseFloat(item.lat);

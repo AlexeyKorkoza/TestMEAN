@@ -10,7 +10,10 @@ function routes($stateProvider) {
             template: listView,
             controller: 'listTypesCtrl',
             controllerAs: 'vm',
-            module: 'types'
+            module: 'types',
+            resolve: {
+                types: typeService => typeService.getAll()
+            }
         })
         .state('types_new', {
             url: '/types/add',

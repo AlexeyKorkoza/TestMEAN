@@ -11,7 +11,11 @@ function routes($stateProvider, $urlRouterProvider) {
             template: mapView,
             controller: 'mapCtrl',
             controllerAs: 'vm',
-            module: 'map'
+            module: 'map',
+            resolve: {
+                types: typeService => typeService.getAll(),
+                places: placeService => placeService.getAll()
+            }
         })
 }
 

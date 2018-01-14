@@ -1,20 +1,16 @@
-listPlacesCtrl.$inject = ['$state', 'placeService'];
+listPlacesCtrl.$inject = ['placeService', 'places'];
 
-function listPlacesCtrl($state, placeService) {
+function listPlacesCtrl(placeService, places) {
 
   const vm = this;
-  vm.places = '';
+  vm.places = [];
   vm.activate = activate;
   vm.remove = remove;
 
   activate();
 
   function activate() {
-
-    placeService.getAll()
-        .then(response => {
-      vm.places = response.data;
-    });
+    vm.places = places.data;
   }
 
   function remove(id, index) {
