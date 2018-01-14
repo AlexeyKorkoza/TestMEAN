@@ -3,6 +3,7 @@
 import express from 'express';
 import multer from 'multer';
 import typeController from '../controllers/typeController';
+import token from '../middlewares/token';
 const router = express();
 
 const storage = multer.diskStorage({
@@ -16,11 +17,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});
 
-router.get('/', typeController.getTypes);
-router.get('/:id', typeController.getTypeById);
-router.post('/add', upload.any(), typeController.addType);
-router.put('/:id', upload.any(), typeController.updateTypeWithImage);
-router.put('/:id', typeController.updateTypeWithoutImage);
-router.delete('/:id', typeController.removeType);
+router.get('/', token.required, typeController.getTypes);
+router.get('/:id', token.required, typeController.getTypeById);
+router.post('/add', token.required, upload.any(), typeController.addType);
+router.put('/:id', token.required, upload.any(), typeController.updateTypeWithImage);
+router.put('/:id', token.required, typeController.updateTypeWithoutImage);
+router.delete('/:id', token.required, typeController.removeType);
 
 export default router;
