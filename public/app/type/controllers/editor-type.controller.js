@@ -77,7 +77,7 @@ function editorTypeCtrl($state, Upload, typeService) {
                         'Please, click ОК for continue',
                         'success'
                     );
-                    $state.go('types_all');
+                    $state.go('types');
                 })
                 .catch(() => {
                     swal(

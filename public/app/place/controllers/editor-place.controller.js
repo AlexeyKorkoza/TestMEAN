@@ -76,7 +76,7 @@ function editorPlaceCtrl($state, typeService, placeService) {
                         'Please, click ОК for continue',
                         'success'
                     );
-                    $state.go('places_all');
+                    $state.go('places');
                 })
                 .catch(() => {
                     swal(
