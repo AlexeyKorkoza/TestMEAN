@@ -13,7 +13,7 @@ const buildMenu = () => [
     },
     {
         item: 'Places',
-        link: 'places_all',
+        link: 'places',
         class: 'fa fa-map-marker fa-fw'
     },
     {

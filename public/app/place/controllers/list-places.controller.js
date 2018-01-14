@@ -5,7 +5,6 @@ function listPlacesCtrl($state, placeService) {
   const vm = this;
   vm.places = '';
   vm.activate = activate;
-  vm.edit = edit;
   vm.remove = remove;
 
   activate();
@@ -16,10 +15,6 @@ function listPlacesCtrl($state, placeService) {
         .then(response => {
       vm.places = response.data;
     });
-  }
-
-  function edit(place) {
-    $state.go('place.one', { id: place._id });
   }
 
   function remove(id, index) {
