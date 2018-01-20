@@ -3,7 +3,7 @@ editorTypeCtrl.$inject = ['$state', 'Upload', 'typeService'];
 function editorTypeCtrl($state, Upload, typeService) {
 
     const vm = this;
-    vm.getAllTypes = '';
+    vm.types = [];
     vm.title = $state.params.id ? 'Edit' : 'Add';
     vm.filename = 'Icon was not chosen';
     vm.changeFilename = changeFilename;
@@ -13,7 +13,10 @@ function editorTypeCtrl($state, Upload, typeService) {
     activate();
 
     function activate() {
-        vm.getAllTypes = typeService.getAll();
+        typeService.getAll()
+            .then(response => {
+                vm.types = response.data;
+            });
         const id = $state.params.id;
         if (id) {
             typeService.getTypeById(id)
@@ -59,9 +62,9 @@ function editorTypeCtrl($state, Upload, typeService) {
                 });
         } else {
             let max = 0;
-            if (vm.getAllTypes.length > 0) {
-                max = vm.getAllTypes[0].id_type;
-                vm.getAllTypes.forEach(item => {
+            if (vm.types.length > 0) {
+                max = vm.types[0].id_type;
+                vm.types.forEach(item => {
                     if (item.id_type > max) {
                         max = item.id_type;
                     }
