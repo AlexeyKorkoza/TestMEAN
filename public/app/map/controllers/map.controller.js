@@ -1,5 +1,5 @@
 import angular from 'angular';
-import config from '../config/config';
+import config from '../../config/config';
 
 mapCtrl.$inject = ['cfpLoadingBar', 'placeService', 'places', 'types'];
 
@@ -7,7 +7,7 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
 
   const vm = this;
   vm.group_markers = [];
-  vm.select = [];
+  vm.typess = [];
   vm.getAllPlaces = getAllPlaces;
   vm.getAllTypes = getAllTypes;
   vm.addPlaceInMap = addPlaceInMap;
@@ -24,14 +24,7 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
       tiles: config.leaflet.titles
     });
 
-    vm.myConfig = {
-      create: false,
-      valueField: 'value',
-      labelField: 'text',
-      delimiter: '|',
-      placeholder: 'Choose type object',
-      maxItems: 1
-    };
+    vm.myConfig = config.select;
     cfpLoadingBar.start();
     vm.getAllTypes();
     vm.getAllPlaces();
@@ -39,19 +32,14 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
   }
 
   function getAllTypes() {
-        vm.getData = types.data;
-        vm.select.push({
+      vm.types = types.data.map(item => ({
+          value: item.id_type,
+          text: item.name_type
+      }));
+      vm.types.unshift({
           value: 0,
           text: 'All objects'
-        });
-        if (!types.data) {
-            types.data.forEach(item => {
-                vm.select.push({
-                    value: item.id_type,
-                    text: item.name_type
-                });
-            });
-        }
+      });
   }
 
   function getAllPlaces() {
@@ -59,7 +47,7 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
   }
 
   function addPlaceInMap(places) {
-    if (!vm.getData) {
+    if (!vm.types) {
      places.forEach((item, i) => {
         const typeOfPlace = vm.getData[item.id_type - 1].name_type;
         const nameOfImage = vm.getData[item.id_type - 1].image;

@@ -27,7 +27,10 @@ function routes($stateProvider) {
             template: editorView,
             controller: 'editorPlaceCtrl',
             controllerAs: 'vm',
-            module: 'places'
+            module: 'places',
+            resolve: {
+                types: typeService => typeService.getAll()
+            }
         })
 }
 

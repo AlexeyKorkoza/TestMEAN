@@ -12,5 +12,13 @@ export default {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }
         }
+    },
+    select: {
+        create: false,
+        valueField: 'value',
+        labelField: 'text',
+        delimiter: '|',
+        placeholder: 'Choose type object',
+        maxItems: 1
     }
 }

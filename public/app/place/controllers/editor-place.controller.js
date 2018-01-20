@@ -1,6 +1,8 @@
-editorPlaceCtrl.$inject = ['$state', 'typeService', 'placeService'];
+import config from '../../config/config';
 
-function editorPlaceCtrl($state, typeService, placeService) {
+editorPlaceCtrl.$inject = ['$state', 'typeService', 'placeService', 'types'];
+
+function editorPlaceCtrl($state, typeService, placeService, types) {
 
     const vm = this;
     vm.select = [];
@@ -11,16 +13,8 @@ function editorPlaceCtrl($state, typeService, placeService) {
     activate();
 
     function activate() {
-
-        vm.myConfig = {
-            create: false,
-            valueField: 'value',
-            labelField: 'text',
-            delimiter: '|',
-            placeholder: 'Choose type object',
-            maxItems: 1
-        };
-
+        vm.myConfig = config.select;
+        vm.select = types.data;
         typeService.getAll()
             .then(response => {
                 response.data.forEach(item => {
