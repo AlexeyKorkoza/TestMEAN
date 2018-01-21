@@ -8,6 +8,13 @@ import {
 
 export default {
 
+    /**
+     * @request /api/v1/profile
+     * @param req
+     * @param res
+     * @param next
+     * @returns {Promise.<void>}
+     */
     async updateProfile(req, res, next) {
         try {
             const id = req.payload.id;

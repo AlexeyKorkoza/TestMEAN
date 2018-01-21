@@ -3,6 +3,12 @@ import logger from '../utils/logger';
 
 export default {
 
+  /**
+   * @request GET /api/v1/places
+   * @param req
+   * @param res
+   * @returns {Promise.<void>}
+  */
   async getPlaces(req, res) {
     try {
       const places = await Place.find({});
@@ -15,6 +21,12 @@ export default {
     }
   },
 
+    /**
+     * @request GET /api/v1/places/:id
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+    */
   async getPlaceById(req, res) {
     try {
       const place = await Place.findOne({_id: req.params.id});
@@ -31,6 +43,12 @@ export default {
     }
   },
 
+    /**
+     * @request GET /api/v1/places/type/:id
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async getPlacesByType(req, res) {
     try {
       const places = await Place.find({id_type: req.params.id});
@@ -46,7 +64,12 @@ export default {
       res.status(500).json(err);
     }
   },
-
+    /**
+     * @request POST /api/v1/places
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async addPlace(req, res) {
     try {
       const place = new Place({
@@ -73,6 +96,12 @@ export default {
     }
   },
 
+    /**
+     * @request PUT /api/v1/places/:id
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async updatePlace(req, res) {
     try {
       const place = await Place.findById(req.params.id);
@@ -104,6 +133,12 @@ export default {
     }
   },
 
+    /**
+     * @request DELETE /api/v1/places/:id
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async removePlace(req, res) {
     try {
       logger.info('Remove place', req.params.id);

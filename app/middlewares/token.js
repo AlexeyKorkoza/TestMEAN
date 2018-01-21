@@ -5,6 +5,10 @@ import jsonWebToken from 'jsonwebtoken';
 import config from '../config';
 import UnauthorizedError from '../errors/unauthorized';
 
+/**
+ * @param req
+ * @returns {*}
+ */
 const getTokenFromHeader = req => {
 
     if (req.headers.authorization) {
@@ -26,6 +30,9 @@ const getTokenFromHeader = req => {
 
 const userProperty = 'payload';
 
+/**
+ * @type {{required: middleware, generateJWT: (function(*))}}
+ */
 const token = {
   required: jwt({
     secret: config.jwtSecret,

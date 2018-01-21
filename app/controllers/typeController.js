@@ -4,6 +4,12 @@ import logger from '../utils/logger';
 
 export default {
 
+    /**
+     * @request GET /api/v1/types
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async getTypes(req, res) {
     try {
       logger.info('Get types');
@@ -16,6 +22,12 @@ export default {
     }
   },
 
+    /**
+     * @request GET /api/v1/types/:id
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async getTypeById(req, res) {
     try {
       logger.info('Get type by id', req.params);
@@ -32,6 +44,12 @@ export default {
     }
   },
 
+    /**
+     * @request POST /api/v1/types
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async addType(req, res) {
     try {
       if (req.files) {
@@ -56,6 +74,12 @@ export default {
     }
   },
 
+    /**
+     * @request PUT /api/v1/types/:id
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async updateTypeWithImage(req, res, next) {
     if (req.files.length === 1) {
       try {
@@ -86,6 +110,12 @@ export default {
     }
   },
 
+    /**
+     * @request PUT /api/v1/types/:id
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async updateTypeWithoutImage(req, res) {
     try {
       logger.info('Update only data of type', req.body);
@@ -116,6 +146,12 @@ export default {
     }
   },
 
+    /**
+     * @request DELETE /api/v1/types/:id
+     * @param req
+     * @param res
+     * @returns {Promise.<void>}
+     */
   async removeType(req, res) {
     try {
       logger.info('Remove type', req.params);
@@ -134,6 +170,10 @@ export default {
   },
 }
 
+/**
+ * @param id
+ * @returns {Promise.<void>}
+ */
 async function removeImage(id) {
   const type = await Type.findOne({id_type: id});
   if (type) {
