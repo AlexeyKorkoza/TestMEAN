@@ -8,6 +8,7 @@ import 'leaflet/dist/leaflet.css';
 import 'selectize/dist/css/selectize.default.css';
 import 'angular-loading-bar/build/loading-bar.min.css';
 import 'sweetalert/dist/sweetalert.css';
+import 'angular-google-places-autocomplete/src/autocomplete.css';
 // import 'leaflet.markercluster/dist/MarkerCluster.css';
 // import 'leaflet.markercluster/dist/MarkerClusterDefault.css';
 
@@ -23,6 +24,7 @@ import 'ui-leaflet';
 import 'angular-jwt';
 import 'immutable';
 import 'sweetalert';
+import 'angular-google-places-autocomplete';
 
 import mapModule from './map/map.module';
 import placesModule from './place/place.module';
@@ -39,7 +41,8 @@ const packageModules = [
     'wt.responsive',
     'nemLogging',
     'ui-leaflet',
-    'angular-jwt'
+    'angular-jwt',
+    'google.places'
 ];
 
 function processAllModules(customModules) {

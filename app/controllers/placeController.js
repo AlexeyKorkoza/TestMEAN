@@ -83,10 +83,13 @@ export default {
 
       place.name_place = req.body.name_place;
       place.description = req.body.description;
-      place.lat = req.body.lat;
-      place.lng = req.body.lng;
-      place.address = req.body.address;
       place.id_type = req.body.id_type;
+
+      if (req.body.lat && req.body.lng && req.body.address) {
+          place.address = req.body.address;
+          place.lat = req.body.lat;
+          place.lng = req.body.lng;
+      }
 
       const result = place.save();
       if (!result) {
