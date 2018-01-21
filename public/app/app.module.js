@@ -9,8 +9,8 @@ import 'selectize/dist/css/selectize.default.css';
 import 'angular-loading-bar/build/loading-bar.min.css';
 import 'sweetalert/dist/sweetalert.css';
 import 'angular-google-places-autocomplete/src/autocomplete.css';
-// import 'leaflet.markercluster/dist/MarkerCluster.css';
-// import 'leaflet.markercluster/dist/MarkerClusterDefault.css';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 
 import 'angular';
 import 'angular-ui-router';
@@ -20,11 +20,13 @@ import 'angular-selectize2/dist/selectize.js';
 import 'angular-simple-logger/dist/angular-simple-logger.min';
 import 'ng-file-upload';
 import 'angular-responsive-tables';
+import 'leaflet/dist/leaflet-src';
 import 'ui-leaflet';
 import 'angular-jwt';
 import 'immutable';
 import 'sweetalert';
 import 'angular-google-places-autocomplete';
+import 'leaflet.markercluster/dist/leaflet.markercluster-src';
 
 import mapModule from './map/map.module';
 import placesModule from './place/place.module';
