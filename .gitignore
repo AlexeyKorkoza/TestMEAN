@@ -7,3 +7,4 @@ debug.log
 .vscode/
 .env
 app/logs
+uploads/
