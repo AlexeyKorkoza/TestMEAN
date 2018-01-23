@@ -47,11 +47,10 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
   }
 
   function addPlaceInMap(places) {
-    console.log('Places', places);
-    if (vm.types) {
+    if (types.data) {
      places.forEach((item, i) => {
-        const typeOfPlace = vm.types[item.id_type - 1].name_type;
-        const nameOfImage = vm.types[item.id_type - 1].image;
+        const typeOfPlace = types.data[item.id_type - 1].name_type;
+        const nameOfImage = types.data[item.id_type - 1].image;
         const lat = parseFloat(item.lat);
         const lng = parseFloat(item.lng);
         vm.markers['marker' + (i + 1)] = {
