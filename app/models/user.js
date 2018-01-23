@@ -4,6 +4,7 @@ import config from '../config';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  _id: Schema.Types.ObjectId,
   username: {
     type: String,
     unique: true
@@ -16,7 +17,13 @@ const userSchema = new Schema({
   date: {
     type: Date,
     default: Date.now()
-  }
+  },
+  types: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Type'
+    }
+  ]
 });
 
 userSchema.methods.generateJWT = user => {

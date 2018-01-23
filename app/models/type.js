@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const Type = mongoose.model('Type', {
-  id_type: Number,
+  _id: Schema.Types.ObjectId,
   name_type: {
     type: String,
     unique: true
@@ -11,7 +11,13 @@ const Type = mongoose.model('Type', {
   date: {
     type: Date,
     default: Date.now()
-  }
+  },
+  places: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Place'
+    }
+  ]
 });
 
 export default Type;
