@@ -23,6 +23,12 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Type'
     }
+  ],
+  places: [
+    {
+      place: Schema.Types.ObjectId,
+      ref: 'Place'
+    }
   ]
 });
 
