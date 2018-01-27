@@ -26,7 +26,7 @@ const userSchema = new Schema({
   ],
   places: [
     {
-      place: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Place'
     }
   ]
