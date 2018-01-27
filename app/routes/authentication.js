@@ -1,10 +1,6 @@
 'use strict';
 
 import express from 'express';
-import {
-    isLoggedIn,
-    loadAuthUserMiddleware
-} from '../middlewares/auth';
 import authController from '../controllers/authController';
 const router = express();
 
