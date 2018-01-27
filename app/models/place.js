@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const Place = mongoose.model('Place', {
-  _id: Schema.Types.ObjectId,
   name_place: String,
   description: String,
   lat: String,
