@@ -16,8 +16,8 @@ function editorPlaceCtrl($state, placeService, types) {
     function activate() {
         vm.myConfig = config.select;
         vm.types = types.data.map(item => ({
-            value: item.id_type,
-            text: item.name_type
+            value: item._id,
+            text: item.name
         }));
 
         const id = $state.params.id;
@@ -25,10 +25,10 @@ function editorPlaceCtrl($state, placeService, types) {
             placeService.getPlaceById($state.params.id)
                 .then(response => {
                     vm.editData = {
-                        name_place: response.data.name_place,
+                        name: response.data.name,
                         description: response.data.description,
                         address: response.data.address,
-                        id_type: response.data.id_type
+                        _id: response.data._id
                     };
                 });
         }
@@ -36,9 +36,9 @@ function editorPlaceCtrl($state, placeService, types) {
 
     function buildPlace() {
         const place = {
-            name_place: vm.editData.name_place,
+            name: vm.editData.name,
             description: vm.editData.description,
-            id_type: vm.editData.id_type
+            _id: vm.editData._id
         };
         if (vm.editData.address.geometry) {
             place.address =  vm.editData.address.formatted_address;

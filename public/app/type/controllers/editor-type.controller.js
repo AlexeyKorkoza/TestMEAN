@@ -22,7 +22,7 @@ function editorTypeCtrl($state, Upload, typeService) {
             typeService.getTypeById(id)
                 .then(response => {
                     vm.editData = {
-                        typename: response.data.name_type
+                        name: response.data.name
                     };
                 });
         }
@@ -38,7 +38,7 @@ function editorTypeCtrl($state, Upload, typeService) {
 
     function save() {
         if (vm.editData.file) {
-            Upload.rename(vm.editData.file, vm.editData.typename);
+            Upload.rename(vm.editData.file, vm.editData.name);
         }
 
         const id = $state.params.id;
@@ -61,17 +61,7 @@ function editorTypeCtrl($state, Upload, typeService) {
                     );
                 });
         } else {
-            let max = 0;
-            if (vm.types.length > 0) {
-                max = vm.types[0].id_type;
-                vm.types.forEach(item => {
-                    if (item.id_type > max) {
-                        max = item.id_type;
-                    }
-                });
-            }
-            max += 1;
-            vm.editData.id = max;
+            console.log(vm.editData, vm.editData.file);
             typeService.create(vm.editData, vm.editData.file)
                 .then(response => {
                     vm.editData = response.data;

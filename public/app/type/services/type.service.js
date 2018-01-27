@@ -20,8 +20,8 @@ function typeService($http, Upload) {
     return Upload.upload({
       url: '/api/v1/types/add',
       data: {
-        file: file,
-        data: data
+        file,
+        data
       }
     });
   }
@@ -31,14 +31,14 @@ function typeService($http, Upload) {
       url: '/api/v1/types/' + id,
       method: 'PUT',
       data: {
-        file: file,
-        data: data
+        file,
+        data
       }
     });
   }
 
   function remove(id) {
-    return $http.delete('/api/v1/types/' + id, {params: {id: id}});
+    return $http.delete('/api/v1/types/' + id, {params: {id}});
   }
 
   function getTypeById(id) {

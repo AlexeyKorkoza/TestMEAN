@@ -1,4 +1,6 @@
 import Place from '../models/place';
+import User from '../models/user';
+import Type from '../models/type';
 import logger from '../utils/logger';
 
 export default {
@@ -11,9 +13,18 @@ export default {
   */
   async getPlaces(req, res) {
     try {
-      const places = await Place.find({});
+      const { _id } = req.session.user;
+      const attributes = {
+        'password': 0,
+        'email': 0,
+        'date': 0,
+        'username': 0,
+        'types': 0
+      };
+
+      const places = await User.findById(_id).select(attributes).populate('places');
       logger.info('Get places');
-      return res.status(200).json(places);
+      return res.status(200).json(places.places);
     }
     catch (err) {
       logger.error('Error: Get places', err);
@@ -29,7 +40,8 @@ export default {
     */
   async getPlaceById(req, res) {
     try {
-      const place = await Place.findOne({_id: req.params.id});
+      const { id } = req.params;
+      const place = await Place.findById(id);
       logger.info('Get place by id', req.params);
       if (!place) {
         return res.status(200).json('Place is not found');
@@ -51,13 +63,16 @@ export default {
      */
   async getPlacesByType(req, res) {
     try {
-      const places = await Place.find({id_type: req.params.id});
+      const { id } = req.params;
+      console.log('Params', req.params);
+      const type = await Type.findById(id).populate('places');
+      console.log('places', type);
       logger.info('Get place by type', req.params);
-      if (!places.length) {
+      if (!type) {
         return res.status(200).json('Places are not found');
       }
 
-      return res.status(200).json(places);
+      return res.status(200).json(type.places);
     }
     catch (err) {
       logger.error('Error: Get place by type', err);
@@ -73,19 +88,30 @@ export default {
   async addPlace(req, res) {
     try {
       const place = new Place({
-        name_place: req.body.name_place,
+        name: req.body.name,
         description: req.body.description,
         lat: req.body.lat,
         lng: req.body.lng,
-        address: req.body.address,
-        name_type: req.body.name_type,
-        id_type: req.body.id_type
+        address: req.body.address
       });
 
       logger.info('Add place', req.body);
-      const result = await place.save();
+      let result = await place.save();
       if (!result) {
           return res.status(400).json('Place is not added')
+      }
+
+      const { _id } = req.session.user;
+      const idPlace = result._id;
+      result = await User.findByIdAndUpdate(_id, {$push: {places: idPlace}}, {new: true});
+      if (!result) {
+        return res.status(400).json('Id place is not added in collection User');
+      }
+
+      const idType = req.body._id;
+      result = await Type.findByIdAndUpdate(idType, {$push: {places: idPlace}}, {new: true});
+      if (!result) {
+        return res.status(400).json('Id place is not added in collection Type');
       }
 
       return res.status(200).json('Place is added');
@@ -110,7 +136,7 @@ export default {
         return res.status(400).json('place is not found');
       }
 
-      place.name_place = req.body.name_place;
+      place.name = req.body.name;
       place.description = req.body.description;
       place.id_type = req.body.id_type;
 

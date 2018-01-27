@@ -1,4 +1,5 @@
 import Type from '../models/type';
+import User from '../models/user';
 import fs from 'fs';
 import logger from '../utils/logger';
 
@@ -13,8 +14,16 @@ export default {
   async getTypes(req, res) {
     try {
       logger.info('Get types');
-      const types = await Type.find({});
-      return res.status(200).json(types);
+      const { _id } = req.session.user;
+      const attributes = {
+        'password': 0,
+        'username': 0,
+        'date': 0,
+        'email': 0,
+        'places': 0
+      };
+      const types = await User.findById(_id).select(attributes).populate('types');
+      return res.status(200).json(types.types);
     }
     catch (err) {
       logger.error('Error: Get types', err);
@@ -54,15 +63,20 @@ export default {
     try {
       if (req.files) {
         const type = new Type({
-          id_type: req.body.data.id,
-          name_type: req.body.data.typename,
+          name: req.body.data.name,
           image: req.files[0].filename
         });
 
         logger.info('Add type', req.files, req.body);
-        const result = await type.save();
+        let result = await type.save();
         if (!result) {
-          return res.status(400).json('Type is not found')
+          return res.status(400).json('Type is not added')
+        }
+
+        const { _id } = req.session.user;
+        result = await User.findByIdAndUpdate(_id, {$push: {types: result._id}}, {new: true});
+        if (!result) {
+          return res.status(400).json('Id of type is not added in collection User')
         }
 
         return res.status(200).json('Type is added');
@@ -91,7 +105,7 @@ export default {
           return res.status(400).json('Type is not found');
         }
 
-        type.name_type = req.body.data.typename;
+        type.name = req.body.data.name;
         type.image = req.files[0].filename;
 
         const result = type.save();
@@ -127,10 +141,10 @@ export default {
 
       const arr = type.image.split('.');
       const index = arr.length - 1;
-      const newName = req.body.data.typename + '.' + arr[index];
+      const newName = req.body.data.name + '.' + arr[index];
       fs.rename('uploads/' + type.image, 'uploads/' + newName);
 
-      type.name_type = req.body.data.typename;
+      type.name = req.body.data.type;
       type.image = newName;
 
       const result = await type.save();
