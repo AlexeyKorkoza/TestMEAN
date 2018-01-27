@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const Place = mongoose.model('Place', {
-  name_place: String,
+  name: String,
   description: String,
   lat: String,
   lng: String,
