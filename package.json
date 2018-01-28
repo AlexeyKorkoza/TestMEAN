@@ -10,10 +10,10 @@
     "webpack:watch": "NODE_ENV=development webpack -d --watch",
     "webpack:build": "NODE_ENV=production webpack -p",
     "stylelint": "stylelint app/assets/css/*.css",
-    "eslint:backend": "eslint *.js",
-    "eslint-fix:backend": "eslint *.js --fix",
-    "eslint:frontend": "eslint app/*.js",
-    "eslint-fix:frontend": "eslint app/*.js --fix"
+    "eslint:backend": "eslint app/*.js",
+    "eslint-fix:backend": "eslint app/*.js --fix",
+    "eslint:frontend": "eslint public/app/*.js",
+    "eslint-fix:frontend": "eslint publicapp/*.js --fix"
   },
   "repository": {
     "type": "git",
@@ -81,7 +81,9 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.7",
-    "eslint": "^4.6.1",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "font-awesome-webpack": "0.0.5-beta.2",
