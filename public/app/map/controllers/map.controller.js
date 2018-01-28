@@ -47,7 +47,6 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
   }
 
   function addPlaceInMap(places) {
-    console.log('PLACES', places);
     if (types.data) {
       types.data.forEach(type => {
         type.places.forEach((id, i) => {
@@ -85,7 +84,7 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
   function getPlacesByType() {
     cfpLoadingBar.start();
     const id = vm.type;
-    if (id === 0) {
+    if (id === '0') {
       vm.getAllPlaces();
     } else {
       vm.markers = {};
