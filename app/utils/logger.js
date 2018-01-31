@@ -9,16 +9,16 @@ const logger = new winston.Logger({
             json: true,
             maxsize: 5242880,
             maxFiles: 5,
-            colorize: false
+            colorize: false,
         }),
         new winston.transports.Console({
             level: 'debug',
             handleExceptions: true,
             json: false,
-            colorize: true
-        })
+            colorize: true,
+        }),
     ],
-    exitOnError: false
+    exitOnError: false,
 });
 
 export default logger;

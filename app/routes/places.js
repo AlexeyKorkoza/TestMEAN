@@ -1,8 +1,9 @@
-'use strict';
+
 
 import express from 'express';
 import placeController from '../controllers/placeController';
 import token from '../middlewares/token';
+
 const router = express();
 
 router.get('/', token.required, placeController.getPlaces);

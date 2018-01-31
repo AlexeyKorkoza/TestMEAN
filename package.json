@@ -11,9 +11,9 @@
     "webpack:build": "NODE_ENV=production webpack -p",
     "stylelint": "stylelint app/assets/css/*.css",
     "eslint:backend": "eslint app/**/*.js",
-    "eslint-fix:backend": "eslint app/*.js --fix",
+    "eslint-fix:backend": "eslint app/**/*.js --fix",
     "eslint:frontend": "eslint public/app/*.js",
-    "eslint-fix:frontend": "./node_modules/.bin/eslint public/app/**/*.js --fix"
+    "eslint-fix:frontend": "eslint public/app/**/*.js --fix"
   },
   "repository": {
     "type": "git",
