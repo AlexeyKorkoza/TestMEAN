@@ -14,9 +14,9 @@ function routes($stateProvider, $urlRouterProvider) {
             module: 'map',
             resolve: {
                 types: typeService => typeService.getAll(),
-                places: placeService => placeService.getAll()
-            }
-        })
+                places: placeService => placeService.getAll(),
+            },
+        });
 }
 
 export default routes;

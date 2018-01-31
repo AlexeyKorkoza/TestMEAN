@@ -1,21 +1,20 @@
 authenticationService.inject = ['$http', '$state'];
 
-function authenticationService ($http, $state) {
-  const service = {
-    login,
-    logout
-  };
+function authenticationService($http, $state) {
+    const service = {
+        login,
+        logout,
+    };
 
-  return service;
+    return service;
 
-  function login(data) {
-    return $http.post('/api/v1/auth/login', data);
-  }
+    function login(data) {
+        return $http.post('/api/v1/auth/login', data);
+    }
 
-  function logout() {
-    localStorage.removeItem('token');
-    $state.go('signin');
-  }
+    function logout() {
+        $state.go('signin');
+    }
 }
 
 export default authenticationService;

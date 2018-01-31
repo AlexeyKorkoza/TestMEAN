@@ -1,18 +1,14 @@
-'use strict';
 
-describe("editPlaceCtrl", () => {
 
-  let vm = {};
+describe('editPlaceCtrl', () => {
+    let vm = {};
 
-  beforeEach(module("myApp"));
-  beforeEach(
-    inject($controller => {
-      vm = $controller("editPlaceCtrl", {}, {});
-    })
-  );
+    beforeEach(module('myApp'));
+    beforeEach(inject($controller => {
+        vm = $controller('editPlaceCtrl', {}, {});
+    }));
 
-  it('Check initialize of controller', () => {
-    expect(vm).not.toBeUndefined();
-  });
-
+    it('Check initialize of controller', () => {
+        expect(vm).not.toBeUndefined();
+    });
 });

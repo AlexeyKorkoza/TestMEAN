@@ -3,7 +3,6 @@ import config from '../../config/config';
 editorPlaceCtrl.$inject = ['$state', 'placeService', 'types'];
 
 function editorPlaceCtrl($state, placeService, types) {
-
     const vm = this;
     vm.types = [];
     vm.activate = activate;
@@ -17,7 +16,7 @@ function editorPlaceCtrl($state, placeService, types) {
         vm.myConfig = config.select;
         vm.types = types.data.map(item => ({
             value: item._id,
-            text: item.name
+            text: item.name,
         }));
 
         const id = $state.params.id;
@@ -28,7 +27,7 @@ function editorPlaceCtrl($state, placeService, types) {
                         name: response.data.name,
                         description: response.data.description,
                         address: response.data.address,
-                        _id: response.data._id
+                        _id: response.data._id,
                     };
                 });
         }
@@ -38,10 +37,10 @@ function editorPlaceCtrl($state, placeService, types) {
         const place = {
             name: vm.editData.name,
             description: vm.editData.description,
-            _id: vm.editData._id
+            _id: vm.editData._id,
         };
         if (vm.editData.address.geometry) {
-            place.address =  vm.editData.address.formatted_address;
+            place.address = vm.editData.address.formatted_address;
             place.lat = vm.editData.address.geometry.location.lat();
             place.lng = vm.editData.address.geometry.location.lng();
         }
@@ -60,7 +59,7 @@ function editorPlaceCtrl($state, placeService, types) {
                     swal(
                         `${result.data}`,
                         'Please, click OK for continue',
-                        'success'
+                        'success',
                     );
                     $state.go('places');
                 })
@@ -68,7 +67,7 @@ function editorPlaceCtrl($state, placeService, types) {
                     swal(
                         'place was not updated',
                         'Check input data',
-                        'error'
+                        'error',
                     );
                 });
         } else {
@@ -77,7 +76,7 @@ function editorPlaceCtrl($state, placeService, types) {
                     swal(
                         'place was added',
                         'Please, click ОК for continue',
-                        'success'
+                        'success',
                     );
                     $state.go('places');
                 })
@@ -85,7 +84,7 @@ function editorPlaceCtrl($state, placeService, types) {
                     swal(
                         'place was not added',
                         'Check input data',
-                        'error'
+                        'error',
                     );
                 });
         }

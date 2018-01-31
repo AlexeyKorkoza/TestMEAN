@@ -4,23 +4,23 @@ const buildMenu = () => [
     {
         item: 'Map',
         link: 'map',
-        class: 'fa fa-globe fa-fw'
+        class: 'fa fa-globe fa-fw',
     },
     {
         item: 'Types',
         link: 'types',
-        class: 'fa fa-filter fa-fw'
+        class: 'fa fa-filter fa-fw',
     },
     {
         item: 'Places',
         link: 'places',
-        class: 'fa fa-map-marker fa-fw'
+        class: 'fa fa-map-marker fa-fw',
     },
     {
         item: 'Profile',
         link: 'profile',
-        class: 'fa fa-user fa-fw'
-    }
+        class: 'fa fa-user fa-fw',
+    },
 ];
 
 subMenu.$inject = ['$document'];
@@ -34,7 +34,6 @@ function subMenu($document) {
     return directive;
 
     function link(scope, element) {
-
         scope.items = buildMenu();
         scope.isOpen = false;
 
@@ -47,8 +46,7 @@ function subMenu($document) {
                 .find(event.target)
                 .length > 0;
 
-            if (isClickedElementChildOfPopup)
-                return;
+            if (isClickedElementChildOfPopup) { return; }
 
             scope.isOpen = false;
             scope.$apply();

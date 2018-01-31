@@ -9,8 +9,8 @@ function routes($stateProvider) {
             template,
             controller: 'profileCtrl',
             controllerAs: 'vm',
-            module: 'profile'
-        })
+            module: 'profile',
+        });
 }
 
 export default routes;

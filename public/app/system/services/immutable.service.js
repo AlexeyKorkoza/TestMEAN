@@ -1,7 +1,6 @@
 import Immutable from 'immutable';
 
 function immutableService() {
-
     const service = {
         buildProfile,
         updateProfile,
@@ -15,7 +14,7 @@ function immutableService() {
             id: window.user.id,
             username: window.user.username,
             email: window.user.email,
-            date: window.user.date
+            date: window.user.date,
         };
         return Immutable.Map(a);
     }
@@ -26,7 +25,6 @@ function immutableService() {
         window.user.date = user.date;
         buildProfile();
     }
-
 }
 
 export default immutableService;

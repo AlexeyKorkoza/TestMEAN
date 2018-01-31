@@ -1,0 +1,46 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "jasmine": true
+  },
+  "globals": {
+    "window": true,
+    "swal": true,
+    "document": true,
+    "inject": true
+  },
+  "plugins": [
+    "angular",
+    "jasmine"
+  ],
+  "extends": [
+    "airbnb-base"
+  ],
+  "rules": {
+    "no-console": 0,
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "indent": [
+      "error",
+      4,
+      {
+        "FunctionDeclaration": {
+          "parameters": 1,
+          "body": 1
+        },
+        "FunctionExpression": {
+          "parameters": 1,
+          "body": 1
+        }
+      }
+    ],
+    "max-len": [
+      "error",
+      120,
+      2
+    ]
+  }
+}

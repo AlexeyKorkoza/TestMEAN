@@ -64,9 +64,7 @@ export default {
   async getPlacesByType(req, res) {
     try {
       const { id } = req.params;
-      console.log('Params', req.params);
       const type = await Type.findById(id).populate('places');
-      console.log('places', type);
       logger.info('Get place by type', req.params);
       if (!type) {
         return res.status(200).json('Places are not found');

@@ -1,7 +1,6 @@
 editorTypeCtrl.$inject = ['$state', 'Upload', 'typeService'];
 
 function editorTypeCtrl($state, Upload, typeService) {
-
     const vm = this;
     vm.types = [];
     vm.title = $state.params.id ? 'Edit' : 'Add';
@@ -22,7 +21,7 @@ function editorTypeCtrl($state, Upload, typeService) {
             typeService.getTypeById(id)
                 .then(response => {
                     vm.editData = {
-                        name: response.data.name
+                        name: response.data.name,
                     };
                 });
         }
@@ -49,7 +48,7 @@ function editorTypeCtrl($state, Upload, typeService) {
                     swal(
                         'type was edited successfully',
                         'Please, click ОК for continue',
-                        'success'
+                        'success',
                     );
                     $state.go('types');
                 })
@@ -57,18 +56,17 @@ function editorTypeCtrl($state, Upload, typeService) {
                     swal(
                         'type was not edited',
                         'Please, check input data',
-                        'error'
+                        'error',
                     );
                 });
         } else {
-            console.log(vm.editData, vm.editData.file);
             typeService.create(vm.editData, vm.editData.file)
                 .then(response => {
                     vm.editData = response.data;
                     swal(
                         'type of object was added',
                         'Please, click ОК for continue',
-                        'success'
+                        'success',
                     );
                     $state.go('types');
                 })
@@ -76,12 +74,11 @@ function editorTypeCtrl($state, Upload, typeService) {
                     swal(
                         'type of place was not added',
                         'type of place has already existed',
-                        'error'
+                        'error',
                     );
                 });
         }
     }
-
 }
 
 export default editorTypeCtrl;

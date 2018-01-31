@@ -1,9 +1,3 @@
-import '../vendor/bootstrap/dist/css/bootstrap.min.css';
-import '../vendor/font-awesome/css/font-awesome.min.css';
-import './assets/css/fonts.css';
-import './assets/css/style.css';
-import './assets/css/sidebar.css';
-import './assets/css/angular-responsive-tables.min.css';
 import 'leaflet/dist/leaflet.css';
 import 'selectize/dist/css/selectize.default.css';
 import 'angular-loading-bar/build/loading-bar.min.css';
@@ -12,7 +6,7 @@ import 'angular-google-places-autocomplete/src/autocomplete.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 
-import 'angular';
+import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-loading-bar';
 import 'angular-animate';
@@ -27,6 +21,13 @@ import 'immutable';
 import 'sweetalert';
 import 'angular-google-places-autocomplete';
 import 'leaflet.markercluster/dist/leaflet.markercluster-src';
+
+import '../vendor/bootstrap/dist/css/bootstrap.min.css';
+import '../vendor/font-awesome/css/font-awesome.min.css';
+import './assets/css/fonts.css';
+import './assets/css/style.css';
+import './assets/css/sidebar.css';
+import './assets/css/angular-responsive-tables.min.css';
 
 import mapModule from './map/map.module';
 import placesModule from './place/place.module';
@@ -44,7 +45,7 @@ const packageModules = [
     'nemLogging',
     'ui-leaflet',
     'angular-jwt',
-    'google.places'
+    'google.places',
 ];
 
 function processAllModules(customModules) {
@@ -59,5 +60,5 @@ processAllModules([
     placesModule,
     typesModule,
     profileModule,
-    systemModule
+    systemModule,
 ]);

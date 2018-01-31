@@ -12,8 +12,8 @@ function routes($stateProvider) {
             controllerAs: 'vm',
             module: 'places',
             resolve: {
-                places: placeService => placeService.getAll()
-            }
+                places: placeService => placeService.getAll(),
+            },
         })
         .state('places_new', {
             url: '/places/add',
@@ -22,8 +22,8 @@ function routes($stateProvider) {
             controllerAs: 'vm',
             module: 'places',
             resolve: {
-                types: typeService => typeService.getAll()
-            }
+                types: typeService => typeService.getAll(),
+            },
         })
         .state('places_one', {
             url: '/places/{id}',
@@ -32,9 +32,9 @@ function routes($stateProvider) {
             controllerAs: 'vm',
             module: 'places',
             resolve: {
-                types: typeService => typeService.getAll()
-            }
-        })
+                types: typeService => typeService.getAll(),
+            },
+        });
 }
 
 export default routes;

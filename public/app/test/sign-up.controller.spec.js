@@ -1,18 +1,14 @@
-'use strict';
 
-describe("signUpCtrl", () => {
 
-  let vm;
+describe('signUpCtrl', () => {
+    let vm;
 
-  beforeEach(module("myApp"));
-  beforeEach(
-    inject($controller => {
-      vm = $controller("signUpCtrl", {}, {});
-    })
-  );
+    beforeEach(module('myApp'));
+    beforeEach(inject($controller => {
+        vm = $controller('signUpCtrl', {}, {});
+    }));
 
-  it('Check initialize of controller', () => {
-    expect(vm).not.toBeUndefined();
-  });
-
+    it('Check initialize of controller', () => {
+        expect(vm).not.toBeUndefined();
+    });
 });

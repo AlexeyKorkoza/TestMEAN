@@ -12,23 +12,23 @@ function routes($stateProvider) {
             controllerAs: 'vm',
             module: 'types',
             resolve: {
-                types: typeService => typeService.getAll()
-            }
+                types: typeService => typeService.getAll(),
+            },
         })
         .state('types_new', {
             url: '/types/add',
             template: editorView,
             controller: 'editorTypeCtrl',
             controllerAs: 'vm',
-            module: 'types'
+            module: 'types',
         })
         .state('types_one', {
             url: '/types/{id}',
             template: editorView,
             controller: 'editorTypeCtrl',
             controllerAs: 'vm',
-            module: 'types'
-        })
+            module: 'types',
+        });
 }
 
 export default routes;

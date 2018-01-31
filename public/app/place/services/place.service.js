@@ -1,7 +1,6 @@
 placeService.$inject = ['$http'];
 
 function placeService($http) {
-
     const service = {
         getAll,
         create,
@@ -22,19 +21,19 @@ function placeService($http) {
     }
 
     function remove(id) {
-        return $http.delete('/api/v1/places/' + id, {params: {id: id}});
+        return $http.delete(`/api/v1/places/${id}`, { params: { id } });
     }
 
     function update(data, id) {
-        return $http.put('/api/v1/places/' + id, data);
+        return $http.put(`/api/v1/places/${id}`, data);
     }
 
     function getPlaceById(id) {
-        return $http.get('/api/v1/places/' + id);
+        return $http.get(`/api/v1/places/${id}`);
     }
 
     function getPlacesByType(id) {
-        return $http.get('/api/v1/places/type/' + id);
+        return $http.get(`/api/v1/places/type/${id}`);
     }
 }
 

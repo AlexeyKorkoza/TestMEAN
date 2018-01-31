@@ -38,7 +38,6 @@ export default {
             } else {
 
                 logger.info('Update password of user', req.body);
-                console.log('TOken', id);
                 const input = req.body;
 
                 let user = await User.findById(id);
