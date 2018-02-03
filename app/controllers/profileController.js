@@ -12,12 +12,11 @@ export default {
      * @request /api/v1/profile
      * @param req
      * @param res
-     * @param next
      * @returns {Promise.<void>}
      */
-    async updateProfile(req, res, next) {
+    async updateProfile(req, res) {
         try {
-            const id = req.payload.id;
+            const { id } = req.payload;
             if (!req.body.new_password) {
                 logger.info('Update data about user', req.body);
                 const user = await User.findById(id);
@@ -69,7 +68,7 @@ export default {
             return res.status(200).json('profile is updated');
         } catch (err) {
             logger.error('Error: Update data of user', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 };

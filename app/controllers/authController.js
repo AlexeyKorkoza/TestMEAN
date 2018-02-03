@@ -11,7 +11,7 @@ export default {
      */
     loginPage(req, res) {
         logger.info('Render login page');
-        res.render('../app/views/login.ejs', {});
+        return res.render('../app/views/login.ejs', {});
     },
 
     /**

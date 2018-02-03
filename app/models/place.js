@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-const Place = mongoose.model('Place', {
+const placeSchema = new Schema({
     name: String,
     description: String,
     lat: String,
@@ -13,5 +13,7 @@ const Place = mongoose.model('Place', {
         default: Date.now(),
     },
 });
+
+const Place = mongoose.model('Place', placeSchema);
 
 export default Place;

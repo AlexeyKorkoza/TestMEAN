@@ -1,5 +1,5 @@
-import User from '../models/user';
 import passportLocal from 'passport-local';
+import User from '../models/user';
 import {
     generatePassword,
     checkPassword,
@@ -25,21 +25,19 @@ module.exports = passport => {
             passReqToCallback: true,
         },
         (req, username, password, done) => {
-            User.findOne({ username }, (err, user) => {
-                if (err) {
-                    return done(err);
-                }
+            User.findOne({ username })
+                .then(user => {
+                    if (!user) {
+                        return done(null, false, req.flash('loginMessage', 'User is not found'));
+                    }
 
-                if (!user) {
-                    return done(null, false, req.flash('loginMessage', 'User is not found'));
-                }
+                    if (!checkPassword(user, password)) {
+                        return done(null, false, req.flash('loginMessage', 'Incorrect password'));
+                    }
 
-                if (!checkPassword(user, password)) {
-                    return done(null, false, req.flash('loginMessage', 'Incorrect password'));
-                }
-
-                return done(null, user);
-            });
+                    return done(null, user);
+                })
+                .catch(err => done(err));
         },
     ));
 
@@ -50,8 +48,9 @@ module.exports = passport => {
             passReqToCallback: true,
         },
         (req, username, email, done) => {
-            const isWorstPassword = checkWorstPassword(req.body.password);
-            const isComparePasswords = comparePasswords(req.body.password, req.body.confirmpassword);
+            const { password, confirmpassword } = req.body;
+            const isWorstPassword = checkWorstPassword(password);
+            const isComparePasswords = comparePasswords(password, confirmpassword);
 
             if (isWorstPassword) {
                 return done(null, false, req.flash('signUpMessage', 'Password too weak'));
@@ -60,40 +59,31 @@ module.exports = passport => {
                 return done(null, false, req.flash('signUpMessage', 'Passwords don`t compare'));
             }
 
-            User.findOne({ username }, (err, user) => {
-                if (err) {
-                    return done(err);
-                }
-
-                if (user) {
-                    return done(null, false, req.flash('signUpMessage', 'User has already existed'));
-                }
-
-                User.findOne({ email }, (err, user) => {
-                    if (err) {
-                        return done(err);
+            return User.findOne({ username })
+                .then(user => {
+                    if (user) {
+                        return done(null, false, req.flash('signUpMessage', 'User has already existed'));
                     }
-
+                    return User.findOne({ email });
+                })
+                .then(user => {
                     if (user) {
                         return done(null, false, req.flash('signUpMessage', 'Email has already existed'));
                     }
-                    if (!user) {
-                        const newUser = new User({
-                            username,
-                            email: req.body.email,
-                            date: req.body.date,
-                            password: generatePassword(req.body.password),
-                        });
 
-                        newUser.save(err => {
-                            if (err) {
-                                throw err;
-                            }
-                            return done(null, newUser);
+                    let newUser;
+                    if (!user) {
+                        newUser = new User({
+                            username,
+                            email,
+                            password: generatePassword(password),
                         });
                     }
-                });
-            });
+
+                    return newUser.save();
+                })
+                .then(user => done(null, user))
+                .catch(err => done(err));
         },
     ));
 };

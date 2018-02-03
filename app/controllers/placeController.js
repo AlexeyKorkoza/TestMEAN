@@ -27,7 +27,7 @@ export default {
             return res.status(200).json(places.places);
         } catch (err) {
             logger.error('Error: Get places', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 
@@ -49,7 +49,7 @@ export default {
             return res.status(200).json(place);
         } catch (err) {
             logger.error('Error: Get place by id', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 
@@ -71,7 +71,7 @@ export default {
             return res.status(200).json(type.places);
         } catch (err) {
             logger.error('Error: Get place by type', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
     /**
@@ -112,7 +112,7 @@ export default {
             return res.status(200).json('Place is added');
         } catch (err) {
             logger.error('Error: Add place', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 
@@ -148,7 +148,7 @@ export default {
             return res.status(200).json('place is updated');
         } catch (err) {
             logger.info('Error: Update place', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 
@@ -169,7 +169,7 @@ export default {
             return res.status(200).json('place is removed');
         } catch (err) {
             logger.error('Error: Remove place', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 };

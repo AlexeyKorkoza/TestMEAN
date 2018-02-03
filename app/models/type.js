@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-const Type = mongoose.model('Type', {
+const typeSchema = new Schema({
     name: String,
     image: String,
     date: {
@@ -16,5 +16,7 @@ const Type = mongoose.model('Type', {
         },
     ],
 });
+
+const Type = mongoose.model('Type', typeSchema);
 
 export default Type;

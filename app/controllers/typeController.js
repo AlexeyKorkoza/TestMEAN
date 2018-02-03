@@ -1,7 +1,8 @@
+import fs from 'fs';
 import Type from '../models/type';
 import User from '../models/user';
-import fs from 'fs';
 import logger from '../utils/logger';
+import { removeImage } from '../services/types';
 
 export default {
 
@@ -26,7 +27,7 @@ export default {
             return res.status(200).json(types.types);
         } catch (err) {
             logger.error('Error: Get types', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 
@@ -47,7 +48,7 @@ export default {
             return res.status(200).json(type);
         } catch (err) {
             logger.error('Error: Get type by id', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 
@@ -79,9 +80,10 @@ export default {
 
                 return res.status(200).json('Type is added');
             }
+            return res.status(400).json('Error, file is not send');
         } catch (err) {
             logger.error('Error: Add type', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 
@@ -95,7 +97,8 @@ export default {
         if (req.files.length === 1) {
             try {
                 logger.info('Update type and image of it', req.body, req.params);
-                removeImage(req.body.data.id);
+                const { id } = req.body.data;
+                removeImage(id);
 
                 const type = await Type.findById(req.params.id);
                 if (!type) {
@@ -113,10 +116,10 @@ export default {
                 return res.status(200).json('Type is updated');
             } catch (err) {
                 logger.info('Error: Update type and image of it', err);
-                res.status(500).json(err);
+                return res.status(500).json(err);
             }
         } else {
-            next();
+            return next();
         }
     },
 
@@ -151,7 +154,7 @@ export default {
             return res.status(200).json('type is updated');
         } catch (err) {
             logger.error('Error: Update only data of type', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 
@@ -173,18 +176,7 @@ export default {
             return res.status(200).json('type is removed');
         } catch (err) {
             logger.info('Error: Remove type', err);
-            res.status(500).json(err);
+            return res.status(500).json(err);
         }
     },
 };
-
-/**
- * @param id
- * @returns {Promise.<void>}
- */
-async function removeImage(id) {
-    const type = await Type.findOne({ id_type: id });
-    if (type) {
-        fs.unlink(`uploads/${result.image}`);
-    }
-}
