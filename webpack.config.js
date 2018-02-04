@@ -1,4 +1,3 @@
-require('dotenv').config();
 const webpack = require('webpack');
 const ExtractTextPlugin = require ('extract-text-webpack-plugin');
 const rimraf = require('rimraf');
@@ -47,7 +46,8 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     presets: ["env"]
-                }
+                },
+                exclude: /(node_modules|bower_components)/,
             },
             {
                 test: /\.html$/,

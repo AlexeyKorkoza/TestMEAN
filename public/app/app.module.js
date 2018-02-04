@@ -1,3 +1,10 @@
+import '../vendor/bootstrap/dist/css/bootstrap.min.css';
+import '../vendor/font-awesome/css/font-awesome.min.css';
+import './assets/css/fonts.css';
+import './assets/css/style.css';
+import './assets/css/sidebar.css';
+import './assets/css/angular-responsive-tables.min.css';
+
 import 'leaflet/dist/leaflet.css';
 import 'selectize/dist/css/selectize.default.css';
 import 'angular-loading-bar/build/loading-bar.min.css';
@@ -21,13 +28,6 @@ import 'immutable';
 import 'sweetalert';
 import 'angular-google-places-autocomplete';
 import 'leaflet.markercluster/dist/leaflet.markercluster-src';
-
-import '../vendor/bootstrap/dist/css/bootstrap.min.css';
-import '../vendor/font-awesome/css/font-awesome.min.css';
-import './assets/css/fonts.css';
-import './assets/css/style.css';
-import './assets/css/sidebar.css';
-import './assets/css/angular-responsive-tables.min.css';
 
 import mapModule from './map/map.module';
 import placesModule from './place/place.module';
