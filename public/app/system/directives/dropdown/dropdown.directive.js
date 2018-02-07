@@ -9,6 +9,7 @@ function dropDown() {
             ddModel: '=',
             ddPlaceholder: '@',
             ddMultiple: '=',
+            ddProperty: '@',
         },
         link,
     };
@@ -17,7 +18,8 @@ function dropDown() {
 
     function link(scope, element) {
         scope.placeholder = scope.ddPlaceholder;
-        scope.multiple = scope.ddMultiple;
+        scope.multiple = scope.ddMultiple || false;
+        scope.property = scope.ddProperty;
         scope.selected = [];
         scope.isOpen = false;
         scope.title = '';
@@ -57,19 +59,21 @@ function dropDown() {
                 item.selected = true;
                 scope.selected.push(item);
             } else {
-                const index = scope.list.findIndex(x => x.id === item.id);
+                scope.selected.splice(0, 1, item);
             }
         };
 
         scope.removeItem = item => {
-            let index = scope.selected.findIndex(x => x.id === item.id);
+            const property = scope.property;
+            let index = scope.selected.findIndex(x => x[property] === item[property]);
             scope.selected.splice(index, 1);
             index = scope.list.findIndex(x => x.id === item.id);
             scope.list[index].selected = false;
         };
 
         scope.selectItem = item => {
-            const index = scope.selected.findIndex(x => x.id === item.id);
+            const property = scope.property;
+            let index = scope.selected.findIndex(x => x[property] === item[property]);
             index === -1 ? scope.addItem(item) : scope.removeItem(item);
             scope.changeTitle();
         };

@@ -29,11 +29,11 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
 
     function getAllTypes() {
         vm.types = types.data.map(item => ({
-            value: item._id,
+            _id: item._id,
             text: item.name,
         }));
         vm.types.unshift({
-            value: 0,
+            _id: 0,
             text: 'All objects',
         });
     }
