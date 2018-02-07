@@ -32,10 +32,6 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
             _id: item._id,
             text: item.name,
         }));
-        vm.types.unshift({
-            _id: 0,
-            text: 'All objects',
-        });
     }
 
     function getAllPlaces() {
