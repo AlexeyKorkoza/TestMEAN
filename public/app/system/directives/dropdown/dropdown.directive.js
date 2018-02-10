@@ -7,6 +7,7 @@ function dropDown() {
         restrict: 'EA',
         scope: {
             ddModel: '=',
+            ddData: '=',
             ddPlaceholder: '@',
             ddMultiple: '=',
             ddProperty: '@',
@@ -23,7 +24,7 @@ function dropDown() {
         scope.selected = [];
         scope.isOpen = false;
         scope.title = '';
-        scope.list = scope.ddModel.map(item => {
+        scope.list = scope.ddData.map(item => {
             item.selected = false;
             return item;
         });
@@ -75,6 +76,7 @@ function dropDown() {
             const property = scope.property;
             let index = scope.selected.findIndex(x => x[property] === item[property]);
             index === -1 ? scope.addItem(item) : scope.removeItem(item);
+            scope.ddModel = scope.selected;
             scope.changeTitle();
         };
 
@@ -91,8 +93,15 @@ function dropDown() {
                     return item;
                 });
             }
+            scope.ddModel = scope.selected;
             scope.changeTitle();
         };
+
+        scope.deselectAll = () => {
+            scope.ddModel = [];
+            scope.selected = [];
+            scope.changeTitle();
+        }
     }
 }
 
