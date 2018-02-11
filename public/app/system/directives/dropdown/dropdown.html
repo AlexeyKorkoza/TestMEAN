@@ -4,8 +4,12 @@
         <span ng-if="!selected.length">{{placeholder}}</span>
     </div>
     <ul class="dropdown-list">
-        <li ng-if="multiple" ng-click="selectAll()">Select All</li>
-        <li ng-if="multiple" ng-click="deselectAll()">Deselect All</li>
+        <li ng-if="multiple">
+            <a ng-click="selectAll()">Select All</a>
+        </li>
+        <li ng-if="multiple">
+            <a ng-click="deselectAll()">Deselect All</a>
+        </li>
         <li ng-repeat="item in list">
             <a ng-class="{'-is-active': item.selected}" ng-click="selectItem(item)">{{item.text}}</a>
         </li>

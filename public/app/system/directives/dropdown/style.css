@@ -26,6 +26,10 @@
     display: block;
 }
 
+.dropdown-list li {
+    list-style: none;
+}
+
 .dropdown-list a {
     color: black;
     padding: 12px 16px;
