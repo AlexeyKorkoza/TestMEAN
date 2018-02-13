@@ -73,7 +73,7 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
         }
     }
 
-    function getPlacesByType() {
+    function getPlacesByType(type) {
         cfpLoadingBar.start();
         const id = vm.type;
         if (id === '0') {

@@ -2,7 +2,8 @@
     <drop-down dd-model="vm.type" 
                dd-data="vm.types"  
                dd-multiple="true"
-               dd-property='_id'></drop-down>            
+               dd-property='_id'
+               dd-filter='vm.getPlacesByType'></drop-down>            
 </div>
 <div>
     <leaflet lf-center="vm.grodno" markers="vm.markers" height="100%" width="100%"></leaflet>

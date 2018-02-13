@@ -11,6 +11,7 @@ function dropDown() {
             ddPlaceholder: '@',
             ddMultiple: '=',
             ddProperty: '@',
+            ddFilter: '='
         },
         link,
     };
@@ -78,6 +79,9 @@ function dropDown() {
             index === -1 ? scope.addItem(item) : scope.removeItem(item);
             scope.ddModel = scope.selected;
             scope.changeTitle();
+            if (scope.ddFilter) {
+                scope.ddFilter(scope.ddModel);
+            }
         };
 
         scope.selectAll = () => {
@@ -95,12 +99,18 @@ function dropDown() {
             }
             scope.ddModel = scope.selected;
             scope.changeTitle();
+            if (scope.ddFilter) {
+                scope.ddFilter(scope.ddModel);
+            }
         };
 
         scope.deselectAll = () => {
             scope.ddModel = [];
             scope.selected = [];
             scope.changeTitle();
+            if (scope.ddFilter) {
+                scope.ddFilter(scope.ddModel);
+            }
         }
     }
 }
