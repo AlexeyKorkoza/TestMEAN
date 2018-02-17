@@ -22,6 +22,16 @@ export default {
                 types: 0,
             };
 
+            if (req.query.types) {
+                const { types } = req.query;
+                // TODO Fix error
+                const ids = types.map(item => new mongoose.Types.ObjectId(item._id));
+                const places = await Type.find().in(ids).populate('places');
+                console.log('Res', places);
+                logger.info('Get places by filter', req.query);
+                return res.status(200).json(places.places);
+            }
+
             const places = await User.findById(_id).select(attributes).populate('places');
             logger.info('Get places');
             return res.status(200).json(places.places);
@@ -49,28 +59,6 @@ export default {
             return res.status(200).json(place);
         } catch (err) {
             logger.error('Error: Get place by id', err);
-            return res.status(500).json(err);
-        }
-    },
-
-    /**
-     * @request GET /api/v1/places/type/:id
-     * @param req
-     * @param res
-     * @returns {Promise.<void>}
-     */
-    async getPlacesByType(req, res) {
-        try {
-            const { id } = req.params;
-            const type = await Type.findById(id).populate('places');
-            logger.info('Get place by type', req.params);
-            if (!type) {
-                return res.status(200).json('Places are not found');
-            }
-
-            return res.status(200).json(type.places);
-        } catch (err) {
-            logger.error('Error: Get place by type', err);
             return res.status(500).json(err);
         }
     },

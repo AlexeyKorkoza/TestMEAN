@@ -7,13 +7,16 @@ function placeService($http) {
         remove,
         update,
         getPlaceById,
-        getPlacesByType,
     };
 
     return service;
 
-    function getAll() {
-        return $http.get('/api/v1/places');
+    function getAll(query) {
+        let config = {};
+        if (query) {
+            config.params = query;
+        }
+        return $http.get('/api/v1/places', config);
     }
 
     function create(data) {
@@ -30,10 +33,6 @@ function placeService($http) {
 
     function getPlaceById(id) {
         return $http.get(`/api/v1/places/${id}`);
-    }
-
-    function getPlacesByType(id) {
-        return $http.get(`/api/v1/places/type/${id}`);
     }
 }
 

@@ -75,12 +75,15 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
 
     function getPlacesByType(type) {
         cfpLoadingBar.start();
-        const id = vm.type;
-        if (id === '0') {
+        if (!type.length) {
             vm.getAllPlaces();
         } else {
             vm.markers = {};
-            placeService.getPlacesByType(id)
+            console.log(type);
+            const query = {
+                types: [type]
+            }
+            placeService.getAll(query)
                 .then(response => {
                     vm.places = response.data;
                     vm.addPlaceInMap(vm.places);
