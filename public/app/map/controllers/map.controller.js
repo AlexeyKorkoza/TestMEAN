@@ -4,7 +4,6 @@ import config from '../../config/config';
 function mapCtrl(cfpLoadingBar, placeService, places, types) {
     const vm = this;
     vm.group_markers = [];
-    vm.typess = [];
     vm.getAllPlaces = getAllPlaces;
     vm.getAllTypes = getAllTypes;
     vm.addPlaceInMap = addPlaceInMap;
