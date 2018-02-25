@@ -1,5 +1,11 @@
 import template from './dropdown.html';
 
+const changeTitle = (data, prop) => {
+    return data
+        .map(x => x[prop])
+        .join(',');
+};
+
 function dropDown() {
     const directive = {
         template,
@@ -48,13 +54,12 @@ function dropDown() {
             document.removeEventListener('click', handler);
         });
 
-        // scope.$watch(() => console.log(scope));
-
-        scope.changeTitle = () => {
-            scope.title = scope.selected
-                .map(x => x.text)
-                .join(',');
-        };
+        scope.$watch('ddModel', (newValue, oldValue) => { 
+            if (newValue) {
+                scope.selected = [].concat(newValue);
+                scope.title = changeTitle(scope.selected, scope.property);
+            }
+        });
 
         scope.addItem = item => {
             if (scope.multiple) {
@@ -78,27 +83,19 @@ function dropDown() {
             let index = scope.selected.findIndex(x => x[property] === item[property]);
             index === -1 ? scope.addItem(item) : scope.removeItem(item);
             scope.ddModel = scope.selected;
-            scope.changeTitle();
+            changeTitle(scope.selected, scope.property);
             if (scope.ddFilter) {
                 scope.ddFilter(scope.ddModel);
             }
         };
 
         scope.selectAll = () => {
-            if (scope.selected.length) {
-                scope.selected = [];
-                scope.list.map(item => {
-                    item.selected = false;
-                    return item;
-                });
-            } else {
-                scope.selected = scope.list.map(item => {
-                    item.selected = true;
-                    return item;
-                });
-            }
+            scope.selected = scope.list.map(item => {
+                item.selected = true;
+                return item;
+            });
             scope.ddModel = scope.selected;
-            scope.changeTitle();
+            changeTitle(scope.selected, scope.property);
             if (scope.ddFilter) {
                 scope.ddFilter(scope.ddModel);
             }
@@ -107,7 +104,7 @@ function dropDown() {
         scope.deselectAll = () => {
             scope.ddModel = [];
             scope.selected = [];
-            scope.changeTitle();
+            changeTitle(scope.selected, scope.property);
             if (scope.ddFilter) {
                 scope.ddFilter(scope.ddModel);
             }

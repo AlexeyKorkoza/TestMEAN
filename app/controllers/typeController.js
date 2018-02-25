@@ -21,7 +21,6 @@ export default {
                 username: 0,
                 date: 0,
                 email: 0,
-                places: 0,
             };
             const types = await User.findById(_id).select(attributes).populate('types');
             return res.status(200).json(types.types);
