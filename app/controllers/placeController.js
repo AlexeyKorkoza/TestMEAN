@@ -1,7 +1,9 @@
+import mongoose from 'mongoose';
 import Place from '../models/place';
 import User from '../models/user';
 import Type from '../models/type';
 import logger from '../utils/logger';
+import { forceArray } from '../helpers/array';
 
 export default {
 
@@ -22,14 +24,14 @@ export default {
                 types: 0,
             };
 
-            if (req.query.types) {
-                const { types } = req.query;
-                // TODO Fix error
-                const ids = types.map(item => new mongoose.Types.ObjectId(item._id));
-                const places = await Type.find().in(ids).populate('places');
-                console.log('Res', places);
+            if (req.query.typesIds) {
+                const { typesIds } = req.query;
+                if (!typesIds.length) {
+                    forceArray(typesIds);
+                }
+                const places = await Type.find({'_id': {$in: typesIds}}).populate('places');
                 logger.info('Get places by filter', req.query);
-                return res.status(200).json(places.places);
+                return res.status(200).json(places);
             }
 
             const places = await User.findById(_id).select(attributes).populate('places');

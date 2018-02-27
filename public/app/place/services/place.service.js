@@ -12,11 +12,7 @@ function placeService($http) {
     return service;
 
     function getAll(query) {
-        let config = {};
-        if (query) {
-            config.params = query;
-        }
-        return $http.get('/api/v1/places', config);
+        return $http.get('/api/v1/places', { params: query });
     }
 
     function create(data) {
