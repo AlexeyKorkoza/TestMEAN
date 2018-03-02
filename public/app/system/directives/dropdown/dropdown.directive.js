@@ -72,7 +72,6 @@ function dropDown() {
             } else {
                 scope.selected.splice(0, 1, item);
             }
-            console.log('scopesele', scope.selected);
             scope.ddModel = [].concat(scope.selected);
         };
 
