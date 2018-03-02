@@ -25,12 +25,12 @@ function dropDown() {
     return directive;
 
     function link(scope, element) {
-        scope.placeholder = scope.ddPlaceholder;
+        scope.placeholder = scope.ddPlaceholder || 'Select ...';
         scope.multiple = scope.ddMultiple || false;
         scope.property = scope.ddProperty;
         scope.selected = [];
         scope.isOpen = false;
-        scope.title = '';
+        scope.title = null;
         scope.list = scope.ddData.map(item => {
             item.selected = false;
             return item;
