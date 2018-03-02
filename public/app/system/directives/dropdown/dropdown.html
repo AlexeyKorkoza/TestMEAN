@@ -1,7 +1,7 @@
 <div class="dropdown-wrapper" ng-class="{'-is-open': isOpen}">
     <div class="dropdown-button" ng-click="toggle()">
-        <span ng-if="selected.length">{{title}}</span>
-        <span ng-if="!selected.length">{{placeholder}}</span>
+        <span ng-if="ddModel.length">{{title}}</span>
+        <span ng-if="!ddModel.length">{{placeholder}}</span>
     </div>
     <ul class="dropdown-list">
         <li class="dropdown-list__item" ng-if="multiple">

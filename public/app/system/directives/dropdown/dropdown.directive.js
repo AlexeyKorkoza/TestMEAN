@@ -58,14 +58,13 @@ function dropDown() {
             () => scope.ddModel, 
             (newValue, oldValue) => { 
             if (newValue !== oldValue) {
-                scope.title = changeTitle(scope.selected, scope.property);
+                scope.title = changeTitle(scope.ddModel, scope.property);
             }
         });
 
         scope.$on('$destroy', cleanup);
 
         scope.addItem = item => {
-            console.log('Item', item);
             if (scope.multiple) {
                 item.selected = true;
                 scope.selected.push(item);
@@ -87,9 +86,8 @@ function dropDown() {
             const property = scope.property;
             let index = scope.selected.findIndex(x => x[property] === item[property]);
             index === -1 ? scope.addItem(item) : scope.removeItem(item);
-            // TODO FIX arr.
             scope.ddModel = [].concat(scope.selected);
-            changeTitle(scope.selected, scope.property);
+            changeTitle(scope.ddModel, scope.property);
             if (scope.ddFilter) {
                 scope.ddFilter(scope.ddModel);
             }
@@ -101,7 +99,7 @@ function dropDown() {
                 return item;
             });
             scope.ddModel = [].concat(scope.selected);
-            changeTitle(scope.selected, scope.property);
+            changeTitle(scope.ddModel, scope.property);
             if (scope.ddFilter) {
                 scope.ddFilter(scope.ddModel);
             }
@@ -110,7 +108,7 @@ function dropDown() {
         scope.deselectAll = () => {
             scope.ddModel = [];
             scope.selected = [];
-            changeTitle(scope.selected, scope.property);
+            changeTitle(scope.ddModel, scope.property);
             if (scope.ddFilter) {
                 scope.ddFilter(scope.ddModel);
             }
