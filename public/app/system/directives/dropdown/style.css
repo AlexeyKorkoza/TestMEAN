@@ -42,5 +42,5 @@
 }
 
 .-is-active {
-    color: blue;
+    color: blue !important;
 }
