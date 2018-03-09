@@ -36,7 +36,6 @@ export default {
 
             const places = await User.findById(_id).select(attributes).populate('places');
             logger.info('Get places');
-            console.log(places);
             return res.status(200).json(places.places);
         } catch (err) {
             logger.error('Error: Get places', err);

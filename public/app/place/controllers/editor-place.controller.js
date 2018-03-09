@@ -29,7 +29,6 @@ function editorPlaceCtrl($state, placeService, types) {
                         _id: type[0]._id,
                         text: type[0].name,
                     }];
-                    console.log(vm.editData);
                 });
         }
         vm.types = types.map(item => ({
