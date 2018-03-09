@@ -13,8 +13,10 @@ function routes($stateProvider, $urlRouterProvider) {
             controllerAs: 'vm',
             module: 'map',
             resolve: {
-                types: typeService => typeService.getAll(),
-                places: placeService => placeService.getAll(),
+                types: typeService => typeService.getAll()
+                    .then(result => result.data),
+                places: placeService => placeService.getAll()
+                    .then(result => result.data),
             },
         });
 }

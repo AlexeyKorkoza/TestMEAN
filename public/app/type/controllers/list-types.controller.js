@@ -9,7 +9,7 @@ function listTypesCtrl(typeService, types) {
     activate();
 
     function activate() {
-        vm.types = types.data;
+        vm.types = types;
     }
 
     function remove(id, index) {

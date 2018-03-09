@@ -9,7 +9,7 @@ function listPlacesCtrl(placeService, places) {
     activate();
 
     function activate() {
-        vm.places = places.data;
+        vm.places = places;
     }
 
     function remove(id, index) {

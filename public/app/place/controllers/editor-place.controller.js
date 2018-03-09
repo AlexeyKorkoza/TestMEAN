@@ -32,7 +32,7 @@ function editorPlaceCtrl($state, placeService, types) {
                     console.log(vm.editData);
                 });
         }
-        vm.types = types.data.map(item => ({
+        vm.types = types.map(item => ({
             _id: item._id,
             text: item.name,
         }));
@@ -55,8 +55,7 @@ function editorPlaceCtrl($state, placeService, types) {
     function save() {
         const id = $state.params.id;
         const place = buildPlace();
-        console.log('place', place, vm.editData);
-
+        
         if (id) {
             placeService
                 .update(place, $state.params.id)

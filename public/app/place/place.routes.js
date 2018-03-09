@@ -12,7 +12,8 @@ function routes($stateProvider) {
             controllerAs: 'vm',
             module: 'places',
             resolve: {
-                places: placeService => placeService.getAll(),
+                places: placeService => placeService.getAll()
+                    .then(result => result.data),
             },
         })
         .state('places_new', {
@@ -22,7 +23,8 @@ function routes($stateProvider) {
             controllerAs: 'vm',
             module: 'places',
             resolve: {
-                types: typeService => typeService.getAll(),
+                types: typeService => typeService.getAll()
+                    .then(result => result.data),
             },
         })
         .state('places_one', {
@@ -32,7 +34,8 @@ function routes($stateProvider) {
             controllerAs: 'vm',
             module: 'places',
             resolve: {
-                types: typeService => typeService.getAll(),
+                types: typeService => typeService.getAll()
+                    .then(result => result.data),
             },
         });
 }

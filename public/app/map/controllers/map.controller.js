@@ -4,6 +4,8 @@ import config from '../../config/config';
 function mapCtrl(cfpLoadingBar, placeService, places, types) {
     const vm = this;
     vm.group_markers = [];
+    vm.types = [];
+    vm.allPlacesByUser = [];
     vm.getAllPlaces = getAllPlaces;
     vm.getAllTypes = getAllTypes;
     vm.addPlaceInMap = addPlaceInMap;
@@ -27,21 +29,23 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
     }
 
     function getAllTypes() {
-        vm.types = types.data.map(item => ({
+        vm.types = types.map(item => ({
             _id: item._id,
             text: item.name,
         }));
     }
 
     function getAllPlaces() {
-        vm.addPlaceInMap(places.data);
+        // Write all places of user for future searching.
+        vm.allPlacesByUser = places;
+        vm.addPlaceInMap();
     }
 
     function addPlaceInMap(places) {
-        if (types.data) {
-            types.data.forEach(type => {
+        if (types) {
+            types.forEach(type => {
                 type.places.forEach((id, i) => {
-                    const place = places.find(item => item._id === id);
+                    const place = vm.allPlacesByUser.find(item => item._id === id);
                     const typeOfPlace = type.name;
                     const nameOfImage = type.image;
                     const lat = parseFloat(place.lat);

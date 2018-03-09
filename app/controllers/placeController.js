@@ -29,13 +29,14 @@ export default {
                 if (!typesIds.length) {
                     forceArray(typesIds);
                 }
-                const places = await Type.find({'_id': {$in: typesIds}}).populate('places');
+                const types = await Type.find({'_id': {$in: typesIds}}).populate('places');
                 logger.info('Get places by filter', req.query);
-                return res.status(200).json(places);
+                return res.status(200).json(types);
             }
 
             const places = await User.findById(_id).select(attributes).populate('places');
             logger.info('Get places');
+            console.log(places);
             return res.status(200).json(places.places);
         } catch (err) {
             logger.error('Error: Get places', err);

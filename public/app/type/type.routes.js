@@ -12,7 +12,8 @@ function routes($stateProvider) {
             controllerAs: 'vm',
             module: 'types',
             resolve: {
-                types: typeService => typeService.getAll(),
+                types: typeService => typeService.getAll()
+                    .then(result => result.data),
             },
         })
         .state('types_new', {
