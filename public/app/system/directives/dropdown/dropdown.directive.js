@@ -1,8 +1,8 @@
 import template from './dropdown.html';
 
-const changeTitle = (data, prop) => 
+const changeTitle = (data, label) => 
     data
-        .map(x => x[prop])
+        .map(x => x[label])
         .join(',');
 
 function dropDown() {
@@ -15,8 +15,9 @@ function dropDown() {
             ddData: '=',
             ddPlaceholder: '@',
             ddMultiple: '=',
-            ddProperty: '@',
-            ddFilter: '='
+            ddValue: '@',
+            ddFilter: '=',
+            ddLabel: '@'
         },
         link,
     };
@@ -24,14 +25,12 @@ function dropDown() {
     return directive;
 
     function link(scope, element) {
-        //TODO: Add label property
-        //TODO: Refactor code
         scope.placeholder = scope.ddPlaceholder || 'Select ...';
         scope.multiple = scope.ddMultiple || false;
-        scope.property = scope.ddProperty;
-        scope.selected = [];
+        scope.value = scope.ddValue || 'id';
+        scope.label = scope.ddLabel || 'label';
         scope.isOpen = false;
-        scope.title = null;
+        scope.title = '';
         scope.list = scope.ddData.map(item => {
             item.selected = false;
             return item;
@@ -59,7 +58,7 @@ function dropDown() {
             () => scope.ddModel,
             (newValue, oldValue) => {
                 if (newValue !== oldValue) {
-                    scope.title = changeTitle(scope.ddModel, scope.property);
+                    scope.title = changeTitle(scope.ddModel, scope.label);
                 }
             });
 
@@ -67,23 +66,21 @@ function dropDown() {
 
         scope.addItem = item => {
             scope.list
-                .filter(e => e[scope.ddProperty] === item[scope.ddProperty])
+                .filter(e => e[scope.value] === item[scope.value])
                 .filter(e => e.selected = true);
         };
 
         scope.removeItem = item => {
-            const { property } = scope;
-            let index = scope.list.findIndex(x => x[property] === item[property]);
+            const index = scope.list.findIndex(x => x[scope.value] === item[scope.value]);
             scope.list[index].selected = false;
         };
 
         scope.selectItem = item => {
-            const { property } = scope;
             scope.list
-                .filter(x => x[property] === item[property])
+                .filter(x => x[scope.value] === item[scope.value])
                 .filter(x => x.selected === false ? scope.addItem(item) : scope.removeItem(item));
             scope.ddModel = scope.list.filter(x => x.selected);
-            changeTitle(scope.ddModel, property);
+            changeTitle(scope.ddModel, scope.label);
             if (scope.ddFilter) {
                 scope.ddFilter(scope.ddModel);
             }
@@ -95,7 +92,7 @@ function dropDown() {
                 return item;
             });
             scope.ddModel = scope.list.filter(x => x.selected);
-            changeTitle(scope.ddModel, scope.property);
+            changeTitle(scope.ddModel, scope.label);
             if (scope.ddFilter) {
                 scope.ddFilter(scope.ddModel);
             }
@@ -107,7 +104,7 @@ function dropDown() {
                 item.selected = false;
                 return item;
             });
-            changeTitle(scope.ddModel, scope.property);
+            changeTitle(scope.ddModel, scope.label);
             if (scope.ddFilter) {
                 scope.ddFilter(scope.ddModel);
             }

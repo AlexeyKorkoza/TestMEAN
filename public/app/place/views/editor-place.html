@@ -6,7 +6,9 @@
                 <form class="form-horizontal" name="editForm" novalidate>
                     <div class="form-group">
                         <label class="col-lg-12 col-md-12 col-lg-12 col-sm-12">Type of object:</label>
-                        <drop-down dd-model="vm.editData.type" 
+                        <drop-down dd-model="vm.editData.type"
+                                   dd-value='_id'
+                                   dd-label='text' 
                                    dd-data="vm.types"  
                                    dd-property='text'></drop-down>
                     </div>
