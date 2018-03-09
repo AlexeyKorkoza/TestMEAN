@@ -8,3 +8,4 @@ debug.log
 .env
 app/logs
 uploads/
+package-lock.json
