@@ -151,8 +151,21 @@ export default {
     async removePlace(req, res) {
         try {
             logger.info('Remove place', req.params.id);
+            const { _id } = req.session.user;
             const place = await Place.findByIdAndRemove({ _id: req.params.id });
-            if (!place) {
+            const placeIdInUser = await User.update(
+                { "places": req.params.id },
+                { "$pull": { 
+                    "places": req.params.id } 
+                }
+            );
+            const placeIdInType = await Type.update(
+                { "places": req.params.id },
+                { "$pull": { 
+                    "places": req.params.id } 
+                }
+            );
+            if (!place || !placeIdInUser || !placeIdInType) {
                 return res.status(400).json('place is not removed');
             }
 

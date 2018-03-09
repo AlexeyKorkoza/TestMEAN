@@ -166,8 +166,15 @@ export default {
     async removeType(req, res) {
         try {
             logger.info('Remove type', req.params);
+            const { _id } = req.session.user;
             const type = await Type.findByIdAndRemove({ _id: req.params.id });
-            if (!type) {
+            const typeIdInUser = await User.update(
+                { "types": req.params.id },
+                { "$pull": { 
+                    "types": req.params.id } 
+                }
+            );
+            if (!type || !typeIdInUser) {
                 return res.status(400).json('type is not removed');
             }
 
