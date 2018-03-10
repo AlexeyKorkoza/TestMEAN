@@ -101,10 +101,12 @@
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
     "karma-webpack": "^2.0.13",
+    "node-sass": "^4.7.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.2",
     "style-loader": "^0.19.1",
     "stylelint": "^8.1.1",
+    "to-string-loader": "^1.1.5",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "webpack": "^3.10.0"
   }
