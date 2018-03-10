@@ -1,4 +1,4 @@
-import template from './sub-menu.html';
+import template from './side-bar.html';
 
 const buildMenu = () => [
     {
@@ -23,9 +23,9 @@ const buildMenu = () => [
     },
 ];
 
-subMenu.$inject = ['$document'];
+sideBar.$inject = ['$document'];
 
-function subMenu($document) {
+function sideBar($document) {
     const directive = {
         template,
         restrict: 'E',
@@ -54,4 +54,4 @@ function subMenu($document) {
     }
 }
 
-export default subMenu;
+export default sideBar;

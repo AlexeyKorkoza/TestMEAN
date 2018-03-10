@@ -1,0 +1,12 @@
+.angular-leaflet-map {
+    position: absolute;
+    z-index: 2;
+}
+
+.leaflet-bottom {
+    display: none;
+}
+
+.leaflet-top {
+    top: 90px;
+}

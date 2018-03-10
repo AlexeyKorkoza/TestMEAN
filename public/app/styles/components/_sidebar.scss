@@ -1,0 +1,45 @@
+.wrapper_nav_menu {
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+    display: none;
+    
+    &.-is-open {
+        display: block;
+    }
+
+    .nav_menu {
+        padding: 10px 0;
+        @include flex(column);
+        background: #fff;
+
+        .nav_menu__item {
+            @include flex(row);
+            width: 100%;
+            padding: 10px 0;
+            font: 1em 'Open Sans', sans-serif;
+            cursor: pointer;
+            color: red;
+            border-bottom: 1px solid red;
+            @include transition (padding .05s linear);
+
+            .nav_menu__item__icon i {
+                font-size: 30px;
+                margin: 0 25px;
+            }
+
+            &:focus {
+                outline: none;
+                text-decoration: none;
+            }
+
+            &:hover {
+                text-decoration: none;
+
+                &.nav_menu__item__icon {
+                    @include rotate(360deg);
+                }
+            }
+        }
+    }
+}
