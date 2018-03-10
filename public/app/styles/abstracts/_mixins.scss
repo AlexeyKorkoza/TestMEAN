@@ -23,7 +23,7 @@
         -ms-flex-direction: row;
         flex-direction: row;
     }
-    else {
+    @else {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
