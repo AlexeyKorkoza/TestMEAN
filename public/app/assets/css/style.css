@@ -115,22 +115,6 @@ button {
 }
 
 /*
-  UserProfile
-*/
-
-.signError {
-    color: red;
-    font: 1.3em 'Open Sans', sans-serif;
-}
-
-.well {
-    border: none;
-    box-shadow: none;
-    margin-bottom: 0;
-    background: none;
-}
-
-/*
   Types
 */
 
