@@ -30,3 +30,17 @@
         flex-direction: column;
     }
 }
+
+@mixin backfaceVisibility($value) {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+@mixin translateY($value) {
+    -webkit-transform: translateY(value);
+    -moz-transform: translateY($value);
+    -ms-transform: translateY($value);
+    -o-transform: translateY($value);
+    transform: translateY($value);
+}
