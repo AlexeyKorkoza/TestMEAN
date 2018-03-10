@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 @import
-    'base/_base',
-    'base/_fonts',
-    'base/_icons';
+    'base/base',
+    'base/fonts',
+    'base/icons';
 
 @import
-    'abstracts/_mixins';
+    'abstracts/mixins';
 
-@import 
-    'components/_hamburger',
-    'components/_leaflet',
-    'components/_sidebar';
+@import
+    'components/hamburger',
+    'components/leaflet',
+    'components/sidebar';

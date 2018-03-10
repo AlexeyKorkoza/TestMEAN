@@ -62,8 +62,10 @@ module.exports = {
                 })
             },
             {
-                test: /\.(scss)$/,
-                loaders: ['to-string-loader', 'css-loader', 'sass-loader']
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract(
+                    'css-loader!sass-loader'
+                ),
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
