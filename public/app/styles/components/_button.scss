@@ -1,5 +1,4 @@
 .button {
-    background: #d3531a;
     color: white;
     overflow: hidden;
     @include backfaceVisibility(hidden);
@@ -15,7 +14,18 @@
     width: 100%;
     text-align: center;
 
+    &.-is-orange {
+        background: #d3531a;
+    }
+
     &:before {
+        font-family: 'icomoon';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
         color: white;
         left: 0;
         top: -120%;
@@ -45,7 +55,7 @@
             @include translateY(300%);
         }
     }
-    
+
     span {
         display: inline-block;
         width: 100%;
