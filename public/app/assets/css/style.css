@@ -103,32 +103,3 @@ button {
         transform: scale(1)
     }
 }
-
-.help-block {
-    color: red;
-    font: 1.3em "Open Sans";
-}
-
-/*
-  Places
-*/
-
-.errorSelectize {
-    font: 1.3em 'Open Sans, sans-serif';
-}
-
-textarea {
-    resize: none;
-}
-
-@media (max-width: 450px) {
-    .menu .menu__item a {
-        padding: 0;
-    }
-
-}
-
-.empty_list {
-    font: 700 1.3em 'Open Sans', sans-serif;
-    text-align: center;
-}
