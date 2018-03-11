@@ -27,7 +27,8 @@
                                            accept="image/*"
                                            ngf-max-size="2MB"
                                            ngf-model-invalid="errorFile"
-                                           ng-change="vm.changeFilename(vm.editData.file)">
+                                           ng-change="vm.changeFilename(vm.editData.file)"
+                                          >
                                     <i ng-show="addForm.file.$error.maxSize">Big size file
                                         {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
                                 </div>
