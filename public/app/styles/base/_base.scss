@@ -1,0 +1,48 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.page {
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    background: #fff;
+    overflow: hidden;
+    z-index: 1;
+    padding-left: 100px;
+    
+    .sidebar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: white;
+        border-right: 1px solid #e5eaf3;
+        z-index: 11;
+    }
+
+    .page-wrapper {
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background: #ececea;
+    }
+}
+
+.well {
+    border: none;
+    box-shadow: none;
+    margin-bottom: 0;
+    background: none;
+}
+
+.empty_list {
+    font: 700 1.3em 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+.help-block {
+    color: red;
+    font: 1.3em "Open Sans";
+}

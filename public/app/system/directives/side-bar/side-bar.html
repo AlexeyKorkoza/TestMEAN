@@ -3,19 +3,17 @@
     <span></span>
     <span></span>
 </div>
-<div class="dropdownContain">
-    <div class="dropOut" ng-class="{'-is-open': isOpen}">
-        <nav class="sub_menu">
-            <a ng-repeat="itemMenu in items" ui-sref={{itemMenu.link}} class="sub_menu__item">
-                <div class="icon">
+    <div class="wrapper_nav_menu" ng-class="{'-is-open': isOpen}">
+        <nav class="nav_menu">
+            <a ng-repeat="itemMenu in items" ui-sref={{itemMenu.link}} class="nav_menu__item">
+                <div class="nav_menu__item__icon">
                     <i class={{itemMenu.class}} aria-hidden="true"></i>&nbsp;
                 </div>
             </a>
-            <a ng-href="/logout" class="sub_menu__item">
-                <div class="icon">
+            <a ng-href="/logout" class="nav_menu__item">
+                <div class="nav_menu__item__icon">
                     <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp;
                 </div>
             </a>
         </nav>
-    </div>
 </div>

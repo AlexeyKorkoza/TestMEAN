@@ -1,8 +1,8 @@
 import '../vendor/bootstrap/dist/css/bootstrap.min.css';
 import '../vendor/font-awesome/css/font-awesome.min.css';
-import './assets/css/fonts.css';
+// import './assets/css/fonts.css';
 import './assets/css/style.css';
-import './assets/css/sidebar.css';
+// import './assets/css/sidebar.css';
 import './assets/css/angular-responsive-tables.min.css';
 
 import 'leaflet/dist/leaflet.css';
@@ -12,6 +12,8 @@ import 'sweetalert/dist/sweetalert.css';
 import 'angular-google-places-autocomplete/src/autocomplete.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+
+import './styles/main.scss';
 
 import angular from 'angular';
 import 'angular-ui-router';
