@@ -140,6 +140,18 @@
             text-decoration: none;
         }
 
+        @media (max-width: 992px) {
+            .login-page__container {
+                width: 40%;
+            }
+        }
+         
+        @media (max-width: 768px) {
+            .login-page__container {
+                width: 70%;
+            }
+        }
+
         @media (max-width: 480px) {
             .login-page__container {
                 width: 90%;
@@ -156,19 +168,6 @@
             .button-block {
                 width: 100%;
                 margin: 10px 0;
-            }
-        }
-
-        /* TODO fix order media-queries */
-        @media (max-width: 768px) {
-            .login-page__container {
-                width: 70%;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .login-page__container {
-                width: 40%;
             }
         }
     </style>
