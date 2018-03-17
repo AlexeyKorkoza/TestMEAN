@@ -67,7 +67,7 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
                             iconSize: [54, 54],
                             iconAnchor: [16, 37],
                             popupAnchor: [0, -30],
-                            iconUrl: `./uploads/${nameOfImage}`,
+                            iconUrl: '/uploads/' + nameOfImage,
                         },
                     };
                 });

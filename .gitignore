@@ -7,5 +7,4 @@ debug.log
 .vscode/
 .env
 app/logs
-uploads/
 package-lock.json
