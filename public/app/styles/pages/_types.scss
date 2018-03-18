@@ -1,6 +1,16 @@
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background: #ffffff;
+}
+
 .table > tbody > tr > .name_type {
     font: 1.3em 'Open Sans, sans-serif';
     vertical-align: middle;
+}
+
+.types-title {
+    margin: 30px 0;
+    text-align: center;
+    color: #ffffff;
 }
 
 .attach-file input[type="file"] {

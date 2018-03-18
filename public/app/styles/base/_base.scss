@@ -20,21 +20,14 @@ body {
         background-color: white;
         border-right: 1px solid #e5eaf3;
         z-index: 11;
-    }
+    } 
 
     .page-wrapper {
         height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
-        background: #ececea;
+        background: #6DBDD6;
     }
-}
-
-.well {
-    border: none;
-    box-shadow: none;
-    margin-bottom: 0;
-    background: none;
 }
 
 .empty_list {

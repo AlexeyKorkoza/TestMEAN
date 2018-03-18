@@ -1,0 +1,13 @@
+.table-block {
+    background: #ffffff;
+    border: 0;
+    border-radius: .1875rem;
+    width: 100%;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0 1px 15px 1px rgba(39, 39, 39, .1);
+    box-shadow: 0 1px 15px 1px rgba(39, 39, 39, .1);
+    
+    .table-block__body {
+        padding: 15px 15px 10px;
+    }
+}
