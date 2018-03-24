@@ -4,19 +4,27 @@
     
     .dropdown-button {
         width: 170px;
-        background: #4CAF50;
+        background: rgb(76, 175, 80);
         color: white;
         padding: 16px;
         font-size: 16px;
         border: none;
         cursor: pointer;
+        border-width: 2px;
+        font-weight: 400;
+        font-size: .8571em;
+        line-height: 1.35em;
+        border: none;
+        border-radius: .1875rem;
     }
     
     .dropdown-list {
         display: none;
         position: absolute;
-        background: #f9f9f9;
-        min-width: 160px;
+        background: #ffffff;
+        padding-left: 0;
+        text-align: center;
+        width: 170px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     
@@ -28,7 +36,8 @@
             }
     
             .dropdown-list__link {
-                color: black;
+                color: #6DBDD6;
+                font-size: 14px;
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
