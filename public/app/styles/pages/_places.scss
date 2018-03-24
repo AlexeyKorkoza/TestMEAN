@@ -1,3 +1,35 @@
-textarea {
-    resize: none;
+.places-title {
+    color: #ffffff;
+    text-align: center;
+}
+
+.table-places > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.place-action {
+    text-align: center;
+    color: #ffffff;
+}
+
+.form-group {
+
+    label {
+        color: #ffffff !important;
+    }
+
+    textarea {
+        background: transparent;
+        resize: none;
+    }
+
+}
+
+.places-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+-webkit-box-pack: center;
+    -ms-flex-pack: center;
+        justify-content: center;
 }
