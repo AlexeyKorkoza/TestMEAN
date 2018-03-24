@@ -1,5 +1,3 @@
-import './directives/dropdown/style.css';
-
 import angular from 'angular';
 
 import pwCheck from './directives/pw-check/pw-check.directive';

@@ -12,10 +12,6 @@
         cursor: pointer;
     }
     
-    .-is-open .dropdown-list {
-        display: block;
-    }
-    
     .dropdown-list {
         display: none;
         position: absolute;
@@ -43,4 +39,8 @@
             }
         }
     }
+}
+
+.-is-open .dropdown-list {
+    display: block;
 }

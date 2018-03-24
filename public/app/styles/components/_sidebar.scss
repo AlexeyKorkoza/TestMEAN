@@ -19,8 +19,8 @@
             padding: 10px 0;
             font: 1em 'Open Sans', sans-serif;
             cursor: pointer;
-            color: red;
-            border-bottom: 1px solid red;
+            color: #6DBDD6;
+            border-bottom: 1px solid #6DBDD6;
             @include transition (padding .05s linear);
 
             .nav_menu__item__icon i {
