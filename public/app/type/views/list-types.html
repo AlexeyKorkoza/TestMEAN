@@ -1,47 +1,31 @@
-<div>
-    <div class="row">
-        <div class="well clearfix">
-            <h2>List types</h2>
-            <div class="row">
-                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                    <a ui-sref="types_new" class="button -is-orange icon-add">
-                        <span>Add type</span>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                    <a ui-sref="map" class="button -is-orange icon-home">
-                        <span>Back to Main</span>
-                    </a>
-                </div>
-            </div>
-            <table ng-if="vm.types.length" class="table table-striped" wt-responsive-table>
+<div class="container">
+    <h2 class="types-title">List types</h2>
+    <div class="table-block">
+        <div class="table-block__body">
+            <table ng-if="vm.types.length" class="table" wt-responsive-table>
                 <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Actions</th>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="type in vm.types">
-                    <td class="name_type">{{type.name}}</td>
-                    <td>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
-                                <a class="button -is-orange icon-edit" ui-sref="types_one({id: type._id})">
-                                    <span>Edit</span>
-                                </a>
-                            </div>
-                            <div class="col-xs-12 col-md-6 col-lg-5 col-sm-5">
-                                <a class="button -is-orange icon-remove" ng-click="vm.remove(type._id, $index)">
-                                    <span>Remove</span>
-                                </a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                    <tr ng-repeat="type in vm.types">
+                        <td class="name_type">{{type.name}}</td>
+                        <td colspan="2">
+                            <a class="button -is-blue icon-edit" ui-sref="types_one({id: type._id})">
+                                <span>Edit</span>
+                            </a>
+                            <a class="button -is-red icon-remove" ng-click="vm.remove(type._id, $index)">
+                                <span>Remove</span>
+                            </a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-            <p class="empty_list" ng-if="!vm.types.length">List of types is empty.</p>
         </div>
     </div>
+    <p class="empty_list" ng-if="!vm.types.length">List of types is empty.</p>
 </div>
+
+<new-button url="types_new"></new-button>

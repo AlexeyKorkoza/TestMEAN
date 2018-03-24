@@ -5,13 +5,13 @@
     </div>
     <ul class="dropdown-list">
         <li class="dropdown-list__item" ng-if="multiple">
-            <a ng-click="selectAll()">Select All</a>
+            <a class="dropdown-list__link" ng-click="selectAll()">Select All</a>
         </li>
         <li class="dropdown-list__item" ng-if="multiple">
-            <a ng-click="deselectAll()">Deselect All</a>
+            <a class="dropdown-list__link" ng-click="deselectAll()">Deselect All</a>
         </li>
         <li class="dropdown-list__item" ng-repeat="item in list">
-            <a ng-class="{'-is-active': item.selected}" ng-click="selectItem(item)">{{item[label]}}</a>
+            <a class="dropdown-list__link" ng-class="{'-is-active': item.selected}" ng-click="selectItem(item)">{{item[label]}}</a>
         </li>
     </ul>
 </div>

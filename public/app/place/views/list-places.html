@@ -1,54 +1,39 @@
-<div>
-    <div class="row">
-        <div class="well clearfix">
-            <h2>List of places</h2>
-            <div class="row">
-                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                    <a ui-sref="places_new" class="button -is-orange icon-add">
-                        <span>Add place</span>
-                    </a>
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-4 col-sm-5">
-                    <a ui-sref="map" class="button -is-orange icon-home">
-                        <span>Back to Main</span>
-                    </a>
-                </div>
-            </div>
-            <table ng-if="vm.places.length" class="table table-striped all_places" wt-responsive-table>
+<div class="container">
+    <h2 class="places-title">List of places</h2>
+    <div class="table-block">
+        <div class="table-block__body">
+            <table ng-if="vm.places.length" class="table table-places" wt-responsive-table>
                 <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
-                    <th>Address</th>
-                    <th>Actions</th>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Address</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="place in vm.places">
-                    <td>{{place.name}}</td>
-                    <td>{{place.description}}</td>
-                    <td>{{place.lat}}</td>
-                    <td>{{place.lng}}</td>
-                    <td>{{place.address}}</td>
-                    <td>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
-                                <a class="button icon-edit" ui-sref="places_one({id: place._id})">
-                                    <span>Edit</span>
-                                </a>
-                            </div>
-                            <div class="col-xs-12 col-md-6 col-lg-5 col-sm-6">
-                                <a class="button icon-remove" ng-click="vm.remove(place._id, index)">
-                                    <span>Remove</span></a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                    <tr ng-repeat="place in vm.places">
+                        <td>{{place.name}}</td>
+                        <td>{{place.description}}</td>
+                        <td>{{place.lat}}</td>
+                        <td>{{place.lng}}</td>
+                        <td>{{place.address}}</td>
+                        <td colspan="2">
+                            <a class="button -is-blue icon-edit" ui-sref="places_one({id: place._id})">
+                                <span>Edit</span>
+                            </a>
+                            <a class="button -is-red icon-remove" ng-click="vm.remove(place._id, index)">
+                                <span>Remove</span>
+                            </a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-            <p class="empty_list" ng-if="!vm.places.length">List of places is empty.</p>
         </div>
     </div>
+    <p class="empty_list" ng-if="!vm.places.length">List of places is empty.</p>
 </div>
+
+<new-button url="places_new"></new-button>

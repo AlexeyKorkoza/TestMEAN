@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+}
+
+h1,
+.control-label {
+    color: #ffffff;
+}
+
+.control-label {
+    margin-bottom: 5px !important;
+}
+
+.buttons {
+    display: -webkit-box;
+       display: -ms-flexbox;
+       display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}

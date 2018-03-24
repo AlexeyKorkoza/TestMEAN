@@ -1,6 +1,16 @@
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background: #ffffff;
+}
+
 .table > tbody > tr > .name_type {
     font: 1.3em 'Open Sans, sans-serif';
     vertical-align: middle;
+}
+
+.types-title {
+    margin: 30px 0;
+    text-align: center;
+    color: #ffffff;
 }
 
 .attach-file input[type="file"] {
@@ -17,10 +27,24 @@
     height: 30px;
     display: table;
     clear: both;
+    color: #ffffff;
     
     span {
     display: table-cell;
     vertical-align: middle;
     font: 1.3em 'Open Sans, sans-serif';
     }
+}
+
+.types-title {
+    color: #ffffff;
+}
+
+.types-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+-webkit-box-pack: center;
+    -ms-flex-pack: center;
+        justify-content: center;
 }

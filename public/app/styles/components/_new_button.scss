@@ -1,0 +1,20 @@
+.new-button {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    
+    .new-button__link {
+        background: #00669c;
+        border-radius: 50px;
+        padding: 20px;
+        font-size: 16px;
+        text-align: center;
+        line-height: 24px;
+        color: #ffffff;
+    
+        &:hover {
+            -webkit-box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .17);
+            box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .17);
+        }
+    }
+}

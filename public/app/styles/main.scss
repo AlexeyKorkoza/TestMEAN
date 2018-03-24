@@ -11,12 +11,16 @@
 @import
     'components/button',
     'components/hamburger',
+    'components/dropdown',
+    'components/input',
     'components/leaflet',
     'components/loading_bar',
-    'components/sidebar';
+    'components/new_button',
+    'components/sidebar',
+    'components/table';
 
 @import 
     'pages/map',
     'pages/places',
+    'pages/profile',
     'pages/types';
-  
