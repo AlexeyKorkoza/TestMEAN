@@ -1,4 +1,5 @@
 .button {
+    min-width: 170px;
     border-width: 2px;
     line-height: 1.35em;
     color: white;
@@ -27,6 +28,10 @@
     &.-is-blue {
         background-color: #2ca8ff;
         color: #fff;
+    }
+
+    &.-is-green {
+        background: rgb(76, 175, 80);
     }
 
     &:before {
