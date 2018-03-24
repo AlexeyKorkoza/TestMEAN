@@ -27,10 +27,24 @@
     height: 30px;
     display: table;
     clear: both;
+    color: #ffffff;
     
     span {
     display: table-cell;
     vertical-align: middle;
     font: 1.3em 'Open Sans, sans-serif';
     }
+}
+
+.types_title {
+    color: #ffffff;
+}
+
+.types_buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+-webkit-box-pack: center;
+    -ms-flex-pack: center;
+        justify-content: center;
 }
