@@ -1,12 +1,8 @@
 import '../vendor/bootstrap/dist/css/bootstrap.min.css';
 import '../vendor/font-awesome/css/font-awesome.min.css';
-// import './assets/css/fonts.css';
-import './assets/css/style.css';
-// import './assets/css/sidebar.css';
-import './assets/css/angular-responsive-tables.min.css';
 
+import 'angular-responsive-tables/release/angular-responsive-tables.min.css';
 import 'leaflet/dist/leaflet.css';
-import 'selectize/dist/css/selectize.default.css';
 import 'angular-loading-bar/build/loading-bar.min.css';
 import 'sweetalert/dist/sweetalert.css';
 import 'angular-google-places-autocomplete/src/autocomplete.css';
@@ -19,7 +15,6 @@ import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-loading-bar';
 import 'angular-animate';
-import 'angular-selectize2/dist/selectize.js';
 import 'angular-simple-logger/dist/angular-simple-logger.min';
 import 'ng-file-upload';
 import 'angular-responsive-tables';
@@ -41,7 +36,6 @@ const packageModules = [
     'ui.router',
     'angular-loading-bar',
     'ngAnimate',
-    'selectize',
     'ngFileUpload',
     'wt.responsive',
     'nemLogging',

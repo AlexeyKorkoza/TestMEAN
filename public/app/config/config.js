@@ -13,12 +13,4 @@ export default {
             },
         },
     },
-    select: {
-        create: false,
-        valueField: 'value',
-        labelField: 'text',
-        delimiter: '|',
-        placeholder: 'Choose type object',
-        maxItems: 1,
-    },
 };
