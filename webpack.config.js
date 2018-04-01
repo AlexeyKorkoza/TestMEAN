@@ -42,12 +42,11 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(\.test.js$|node_modules)/,
                 loader: 'babel-loader',
                 query: {
                     presets: ["env"]
                 },
-                exclude: /(node_modules|bower_components)/,
             },
             {
                 test: /\.html$/,

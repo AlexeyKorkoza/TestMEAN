@@ -1,5 +1,4 @@
 
-
 describe('addPlaceCtrl', () => {
     let vm = {};
 
