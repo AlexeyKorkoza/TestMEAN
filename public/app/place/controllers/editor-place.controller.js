@@ -23,7 +23,7 @@ function editorPlaceCtrl($state, placeService, types) {
                         description: response.data.description,
                         address: response.data.address,
                     };
-                    const type = types.data.filter(item => item.places.length)
+                    const type = types.filter(item => item.places.length)
                                            .filter(item => item.places.filter(ele => ele === id));
                     vm.editData.type = [{
                         _id: type[0]._id,

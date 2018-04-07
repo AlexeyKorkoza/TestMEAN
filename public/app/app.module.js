@@ -12,7 +12,6 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import './styles/main.scss';
 
 import angular from 'angular';
-import 'angular-mocks';
 import 'angular-ui-router';
 import 'angular-loading-bar';
 import 'angular-animate';
@@ -43,7 +42,6 @@ const packageModules = [
     'ui-leaflet',
     'angular-jwt',
     'google.places',
-    'ngMock',
 ];
 
 function processAllModules(customModules) {

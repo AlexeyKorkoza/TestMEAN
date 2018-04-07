@@ -4,7 +4,7 @@ function editorTypeCtrl($state, Upload, typeService, types) {
     const vm = this;
     vm.types = [];
     vm.title = $state.params.id ? 'Edit' : 'Add';
-    vm.filename = 'Icon was not chosen';
+    vm.filename = $state.params.id ? '' : 'Icon was not chosen';
     vm.changeFilename = changeFilename;
     vm.save = save;
     vm.activate = activate;
@@ -20,6 +20,7 @@ function editorTypeCtrl($state, Upload, typeService, types) {
                     vm.editData = {
                         name: response.data.name,
                     };
+                    vm.filename = response.data.image;
                 });
         }
     }
