@@ -1,6 +1,6 @@
-editorTypeCtrl.$inject = ['$state', 'Upload', 'typeService'];
+editorTypeCtrl.$inject = ['$state', 'Upload', 'typeService', 'types'];
 
-function editorTypeCtrl($state, Upload, typeService) {
+function editorTypeCtrl($state, Upload, typeService, types) {
     const vm = this;
     vm.types = [];
     vm.title = $state.params.id ? 'Edit' : 'Add';
@@ -12,10 +12,7 @@ function editorTypeCtrl($state, Upload, typeService) {
     activate();
 
     function activate() {
-        typeService.getAll()
-            .then(response => {
-                vm.types = response.data;
-            });
+        vm.types = types;
         const id = $state.params.id;
         if (id) {
             typeService.getTypeById(id)

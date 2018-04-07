@@ -29,6 +29,10 @@ function routes($stateProvider) {
             controller: 'editorTypeCtrl',
             controllerAs: 'vm',
             module: 'types',
+            resolve: {
+                types: typeService => typeService.getAll()
+                    .then(result => result.data),
+            },
         });
 }
 
