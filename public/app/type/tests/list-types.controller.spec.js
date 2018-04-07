@@ -19,11 +19,11 @@ describe('listTypesCtrl', () => {
         });
     }));
 
-    it('Check initialize of controller', () => {
+    it('Should initialize controller', () => {
         expect(controller).not.toBeUndefined();
     });
 
-    it('Check initialize of variable in controller', () => {
+    it('Should initialize variable in controller', () => {
         expect(controller.types).not.toBeUndefined();
     });
 });

@@ -18,7 +18,7 @@ describe('editorTypeCtrl', () => {
         });
     }));
 
-    it('Check initialize of controller', () => {
+    it('Should initialize controller', () => {
         expect(controller).not.toBeUndefined();
     });
 

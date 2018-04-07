@@ -21,7 +21,6 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
             tiles: config.leaflet.titles,
         });
 
-        vm.myConfig = config.select;
         cfpLoadingBar.start();
         vm.getAllTypes();
         vm.getAllPlaces();
@@ -41,7 +40,7 @@ function mapCtrl(cfpLoadingBar, placeService, places, types) {
         vm.addPlaceInMap();
     }
 
-    function addPlaceInMap(places) {
+    function addPlaceInMap() {
         if (types) {
             types.forEach(type => {
                 type.places.forEach((id, i) => {
