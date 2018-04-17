@@ -5,9 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "karma start",
-    "dev": "babel-node --presets env ./app/server.js",
     "dev:watch": "nodemon ./app/server.js --exec babel-node",
-    "dev:build": "babel ./app -d dist && node ./copy_views.js",
+    "dev:build": "rm -rf dist && mkdir dist && babel ./app -d dist && node ./copy_files.js",
     "webpack:watch": "NODE_ENV=development webpack -d --watch",
     "webpack:build": "NODE_ENV=production webpack -p",
     "eslint:backend": "eslint app/**/*.js",
