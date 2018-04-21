@@ -30,7 +30,7 @@ export default {
 
             logger.info('Authentication of user is success');
             req.session.user = user;
-            return res.status(200).redirect('/backend');
+            return res.status(200).redirect('/app');
         })(req, res);
     },
 
@@ -64,7 +64,7 @@ export default {
     },
 
     /**
-     * @request GET '/api/v1/backend
+     * @request GET '/api/v1/app
      * @param req
      * @param res
      */
