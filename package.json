@@ -11,8 +11,7 @@
     "webpack:build": "NODE_ENV=production webpack -p",
     "eslint:backend": "eslint backend/src/**/*.js",
     "eslint:frontend": "eslint public/app/*.js",
-    "start": "node ./backend/dist",
-    "postinstall": "NODE_ENV=production webpack -p"
+    "start": "node ./backend/dist"
   },
   "repository": {
     "type": "git",
