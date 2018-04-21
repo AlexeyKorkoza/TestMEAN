@@ -1,20 +1,11 @@
 {
   "presets": [
-
-    ["es2015", {
-      "plugins": [
-        "transform-class-properties",
-        "babel-plugin-transform-object-rest-spread"
-      ]
-    }]
+    ["env"]
   ],
   "plugins": [
-    "babel-plugin-transform-object-rest-spread",
     "transform-class-properties",
-    "babel-plugin-transform-class-properties",
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
-    }]
+    "transform-object-rest-spread",
+    "transform-regenerator",
+    "transform-runtime"
   ]
 }
