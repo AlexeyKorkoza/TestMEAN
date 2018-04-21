@@ -2,7 +2,7 @@
 
 import jwt from 'express-jwt';
 import jsonWebToken from 'jsonwebtoken';
-import config from '../config';
+import config from '../config/index';
 import UnauthorizedError from '../errors/unauthorized';
 
 /**

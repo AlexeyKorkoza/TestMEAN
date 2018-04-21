@@ -32,7 +32,7 @@ if(process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-    entry: './public/app/app.module.js',
+    entry: './public/backend/backend.module.js',
     output: {
         path: path.join(__dirname, '/public/build'),
         filename: 'bundle.js',

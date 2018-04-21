@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
-    "dev:watch": "nodemon ./app --exec babel-node",
-    "dev:build": "rm -rf dist && mkdir dist && babel ./app -d dist && node ./copy_files.js",
+    "dev:watch": "nodemon ./backend/src --exec babel-node",
+    "dev:build": "cd backend && rm -rf dist && mkdir dist && babel ./src -d dist && node ./copy_files.js",
     "webpack:watch": "NODE_ENV=development webpack -d --watch",
     "webpack:build": "NODE_ENV=production webpack -p",
-    "eslint:backend": "eslint app/**/*.js",
+    "eslint:backend": "eslint backend/src/**/*.js",
     "eslint:frontend": "eslint public/app/*.js",
-    "start": "node ./dist"
+    "start": "node ./backend/dist"
   },
   "repository": {
     "type": "git",
