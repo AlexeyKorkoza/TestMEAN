@@ -1,4 +1,6 @@
 import passport from 'passport';
+import path from 'path';
+
 import token from '../middlewares/token';
 import logger from '../utils/logger';
 
@@ -11,7 +13,7 @@ export default {
      */
     loginPage(req, res) {
         logger.info('Render login page');
-        return res.render('../app/views/login.ejs', {});
+        return res.render(path.join(__dirname, './../views/login'), {});
     },
 
     /**
@@ -39,7 +41,7 @@ export default {
      */
     signUpPage(req, res) {
         logger.info('Render signup page');
-        res.render('../app/views/signup.ejs', {});
+        return res.render(path.join(__dirname, './../views/signup'), {});
     },
 
     /**
@@ -79,7 +81,7 @@ export default {
             date: req.session.user.date,
         });
         logger.info('Render main page', user);
-        return res.render('../app/views/app.ejs', {
+        return res.render(path.join(__dirname, './../views/app'), {
             user,
             token: tokenForUser,
         });
