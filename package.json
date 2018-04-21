@@ -11,7 +11,8 @@
     "webpack:build": "NODE_ENV=production webpack -p",
     "eslint:backend": "eslint backend/src/**/*.js",
     "eslint:frontend": "eslint public/app/*.js",
-    "start": "node ./backend/dist"
+    "start": "node ./backend/dist",
+    "heroku-postbuild": "concurrently \"npm run dev:build\" \"npm run webpack:build\""
   },
   "repository": {
     "type": "git",
@@ -71,6 +72,7 @@
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "concurrently": "^3.5.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
