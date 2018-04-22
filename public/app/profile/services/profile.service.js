@@ -8,7 +8,7 @@ function profileService($http) {
     return service;
 
     function update(data) {
-        return $http.put(`/api/v1/profile/${data.id}`, data);
+        return $http.put(`api/v1/profile/${data.id}`, data);
     }
 }
 
