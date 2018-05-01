@@ -25,11 +25,11 @@ const plugins = [
     new ExtractTextPlugin("bundle.css")
 ];
 
-if(process.env.NODE_ENV === 'production') {
-    plugins.push(new webpack.optimize.UglifyJsPlugin({
-        compressor: { warnings: false },
-    }));
-}
+// if(process.env.NODE_ENV === 'production') {
+//     plugins.push(new webpack.optimize.UglifyJsPlugin({
+//         compressor: { warnings: false },
+//     }));
+// }
 
 module.exports = {
     entry: './public/app/app.module.js',
