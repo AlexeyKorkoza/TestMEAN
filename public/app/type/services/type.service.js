@@ -12,12 +12,12 @@ function typeService($http, Upload) {
     return service;
 
     function getAll() {
-        return $http.get('https://powerful-ocean-87208.herokuapp.com/api/v1/types');
+        return $http.get('api/v1/types');
     }
 
     function create(data, file) {
         return Upload.upload({
-            url: '/api/v1/types/add',
+            url: 'api/v1/types/add',
             data: {
                 file,
                 data,
@@ -27,7 +27,7 @@ function typeService($http, Upload) {
 
     function update(id, data, file) {
         return Upload.upload({
-            url: `https://powerful-ocean-87208.herokuapp.com/api/v1/types/${id}`,
+            url: `api/v1/types/${id}`,
             method: 'PUT',
             data: {
                 file,
@@ -37,11 +37,11 @@ function typeService($http, Upload) {
     }
 
     function remove(id) {
-        return $http.delete(`https://powerful-ocean-87208.herokuapp.com/api/v1/types/${id}`, { params: { id } });
+        return $http.delete(`api/v1/types/${id}`, { params: { id } });
     }
 
     function getTypeById(id) {
-        return $http.get(`https://powerful-ocean-87208.herokuapp.com/api/v1/types/${id}`);
+        return $http.get(`api/v1/types/${id}`);
     }
 }
 
