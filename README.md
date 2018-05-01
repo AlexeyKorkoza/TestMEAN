@@ -10,10 +10,12 @@ First of all, clone the repository:
 git clone https://github.com/AlexeyKorkoza/TestMEAN.git
 ```
 
-After that install packages using <b>npm</b>:
-``` npm install```
+After that install packages using <b>npm</b>:  
 
-Using yarn:
+``` npm install ```
+
+Using <b>yarn</b>:
+
 ``` yarn install ```
 
 Create .env file where you must write credentials to Database. See .env.example as example
@@ -22,10 +24,13 @@ Create database with name ```interactive_map```
 
 ## Run
 Start client part:
+
 ``` npm run webpack:watch ```
 
-Server client part:
+Start server part:
+
 ``` npm dev:watch ```
 
 ## Tests
+
 ``` npm run test ```
