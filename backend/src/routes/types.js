@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.get('/', token.required, typeController.getTypes);
+router.get('/', typeController.getTypes);
 router.get('/:id', token.required, typeController.getTypeById);
 router.post('/add', token.required, upload.any(), typeController.addType);
 router.put('/:id', token.required, upload.any(), typeController.updateTypeWithImage);
