@@ -1,19 +1,31 @@
-## TestMEAN
-TestMEAN is test application for working with map. User can add place and type of place.
+## Description
+TestMEAN is test application for working with map.
 
-## Using technologies:<br/>
-- [x] 1. MongoDB
-- [x] 2. ExpressJS
-- [x] 3. AngularJS
-- [x] 4. NodeJS
+## Demo
+https://powerful-ocean-87208.herokuapp.com/
 
-## How to Run ?
+## Install
+First of all, clone the repository:
 ```
-1. git clone https://github.com/AlexeyKorkoza/TestMEAN.git
-2. npm install or yarn install
-3. gulp start - build client part
-4. npm run dev - start server
+git clone https://github.com/AlexeyKorkoza/TestMEAN.git
 ```
 
-## How to Run Tests?
-<b>karma start</b>
+After that install packages using <b>npm</b>:
+``` npm install```
+
+Using yarn:
+``` yarn install ```
+
+Create .env file where you must write credentials to Database. See .env.example as example
+
+Create database with name ```interactive_map```
+
+## Run
+Start client part:
+``` npm run webpack:watch ```
+
+Server client part:
+``` npm dev:watch ```
+
+## Tests
+``` npm run test ```
