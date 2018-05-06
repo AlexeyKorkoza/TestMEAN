@@ -31,6 +31,27 @@ Start server part:
 
 ``` npm dev:watch ```
 
+## API
+
+Url | Method | Description |
+------- | ---------------- | ---------:
+/login  | POST | Log in application
+/logout  | -        | Log out from application
+/signup   | POST | Sign up in application      
+/app | GET | Render main page
+/api/v1/profile/:id/ | PUT | Update user profile
+/api/v1/types/ | GET | Get all types of places
+/api/v1/types/:id/ | GET | Get one type by id
+/api/v1/types/ | POST | Create new type
+/api/v1/types/:id/ | PUT | Update type
+/api/v1/types/:id/ | DELETE | Remove type
+/api/v1/places/ | GET | Get all places
+/api/v1/places/:id/ | GET | Get one place by id
+/api/v1/places/ | POST | Create new place
+/api/v1/places/:id/ | PUT | Update place
+/api/v1/places/:id/ | DELETE | Remove place
+
+
 ## Tests
 
 ``` npm run test ```
