@@ -35,8 +35,10 @@ Start server part:
 
 Url | Method | Description |
 ------- | ---------------- | ---------:
+/login  | GET | Render login page
 /login  | POST | Log in application
-/logout  | -        | Log out from application
+/logout  | GET  | Log out from application
+/signup   | GET | Render signup page  
 /signup   | POST | Sign up in application      
 /app | GET | Render main page
 /api/v1/profile/:id/ | PUT | Update user profile
